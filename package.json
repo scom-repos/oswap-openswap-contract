@@ -1,6 +1,6 @@
 {
-  "name": "@scom/openswap-contract",
-  "version": "0.1.12",
+  "name": "@scom/oswap-openswap-contract",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "plugin": "dist/index.js",
