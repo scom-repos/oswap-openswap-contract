@@ -7936,8 +7936,8 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         }
     }
 }
-/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator.json.ts" />
-declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator.json.ts" {
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.json.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.json.ts" {
     const _default_41: {
         abi: {
             inputs: {
@@ -7958,10 +7958,46 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
     };
     export default _default_41;
 }
-/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator.ts" />
-declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator.ts" {
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.ts" {
     import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
-    export class OSWAP_RestrictedPairCreator extends _Contract {
+    export class OSWAP_RestrictedPairCreator1 extends _Contract {
+        static _abi: any;
+        constructor(wallet: IWallet, address?: string);
+        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        createPair: {
+            (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (salt: string, options?: TransactionOptions) => Promise<string>;
+        };
+        private assign;
+    }
+}
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.json.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.json.ts" {
+    const _default_42: {
+        abi: {
+            inputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            name: string;
+            outputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            stateMutability: string;
+            type: string;
+        }[];
+        bytecode: string;
+    };
+    export default _default_42;
+}
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.ts" {
+    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    export class OSWAP_RestrictedPairCreator4 extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
         deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
@@ -7974,7 +8010,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.json.ts" {
-    const _default_42: {
+    const _default_43: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -8008,7 +8044,7 @@ declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRoute
         })[];
         bytecode: string;
     };
-    export default _default_42;
+    export default _default_43;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts" {
@@ -8249,7 +8285,8 @@ declare module "@scom/oswap-openswap-contract/contracts/index.ts" {
     export { OSWAP_RestrictedPair1 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1.ts";
     export { OSWAP_RestrictedPair3 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3.ts";
     export { OSWAP_RestrictedPair4 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4.ts";
-    export { OSWAP_RestrictedPairCreator } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator.ts";
+    export { OSWAP_RestrictedPairCreator1 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.ts";
+    export { OSWAP_RestrictedPairCreator4 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.ts";
     export { OSWAP_HybridRouter2 } from "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts";
 }
 /// <amd-module name="@scom/oswap-openswap-contract/OpenSwap.ts" />

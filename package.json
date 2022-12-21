@@ -7,9 +7,9 @@
   "pluginTypes": "pluginTypes/index.d.ts",
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "npm run build:contracts && npm run updateHash && npm run build:contracts && npm run build:lib && npm run build:dist",
+    "build": "rm -rf lib && rm -rf dist && rm -rf types && npm run build:contracts && npm run updateHash && npm run build:contracts && npm run build:lib && npm run build:dist",
     "updateHash": "ts-node tools/updateHash.ts",
-    "build:contracts": "sol2ts solidity.config.json",
+    "build:contracts": "rm -rf src/contracts && sol2ts solidity.config.json",
     "build:test": "sol2ts solidity-test.config.json",
     "build:lib": "tsc",
     "build:dist": "npx @ijstech/compiler",
