@@ -1,11 +1,12 @@
 
-import {Utils, Wallet} from "@ijstech/eth-wallet";
+import {BigNumber, Utils, Wallet} from "@ijstech/eth-wallet";
 import {
     deploy, 
     deployRestrictedPairOracle, 
     deployOracleContracts, 
     deployHybridRouter,
-    initHybridRouterRegistry
+    initHybridRouterRegistry,
+    deployRestrictedContracts
 } from "../src";
 import * as Config from '../data/config.js';
 
@@ -34,15 +35,32 @@ async function deployPeggedQueue() {
     let accounts = await wallet.accounts;
     wallet.defaultAccount = accounts[0];
     let result = await deployOracleContracts(wallet, {
-        governance: deploymentConfig.governance,
+        governance: deploymentConfig.governance.address,
         feePerDelegator: Utils.toDecimals(100),
         protocolFee: 10000,
         protocolFeeTo,
         tradeFee: 100
     }, {
         weth: deploymentConfig.tokens.weth,
-        factory: deploymentConfig.ammFactory,
+        factory: deploymentConfig.amm.factory,
     });
+    console.log('result', result);
+}
+
+async function deployRestrictedQueue() {
+    let wallet = new Wallet(rpcUrl, {
+        address: deployerAddress, 
+        privateKey
+    })   
+    let accounts = await wallet.accounts;
+    wallet.defaultAccount = accounts[0];
+    let result = await deployRestrictedContracts(wallet, {
+        governance: deploymentConfig.governance.address,
+        whitelistFactory: deploymentConfig.oracle.factory,
+        tradeFee: new BigNumber(deploymentConfig.restricted.tradeFee),
+        protocolFee: new BigNumber(deploymentConfig.restricted.protocolFee),
+        protocolFeeTo: deploymentConfig.restricted.protocolFeeTo
+    }, deploymentConfig.tokens.weth);
     console.log('result', result);
 }
 
@@ -64,7 +82,7 @@ async function deployAll() {
             minStakePeriod: 1,
             tradeFee: 0.2,
             protocolFee: 5,
-            protocolFeeTo,
+            protocolFeeTo: deploymentConfig.governance.protocolFeeTo,
             profiles: {
                 name: ['poll','vote','addOldOracleToNewPair'],
                 minExeDelay: [1,1,1],
@@ -77,24 +95,24 @@ async function deployAll() {
         tokens: deploymentConfig.tokens,
         amm: {
             protocolFee: 5000,
-            protocolFeeTo,
+            protocolFeeTo: deploymentConfig.amm.protocolFeeTo,
             tradeFee: 200
         },
         oracle: {
             feePerDelegator: Utils.toDecimals(100),
             protocolFee: 10000,
-            protocolFeeTo,
+            protocolFeeTo: deploymentConfig.oracle.protocolFeeTo,
             tradeFee: 100
         },
         range: {
             stakeAmount: [Utils.toDecimals(3500),Utils.toDecimals(5000),Utils.toDecimals(7500),Utils.toDecimals(10000)],
             liquidityProviderShare: [10000,25000,50000,90000],
-            protocolFeeTo,
+            protocolFeeTo: deploymentConfig.range.protocolFeeTo,
             tradeFee: 100
         },
         restricted: {
             protocolFee: 10000,
-            protocolFeeTo,
+            protocolFeeTo: deploymentConfig.restricted.protocolFeeTo,
             tradeFee: 100
         },
         hybridRouter: {
@@ -140,7 +158,7 @@ async function setupHybridRouter(){
     let hybridRouterRegistryConfig = Config.deploymentConfig.hybridRouterRegistry;
     let hybridRouterOptions = {
         registryAddress: hybridRouterRegistryConfig.address,
-        governance: Config.deploymentConfig.governance,
+        governance: Config.deploymentConfig.governance.address,
         weth: Config.deploymentConfig.tokens.weth,
         name: [],
         factory: [],
@@ -174,3 +192,4 @@ deployAll();
 // deployOracle();
 // deployPeggedQueue();
 // setupHybridRouter();
+// deployRestrictedQueue();

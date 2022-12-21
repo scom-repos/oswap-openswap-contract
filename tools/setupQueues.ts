@@ -105,9 +105,9 @@ async function setup() {
     wallet.defaultAccount = accounts[0];
 
     let hybridRouterRegistryAddress = deploymentConfig.hybridRouterRegistry.address;
-    let oracleFactoryAddress = deploymentConfig.oracleFactory;
-    let rangeFactoryAddress = deploymentConfig.rangeFactory;
-    let restrictedFactoryAddress = deploymentConfig.restrictedFactory;
+    let oracleFactoryAddress = deploymentConfig.oracle.factory;
+    let rangeFactoryAddress = deploymentConfig.range.factory;
+    let restrictedFactoryAddress = deploymentConfig.restricted.factory;
     let tokens: Token[] = deploymentConfig.queuePairTokens;
 
     await setupPriorityQueue(wallet, oracleFactoryAddress, hybridRouterRegistryAddress, tokens);

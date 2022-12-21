@@ -10,12 +10,28 @@ module.exports = {
             oswap: '',
             votingToken: ''
         },  
-        protocolFeeTo: '',
-        governance: '',
-        ammFactory: '',
-        oracleFactory: '',
-        rangeFactory: '',
-        restrictedFactory: '',
+        governance: {
+            address: '',
+            protocolFeeTo: ''
+        },
+        amm: {
+            factory: '',
+            protocolFeeTo: ''
+        },     
+        oracle: {
+            factory: '',
+            protocolFeeTo: ''
+        },   
+        range: {
+            factory: '',
+            protocolFeeTo: ''
+        },                      
+        restricted: {
+            factory: '',
+            tradeFee: '',
+            protocolFee: '',
+            protocolFeeTo: ''
+        },
         queuePairTokens: [{
             token0: '',
             token1: ''

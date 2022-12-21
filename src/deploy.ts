@@ -19,7 +19,7 @@ import {
     OSWAP_RangeLiquidityProvider,
     OSWAP_RangeFactory,
     OSWAP_VotingExecutor3,
-    OSWAP_RestrictedPairCreator,
+    OSWAP_RestrictedPairCreator1,
     OSWAP_RestrictedFactory,
     OSWAP_VotingExecutor4,
     OSWAP_ConfigStore,
@@ -359,19 +359,27 @@ export async function deployRestrictedContracts(wallet: Wallet, options: IRestri
     if (!options.configStore) {
         let configStore = new OSWAP_ConfigStore(wallet);
         result.configStore = await configStore.deploy(options.governance);
-        options.configStore = result.configStore;
+    }
+    else {
+        result.configStore = options.configStore;
     }
     //RestrictedPairCreator
-    let restrictedPairCreator = new OSWAP_RestrictedPairCreator(wallet);
-    result.restrictedPairCreator = await restrictedPairCreator.deploy();           
+    if (!options.pairCreator) {
+        let restrictedPairCreator = new OSWAP_RestrictedPairCreator1(wallet);
+        result.restrictedPairCreator = await restrictedPairCreator.deploy(); 
+    }
+    else {
+        result.restrictedPairCreator = options.pairCreator;
+    }
+
     //RestrictedFactory
     let restrictedFactory = new OSWAP_RestrictedFactory(wallet);
     result.restrictedFactory = await restrictedFactory.deploy({
         governance: options.governance,
         whitelistFactory: options.whitelistFactory,
-        pairCreator: options.pairCreator || result.restrictedPairCreator,
+        pairCreator: result.restrictedPairCreator,
         tradeFee: options.tradeFee || 0,
-        configStore: options.configStore,
+        configStore: result.configStore,
         protocolFee: options.protocolFee || 0,
         protocolFeeTo: options.protocolFeeTo || Utils.nullAddress
     });
@@ -387,7 +395,7 @@ export async function deployRestrictedContracts(wallet: Wallet, options: IRestri
     result.votingExecutor4 = await votingExecutor4.deploy({
         governance: options.governance,
         factory: restrictedFactory.address,
-        configStore: options.configStore
+        configStore: result.configStore
     });  
     return result;
 } 
