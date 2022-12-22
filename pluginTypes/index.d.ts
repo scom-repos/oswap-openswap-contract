@@ -8291,12 +8291,13 @@ declare module "@scom/oswap-openswap-contract/contracts/index.ts" {
 }
 /// <amd-module name="@scom/oswap-openswap-contract/OpenSwap.ts" />
 declare module "@scom/oswap-openswap-contract/OpenSwap.ts" {
-    import { Wallet, BigNumber } from "@ijstech/eth-wallet";
+    import { IWallet, BigNumber } from "@ijstech/eth-contract";
     import { OpenSwap as OpenSwapContract } from "@scom/oswap-openswap-contract/contracts/index.ts";
     export class OpenSwap {
+        wallet: IWallet;
         address: string;
         _oswap: OpenSwapContract;
-        constructor(wallet: Wallet, address?: string);
+        constructor(wallet: IWallet, address?: string);
         deploy(params: {
             minter: string;
             initSupplyTo: string;
@@ -8346,7 +8347,7 @@ declare module "@scom/oswap-openswap-contract/OpenSwap.ts" {
 }
 /// <amd-module name="@scom/oswap-openswap-contract/deploy.ts" />
 declare module "@scom/oswap-openswap-contract/deploy.ts" {
-    import { Wallet, BigNumber } from "@ijstech/eth-wallet";
+    import { IWallet, BigNumber } from "@ijstech/eth-contract";
     import { OSWAP_Factory, OSWAP_PairCreator, OSWAP_Router, OSWAP_VotingExecutor1, OAXDEX_Governance, OAXDEX_VotingExecutor, OAXDEX_Administrator, OAXDEX_VotingRegistry, OSWAP_OraclePairCreator, OSWAP_VotingExecutor2, OSWAP_OracleFactory, OSWAP_OracleLiquidityProvider, OSWAP_OracleRouter, OSWAP_HybridRouterRegistry, OSWAP_HybridRouter2 } from "@scom/oswap-openswap-contract/contracts/index.ts";
     import { OpenSwap } from "@scom/oswap-openswap-contract/OpenSwap.ts";
     export interface ICoreContractsDeploymentResult {
@@ -8405,8 +8406,8 @@ declare module "@scom/oswap-openswap-contract/deploy.ts" {
             minExeDelay: number[];
             minVoteDuration: number[];
             maxVoteDuration: number[];
-            minGovTokenToCreateVote: number[] | BigNumber[];
-            minQuorum: number[] | BigNumber[];
+            minGovTokenToCreateVote: string[];
+            minQuorum: string[];
         };
     }
     export const DefaultGovOptions: IGovOptions;
@@ -8492,15 +8493,15 @@ declare module "@scom/oswap-openswap-contract/deploy.ts" {
         executor1: OSWAP_VotingExecutor1;
         executor2: OSWAP_VotingExecutor2;
     }
-    export function toDeploymentContracts(wallet: Wallet, result: IDeploymentResult): IDeploymentContracts;
-    export function deployCoreContracts(wallet: Wallet, options: IDeployOptions): Promise<ICoreContractsDeploymentResult>;
-    export function deployOracleContracts(wallet: Wallet, options: IOracleFactoryOptions, coreContractsResult: ICoreContractsDeploymentResult): Promise<IOracleContractsDeploymentResult>;
-    export function deployRangeContracts(wallet: Wallet, options: IRangeFactoryOptions, weth: string, hybridRegistry: string): Promise<IRangeContractsDeploymentResult>;
-    export function deployRestrictedContracts(wallet: Wallet, options: IRestrictedFactoryOptions, weth: string): Promise<IRestrictedContractsDeploymentResult>;
-    export function deployRestrictedPairOracle(wallet: Wallet): Promise<string>;
-    export function initHybridRouterRegistry(wallet: Wallet, options: IHybridRouterOptions): Promise<void>;
-    export function deployHybridRouter(wallet: Wallet, options: IHybridRouterOptions): Promise<IHybridRouterDeploymentResult>;
-    export function deploy(wallet: Wallet, options?: IDeployOptions): Promise<IDeploymentResult>;
+    export function toDeploymentContracts(wallet: IWallet, result: IDeploymentResult): IDeploymentContracts;
+    export function deployCoreContracts(wallet: IWallet, options: IDeployOptions): Promise<ICoreContractsDeploymentResult>;
+    export function deployOracleContracts(wallet: IWallet, options: IOracleFactoryOptions, coreContractsResult: ICoreContractsDeploymentResult): Promise<IOracleContractsDeploymentResult>;
+    export function deployRangeContracts(wallet: IWallet, options: IRangeFactoryOptions, weth: string, hybridRegistry: string): Promise<IRangeContractsDeploymentResult>;
+    export function deployRestrictedContracts(wallet: IWallet, options: IRestrictedFactoryOptions, weth: string): Promise<IRestrictedContractsDeploymentResult>;
+    export function deployRestrictedPairOracle(wallet: IWallet): Promise<string>;
+    export function initHybridRouterRegistry(wallet: IWallet, options: IHybridRouterOptions): Promise<void>;
+    export function deployHybridRouter(wallet: IWallet, options: IHybridRouterOptions): Promise<IHybridRouterDeploymentResult>;
+    export function deploy(wallet: IWallet, options?: IDeployOptions): Promise<IDeploymentResult>;
 }
 /// <amd-module name="@scom/oswap-openswap-contract" />
 declare module "@scom/oswap-openswap-contract" {

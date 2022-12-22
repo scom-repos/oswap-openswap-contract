@@ -1,4 +1,4 @@
-import {Wallet,BigNumber,Utils} from "@ijstech/eth-wallet";
+import {IWallet,BigNumber,nullAddress} from "@ijstech/eth-contract";
 import {
     OSWAP_Factory, 
     OSWAP_PairCreator, 
@@ -84,8 +84,8 @@ export interface IGovOptions{
         minExeDelay: number[];
         minVoteDuration: number[],
         maxVoteDuration: number[],
-        minGovTokenToCreateVote: number[]|BigNumber[],
-        minQuorum: number[]|BigNumber[]
+        minGovTokenToCreateVote: string[],
+        minQuorum: string[]
     }
 }
 export const DefaultGovOptions: IGovOptions = {
@@ -98,8 +98,8 @@ export const DefaultGovOptions: IGovOptions = {
         minExeDelay: [1,1,1],
         minVoteDuration: [0,0,0],
         maxVoteDuration: [1209600,1209600,1209600], 
-        minGovTokenToCreateVote: [Utils.toDecimals(100000),Utils.toDecimals(100000),Utils.toDecimals(100000)],
-        minQuorum: [Utils.toDecimals(0),Utils.toDecimals(10000000),Utils.toDecimals(100)]
+        minGovTokenToCreateVote: ['100000','100000','100000'],
+        minQuorum: ['0','10000000','100']
     }
 }
 export interface IGovTokenOptions{
@@ -190,7 +190,7 @@ export interface IDeploymentContracts {
     executor2: OSWAP_VotingExecutor2;
 }
 
-export function toDeploymentContracts(wallet: Wallet, result: IDeploymentResult): IDeploymentContracts{
+export function toDeploymentContracts(wallet: IWallet, result: IDeploymentResult): IDeploymentContracts{
     return {
         openSwap: new OpenSwap(wallet, result.oswap),
         governance: new OAXDEX_Governance(wallet, result.governance),
@@ -211,7 +211,7 @@ export function toDeploymentContracts(wallet: Wallet, result: IDeploymentResult)
     }
 }
 
-export async function deployCoreContracts(wallet: Wallet, options: IDeployOptions): Promise<ICoreContractsDeploymentResult>{
+export async function deployCoreContracts(wallet: IWallet, options: IDeployOptions): Promise<ICoreContractsDeploymentResult>{
     let result: ICoreContractsDeploymentResult = {};
     //oswap
     if (!options.tokens.oswap){
@@ -236,8 +236,8 @@ export async function deployCoreContracts(wallet: Wallet, options: IDeployOption
         names: options.govOptions.profiles.name, 
         maxVoteDuration: options.govOptions.profiles.maxVoteDuration,
         minExeDelay: options.govOptions.profiles.minExeDelay,
-        minOaxTokenToCreateVote: options.govOptions.profiles.minGovTokenToCreateVote,
-        minQuorum: options.govOptions.profiles.minQuorum,
+        minOaxTokenToCreateVote: options.govOptions.profiles.minGovTokenToCreateVote.map(v => wallet.utils.toDecimals(v)),
+        minQuorum: options.govOptions.profiles.minQuorum.map(v => wallet.utils.toDecimals(v)),
         minStakePeriod: options.govOptions.minStakePeriod,
         minVoteDuration: options.govOptions.profiles.minVoteDuration,
         oaxToken: result.oswap,
@@ -261,7 +261,7 @@ export async function deployCoreContracts(wallet: Wallet, options: IDeployOption
         governance: options.amm.governance || result.governance,
         pairCreator: result.pairCreator,
         protocolFee: 0,
-        protocolFeeTo: options.amm.protocolFeeTo || Utils.nullAddress,
+        protocolFeeTo: options.amm.protocolFeeTo || nullAddress,
         tradeFee: 0
     });
     //Router
@@ -282,7 +282,7 @@ export async function deployCoreContracts(wallet: Wallet, options: IDeployOption
     return result;
 } 
 
-export async function deployOracleContracts(wallet: Wallet, options: IOracleFactoryOptions, coreContractsResult: ICoreContractsDeploymentResult): Promise<IOracleContractsDeploymentResult>{
+export async function deployOracleContracts(wallet: IWallet, options: IOracleFactoryOptions, coreContractsResult: ICoreContractsDeploymentResult): Promise<IOracleContractsDeploymentResult>{
     let result: IOracleContractsDeploymentResult = {};
     //OraclePairCreator
     let oraclePairCreator = new OSWAP_OraclePairCreator(wallet);
@@ -294,7 +294,7 @@ export async function deployOracleContracts(wallet: Wallet, options: IOracleFact
         governance: options.governance || coreContractsResult.governance,
         pairCreator: options.pairCreator || result.oraclePairCreator,
         protocolFee: options.protocolFee || 0,
-        protocolFeeTo: options.protocolFeeTo || Utils.nullAddress,
+        protocolFeeTo: options.protocolFeeTo || nullAddress,
         tradeFee: options.tradeFee || 0
     });
     //OracleRouter
@@ -320,7 +320,7 @@ export async function deployOracleContracts(wallet: Wallet, options: IOracleFact
     return result;
 } 
 
-export async function deployRangeContracts(wallet: Wallet, options: IRangeFactoryOptions, weth: string, hybridRegistry: string): Promise<IRangeContractsDeploymentResult>{
+export async function deployRangeContracts(wallet: IWallet, options: IRangeFactoryOptions, weth: string, hybridRegistry: string): Promise<IRangeContractsDeploymentResult>{
     let result: IRangeContractsDeploymentResult = {};
     //RangePairCreator
     let rangePairCreator = new OSWAP_RangePairCreator(wallet);
@@ -334,7 +334,7 @@ export async function deployRangeContracts(wallet: Wallet, options: IRangeFactor
         tradeFee: options.tradeFee || 0,
         stakeAmount: options.stakeAmount || [],
         liquidityProviderShare: options.liquidityProviderShare || [],
-        protocolFeeTo: options.protocolFeeTo || Utils.nullAddress
+        protocolFeeTo: options.protocolFeeTo || nullAddress
     });
     //RangeLiquidityProvider
     let rangeLiquidityProvider = new OSWAP_RangeLiquidityProvider(wallet);
@@ -353,7 +353,7 @@ export async function deployRangeContracts(wallet: Wallet, options: IRangeFactor
     return result;
 } 
 
-export async function deployRestrictedContracts(wallet: Wallet, options: IRestrictedFactoryOptions, weth: string): Promise<IRestrictedContractsDeploymentResult>{
+export async function deployRestrictedContracts(wallet: IWallet, options: IRestrictedFactoryOptions, weth: string): Promise<IRestrictedContractsDeploymentResult>{
     let result: IRestrictedContractsDeploymentResult = {};
     //ConfigStore
     if (!options.configStore) {
@@ -381,7 +381,7 @@ export async function deployRestrictedContracts(wallet: Wallet, options: IRestri
         tradeFee: options.tradeFee || 0,
         configStore: result.configStore,
         protocolFee: options.protocolFee || 0,
-        protocolFeeTo: options.protocolFeeTo || Utils.nullAddress
+        protocolFeeTo: options.protocolFeeTo || nullAddress
     });
     //RestrictedLiquidityProvider
     let restrictedLiquidityProvider = new OSWAP_RestrictedLiquidityProvider1(wallet);
@@ -400,13 +400,13 @@ export async function deployRestrictedContracts(wallet: Wallet, options: IRestri
     return result;
 } 
 
-export async function deployRestrictedPairOracle(wallet: Wallet){
+export async function deployRestrictedPairOracle(wallet: IWallet){
     let restrictedPairOracle = new OSWAP_RestrictedPairOracle(wallet);
     let result = await restrictedPairOracle.deploy();
     return result;
 }
 
-export async function initHybridRouterRegistry(wallet: Wallet, options: IHybridRouterOptions) {
+export async function initHybridRouterRegistry(wallet: IWallet, options: IHybridRouterOptions) {
     let hybridRouterRegistry = new OSWAP_HybridRouterRegistry(wallet, options.registryAddress);
     let {name, factory, fee, feeBase, typeCode} = options;
     await hybridRouterRegistry.init({
@@ -418,7 +418,7 @@ export async function initHybridRouterRegistry(wallet: Wallet, options: IHybridR
     }); 
 }
 
-export async function deployHybridRouter(wallet: Wallet, options: IHybridRouterOptions): Promise<IHybridRouterDeploymentResult> {
+export async function deployHybridRouter(wallet: IWallet, options: IHybridRouterOptions): Promise<IHybridRouterDeploymentResult> {
     let result: IHybridRouterDeploymentResult = {};
     //HybridRouterRegistry
     if (!options.registryAddress) {
@@ -439,14 +439,14 @@ export async function deployHybridRouter(wallet: Wallet, options: IHybridRouterO
     return result;
 }
 
-export function deploy(wallet: Wallet, options?: IDeployOptions): Promise<IDeploymentResult>{
+export function deploy(wallet: IWallet, options?: IDeployOptions): Promise<IDeploymentResult>{
     options = options || <any>{};
     if (!options.govOptions)
         options.govOptions = DefaultGovOptions;
     if (!options.govTokenOptions){
         options.govTokenOptions = DefaultGovTokenOptions;
-        options.govTokenOptions.initSupplyTo = wallet.defaultAccount;
-        options.govTokenOptions.minter = wallet.defaultAccount;
+        options.govTokenOptions.initSupplyTo = wallet.address;
+        options.govTokenOptions.minter = wallet.address;
     }
     if (!options.tokens)
         options.tokens = {};

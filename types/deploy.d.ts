@@ -1,4 +1,4 @@
-import { Wallet, BigNumber } from "@ijstech/eth-wallet";
+import { IWallet, BigNumber } from "@ijstech/eth-contract";
 import { OSWAP_Factory, OSWAP_PairCreator, OSWAP_Router, OSWAP_VotingExecutor1, OAXDEX_Governance, OAXDEX_VotingExecutor, OAXDEX_Administrator, OAXDEX_VotingRegistry, OSWAP_OraclePairCreator, OSWAP_VotingExecutor2, OSWAP_OracleFactory, OSWAP_OracleLiquidityProvider, OSWAP_OracleRouter, OSWAP_HybridRouterRegistry, OSWAP_HybridRouter2 } from './contracts/index';
 import { OpenSwap } from './OpenSwap';
 export interface ICoreContractsDeploymentResult {
@@ -57,8 +57,8 @@ export interface IGovOptions {
         minExeDelay: number[];
         minVoteDuration: number[];
         maxVoteDuration: number[];
-        minGovTokenToCreateVote: number[] | BigNumber[];
-        minQuorum: number[] | BigNumber[];
+        minGovTokenToCreateVote: string[];
+        minQuorum: string[];
     };
 }
 export declare const DefaultGovOptions: IGovOptions;
@@ -144,12 +144,12 @@ export interface IDeploymentContracts {
     executor1: OSWAP_VotingExecutor1;
     executor2: OSWAP_VotingExecutor2;
 }
-export declare function toDeploymentContracts(wallet: Wallet, result: IDeploymentResult): IDeploymentContracts;
-export declare function deployCoreContracts(wallet: Wallet, options: IDeployOptions): Promise<ICoreContractsDeploymentResult>;
-export declare function deployOracleContracts(wallet: Wallet, options: IOracleFactoryOptions, coreContractsResult: ICoreContractsDeploymentResult): Promise<IOracleContractsDeploymentResult>;
-export declare function deployRangeContracts(wallet: Wallet, options: IRangeFactoryOptions, weth: string, hybridRegistry: string): Promise<IRangeContractsDeploymentResult>;
-export declare function deployRestrictedContracts(wallet: Wallet, options: IRestrictedFactoryOptions, weth: string): Promise<IRestrictedContractsDeploymentResult>;
-export declare function deployRestrictedPairOracle(wallet: Wallet): Promise<string>;
-export declare function initHybridRouterRegistry(wallet: Wallet, options: IHybridRouterOptions): Promise<void>;
-export declare function deployHybridRouter(wallet: Wallet, options: IHybridRouterOptions): Promise<IHybridRouterDeploymentResult>;
-export declare function deploy(wallet: Wallet, options?: IDeployOptions): Promise<IDeploymentResult>;
+export declare function toDeploymentContracts(wallet: IWallet, result: IDeploymentResult): IDeploymentContracts;
+export declare function deployCoreContracts(wallet: IWallet, options: IDeployOptions): Promise<ICoreContractsDeploymentResult>;
+export declare function deployOracleContracts(wallet: IWallet, options: IOracleFactoryOptions, coreContractsResult: ICoreContractsDeploymentResult): Promise<IOracleContractsDeploymentResult>;
+export declare function deployRangeContracts(wallet: IWallet, options: IRangeFactoryOptions, weth: string, hybridRegistry: string): Promise<IRangeContractsDeploymentResult>;
+export declare function deployRestrictedContracts(wallet: IWallet, options: IRestrictedFactoryOptions, weth: string): Promise<IRestrictedContractsDeploymentResult>;
+export declare function deployRestrictedPairOracle(wallet: IWallet): Promise<string>;
+export declare function initHybridRouterRegistry(wallet: IWallet, options: IHybridRouterOptions): Promise<void>;
+export declare function deployHybridRouter(wallet: IWallet, options: IHybridRouterOptions): Promise<IHybridRouterDeploymentResult>;
+export declare function deploy(wallet: IWallet, options?: IDeployOptions): Promise<IDeploymentResult>;

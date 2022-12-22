@@ -1,9 +1,10 @@
-import { Wallet, BigNumber } from "@ijstech/eth-wallet";
+import { IWallet, BigNumber } from "@ijstech/eth-contract";
 import { OpenSwap as OpenSwapContract } from "./contracts/index";
 export declare class OpenSwap {
+    wallet: IWallet;
     address: string;
     _oswap: OpenSwapContract;
-    constructor(wallet: Wallet, address?: string);
+    constructor(wallet: IWallet, address?: string);
     deploy(params: {
         minter: string;
         initSupplyTo: string;

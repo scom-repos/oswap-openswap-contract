@@ -10089,58 +10089,59 @@ define("@scom/oswap-openswap-contract/contracts/index.ts", ["require", "exports"
     Object.defineProperty(exports, "OSWAP_RestrictedPairCreator4", { enumerable: true, get: function () { return OSWAP_RestrictedPairCreator4_1.OSWAP_RestrictedPairCreator4; } });
     Object.defineProperty(exports, "OSWAP_HybridRouter2", { enumerable: true, get: function () { return OSWAP_HybridRouter2_1.OSWAP_HybridRouter2; } });
 });
-define("@scom/oswap-openswap-contract/OpenSwap.ts", ["require", "exports", "@ijstech/eth-wallet", "@scom/oswap-openswap-contract/contracts/index.ts"], function (require, exports, eth_wallet_1, index_1) {
+define("@scom/oswap-openswap-contract/OpenSwap.ts", ["require", "exports", "@scom/oswap-openswap-contract/contracts/index.ts"], function (require, exports, index_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.OpenSwap = void 0;
     class OpenSwap {
         constructor(wallet, address) {
+            this.wallet = wallet;
             this.address = address;
             this._oswap = new index_1.OpenSwap(wallet, address);
         }
         async deploy(params) {
-            params.initSupply = eth_wallet_1.Utils.toDecimals(params.initSupply);
-            params.totalSupply = eth_wallet_1.Utils.toDecimals(params.totalSupply);
+            params.initSupply = this.wallet.utils.toDecimals(params.initSupply);
+            params.totalSupply = this.wallet.utils.toDecimals(params.totalSupply);
             this.address = await this._oswap.deploy(params);
             return this.address;
         }
         async allowance(params) {
-            return eth_wallet_1.Utils.fromDecimals(await this._oswap.allowance(params));
+            return this.wallet.utils.fromDecimals(await this._oswap.allowance(params));
         }
         async approve(params) {
-            params.amount = eth_wallet_1.Utils.toDecimals(params.amount);
+            params.amount = this.wallet.utils.toDecimals(params.amount);
             let receipt = await this._oswap.approve(params);
             let event = this._oswap.parseApprovalEvent(receipt)[0];
-            event.value = eth_wallet_1.Utils.fromDecimals(event.value);
+            event.value = this.wallet.utils.fromDecimals(event.value);
             return event;
         }
         async balanceOf(account) {
-            return eth_wallet_1.Utils.fromDecimals(await this._oswap.balanceOf(account));
+            return this.wallet.utils.fromDecimals(await this._oswap.balanceOf(account));
         }
         get cap() {
-            return (async () => { return eth_wallet_1.Utils.fromDecimals(await this._oswap.cap()); })();
+            return (async () => { return this.wallet.utils.fromDecimals(await this._oswap.cap()); })();
         }
         get decimals() {
             return (async () => { return (await this._oswap.decimals()).toNumber(); })();
         }
         async decreaseAllowance(params) {
-            params.subtractedValue = eth_wallet_1.Utils.toDecimals(params.subtractedValue);
+            params.subtractedValue = this.wallet.utils.toDecimals(params.subtractedValue);
             let receipt = await this._oswap.decreaseAllowance(params);
             let event = this._oswap.parseApprovalEvent(receipt)[0];
-            event.value = eth_wallet_1.Utils.fromDecimals(event.value);
+            event.value = this.wallet.utils.fromDecimals(event.value);
             return event;
         }
         async increaseAllowance(params) {
-            params.addedValue = eth_wallet_1.Utils.toDecimals(params.addedValue);
+            params.addedValue = this.wallet.utils.toDecimals(params.addedValue);
             let receipt = await this._oswap.increaseAllowance(params);
             let event = this._oswap.parseApprovalEvent(receipt)[0];
-            event.value = eth_wallet_1.Utils.fromDecimals(event.value);
+            event.value = this.wallet.utils.fromDecimals(event.value);
             return event;
         }
         async mint(params) {
-            let receipt = await this._oswap.mint({ account: params.address, amount: eth_wallet_1.Utils.toDecimals(params.amount) });
+            let receipt = await this._oswap.mint({ account: params.address, amount: this.wallet.utils.toDecimals(params.amount) });
             let event = this._oswap.parseTransferEvent(receipt)[0];
-            event.value = eth_wallet_1.Utils.fromDecimals(event.value);
+            event.value = this.wallet.utils.fromDecimals(event.value);
             return event;
         }
         get minter() {
@@ -10153,27 +10154,27 @@ define("@scom/oswap-openswap-contract/OpenSwap.ts", ["require", "exports", "@ijs
             return this._oswap.symbol();
         }
         get totalSupply() {
-            return (async () => { return eth_wallet_1.Utils.fromDecimals(await this._oswap.totalSupply()); })();
+            return (async () => { return this.wallet.utils.fromDecimals(await this._oswap.totalSupply()); })();
         }
         async transfer(params) {
-            let receipt = await this._oswap.transfer({ recipient: params.address, amount: eth_wallet_1.Utils.toDecimals(params.amount) });
+            let receipt = await this._oswap.transfer({ recipient: params.address, amount: this.wallet.utils.toDecimals(params.amount) });
             let event = this._oswap.parseTransferEvent(receipt)[0];
-            event.value = eth_wallet_1.Utils.fromDecimals(event.value);
+            event.value = this.wallet.utils.fromDecimals(event.value);
             return event;
         }
         async transferFrom(params) {
-            params.amount = eth_wallet_1.Utils.toDecimals(params.amount);
+            params.amount = this.wallet.utils.toDecimals(params.amount);
             let receipt = await this._oswap.transferFrom(params);
             let transfer = this._oswap.parseTransferEvent(receipt)[0];
-            transfer.value = eth_wallet_1.Utils.fromDecimals(transfer.value);
+            transfer.value = this.wallet.utils.fromDecimals(transfer.value);
             let approval = this._oswap.parseApprovalEvent(receipt)[0];
-            approval.value = eth_wallet_1.Utils.fromDecimals(approval.value);
+            approval.value = this.wallet.utils.fromDecimals(approval.value);
             return { transfer, approval };
         }
     }
     exports.OpenSwap = OpenSwap;
 });
-define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijstech/eth-wallet", "@scom/oswap-openswap-contract/contracts/index.ts", "@scom/oswap-openswap-contract/OpenSwap.ts"], function (require, exports, eth_wallet_2, index_2, OpenSwap_2) {
+define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijstech/eth-contract", "@scom/oswap-openswap-contract/contracts/index.ts", "@scom/oswap-openswap-contract/OpenSwap.ts"], function (require, exports, eth_contract_45, index_2, OpenSwap_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.deploy = exports.deployHybridRouter = exports.initHybridRouterRegistry = exports.deployRestrictedPairOracle = exports.deployRestrictedContracts = exports.deployRangeContracts = exports.deployOracleContracts = exports.deployCoreContracts = exports.toDeploymentContracts = exports.DefaultGovTokenOptions = exports.DefaultGovOptions = void 0;
@@ -10187,8 +10188,8 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             minExeDelay: [1, 1, 1],
             minVoteDuration: [0, 0, 0],
             maxVoteDuration: [1209600, 1209600, 1209600],
-            minGovTokenToCreateVote: [eth_wallet_2.Utils.toDecimals(100000), eth_wallet_2.Utils.toDecimals(100000), eth_wallet_2.Utils.toDecimals(100000)],
-            minQuorum: [eth_wallet_2.Utils.toDecimals(0), eth_wallet_2.Utils.toDecimals(10000000), eth_wallet_2.Utils.toDecimals(100)]
+            minGovTokenToCreateVote: ['100000', '100000', '100000'],
+            minQuorum: ['0', '10000000', '100']
         }
     };
     exports.DefaultGovTokenOptions = {
@@ -10243,8 +10244,8 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             names: options.govOptions.profiles.name,
             maxVoteDuration: options.govOptions.profiles.maxVoteDuration,
             minExeDelay: options.govOptions.profiles.minExeDelay,
-            minOaxTokenToCreateVote: options.govOptions.profiles.minGovTokenToCreateVote,
-            minQuorum: options.govOptions.profiles.minQuorum,
+            minOaxTokenToCreateVote: options.govOptions.profiles.minGovTokenToCreateVote.map(v => wallet.utils.toDecimals(v)),
+            minQuorum: options.govOptions.profiles.minQuorum.map(v => wallet.utils.toDecimals(v)),
             minStakePeriod: options.govOptions.minStakePeriod,
             minVoteDuration: options.govOptions.profiles.minVoteDuration,
             oaxToken: result.oswap,
@@ -10267,7 +10268,7 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             governance: options.amm.governance || result.governance,
             pairCreator: result.pairCreator,
             protocolFee: 0,
-            protocolFeeTo: options.amm.protocolFeeTo || eth_wallet_2.Utils.nullAddress,
+            protocolFeeTo: options.amm.protocolFeeTo || eth_contract_45.nullAddress,
             tradeFee: 0
         });
         //Router
@@ -10300,7 +10301,7 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             governance: options.governance || coreContractsResult.governance,
             pairCreator: options.pairCreator || result.oraclePairCreator,
             protocolFee: options.protocolFee || 0,
-            protocolFeeTo: options.protocolFeeTo || eth_wallet_2.Utils.nullAddress,
+            protocolFeeTo: options.protocolFeeTo || eth_contract_45.nullAddress,
             tradeFee: options.tradeFee || 0
         });
         //OracleRouter
@@ -10340,7 +10341,7 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             tradeFee: options.tradeFee || 0,
             stakeAmount: options.stakeAmount || [],
             liquidityProviderShare: options.liquidityProviderShare || [],
-            protocolFeeTo: options.protocolFeeTo || eth_wallet_2.Utils.nullAddress
+            protocolFeeTo: options.protocolFeeTo || eth_contract_45.nullAddress
         });
         //RangeLiquidityProvider
         let rangeLiquidityProvider = new index_2.OSWAP_RangeLiquidityProvider(wallet);
@@ -10386,7 +10387,7 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             tradeFee: options.tradeFee || 0,
             configStore: result.configStore,
             protocolFee: options.protocolFee || 0,
-            protocolFeeTo: options.protocolFeeTo || eth_wallet_2.Utils.nullAddress
+            protocolFeeTo: options.protocolFeeTo || eth_contract_45.nullAddress
         });
         //RestrictedLiquidityProvider
         let restrictedLiquidityProvider = new index_2.OSWAP_RestrictedLiquidityProvider1(wallet);
@@ -10448,8 +10449,8 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             options.govOptions = exports.DefaultGovOptions;
         if (!options.govTokenOptions) {
             options.govTokenOptions = exports.DefaultGovTokenOptions;
-            options.govTokenOptions.initSupplyTo = wallet.defaultAccount;
-            options.govTokenOptions.minter = wallet.defaultAccount;
+            options.govTokenOptions.initSupplyTo = wallet.address;
+            options.govTokenOptions.minter = wallet.address;
         }
         if (!options.tokens)
             options.tokens = {};

@@ -88,8 +88,8 @@ async function deployAll() {
                 minExeDelay: [1,1,1],
                 minVoteDuration: [0,0,0],
                 maxVoteDuration: [2592000,1209600,1209600], 
-                minGovTokenToCreateVote: [Utils.toDecimals(100000),Utils.toDecimals(1000000),Utils.toDecimals(100000)],
-                minQuorum: [Utils.toDecimals(0),Utils.toDecimals(20000000),Utils.toDecimals(100)]
+                minGovTokenToCreateVote: ['100000','1000000','100000'],
+                minQuorum: ['0','20000000','100']
             }
         },
         tokens: deploymentConfig.tokens,
