@@ -57,10 +57,12 @@ export class OSWAP_PausableFactory extends _Contract{
     setLive: {
         (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive:boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive:boolean, options?: TransactionOptions) => Promise<string>;
     }
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let governance_call = async (options?: TransactionOptions): Promise<string> => {
@@ -81,8 +83,13 @@ export class OSWAP_PausableFactory extends _Contract{
             let result = await this.call('setLive',[isLive],options);
             return;
         }
+        let setLive_txData = async (isLive:boolean, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLive',[isLive],options);
+            return result;
+        }
         this.setLive = Object.assign(setLive_send, {
             call:setLive_call
+            , txData:setLive_txData
         });
         let setLiveForPairParams = (params: ISetLiveForPairParams) => [params.pair,params.live];
         let setLiveForPair_send = async (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -93,8 +100,13 @@ export class OSWAP_PausableFactory extends _Contract{
             let result = await this.call('setLiveForPair',setLiveForPairParams(params),options);
             return;
         }
+        let setLiveForPair_txData = async (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLiveForPair',setLiveForPairParams(params),options);
+            return result;
+        }
         this.setLiveForPair = Object.assign(setLiveForPair_send, {
             call:setLiveForPair_call
+            , txData:setLiveForPair_txData
         });
     }
 }

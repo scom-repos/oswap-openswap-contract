@@ -164,6 +164,7 @@ export declare class OSWAP_RestrictedPair4 extends _Contract {
     addLiquidity: {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     approvedTrader: {
         (params: IApprovedTraderParams, options?: TransactionOptions): Promise<string>;
@@ -177,6 +178,7 @@ export declare class OSWAP_RestrictedPair4 extends _Contract {
     createOrder: {
         (params: ICreateOrderParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreateOrderParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: ICreateOrderParams, options?: TransactionOptions) => Promise<string>;
     };
     factory: {
         (options?: TransactionOptions): Promise<string>;
@@ -254,6 +256,7 @@ export declare class OSWAP_RestrictedPair4 extends _Contract {
     initialize: {
         (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IInitializeParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IInitializeParams, options?: TransactionOptions) => Promise<string>;
     };
     isApprovedTrader: {
         (params: IIsApprovedTraderParams, options?: TransactionOptions): Promise<boolean>;
@@ -276,6 +279,7 @@ export declare class OSWAP_RestrictedPair4 extends _Contract {
     lockOffer: {
         (params: ILockOfferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ILockOfferParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ILockOfferParams, options?: TransactionOptions) => Promise<string>;
     };
     offerAllowlistIpfsCid: {
         (params: IOfferAllowlistIpfsCidParams, options?: TransactionOptions): Promise<string>;
@@ -310,6 +314,7 @@ export declare class OSWAP_RestrictedPair4 extends _Contract {
     redeemProtocolFee: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     removeAllLiquidity: {
         (provider: string, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -318,6 +323,7 @@ export declare class OSWAP_RestrictedPair4 extends _Contract {
             amount1: BigNumber;
             feeOut: BigNumber;
         }>;
+        txData: (provider: string, options?: TransactionOptions) => Promise<string>;
     };
     removeAllLiquidity1D: {
         (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -326,10 +332,12 @@ export declare class OSWAP_RestrictedPair4 extends _Contract {
             totalReceiving: BigNumber;
             totalRemainingFee: BigNumber;
         }>;
+        txData: (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidity: {
         (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     restrictedLiquidityProvider: {
         (options?: TransactionOptions): Promise<string>;
@@ -343,22 +351,27 @@ export declare class OSWAP_RestrictedPair4 extends _Contract {
     setApprovedTraderByMerkleProof: {
         (params: ISetApprovedTraderByMerkleProofParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetApprovedTraderByMerkleProofParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetApprovedTraderByMerkleProofParams, options?: TransactionOptions) => Promise<string>;
     };
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     setMerkleRoot: {
         (params: ISetMerkleRootParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetMerkleRootParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetMerkleRootParams, options?: TransactionOptions) => Promise<string>;
     };
     swap: {
         (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapParams, options?: TransactionOptions) => Promise<string>;
     };
     sync: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     token0: {
         (options?: TransactionOptions): Promise<string>;

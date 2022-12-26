@@ -16,6 +16,7 @@ export class OAXDEX_VotingRegistry extends _Contract{
     newVote: {
         (params: INewVoteParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: INewVoteParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: INewVoteParams, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let governance_call = async (options?: TransactionOptions): Promise<string> => {
@@ -32,8 +33,13 @@ export class OAXDEX_VotingRegistry extends _Contract{
             let result = await this.call('newVote',newVoteParams(params),options);
             return;
         }
+        let newVote_txData = async (params: INewVoteParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('newVote',newVoteParams(params),options);
+            return result;
+        }
         this.newVote = Object.assign(newVote_send, {
             call:newVote_call
+            , txData:newVote_txData
         });
     }
 }

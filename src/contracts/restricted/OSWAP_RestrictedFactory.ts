@@ -120,6 +120,7 @@ export class OSWAP_RestrictedFactory extends _Contract{
     addOldOracleToNewPair: {
         (params: IAddOldOracleToNewPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddOldOracleToNewPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IAddOldOracleToNewPairParams, options?: TransactionOptions) => Promise<string>;
     }
     allPairs: {
         (param1:number|BigNumber, options?: TransactionOptions): Promise<string>;
@@ -139,6 +140,7 @@ export class OSWAP_RestrictedFactory extends _Contract{
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
+        txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     }
     getCreateAddresses: {
         (options?: TransactionOptions): Promise<{_governance:string,_whitelistFactory:string,_restrictedLiquidityProvider:string,_configStore:string}>;
@@ -152,6 +154,7 @@ export class OSWAP_RestrictedFactory extends _Contract{
     init: {
         (restrictedLiquidityProvider:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (restrictedLiquidityProvider:string, options?: TransactionOptions) => Promise<void>;
+        txData: (restrictedLiquidityProvider:string, options?: TransactionOptions) => Promise<string>;
     }
     isLive: {
         (options?: TransactionOptions): Promise<boolean>;
@@ -186,6 +189,7 @@ export class OSWAP_RestrictedFactory extends _Contract{
     renounceOwnership: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     restrictedLiquidityProvider: {
         (options?: TransactionOptions): Promise<string>;
@@ -193,26 +197,32 @@ export class OSWAP_RestrictedFactory extends _Contract{
     setLive: {
         (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive:boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive:boolean, options?: TransactionOptions) => Promise<string>;
     }
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     }
     setOracle: {
         (params: ISetOracleParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetOracleParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetOracleParams, options?: TransactionOptions) => Promise<string>;
     }
     setProtocolFee: {
         (protocolFee:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFee:number|BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFee:number|BigNumber, options?: TransactionOptions) => Promise<string>;
     }
     setProtocolFeeTo: {
         (protocolFeeTo:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFeeTo:string, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFeeTo:string, options?: TransactionOptions) => Promise<string>;
     }
     setTradeFee: {
         (tradeFee:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (tradeFee:number|BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (tradeFee:number|BigNumber, options?: TransactionOptions) => Promise<string>;
     }
     tradeFee: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -220,6 +230,7 @@ export class OSWAP_RestrictedFactory extends _Contract{
     transferOwnership: {
         (newOwner:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (newOwner:string, options?: TransactionOptions) => Promise<void>;
+        txData: (newOwner:string, options?: TransactionOptions) => Promise<string>;
     }
     whitelistFactory: {
         (options?: TransactionOptions): Promise<string>;
@@ -353,8 +364,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('addOldOracleToNewPair',addOldOracleToNewPairParams(params),options);
             return;
         }
+        let addOldOracleToNewPair_txData = async (params: IAddOldOracleToNewPairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('addOldOracleToNewPair',addOldOracleToNewPairParams(params),options);
+            return result;
+        }
         this.addOldOracleToNewPair = Object.assign(addOldOracleToNewPair_send, {
             call:addOldOracleToNewPair_call
+            , txData:addOldOracleToNewPair_txData
         });
         let createPairParams = (params: ICreatePairParams) => [params.tokenA,params.tokenB];
         let createPair_send = async (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -365,8 +381,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('createPair',createPairParams(params),options);
             return result;
         }
+        let createPair_txData = async (params: ICreatePairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('createPair',createPairParams(params),options);
+            return result;
+        }
         this.createPair = Object.assign(createPair_send, {
             call:createPair_call
+            , txData:createPair_txData
         });
         let init_send = async (restrictedLiquidityProvider:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('init',[restrictedLiquidityProvider],options);
@@ -376,8 +397,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('init',[restrictedLiquidityProvider],options);
             return;
         }
+        let init_txData = async (restrictedLiquidityProvider:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('init',[restrictedLiquidityProvider],options);
+            return result;
+        }
         this.init = Object.assign(init_send, {
             call:init_call
+            , txData:init_txData
         });
         let renounceOwnership_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('renounceOwnership',[],options);
@@ -387,8 +413,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('renounceOwnership',[],options);
             return;
         }
+        let renounceOwnership_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('renounceOwnership',[],options);
+            return result;
+        }
         this.renounceOwnership = Object.assign(renounceOwnership_send, {
             call:renounceOwnership_call
+            , txData:renounceOwnership_txData
         });
         let setLive_send = async (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setLive',[isLive],options);
@@ -398,8 +429,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('setLive',[isLive],options);
             return;
         }
+        let setLive_txData = async (isLive:boolean, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLive',[isLive],options);
+            return result;
+        }
         this.setLive = Object.assign(setLive_send, {
             call:setLive_call
+            , txData:setLive_txData
         });
         let setLiveForPairParams = (params: ISetLiveForPairParams) => [params.pair,params.live];
         let setLiveForPair_send = async (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -410,8 +446,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('setLiveForPair',setLiveForPairParams(params),options);
             return;
         }
+        let setLiveForPair_txData = async (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLiveForPair',setLiveForPairParams(params),options);
+            return result;
+        }
         this.setLiveForPair = Object.assign(setLiveForPair_send, {
             call:setLiveForPair_call
+            , txData:setLiveForPair_txData
         });
         let setOracleParams = (params: ISetOracleParams) => [params.tokenA,params.tokenB,params.oracle];
         let setOracle_send = async (params: ISetOracleParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -422,8 +463,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('setOracle',setOracleParams(params),options);
             return;
         }
+        let setOracle_txData = async (params: ISetOracleParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setOracle',setOracleParams(params),options);
+            return result;
+        }
         this.setOracle = Object.assign(setOracle_send, {
             call:setOracle_call
+            , txData:setOracle_txData
         });
         let setProtocolFee_send = async (protocolFee:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setProtocolFee',[this.wallet.utils.toString(protocolFee)],options);
@@ -433,8 +479,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('setProtocolFee',[this.wallet.utils.toString(protocolFee)],options);
             return;
         }
+        let setProtocolFee_txData = async (protocolFee:number|BigNumber, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setProtocolFee',[this.wallet.utils.toString(protocolFee)],options);
+            return result;
+        }
         this.setProtocolFee = Object.assign(setProtocolFee_send, {
             call:setProtocolFee_call
+            , txData:setProtocolFee_txData
         });
         let setProtocolFeeTo_send = async (protocolFeeTo:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setProtocolFeeTo',[protocolFeeTo],options);
@@ -444,8 +495,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('setProtocolFeeTo',[protocolFeeTo],options);
             return;
         }
+        let setProtocolFeeTo_txData = async (protocolFeeTo:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setProtocolFeeTo',[protocolFeeTo],options);
+            return result;
+        }
         this.setProtocolFeeTo = Object.assign(setProtocolFeeTo_send, {
             call:setProtocolFeeTo_call
+            , txData:setProtocolFeeTo_txData
         });
         let setTradeFee_send = async (tradeFee:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setTradeFee',[this.wallet.utils.toString(tradeFee)],options);
@@ -455,8 +511,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('setTradeFee',[this.wallet.utils.toString(tradeFee)],options);
             return;
         }
+        let setTradeFee_txData = async (tradeFee:number|BigNumber, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setTradeFee',[this.wallet.utils.toString(tradeFee)],options);
+            return result;
+        }
         this.setTradeFee = Object.assign(setTradeFee_send, {
             call:setTradeFee_call
+            , txData:setTradeFee_txData
         });
         let transferOwnership_send = async (newOwner:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('transferOwnership',[newOwner],options);
@@ -466,8 +527,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             let result = await this.call('transferOwnership',[newOwner],options);
             return;
         }
+        let transferOwnership_txData = async (newOwner:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('transferOwnership',[newOwner],options);
+            return result;
+        }
         this.transferOwnership = Object.assign(transferOwnership_send, {
             call:transferOwnership_call
+            , txData:transferOwnership_txData
         });
     }
 }

@@ -19,6 +19,7 @@ export declare class OAXDEX_VotingRegistry extends _Contract {
     newVote: {
         (params: INewVoteParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: INewVoteParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: INewVoteParams, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

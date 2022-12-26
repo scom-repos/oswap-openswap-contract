@@ -18,6 +18,7 @@ export class OSWAP_PausablePair extends _Contract{
     setLive: {
         (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive:boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive:boolean, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let factory_call = async (options?: TransactionOptions): Promise<string> => {
@@ -38,8 +39,13 @@ export class OSWAP_PausablePair extends _Contract{
             let result = await this.call('setLive',[isLive],options);
             return;
         }
+        let setLive_txData = async (isLive:boolean, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLive',[isLive],options);
+            return result;
+        }
         this.setLive = Object.assign(setLive_send, {
             call:setLive_call
+            , txData:setLive_txData
         });
     }
 }

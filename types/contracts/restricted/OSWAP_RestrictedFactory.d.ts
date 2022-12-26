@@ -72,6 +72,7 @@ export declare class OSWAP_RestrictedFactory extends _Contract {
     addOldOracleToNewPair: {
         (params: IAddOldOracleToNewPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddOldOracleToNewPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IAddOldOracleToNewPairParams, options?: TransactionOptions) => Promise<string>;
     };
     allPairs: {
         (param1: number | BigNumber, options?: TransactionOptions): Promise<string>;
@@ -95,6 +96,7 @@ export declare class OSWAP_RestrictedFactory extends _Contract {
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
+        txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     };
     getCreateAddresses: {
         (options?: TransactionOptions): Promise<{
@@ -113,6 +115,7 @@ export declare class OSWAP_RestrictedFactory extends _Contract {
     init: {
         (restrictedLiquidityProvider: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (restrictedLiquidityProvider: string, options?: TransactionOptions) => Promise<void>;
+        txData: (restrictedLiquidityProvider: string, options?: TransactionOptions) => Promise<string>;
     };
     isLive: {
         (options?: TransactionOptions): Promise<boolean>;
@@ -147,6 +150,7 @@ export declare class OSWAP_RestrictedFactory extends _Contract {
     renounceOwnership: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     restrictedLiquidityProvider: {
         (options?: TransactionOptions): Promise<string>;
@@ -154,26 +158,32 @@ export declare class OSWAP_RestrictedFactory extends _Contract {
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     };
     setOracle: {
         (params: ISetOracleParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetOracleParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetOracleParams, options?: TransactionOptions) => Promise<string>;
     };
     setProtocolFee: {
         (protocolFee: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFee: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFee: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     setProtocolFeeTo: {
         (protocolFeeTo: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFeeTo: string, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFeeTo: string, options?: TransactionOptions) => Promise<string>;
     };
     setTradeFee: {
         (tradeFee: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (tradeFee: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (tradeFee: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     tradeFee: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -181,6 +191,7 @@ export declare class OSWAP_RestrictedFactory extends _Contract {
     transferOwnership: {
         (newOwner: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (newOwner: string, options?: TransactionOptions) => Promise<void>;
+        txData: (newOwner: string, options?: TransactionOptions) => Promise<string>;
     };
     whitelistFactory: {
         (options?: TransactionOptions): Promise<string>;

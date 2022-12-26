@@ -85,10 +85,12 @@ export declare class OSWAP_RangeLiquidityProvider extends _Contract {
     addLiquidity: {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     addLiquidityETH: {
         (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
     };
     factory: {
         (options?: TransactionOptions): Promise<string>;
@@ -102,6 +104,7 @@ export declare class OSWAP_RangeLiquidityProvider extends _Contract {
             amountA: BigNumber;
             amountB: BigNumber;
         }>;
+        txData: (params: IRemoveAllLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     removeAllLiquidityETH: {
         (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -109,18 +112,22 @@ export declare class OSWAP_RangeLiquidityProvider extends _Contract {
             amountToken: BigNumber;
             amountETH: BigNumber;
         }>;
+        txData: (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidity: {
         (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidityETH: {
         (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
     };
     updateProviderOffer: {
         (params: IUpdateProviderOfferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IUpdateProviderOfferParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IUpdateProviderOfferParams, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

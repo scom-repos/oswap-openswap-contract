@@ -12,6 +12,7 @@ export declare class OSWAP_PausablePair extends _Contract {
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

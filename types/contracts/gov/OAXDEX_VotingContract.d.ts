@@ -33,6 +33,7 @@ export declare class OAXDEX_VotingContract extends _Contract {
     execute: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     executeDelay: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -94,10 +95,12 @@ export declare class OAXDEX_VotingContract extends _Contract {
     updateWeight: {
         (account: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (account: string, options?: TransactionOptions) => Promise<void>;
+        txData: (account: string, options?: TransactionOptions) => Promise<string>;
     };
     veto: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     vetoed: {
         (options?: TransactionOptions): Promise<boolean>;
@@ -105,6 +108,7 @@ export declare class OAXDEX_VotingContract extends _Contract {
     vote: {
         (option: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (option: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (option: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     voteEndTime: {
         (options?: TransactionOptions): Promise<BigNumber>;

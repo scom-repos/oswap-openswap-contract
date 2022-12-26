@@ -14,6 +14,7 @@ export declare class OSWAP_VotingExecutor4 extends _Contract {
     execute: {
         (params: string[], options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: string[], options?: TransactionOptions) => Promise<void>;
+        txData: (params: string[], options?: TransactionOptions) => Promise<string>;
     };
     factory: {
         (options?: TransactionOptions): Promise<string>;

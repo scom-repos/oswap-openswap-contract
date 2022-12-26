@@ -70,6 +70,7 @@ export declare class OAXDEX_Administrator extends _Contract {
     addAdmin: {
         (admin: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (admin: string, options?: TransactionOptions) => Promise<void>;
+        txData: (admin: string, options?: TransactionOptions) => Promise<string>;
     };
     admins: {
         (param1: number | BigNumber, options?: TransactionOptions): Promise<string>;
@@ -83,26 +84,32 @@ export declare class OAXDEX_Administrator extends _Contract {
     executeFactoryRestart: {
         (factory: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (factory: string, options?: TransactionOptions) => Promise<void>;
+        txData: (factory: string, options?: TransactionOptions) => Promise<string>;
     };
     executeFactoryShutdown: {
         (factory: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (factory: string, options?: TransactionOptions) => Promise<void>;
+        txData: (factory: string, options?: TransactionOptions) => Promise<string>;
     };
     executePairRestart: {
         (params: IExecutePairRestartParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IExecutePairRestartParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IExecutePairRestartParams, options?: TransactionOptions) => Promise<string>;
     };
     executePairShutdown: {
         (params: IExecutePairShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IExecutePairShutdownParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IExecutePairShutdownParams, options?: TransactionOptions) => Promise<string>;
     };
     executeVetoVoting: {
         (votingContract: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (votingContract: string, options?: TransactionOptions) => Promise<void>;
+        txData: (votingContract: string, options?: TransactionOptions) => Promise<string>;
     };
     factoryRestart: {
         (params: IFactoryRestartParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IFactoryRestartParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IFactoryRestartParams, options?: TransactionOptions) => Promise<string>;
     };
     factoryRestartVote: {
         (params: IFactoryRestartVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -110,6 +117,7 @@ export declare class OAXDEX_Administrator extends _Contract {
     factoryShutdown: {
         (params: IFactoryShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IFactoryShutdownParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IFactoryShutdownParams, options?: TransactionOptions) => Promise<string>;
     };
     factoryShutdownVote: {
         (params: IFactoryShutdownVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -138,6 +146,7 @@ export declare class OAXDEX_Administrator extends _Contract {
     pairRestart: {
         (params: IPairRestartParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IPairRestartParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IPairRestartParams, options?: TransactionOptions) => Promise<string>;
     };
     pairRestartVote: {
         (params: IPairRestartVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -145,6 +154,7 @@ export declare class OAXDEX_Administrator extends _Contract {
     pairShutdown: {
         (params: IPairShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IPairShutdownParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IPairShutdownParams, options?: TransactionOptions) => Promise<string>;
     };
     pairShutdownVote: {
         (params: IPairShutdownVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -152,14 +162,17 @@ export declare class OAXDEX_Administrator extends _Contract {
     removeAdmin: {
         (admin: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (admin: string, options?: TransactionOptions) => Promise<void>;
+        txData: (admin: string, options?: TransactionOptions) => Promise<string>;
     };
     setMaxAdmin: {
         (maxAdmin: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (maxAdmin: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (maxAdmin: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     vetoVoting: {
         (params: IVetoVotingParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IVetoVotingParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IVetoVotingParams, options?: TransactionOptions) => Promise<string>;
     };
     vetoVotingVote: {
         (params: IVetoVotingVoteParams, options?: TransactionOptions): Promise<boolean>;

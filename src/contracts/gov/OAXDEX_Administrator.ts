@@ -114,6 +114,7 @@ export class OAXDEX_Administrator extends _Contract{
     addAdmin: {
         (admin:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (admin:string, options?: TransactionOptions) => Promise<void>;
+        txData: (admin:string, options?: TransactionOptions) => Promise<string>;
     }
     admins: {
         (param1:number|BigNumber, options?: TransactionOptions): Promise<string>;
@@ -127,26 +128,32 @@ export class OAXDEX_Administrator extends _Contract{
     executeFactoryRestart: {
         (factory:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (factory:string, options?: TransactionOptions) => Promise<void>;
+        txData: (factory:string, options?: TransactionOptions) => Promise<string>;
     }
     executeFactoryShutdown: {
         (factory:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (factory:string, options?: TransactionOptions) => Promise<void>;
+        txData: (factory:string, options?: TransactionOptions) => Promise<string>;
     }
     executePairRestart: {
         (params: IExecutePairRestartParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IExecutePairRestartParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IExecutePairRestartParams, options?: TransactionOptions) => Promise<string>;
     }
     executePairShutdown: {
         (params: IExecutePairShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IExecutePairShutdownParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IExecutePairShutdownParams, options?: TransactionOptions) => Promise<string>;
     }
     executeVetoVoting: {
         (votingContract:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (votingContract:string, options?: TransactionOptions) => Promise<void>;
+        txData: (votingContract:string, options?: TransactionOptions) => Promise<string>;
     }
     factoryRestart: {
         (params: IFactoryRestartParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IFactoryRestartParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IFactoryRestartParams, options?: TransactionOptions) => Promise<string>;
     }
     factoryRestartVote: {
         (params: IFactoryRestartVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -154,6 +161,7 @@ export class OAXDEX_Administrator extends _Contract{
     factoryShutdown: {
         (params: IFactoryShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IFactoryShutdownParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IFactoryShutdownParams, options?: TransactionOptions) => Promise<string>;
     }
     factoryShutdownVote: {
         (params: IFactoryShutdownVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -182,6 +190,7 @@ export class OAXDEX_Administrator extends _Contract{
     pairRestart: {
         (params: IPairRestartParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IPairRestartParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IPairRestartParams, options?: TransactionOptions) => Promise<string>;
     }
     pairRestartVote: {
         (params: IPairRestartVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -189,6 +198,7 @@ export class OAXDEX_Administrator extends _Contract{
     pairShutdown: {
         (params: IPairShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IPairShutdownParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IPairShutdownParams, options?: TransactionOptions) => Promise<string>;
     }
     pairShutdownVote: {
         (params: IPairShutdownVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -196,14 +206,17 @@ export class OAXDEX_Administrator extends _Contract{
     removeAdmin: {
         (admin:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (admin:string, options?: TransactionOptions) => Promise<void>;
+        txData: (admin:string, options?: TransactionOptions) => Promise<string>;
     }
     setMaxAdmin: {
         (maxAdmin:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (maxAdmin:number|BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (maxAdmin:number|BigNumber, options?: TransactionOptions) => Promise<string>;
     }
     vetoVoting: {
         (params: IVetoVotingParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IVetoVotingParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IVetoVotingParams, options?: TransactionOptions) => Promise<string>;
     }
     vetoVotingVote: {
         (params: IVetoVotingVoteParams, options?: TransactionOptions): Promise<boolean>;
@@ -297,8 +310,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('addAdmin',[admin],options);
             return;
         }
+        let addAdmin_txData = async (admin:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('addAdmin',[admin],options);
+            return result;
+        }
         this.addAdmin = Object.assign(addAdmin_send, {
             call:addAdmin_call
+            , txData:addAdmin_txData
         });
         let executeFactoryRestart_send = async (factory:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('executeFactoryRestart',[factory],options);
@@ -308,8 +326,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('executeFactoryRestart',[factory],options);
             return;
         }
+        let executeFactoryRestart_txData = async (factory:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('executeFactoryRestart',[factory],options);
+            return result;
+        }
         this.executeFactoryRestart = Object.assign(executeFactoryRestart_send, {
             call:executeFactoryRestart_call
+            , txData:executeFactoryRestart_txData
         });
         let executeFactoryShutdown_send = async (factory:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('executeFactoryShutdown',[factory],options);
@@ -319,8 +342,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('executeFactoryShutdown',[factory],options);
             return;
         }
+        let executeFactoryShutdown_txData = async (factory:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('executeFactoryShutdown',[factory],options);
+            return result;
+        }
         this.executeFactoryShutdown = Object.assign(executeFactoryShutdown_send, {
             call:executeFactoryShutdown_call
+            , txData:executeFactoryShutdown_txData
         });
         let executePairRestartParams = (params: IExecutePairRestartParams) => [params.factory,params.pair];
         let executePairRestart_send = async (params: IExecutePairRestartParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -331,8 +359,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('executePairRestart',executePairRestartParams(params),options);
             return;
         }
+        let executePairRestart_txData = async (params: IExecutePairRestartParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('executePairRestart',executePairRestartParams(params),options);
+            return result;
+        }
         this.executePairRestart = Object.assign(executePairRestart_send, {
             call:executePairRestart_call
+            , txData:executePairRestart_txData
         });
         let executePairShutdownParams = (params: IExecutePairShutdownParams) => [params.factory,params.pair];
         let executePairShutdown_send = async (params: IExecutePairShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -343,8 +376,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('executePairShutdown',executePairShutdownParams(params),options);
             return;
         }
+        let executePairShutdown_txData = async (params: IExecutePairShutdownParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('executePairShutdown',executePairShutdownParams(params),options);
+            return result;
+        }
         this.executePairShutdown = Object.assign(executePairShutdown_send, {
             call:executePairShutdown_call
+            , txData:executePairShutdown_txData
         });
         let executeVetoVoting_send = async (votingContract:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('executeVetoVoting',[votingContract],options);
@@ -354,8 +392,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('executeVetoVoting',[votingContract],options);
             return;
         }
+        let executeVetoVoting_txData = async (votingContract:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('executeVetoVoting',[votingContract],options);
+            return result;
+        }
         this.executeVetoVoting = Object.assign(executeVetoVoting_send, {
             call:executeVetoVoting_call
+            , txData:executeVetoVoting_txData
         });
         let factoryRestartParams = (params: IFactoryRestartParams) => [params.factory,params.YorN];
         let factoryRestart_send = async (params: IFactoryRestartParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -366,8 +409,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('factoryRestart',factoryRestartParams(params),options);
             return;
         }
+        let factoryRestart_txData = async (params: IFactoryRestartParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('factoryRestart',factoryRestartParams(params),options);
+            return result;
+        }
         this.factoryRestart = Object.assign(factoryRestart_send, {
             call:factoryRestart_call
+            , txData:factoryRestart_txData
         });
         let factoryShutdownParams = (params: IFactoryShutdownParams) => [params.factory,params.YorN];
         let factoryShutdown_send = async (params: IFactoryShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -378,8 +426,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('factoryShutdown',factoryShutdownParams(params),options);
             return;
         }
+        let factoryShutdown_txData = async (params: IFactoryShutdownParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('factoryShutdown',factoryShutdownParams(params),options);
+            return result;
+        }
         this.factoryShutdown = Object.assign(factoryShutdown_send, {
             call:factoryShutdown_call
+            , txData:factoryShutdown_txData
         });
         let pairRestartParams = (params: IPairRestartParams) => [params.pair,params.YorN];
         let pairRestart_send = async (params: IPairRestartParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -390,8 +443,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('pairRestart',pairRestartParams(params),options);
             return;
         }
+        let pairRestart_txData = async (params: IPairRestartParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('pairRestart',pairRestartParams(params),options);
+            return result;
+        }
         this.pairRestart = Object.assign(pairRestart_send, {
             call:pairRestart_call
+            , txData:pairRestart_txData
         });
         let pairShutdownParams = (params: IPairShutdownParams) => [params.pair,params.YorN];
         let pairShutdown_send = async (params: IPairShutdownParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -402,8 +460,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('pairShutdown',pairShutdownParams(params),options);
             return;
         }
+        let pairShutdown_txData = async (params: IPairShutdownParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('pairShutdown',pairShutdownParams(params),options);
+            return result;
+        }
         this.pairShutdown = Object.assign(pairShutdown_send, {
             call:pairShutdown_call
+            , txData:pairShutdown_txData
         });
         let removeAdmin_send = async (admin:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('removeAdmin',[admin],options);
@@ -413,8 +476,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('removeAdmin',[admin],options);
             return;
         }
+        let removeAdmin_txData = async (admin:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeAdmin',[admin],options);
+            return result;
+        }
         this.removeAdmin = Object.assign(removeAdmin_send, {
             call:removeAdmin_call
+            , txData:removeAdmin_txData
         });
         let setMaxAdmin_send = async (maxAdmin:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setMaxAdmin',[this.wallet.utils.toString(maxAdmin)],options);
@@ -424,8 +492,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('setMaxAdmin',[this.wallet.utils.toString(maxAdmin)],options);
             return;
         }
+        let setMaxAdmin_txData = async (maxAdmin:number|BigNumber, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setMaxAdmin',[this.wallet.utils.toString(maxAdmin)],options);
+            return result;
+        }
         this.setMaxAdmin = Object.assign(setMaxAdmin_send, {
             call:setMaxAdmin_call
+            , txData:setMaxAdmin_txData
         });
         let vetoVotingParams = (params: IVetoVotingParams) => [params.votingContract,params.YorN];
         let vetoVoting_send = async (params: IVetoVotingParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -436,8 +509,13 @@ export class OAXDEX_Administrator extends _Contract{
             let result = await this.call('vetoVoting',vetoVotingParams(params),options);
             return;
         }
+        let vetoVoting_txData = async (params: IVetoVotingParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('vetoVoting',vetoVotingParams(params),options);
+            return result;
+        }
         this.vetoVoting = Object.assign(vetoVoting_send, {
             call:vetoVoting_call
+            , txData:vetoVoting_txData
         });
     }
 }

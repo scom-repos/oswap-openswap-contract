@@ -114,6 +114,7 @@ export declare class OSWAP_OraclePair extends _Contract {
     addLiquidity: {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     counter: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -195,6 +196,7 @@ export declare class OSWAP_OraclePair extends _Contract {
     initialize: {
         (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IInitializeParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IInitializeParams, options?: TransactionOptions) => Promise<string>;
     };
     isLive: {
         (options?: TransactionOptions): Promise<boolean>;
@@ -228,6 +230,7 @@ export declare class OSWAP_OraclePair extends _Contract {
     pauseOffer: {
         (params: IPauseOfferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IPauseOfferParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IPauseOfferParams, options?: TransactionOptions) => Promise<string>;
     };
     protocolFeeBalance0: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -241,6 +244,7 @@ export declare class OSWAP_OraclePair extends _Contract {
     purgeExpire: {
         (params: IPurgeExpireParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IPurgeExpireParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IPurgeExpireParams, options?: TransactionOptions) => Promise<string>;
     };
     queueSize: {
         (param1: boolean, options?: TransactionOptions): Promise<BigNumber>;
@@ -248,6 +252,7 @@ export declare class OSWAP_OraclePair extends _Contract {
     redeemProtocolFee: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     removeAllLiquidity: {
         (provider: string, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -256,18 +261,22 @@ export declare class OSWAP_OraclePair extends _Contract {
             amount1: BigNumber;
             staked: BigNumber;
         }>;
+        txData: (provider: string, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidity: {
         (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     replenish: {
         (params: IReplenishParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IReplenishParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IReplenishParams, options?: TransactionOptions) => Promise<string>;
     };
     resumeOffer: {
         (params: IResumeOfferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IResumeOfferParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IResumeOfferParams, options?: TransactionOptions) => Promise<string>;
     };
     scaleDirection: {
         (options?: TransactionOptions): Promise<boolean>;
@@ -278,14 +287,17 @@ export declare class OSWAP_OraclePair extends _Contract {
     setDelegator: {
         (params: ISetDelegatorParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetDelegatorParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetDelegatorParams, options?: TransactionOptions) => Promise<string>;
     };
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     setPrivateReplenish: {
         (replenish: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (replenish: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (replenish: boolean, options?: TransactionOptions) => Promise<string>;
     };
     stakeBalance: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -293,10 +305,12 @@ export declare class OSWAP_OraclePair extends _Contract {
     swap: {
         (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapParams, options?: TransactionOptions) => Promise<string>;
     };
     sync: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     token0: {
         (options?: TransactionOptions): Promise<string>;

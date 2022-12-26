@@ -112,8 +112,13 @@ define("@scom/oswap-openswap-contract/contracts/OpenSwap.ts", ["require", "expor
                 let result = await this.call('approve', approveParams(params), options);
                 return result;
             };
+            let approve_txData = async (params, options) => {
+                let result = await this.txData('approve', approveParams(params), options);
+                return result;
+            };
             this.approve = Object.assign(approve_send, {
-                call: approve_call
+                call: approve_call,
+                txData: approve_txData
             });
             let decreaseAllowanceParams = (params) => [params.spender, this.wallet.utils.toString(params.subtractedValue)];
             let decreaseAllowance_send = async (params, options) => {
@@ -124,8 +129,13 @@ define("@scom/oswap-openswap-contract/contracts/OpenSwap.ts", ["require", "expor
                 let result = await this.call('decreaseAllowance', decreaseAllowanceParams(params), options);
                 return result;
             };
+            let decreaseAllowance_txData = async (params, options) => {
+                let result = await this.txData('decreaseAllowance', decreaseAllowanceParams(params), options);
+                return result;
+            };
             this.decreaseAllowance = Object.assign(decreaseAllowance_send, {
-                call: decreaseAllowance_call
+                call: decreaseAllowance_call,
+                txData: decreaseAllowance_txData
             });
             let increaseAllowanceParams = (params) => [params.spender, this.wallet.utils.toString(params.addedValue)];
             let increaseAllowance_send = async (params, options) => {
@@ -136,8 +146,13 @@ define("@scom/oswap-openswap-contract/contracts/OpenSwap.ts", ["require", "expor
                 let result = await this.call('increaseAllowance', increaseAllowanceParams(params), options);
                 return result;
             };
+            let increaseAllowance_txData = async (params, options) => {
+                let result = await this.txData('increaseAllowance', increaseAllowanceParams(params), options);
+                return result;
+            };
             this.increaseAllowance = Object.assign(increaseAllowance_send, {
-                call: increaseAllowance_call
+                call: increaseAllowance_call,
+                txData: increaseAllowance_txData
             });
             let mintParams = (params) => [params.account, this.wallet.utils.toString(params.amount)];
             let mint_send = async (params, options) => {
@@ -148,8 +163,13 @@ define("@scom/oswap-openswap-contract/contracts/OpenSwap.ts", ["require", "expor
                 let result = await this.call('mint', mintParams(params), options);
                 return;
             };
+            let mint_txData = async (params, options) => {
+                let result = await this.txData('mint', mintParams(params), options);
+                return result;
+            };
             this.mint = Object.assign(mint_send, {
-                call: mint_call
+                call: mint_call,
+                txData: mint_txData
             });
             let transferParams = (params) => [params.recipient, this.wallet.utils.toString(params.amount)];
             let transfer_send = async (params, options) => {
@@ -160,8 +180,13 @@ define("@scom/oswap-openswap-contract/contracts/OpenSwap.ts", ["require", "expor
                 let result = await this.call('transfer', transferParams(params), options);
                 return result;
             };
+            let transfer_txData = async (params, options) => {
+                let result = await this.txData('transfer', transferParams(params), options);
+                return result;
+            };
             this.transfer = Object.assign(transfer_send, {
-                call: transfer_call
+                call: transfer_call,
+                txData: transfer_txData
             });
             let transferFromParams = (params) => [params.sender, params.recipient, this.wallet.utils.toString(params.amount)];
             let transferFrom_send = async (params, options) => {
@@ -172,8 +197,13 @@ define("@scom/oswap-openswap-contract/contracts/OpenSwap.ts", ["require", "expor
                 let result = await this.call('transferFrom', transferFromParams(params), options);
                 return result;
             };
+            let transferFrom_txData = async (params, options) => {
+                let result = await this.txData('transferFrom', transferFromParams(params), options);
+                return result;
+            };
             this.transferFrom = Object.assign(transferFrom_send, {
-                call: transferFrom_call
+                call: transferFrom_call,
+                txData: transferFrom_txData
             });
         }
     }
@@ -309,8 +339,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_ERC20.ts", ["require",
                 let result = await this.call('approve', approveParams(params), options);
                 return result;
             };
+            let approve_txData = async (params, options) => {
+                let result = await this.txData('approve', approveParams(params), options);
+                return result;
+            };
             this.approve = Object.assign(approve_send, {
-                call: approve_call
+                call: approve_call,
+                txData: approve_txData
             });
             let permitParams = (params) => [params.owner, params.spender, this.wallet.utils.toString(params.value), this.wallet.utils.toString(params.deadline), this.wallet.utils.toString(params.v), this.wallet.utils.stringToBytes32(params.r), this.wallet.utils.stringToBytes32(params.s)];
             let permit_send = async (params, options) => {
@@ -321,8 +356,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_ERC20.ts", ["require",
                 let result = await this.call('permit', permitParams(params), options);
                 return;
             };
+            let permit_txData = async (params, options) => {
+                let result = await this.txData('permit', permitParams(params), options);
+                return result;
+            };
             this.permit = Object.assign(permit_send, {
-                call: permit_call
+                call: permit_call,
+                txData: permit_txData
             });
             let transferParams = (params) => [params.to, this.wallet.utils.toString(params.value)];
             let transfer_send = async (params, options) => {
@@ -333,8 +373,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_ERC20.ts", ["require",
                 let result = await this.call('transfer', transferParams(params), options);
                 return result;
             };
+            let transfer_txData = async (params, options) => {
+                let result = await this.txData('transfer', transferParams(params), options);
+                return result;
+            };
             this.transfer = Object.assign(transfer_send, {
-                call: transfer_call
+                call: transfer_call,
+                txData: transfer_txData
             });
             let transferFromParams = (params) => [params.from, params.to, this.wallet.utils.toString(params.value)];
             let transferFrom_send = async (params, options) => {
@@ -345,8 +390,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_ERC20.ts", ["require",
                 let result = await this.call('transferFrom', transferFromParams(params), options);
                 return result;
             };
+            let transferFrom_txData = async (params, options) => {
+                let result = await this.txData('transferFrom', transferFromParams(params), options);
+                return result;
+            };
             this.transferFrom = Object.assign(transferFrom_send, {
-                call: transferFrom_call
+                call: transferFrom_call,
+                txData: transferFrom_txData
             });
         }
     }
@@ -537,8 +587,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", ["require
                 let result = await this.call('createPair', createPairParams(params), options);
                 return result;
             };
+            let createPair_txData = async (params, options) => {
+                let result = await this.txData('createPair', createPairParams(params), options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -548,8 +603,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", ["require
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setLiveForPairParams = (params) => [params.pair, params.live];
             let setLiveForPair_send = async (params, options) => {
@@ -560,8 +620,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", ["require
                 let result = await this.call('setLiveForPair', setLiveForPairParams(params), options);
                 return;
             };
+            let setLiveForPair_txData = async (params, options) => {
+                let result = await this.txData('setLiveForPair', setLiveForPairParams(params), options);
+                return result;
+            };
             this.setLiveForPair = Object.assign(setLiveForPair_send, {
-                call: setLiveForPair_call
+                call: setLiveForPair_call,
+                txData: setLiveForPair_txData
             });
             let setProtocolFee_send = async (protocolFee, options) => {
                 let result = await this.send('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
@@ -571,8 +636,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", ["require
                 let result = await this.call('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
                 return;
             };
+            let setProtocolFee_txData = async (protocolFee, options) => {
+                let result = await this.txData('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
+                return result;
+            };
             this.setProtocolFee = Object.assign(setProtocolFee_send, {
-                call: setProtocolFee_call
+                call: setProtocolFee_call,
+                txData: setProtocolFee_txData
             });
             let setProtocolFeeTo_send = async (protocolFeeTo, options) => {
                 let result = await this.send('setProtocolFeeTo', [protocolFeeTo], options);
@@ -582,8 +652,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", ["require
                 let result = await this.call('setProtocolFeeTo', [protocolFeeTo], options);
                 return;
             };
+            let setProtocolFeeTo_txData = async (protocolFeeTo, options) => {
+                let result = await this.txData('setProtocolFeeTo', [protocolFeeTo], options);
+                return result;
+            };
             this.setProtocolFeeTo = Object.assign(setProtocolFeeTo_send, {
-                call: setProtocolFeeTo_call
+                call: setProtocolFeeTo_call,
+                txData: setProtocolFeeTo_txData
             });
             let setTradeFee_send = async (tradeFee, options) => {
                 let result = await this.send('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
@@ -593,8 +668,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", ["require
                 let result = await this.call('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
                 return;
             };
+            let setTradeFee_txData = async (tradeFee, options) => {
+                let result = await this.txData('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
+                return result;
+            };
             this.setTradeFee = Object.assign(setTradeFee_send, {
-                call: setTradeFee_call
+                call: setTradeFee_call,
+                txData: setTradeFee_txData
             });
         }
     }
@@ -901,8 +981,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('approve', approveParams(params), options);
                 return result;
             };
+            let approve_txData = async (params, options) => {
+                let result = await this.txData('approve', approveParams(params), options);
+                return result;
+            };
             this.approve = Object.assign(approve_send, {
-                call: approve_call
+                call: approve_call,
+                txData: approve_txData
             });
             let burn_send = async (to, options) => {
                 let result = await this.send('burn', [to], options);
@@ -915,8 +1000,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                     amount1: new eth_contract_4.BigNumber(result.amount1)
                 };
             };
+            let burn_txData = async (to, options) => {
+                let result = await this.txData('burn', [to], options);
+                return result;
+            };
             this.burn = Object.assign(burn_send, {
-                call: burn_call
+                call: burn_call,
+                txData: burn_txData
             });
             let initializeParams = (params) => [params.token0, params.token1];
             let initialize_send = async (params, options) => {
@@ -927,8 +1017,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('initialize', initializeParams(params), options);
                 return;
             };
+            let initialize_txData = async (params, options) => {
+                let result = await this.txData('initialize', initializeParams(params), options);
+                return result;
+            };
             this.initialize = Object.assign(initialize_send, {
-                call: initialize_call
+                call: initialize_call,
+                txData: initialize_txData
             });
             let mint_send = async (to, options) => {
                 let result = await this.send('mint', [to], options);
@@ -938,8 +1033,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('mint', [to], options);
                 return new eth_contract_4.BigNumber(result);
             };
+            let mint_txData = async (to, options) => {
+                let result = await this.txData('mint', [to], options);
+                return result;
+            };
             this.mint = Object.assign(mint_send, {
-                call: mint_call
+                call: mint_call,
+                txData: mint_txData
             });
             let permitParams = (params) => [params.owner, params.spender, this.wallet.utils.toString(params.value), this.wallet.utils.toString(params.deadline), this.wallet.utils.toString(params.v), this.wallet.utils.stringToBytes32(params.r), this.wallet.utils.stringToBytes32(params.s)];
             let permit_send = async (params, options) => {
@@ -950,8 +1050,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('permit', permitParams(params), options);
                 return;
             };
+            let permit_txData = async (params, options) => {
+                let result = await this.txData('permit', permitParams(params), options);
+                return result;
+            };
             this.permit = Object.assign(permit_send, {
-                call: permit_call
+                call: permit_call,
+                txData: permit_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -961,8 +1066,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let skim_send = async (to, options) => {
                 let result = await this.send('skim', [to], options);
@@ -972,8 +1082,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('skim', [to], options);
                 return;
             };
+            let skim_txData = async (to, options) => {
+                let result = await this.txData('skim', [to], options);
+                return result;
+            };
             this.skim = Object.assign(skim_send, {
-                call: skim_call
+                call: skim_call,
+                txData: skim_txData
             });
             let swapParams = (params) => [this.wallet.utils.toString(params.amount0Out), this.wallet.utils.toString(params.amount1Out), params.to, this.wallet.utils.stringToBytes(params.data)];
             let swap_send = async (params, options) => {
@@ -984,8 +1099,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('swap', swapParams(params), options);
                 return;
             };
+            let swap_txData = async (params, options) => {
+                let result = await this.txData('swap', swapParams(params), options);
+                return result;
+            };
             this.swap = Object.assign(swap_send, {
-                call: swap_call
+                call: swap_call,
+                txData: swap_txData
             });
             let sync_send = async (options) => {
                 let result = await this.send('sync', [], options);
@@ -995,8 +1115,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('sync', [], options);
                 return;
             };
+            let sync_txData = async (options) => {
+                let result = await this.txData('sync', [], options);
+                return result;
+            };
             this.sync = Object.assign(sync_send, {
-                call: sync_call
+                call: sync_call,
+                txData: sync_txData
             });
             let transferParams = (params) => [params.to, this.wallet.utils.toString(params.value)];
             let transfer_send = async (params, options) => {
@@ -1007,8 +1132,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('transfer', transferParams(params), options);
                 return result;
             };
+            let transfer_txData = async (params, options) => {
+                let result = await this.txData('transfer', transferParams(params), options);
+                return result;
+            };
             this.transfer = Object.assign(transfer_send, {
-                call: transfer_call
+                call: transfer_call,
+                txData: transfer_txData
             });
             let transferFromParams = (params) => [params.from, params.to, this.wallet.utils.toString(params.value)];
             let transferFrom_send = async (params, options) => {
@@ -1019,8 +1149,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('transferFrom', transferFromParams(params), options);
                 return result;
             };
+            let transferFrom_txData = async (params, options) => {
+                let result = await this.txData('transferFrom', transferFromParams(params), options);
+                return result;
+            };
             this.transferFrom = Object.assign(transferFrom_send, {
-                call: transferFrom_call
+                call: transferFrom_call,
+                txData: transferFrom_txData
             });
             let updateFee_send = async (options) => {
                 let result = await this.send('updateFee', [], options);
@@ -1030,8 +1165,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('updateFee', [], options);
                 return;
             };
+            let updateFee_txData = async (options) => {
+                let result = await this.txData('updateFee', [], options);
+                return result;
+            };
             this.updateFee = Object.assign(updateFee_send, {
-                call: updateFee_call
+                call: updateFee_call,
+                txData: updateFee_txData
             });
             let updateProtocolFee_send = async (options) => {
                 let result = await this.send('updateProtocolFee', [], options);
@@ -1041,8 +1181,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
                 let result = await this.call('updateProtocolFee', [], options);
                 return;
             };
+            let updateProtocolFee_txData = async (options) => {
+                let result = await this.txData('updateProtocolFee', [], options);
+                return result;
+            };
             this.updateProtocolFee = Object.assign(updateProtocolFee_send, {
-                call: updateProtocolFee_call
+                call: updateProtocolFee_call,
+                txData: updateProtocolFee_txData
             });
         }
     }
@@ -1081,8 +1226,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_PairCreator.ts", ["req
                 let result = await this.call('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
                 return result;
             };
+            let createPair_txData = async (salt, options) => {
+                let result = await this.txData('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
         }
     }
@@ -1201,8 +1351,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                     liquidity: new eth_contract_6.BigNumber(result.liquidity)
                 };
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let addLiquidityETHParams = (params) => [params.token, this.wallet.utils.toString(params.amountTokenDesired), this.wallet.utils.toString(params.amountTokenMin), this.wallet.utils.toString(params.amountETHMin), params.to, this.wallet.utils.toString(params.deadline)];
             let addLiquidityETH_send = async (params, options) => {
@@ -1217,8 +1372,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                     liquidity: new eth_contract_6.BigNumber(result.liquidity)
                 };
             };
+            let addLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('addLiquidityETH', addLiquidityETHParams(params), options);
+                return result;
+            };
             this.addLiquidityETH = Object.assign(addLiquidityETH_send, {
-                call: addLiquidityETH_call
+                call: addLiquidityETH_call,
+                txData: addLiquidityETH_txData
             });
             let removeLiquidityParams = (params) => [params.tokenA, params.tokenB, this.wallet.utils.toString(params.liquidity), this.wallet.utils.toString(params.amountAMin), this.wallet.utils.toString(params.amountBMin), params.to, this.wallet.utils.toString(params.deadline)];
             let removeLiquidity_send = async (params, options) => {
@@ -1232,8 +1392,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                     amountB: new eth_contract_6.BigNumber(result.amountB)
                 };
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let removeLiquidityETHParams = (params) => [params.token, this.wallet.utils.toString(params.liquidity), this.wallet.utils.toString(params.amountTokenMin), this.wallet.utils.toString(params.amountETHMin), params.to, this.wallet.utils.toString(params.deadline)];
             let removeLiquidityETH_send = async (params, options) => {
@@ -1247,8 +1412,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                     amountETH: new eth_contract_6.BigNumber(result.amountETH)
                 };
             };
+            let removeLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETH', removeLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeLiquidityETH = Object.assign(removeLiquidityETH_send, {
-                call: removeLiquidityETH_call
+                call: removeLiquidityETH_call,
+                txData: removeLiquidityETH_txData
             });
             let removeLiquidityETHSupportingFeeOnTransferTokensParams = (params) => [params.token, this.wallet.utils.toString(params.liquidity), this.wallet.utils.toString(params.amountTokenMin), this.wallet.utils.toString(params.amountETHMin), params.to, this.wallet.utils.toString(params.deadline)];
             let removeLiquidityETHSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -1259,8 +1429,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('removeLiquidityETHSupportingFeeOnTransferTokens', removeLiquidityETHSupportingFeeOnTransferTokensParams(params), options);
                 return new eth_contract_6.BigNumber(result);
             };
+            let removeLiquidityETHSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETHSupportingFeeOnTransferTokens', removeLiquidityETHSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.removeLiquidityETHSupportingFeeOnTransferTokens = Object.assign(removeLiquidityETHSupportingFeeOnTransferTokens_send, {
-                call: removeLiquidityETHSupportingFeeOnTransferTokens_call
+                call: removeLiquidityETHSupportingFeeOnTransferTokens_call,
+                txData: removeLiquidityETHSupportingFeeOnTransferTokens_txData
             });
             let removeLiquidityETHWithPermitParams = (params) => [params.token, this.wallet.utils.toString(params.liquidity), this.wallet.utils.toString(params.amountTokenMin), this.wallet.utils.toString(params.amountETHMin), params.to, this.wallet.utils.toString(params.deadline), params.approveMax, this.wallet.utils.toString(params.v), this.wallet.utils.stringToBytes32(params.r), this.wallet.utils.stringToBytes32(params.s)];
             let removeLiquidityETHWithPermit_send = async (params, options) => {
@@ -1274,8 +1449,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                     amountETH: new eth_contract_6.BigNumber(result.amountETH)
                 };
             };
+            let removeLiquidityETHWithPermit_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETHWithPermit', removeLiquidityETHWithPermitParams(params), options);
+                return result;
+            };
             this.removeLiquidityETHWithPermit = Object.assign(removeLiquidityETHWithPermit_send, {
-                call: removeLiquidityETHWithPermit_call
+                call: removeLiquidityETHWithPermit_call,
+                txData: removeLiquidityETHWithPermit_txData
             });
             let removeLiquidityETHWithPermitSupportingFeeOnTransferTokensParams = (params) => [params.token, this.wallet.utils.toString(params.liquidity), this.wallet.utils.toString(params.amountTokenMin), this.wallet.utils.toString(params.amountETHMin), params.to, this.wallet.utils.toString(params.deadline), params.approveMax, this.wallet.utils.toString(params.v), this.wallet.utils.stringToBytes32(params.r), this.wallet.utils.stringToBytes32(params.s)];
             let removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -1286,8 +1466,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('removeLiquidityETHWithPermitSupportingFeeOnTransferTokens', removeLiquidityETHWithPermitSupportingFeeOnTransferTokensParams(params), options);
                 return new eth_contract_6.BigNumber(result);
             };
+            let removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETHWithPermitSupportingFeeOnTransferTokens', removeLiquidityETHWithPermitSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.removeLiquidityETHWithPermitSupportingFeeOnTransferTokens = Object.assign(removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_send, {
-                call: removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_call
+                call: removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_call,
+                txData: removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_txData
             });
             let removeLiquidityWithPermitParams = (params) => [params.tokenA, params.tokenB, this.wallet.utils.toString(params.liquidity), this.wallet.utils.toString(params.amountAMin), this.wallet.utils.toString(params.amountBMin), params.to, this.wallet.utils.toString(params.deadline), params.approveMax, this.wallet.utils.toString(params.v), this.wallet.utils.stringToBytes32(params.r), this.wallet.utils.stringToBytes32(params.s)];
             let removeLiquidityWithPermit_send = async (params, options) => {
@@ -1301,8 +1486,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                     amountB: new eth_contract_6.BigNumber(result.amountB)
                 };
             };
+            let removeLiquidityWithPermit_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityWithPermit', removeLiquidityWithPermitParams(params), options);
+                return result;
+            };
             this.removeLiquidityWithPermit = Object.assign(removeLiquidityWithPermit_send, {
-                call: removeLiquidityWithPermit_call
+                call: removeLiquidityWithPermit_call,
+                txData: removeLiquidityWithPermit_txData
             });
             let swapETHForExactTokensParams = (params) => [this.wallet.utils.toString(params.amountOut), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapETHForExactTokens_send = async (params, options) => {
@@ -1313,8 +1503,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapETHForExactTokens', swapETHForExactTokensParams(params), options);
                 return result.map(e => new eth_contract_6.BigNumber(e));
             };
+            let swapETHForExactTokens_txData = async (params, options) => {
+                let result = await this.txData('swapETHForExactTokens', swapETHForExactTokensParams(params), options);
+                return result;
+            };
             this.swapETHForExactTokens = Object.assign(swapETHForExactTokens_send, {
-                call: swapETHForExactTokens_call
+                call: swapETHForExactTokens_call,
+                txData: swapETHForExactTokens_txData
             });
             let swapExactETHForTokensParams = (params) => [this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapExactETHForTokens_send = async (params, options) => {
@@ -1325,8 +1520,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapExactETHForTokens', swapExactETHForTokensParams(params), options);
                 return result.map(e => new eth_contract_6.BigNumber(e));
             };
+            let swapExactETHForTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactETHForTokens', swapExactETHForTokensParams(params), options);
+                return result;
+            };
             this.swapExactETHForTokens = Object.assign(swapExactETHForTokens_send, {
-                call: swapExactETHForTokens_call
+                call: swapExactETHForTokens_call,
+                txData: swapExactETHForTokens_txData
             });
             let swapExactETHForTokensSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapExactETHForTokensSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -1337,8 +1537,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapExactETHForTokensSupportingFeeOnTransferTokens', swapExactETHForTokensSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactETHForTokensSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactETHForTokensSupportingFeeOnTransferTokens', swapExactETHForTokensSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactETHForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactETHForTokensSupportingFeeOnTransferTokens_send, {
-                call: swapExactETHForTokensSupportingFeeOnTransferTokens_call
+                call: swapExactETHForTokensSupportingFeeOnTransferTokens_call,
+                txData: swapExactETHForTokensSupportingFeeOnTransferTokens_txData
             });
             let swapExactTokensForETHParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapExactTokensForETH_send = async (params, options) => {
@@ -1349,8 +1554,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapExactTokensForETH', swapExactTokensForETHParams(params), options);
                 return result.map(e => new eth_contract_6.BigNumber(e));
             };
+            let swapExactTokensForETH_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForETH', swapExactTokensForETHParams(params), options);
+                return result;
+            };
             this.swapExactTokensForETH = Object.assign(swapExactTokensForETH_send, {
-                call: swapExactTokensForETH_call
+                call: swapExactTokensForETH_call,
+                txData: swapExactTokensForETH_txData
             });
             let swapExactTokensForETHSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapExactTokensForETHSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -1361,8 +1571,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapExactTokensForETHSupportingFeeOnTransferTokens', swapExactTokensForETHSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactTokensForETHSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForETHSupportingFeeOnTransferTokens', swapExactTokensForETHSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForETHSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForETHSupportingFeeOnTransferTokens_send, {
-                call: swapExactTokensForETHSupportingFeeOnTransferTokens_call
+                call: swapExactTokensForETHSupportingFeeOnTransferTokens_call,
+                txData: swapExactTokensForETHSupportingFeeOnTransferTokens_txData
             });
             let swapExactTokensForTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapExactTokensForTokens_send = async (params, options) => {
@@ -1373,8 +1588,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapExactTokensForTokens', swapExactTokensForTokensParams(params), options);
                 return result.map(e => new eth_contract_6.BigNumber(e));
             };
+            let swapExactTokensForTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForTokens', swapExactTokensForTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForTokens = Object.assign(swapExactTokensForTokens_send, {
-                call: swapExactTokensForTokens_call
+                call: swapExactTokensForTokens_call,
+                txData: swapExactTokensForTokens_txData
             });
             let swapExactTokensForTokensSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapExactTokensForTokensSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -1385,8 +1605,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapExactTokensForTokensSupportingFeeOnTransferTokens', swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactTokensForTokensSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForTokensSupportingFeeOnTransferTokens', swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForTokensSupportingFeeOnTransferTokens_send, {
-                call: swapExactTokensForTokensSupportingFeeOnTransferTokens_call
+                call: swapExactTokensForTokensSupportingFeeOnTransferTokens_call,
+                txData: swapExactTokensForTokensSupportingFeeOnTransferTokens_txData
             });
             let swapTokensForExactETHParams = (params) => [this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.amountInMax), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapTokensForExactETH_send = async (params, options) => {
@@ -1397,8 +1622,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapTokensForExactETH', swapTokensForExactETHParams(params), options);
                 return result.map(e => new eth_contract_6.BigNumber(e));
             };
+            let swapTokensForExactETH_txData = async (params, options) => {
+                let result = await this.txData('swapTokensForExactETH', swapTokensForExactETHParams(params), options);
+                return result;
+            };
             this.swapTokensForExactETH = Object.assign(swapTokensForExactETH_send, {
-                call: swapTokensForExactETH_call
+                call: swapTokensForExactETH_call,
+                txData: swapTokensForExactETH_txData
             });
             let swapTokensForExactTokensParams = (params) => [this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.amountInMax), params.path, params.to, this.wallet.utils.toString(params.deadline)];
             let swapTokensForExactTokens_send = async (params, options) => {
@@ -1409,8 +1639,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
                 let result = await this.call('swapTokensForExactTokens', swapTokensForExactTokensParams(params), options);
                 return result.map(e => new eth_contract_6.BigNumber(e));
             };
+            let swapTokensForExactTokens_txData = async (params, options) => {
+                let result = await this.txData('swapTokensForExactTokens', swapTokensForExactTokensParams(params), options);
+                return result;
+            };
             this.swapTokensForExactTokens = Object.assign(swapTokensForExactTokens_send, {
-                call: swapTokensForExactTokens_call
+                call: swapTokensForExactTokens_call,
+                txData: swapTokensForExactTokens_txData
             });
         }
     }
@@ -1462,8 +1697,13 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_VotingExecutor1.ts", [
                 let result = await this.call('execute', [this.wallet.utils.stringToBytes32(params)], options);
                 return;
             };
+            let execute_txData = async (params, options) => {
+                let result = await this.txData('execute', [this.wallet.utils.stringToBytes32(params)], options);
+                return result;
+            };
             this.execute = Object.assign(execute_send, {
-                call: execute_call
+                call: execute_call,
+                txData: execute_txData
             });
         }
     }
@@ -1599,8 +1839,13 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_FactoryBase.ts", [
                 let result = await this.call('createPair', createPairParams(params), options);
                 return result;
             };
+            let createPair_txData = async (params, options) => {
+                let result = await this.txData('createPair', createPairParams(params), options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -1610,8 +1855,13 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_FactoryBase.ts", [
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setLiveForPairParams = (params) => [params.pair, params.live];
             let setLiveForPair_send = async (params, options) => {
@@ -1622,8 +1872,13 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_FactoryBase.ts", [
                 let result = await this.call('setLiveForPair', setLiveForPairParams(params), options);
                 return;
             };
+            let setLiveForPair_txData = async (params, options) => {
+                let result = await this.txData('setLiveForPair', setLiveForPairParams(params), options);
+                return result;
+            };
             this.setLiveForPair = Object.assign(setLiveForPair_send, {
-                call: setLiveForPair_call
+                call: setLiveForPair_call,
+                txData: setLiveForPair_txData
             });
         }
     }
@@ -1718,8 +1973,13 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausableFactory.ts
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setLiveForPairParams = (params) => [params.pair, params.live];
             let setLiveForPair_send = async (params, options) => {
@@ -1730,8 +1990,13 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausableFactory.ts
                 let result = await this.call('setLiveForPair', setLiveForPairParams(params), options);
                 return;
             };
+            let setLiveForPair_txData = async (params, options) => {
+                let result = await this.txData('setLiveForPair', setLiveForPairParams(params), options);
+                return result;
+            };
             this.setLiveForPair = Object.assign(setLiveForPair_send, {
-                call: setLiveForPair_call
+                call: setLiveForPair_call,
+                txData: setLiveForPair_txData
             });
         }
     }
@@ -1783,8 +2048,13 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausablePair.ts", 
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
         }
     }
@@ -2029,8 +2299,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('addAdmin', [admin], options);
                 return;
             };
+            let addAdmin_txData = async (admin, options) => {
+                let result = await this.txData('addAdmin', [admin], options);
+                return result;
+            };
             this.addAdmin = Object.assign(addAdmin_send, {
-                call: addAdmin_call
+                call: addAdmin_call,
+                txData: addAdmin_txData
             });
             let executeFactoryRestart_send = async (factory, options) => {
                 let result = await this.send('executeFactoryRestart', [factory], options);
@@ -2040,8 +2315,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('executeFactoryRestart', [factory], options);
                 return;
             };
+            let executeFactoryRestart_txData = async (factory, options) => {
+                let result = await this.txData('executeFactoryRestart', [factory], options);
+                return result;
+            };
             this.executeFactoryRestart = Object.assign(executeFactoryRestart_send, {
-                call: executeFactoryRestart_call
+                call: executeFactoryRestart_call,
+                txData: executeFactoryRestart_txData
             });
             let executeFactoryShutdown_send = async (factory, options) => {
                 let result = await this.send('executeFactoryShutdown', [factory], options);
@@ -2051,8 +2331,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('executeFactoryShutdown', [factory], options);
                 return;
             };
+            let executeFactoryShutdown_txData = async (factory, options) => {
+                let result = await this.txData('executeFactoryShutdown', [factory], options);
+                return result;
+            };
             this.executeFactoryShutdown = Object.assign(executeFactoryShutdown_send, {
-                call: executeFactoryShutdown_call
+                call: executeFactoryShutdown_call,
+                txData: executeFactoryShutdown_txData
             });
             let executePairRestartParams = (params) => [params.factory, params.pair];
             let executePairRestart_send = async (params, options) => {
@@ -2063,8 +2348,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('executePairRestart', executePairRestartParams(params), options);
                 return;
             };
+            let executePairRestart_txData = async (params, options) => {
+                let result = await this.txData('executePairRestart', executePairRestartParams(params), options);
+                return result;
+            };
             this.executePairRestart = Object.assign(executePairRestart_send, {
-                call: executePairRestart_call
+                call: executePairRestart_call,
+                txData: executePairRestart_txData
             });
             let executePairShutdownParams = (params) => [params.factory, params.pair];
             let executePairShutdown_send = async (params, options) => {
@@ -2075,8 +2365,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('executePairShutdown', executePairShutdownParams(params), options);
                 return;
             };
+            let executePairShutdown_txData = async (params, options) => {
+                let result = await this.txData('executePairShutdown', executePairShutdownParams(params), options);
+                return result;
+            };
             this.executePairShutdown = Object.assign(executePairShutdown_send, {
-                call: executePairShutdown_call
+                call: executePairShutdown_call,
+                txData: executePairShutdown_txData
             });
             let executeVetoVoting_send = async (votingContract, options) => {
                 let result = await this.send('executeVetoVoting', [votingContract], options);
@@ -2086,8 +2381,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('executeVetoVoting', [votingContract], options);
                 return;
             };
+            let executeVetoVoting_txData = async (votingContract, options) => {
+                let result = await this.txData('executeVetoVoting', [votingContract], options);
+                return result;
+            };
             this.executeVetoVoting = Object.assign(executeVetoVoting_send, {
-                call: executeVetoVoting_call
+                call: executeVetoVoting_call,
+                txData: executeVetoVoting_txData
             });
             let factoryRestartParams = (params) => [params.factory, params.YorN];
             let factoryRestart_send = async (params, options) => {
@@ -2098,8 +2398,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('factoryRestart', factoryRestartParams(params), options);
                 return;
             };
+            let factoryRestart_txData = async (params, options) => {
+                let result = await this.txData('factoryRestart', factoryRestartParams(params), options);
+                return result;
+            };
             this.factoryRestart = Object.assign(factoryRestart_send, {
-                call: factoryRestart_call
+                call: factoryRestart_call,
+                txData: factoryRestart_txData
             });
             let factoryShutdownParams = (params) => [params.factory, params.YorN];
             let factoryShutdown_send = async (params, options) => {
@@ -2110,8 +2415,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('factoryShutdown', factoryShutdownParams(params), options);
                 return;
             };
+            let factoryShutdown_txData = async (params, options) => {
+                let result = await this.txData('factoryShutdown', factoryShutdownParams(params), options);
+                return result;
+            };
             this.factoryShutdown = Object.assign(factoryShutdown_send, {
-                call: factoryShutdown_call
+                call: factoryShutdown_call,
+                txData: factoryShutdown_txData
             });
             let pairRestartParams = (params) => [params.pair, params.YorN];
             let pairRestart_send = async (params, options) => {
@@ -2122,8 +2432,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('pairRestart', pairRestartParams(params), options);
                 return;
             };
+            let pairRestart_txData = async (params, options) => {
+                let result = await this.txData('pairRestart', pairRestartParams(params), options);
+                return result;
+            };
             this.pairRestart = Object.assign(pairRestart_send, {
-                call: pairRestart_call
+                call: pairRestart_call,
+                txData: pairRestart_txData
             });
             let pairShutdownParams = (params) => [params.pair, params.YorN];
             let pairShutdown_send = async (params, options) => {
@@ -2134,8 +2449,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('pairShutdown', pairShutdownParams(params), options);
                 return;
             };
+            let pairShutdown_txData = async (params, options) => {
+                let result = await this.txData('pairShutdown', pairShutdownParams(params), options);
+                return result;
+            };
             this.pairShutdown = Object.assign(pairShutdown_send, {
-                call: pairShutdown_call
+                call: pairShutdown_call,
+                txData: pairShutdown_txData
             });
             let removeAdmin_send = async (admin, options) => {
                 let result = await this.send('removeAdmin', [admin], options);
@@ -2145,8 +2465,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('removeAdmin', [admin], options);
                 return;
             };
+            let removeAdmin_txData = async (admin, options) => {
+                let result = await this.txData('removeAdmin', [admin], options);
+                return result;
+            };
             this.removeAdmin = Object.assign(removeAdmin_send, {
-                call: removeAdmin_call
+                call: removeAdmin_call,
+                txData: removeAdmin_txData
             });
             let setMaxAdmin_send = async (maxAdmin, options) => {
                 let result = await this.send('setMaxAdmin', [this.wallet.utils.toString(maxAdmin)], options);
@@ -2156,8 +2481,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('setMaxAdmin', [this.wallet.utils.toString(maxAdmin)], options);
                 return;
             };
+            let setMaxAdmin_txData = async (maxAdmin, options) => {
+                let result = await this.txData('setMaxAdmin', [this.wallet.utils.toString(maxAdmin)], options);
+                return result;
+            };
             this.setMaxAdmin = Object.assign(setMaxAdmin_send, {
-                call: setMaxAdmin_call
+                call: setMaxAdmin_call,
+                txData: setMaxAdmin_txData
             });
             let vetoVotingParams = (params) => [params.votingContract, params.YorN];
             let vetoVoting_send = async (params, options) => {
@@ -2168,8 +2498,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
                 let result = await this.call('vetoVoting', vetoVotingParams(params), options);
                 return;
             };
+            let vetoVoting_txData = async (params, options) => {
+                let result = await this.txData('vetoVoting', vetoVotingParams(params), options);
+                return result;
+            };
             this.vetoVoting = Object.assign(vetoVoting_send, {
-                call: vetoVoting_call
+                call: vetoVoting_call,
+                txData: vetoVoting_txData
             });
         }
     }
@@ -2555,8 +2890,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('addVotingConfig', addVotingConfigParams(params), options);
                 return;
             };
+            let addVotingConfig_txData = async (params, options) => {
+                let result = await this.txData('addVotingConfig', addVotingConfigParams(params), options);
+                return result;
+            };
             this.addVotingConfig = Object.assign(addVotingConfig_send, {
-                call: addVotingConfig_call
+                call: addVotingConfig_call,
+                txData: addVotingConfig_txData
             });
             let closeVote_send = async (vote, options) => {
                 let result = await this.send('closeVote', [vote], options);
@@ -2566,8 +2906,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('closeVote', [vote], options);
                 return;
             };
+            let closeVote_txData = async (vote, options) => {
+                let result = await this.txData('closeVote', [vote], options);
+                return result;
+            };
             this.closeVote = Object.assign(closeVote_send, {
-                call: closeVote_call
+                call: closeVote_call,
+                txData: closeVote_txData
             });
             let executed_send = async (options) => {
                 let result = await this.send('executed', [], options);
@@ -2577,8 +2922,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('executed', [], options);
                 return;
             };
+            let executed_txData = async (options) => {
+                let result = await this.txData('executed', [], options);
+                return result;
+            };
             this.executed = Object.assign(executed_send, {
-                call: executed_call
+                call: executed_call,
+                txData: executed_txData
             });
             let getNewVoteId_send = async (options) => {
                 let result = await this.send('getNewVoteId', [], options);
@@ -2588,8 +2938,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('getNewVoteId', [], options);
                 return new eth_contract_12.BigNumber(result);
             };
+            let getNewVoteId_txData = async (options) => {
+                let result = await this.txData('getNewVoteId', [], options);
+                return result;
+            };
             this.getNewVoteId = Object.assign(getNewVoteId_send, {
-                call: getNewVoteId_call
+                call: getNewVoteId_call,
+                txData: getNewVoteId_txData
             });
             let initAdmin_send = async (admin, options) => {
                 let result = await this.send('initAdmin', [admin], options);
@@ -2599,8 +2954,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('initAdmin', [admin], options);
                 return;
             };
+            let initAdmin_txData = async (admin, options) => {
+                let result = await this.txData('initAdmin', [admin], options);
+                return result;
+            };
             this.initAdmin = Object.assign(initAdmin_send, {
-                call: initAdmin_call
+                call: initAdmin_call,
+                txData: initAdmin_txData
             });
             let initVotingExecutor_send = async (votingExecutor, options) => {
                 let result = await this.send('initVotingExecutor', [votingExecutor], options);
@@ -2610,8 +2970,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('initVotingExecutor', [votingExecutor], options);
                 return;
             };
+            let initVotingExecutor_txData = async (votingExecutor, options) => {
+                let result = await this.txData('initVotingExecutor', [votingExecutor], options);
+                return result;
+            };
             this.initVotingExecutor = Object.assign(initVotingExecutor_send, {
-                call: initVotingExecutor_call
+                call: initVotingExecutor_call,
+                txData: initVotingExecutor_txData
             });
             let newVoteParams = (params) => [params.vote, params.isExecutiveVote];
             let newVote_send = async (params, options) => {
@@ -2622,8 +2987,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('newVote', newVoteParams(params), options);
                 return;
             };
+            let newVote_txData = async (params, options) => {
+                let result = await this.txData('newVote', newVoteParams(params), options);
+                return result;
+            };
             this.newVote = Object.assign(newVote_send, {
-                call: newVote_call
+                call: newVote_call,
+                txData: newVote_txData
             });
             let renounceOwnership_send = async (options) => {
                 let result = await this.send('renounceOwnership', [], options);
@@ -2633,8 +3003,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('renounceOwnership', [], options);
                 return;
             };
+            let renounceOwnership_txData = async (options) => {
+                let result = await this.txData('renounceOwnership', [], options);
+                return result;
+            };
             this.renounceOwnership = Object.assign(renounceOwnership_send, {
-                call: renounceOwnership_call
+                call: renounceOwnership_call,
+                txData: renounceOwnership_txData
             });
             let setAdmin_send = async (admin, options) => {
                 let result = await this.send('setAdmin', [admin], options);
@@ -2644,8 +3019,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('setAdmin', [admin], options);
                 return;
             };
+            let setAdmin_txData = async (admin, options) => {
+                let result = await this.txData('setAdmin', [admin], options);
+                return result;
+            };
             this.setAdmin = Object.assign(setAdmin_send, {
-                call: setAdmin_call
+                call: setAdmin_call,
+                txData: setAdmin_txData
             });
             let setMinStakePeriod_send = async (minStakePeriod, options) => {
                 let result = await this.send('setMinStakePeriod', [this.wallet.utils.toString(minStakePeriod)], options);
@@ -2655,8 +3035,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('setMinStakePeriod', [this.wallet.utils.toString(minStakePeriod)], options);
                 return;
             };
+            let setMinStakePeriod_txData = async (minStakePeriod, options) => {
+                let result = await this.txData('setMinStakePeriod', [this.wallet.utils.toString(minStakePeriod)], options);
+                return result;
+            };
             this.setMinStakePeriod = Object.assign(setMinStakePeriod_send, {
-                call: setMinStakePeriod_call
+                call: setMinStakePeriod_call,
+                txData: setMinStakePeriod_txData
             });
             let setVotingConfigParams = (params) => [this.wallet.utils.stringToBytes32(params.configName), this.wallet.utils.stringToBytes32(params.paramName), this.wallet.utils.toString(params.paramValue)];
             let setVotingConfig_send = async (params, options) => {
@@ -2667,8 +3052,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('setVotingConfig', setVotingConfigParams(params), options);
                 return;
             };
+            let setVotingConfig_txData = async (params, options) => {
+                let result = await this.txData('setVotingConfig', setVotingConfigParams(params), options);
+                return result;
+            };
             this.setVotingConfig = Object.assign(setVotingConfig_send, {
-                call: setVotingConfig_call
+                call: setVotingConfig_call,
+                txData: setVotingConfig_txData
             });
             let setVotingExecutorParams = (params) => [params.votingExecutor, params.bool];
             let setVotingExecutor_send = async (params, options) => {
@@ -2679,8 +3069,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('setVotingExecutor', setVotingExecutorParams(params), options);
                 return;
             };
+            let setVotingExecutor_txData = async (params, options) => {
+                let result = await this.txData('setVotingExecutor', setVotingExecutorParams(params), options);
+                return result;
+            };
             this.setVotingExecutor = Object.assign(setVotingExecutor_send, {
-                call: setVotingExecutor_call
+                call: setVotingExecutor_call,
+                txData: setVotingExecutor_txData
             });
             let setVotingRegister_send = async (votingRegister, options) => {
                 let result = await this.send('setVotingRegister', [votingRegister], options);
@@ -2690,8 +3085,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('setVotingRegister', [votingRegister], options);
                 return;
             };
+            let setVotingRegister_txData = async (votingRegister, options) => {
+                let result = await this.txData('setVotingRegister', [votingRegister], options);
+                return result;
+            };
             this.setVotingRegister = Object.assign(setVotingRegister_send, {
-                call: setVotingRegister_call
+                call: setVotingRegister_call,
+                txData: setVotingRegister_txData
             });
             let stake_send = async (value, options) => {
                 let result = await this.send('stake', [this.wallet.utils.toString(value)], options);
@@ -2701,8 +3101,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('stake', [this.wallet.utils.toString(value)], options);
                 return;
             };
+            let stake_txData = async (value, options) => {
+                let result = await this.txData('stake', [this.wallet.utils.toString(value)], options);
+                return result;
+            };
             this.stake = Object.assign(stake_send, {
-                call: stake_call
+                call: stake_call,
+                txData: stake_txData
             });
             let transferOwnership_send = async (newOwner, options) => {
                 let result = await this.send('transferOwnership', [newOwner], options);
@@ -2712,8 +3117,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('transferOwnership', [newOwner], options);
                 return;
             };
+            let transferOwnership_txData = async (newOwner, options) => {
+                let result = await this.txData('transferOwnership', [newOwner], options);
+                return result;
+            };
             this.transferOwnership = Object.assign(transferOwnership_send, {
-                call: transferOwnership_call
+                call: transferOwnership_call,
+                txData: transferOwnership_txData
             });
             let unlockStake_send = async (options) => {
                 let result = await this.send('unlockStake', [], options);
@@ -2723,8 +3133,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('unlockStake', [], options);
                 return;
             };
+            let unlockStake_txData = async (options) => {
+                let result = await this.txData('unlockStake', [], options);
+                return result;
+            };
             this.unlockStake = Object.assign(unlockStake_send, {
-                call: unlockStake_call
+                call: unlockStake_call,
+                txData: unlockStake_txData
             });
             let unstake_send = async (value, options) => {
                 let result = await this.send('unstake', [this.wallet.utils.toString(value)], options);
@@ -2734,8 +3149,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('unstake', [this.wallet.utils.toString(value)], options);
                 return;
             };
+            let unstake_txData = async (value, options) => {
+                let result = await this.txData('unstake', [this.wallet.utils.toString(value)], options);
+                return result;
+            };
             this.unstake = Object.assign(unstake_send, {
-                call: unstake_call
+                call: unstake_call,
+                txData: unstake_txData
             });
             let veto_send = async (voting, options) => {
                 let result = await this.send('veto', [voting], options);
@@ -2745,8 +3165,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('veto', [voting], options);
                 return;
             };
+            let veto_txData = async (voting, options) => {
+                let result = await this.txData('veto', [voting], options);
+                return result;
+            };
             this.veto = Object.assign(veto_send, {
-                call: veto_call
+                call: veto_call,
+                txData: veto_txData
             });
             let votedParams = (params) => [params.poll, params.account, this.wallet.utils.toString(params.option)];
             let voted_send = async (params, options) => {
@@ -2757,8 +3182,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
                 let result = await this.call('voted', votedParams(params), options);
                 return;
             };
+            let voted_txData = async (params, options) => {
+                let result = await this.txData('voted', votedParams(params), options);
+                return result;
+            };
             this.voted = Object.assign(voted_send, {
-                call: voted_call
+                call: voted_call,
+                txData: voted_txData
             });
         }
     }
@@ -2951,8 +3381,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContract.ts", [
                 let result = await this.call('execute', [], options);
                 return;
             };
+            let execute_txData = async (options) => {
+                let result = await this.txData('execute', [], options);
+                return result;
+            };
             this.execute = Object.assign(execute_send, {
-                call: execute_call
+                call: execute_call,
+                txData: execute_txData
             });
             let updateWeight_send = async (account, options) => {
                 let result = await this.send('updateWeight', [account], options);
@@ -2962,8 +3397,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContract.ts", [
                 let result = await this.call('updateWeight', [account], options);
                 return;
             };
+            let updateWeight_txData = async (account, options) => {
+                let result = await this.txData('updateWeight', [account], options);
+                return result;
+            };
             this.updateWeight = Object.assign(updateWeight_send, {
-                call: updateWeight_call
+                call: updateWeight_call,
+                txData: updateWeight_txData
             });
             let veto_send = async (options) => {
                 let result = await this.send('veto', [], options);
@@ -2973,8 +3413,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContract.ts", [
                 let result = await this.call('veto', [], options);
                 return;
             };
+            let veto_txData = async (options) => {
+                let result = await this.txData('veto', [], options);
+                return result;
+            };
             this.veto = Object.assign(veto_send, {
-                call: veto_call
+                call: veto_call,
+                txData: veto_txData
             });
             let vote_send = async (option, options) => {
                 let result = await this.send('vote', [this.wallet.utils.toString(option)], options);
@@ -2984,8 +3429,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContract.ts", [
                 let result = await this.call('vote', [this.wallet.utils.toString(option)], options);
                 return;
             };
+            let vote_txData = async (option, options) => {
+                let result = await this.txData('vote', [this.wallet.utils.toString(option)], options);
+                return result;
+            };
             this.vote = Object.assign(vote_send, {
-                call: vote_call
+                call: vote_call,
+                txData: vote_txData
             });
         }
     }
@@ -3037,8 +3487,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingExecutor.ts", [
                 let result = await this.call('execute', [this.wallet.utils.stringToBytes32(params)], options);
                 return;
             };
+            let execute_txData = async (params, options) => {
+                let result = await this.txData('execute', [this.wallet.utils.stringToBytes32(params)], options);
+                return result;
+            };
             this.execute = Object.assign(execute_send, {
-                call: execute_call
+                call: execute_call,
+                txData: execute_txData
             });
         }
     }
@@ -3085,8 +3540,13 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingRegistry.ts", [
                 let result = await this.call('newVote', newVoteParams(params), options);
                 return;
             };
+            let newVote_txData = async (params, options) => {
+                let result = await this.txData('newVote', newVoteParams(params), options);
+                return result;
+            };
             this.newVote = Object.assign(newVote_send, {
-                call: newVote_call
+                call: newVote_call,
+                txData: newVote_txData
             });
         }
     }
@@ -3194,8 +3654,13 @@ define("@scom/oswap-openswap-contract/contracts/libraries/ERC20.ts", ["require",
                 let result = await this.call('approve', approveParams(params), options);
                 return result;
             };
+            let approve_txData = async (params, options) => {
+                let result = await this.txData('approve', approveParams(params), options);
+                return result;
+            };
             this.approve = Object.assign(approve_send, {
-                call: approve_call
+                call: approve_call,
+                txData: approve_txData
             });
             let decreaseAllowanceParams = (params) => [params.spender, this.wallet.utils.toString(params.subtractedValue)];
             let decreaseAllowance_send = async (params, options) => {
@@ -3206,8 +3671,13 @@ define("@scom/oswap-openswap-contract/contracts/libraries/ERC20.ts", ["require",
                 let result = await this.call('decreaseAllowance', decreaseAllowanceParams(params), options);
                 return result;
             };
+            let decreaseAllowance_txData = async (params, options) => {
+                let result = await this.txData('decreaseAllowance', decreaseAllowanceParams(params), options);
+                return result;
+            };
             this.decreaseAllowance = Object.assign(decreaseAllowance_send, {
-                call: decreaseAllowance_call
+                call: decreaseAllowance_call,
+                txData: decreaseAllowance_txData
             });
             let increaseAllowanceParams = (params) => [params.spender, this.wallet.utils.toString(params.addedValue)];
             let increaseAllowance_send = async (params, options) => {
@@ -3218,8 +3688,13 @@ define("@scom/oswap-openswap-contract/contracts/libraries/ERC20.ts", ["require",
                 let result = await this.call('increaseAllowance', increaseAllowanceParams(params), options);
                 return result;
             };
+            let increaseAllowance_txData = async (params, options) => {
+                let result = await this.txData('increaseAllowance', increaseAllowanceParams(params), options);
+                return result;
+            };
             this.increaseAllowance = Object.assign(increaseAllowance_send, {
-                call: increaseAllowance_call
+                call: increaseAllowance_call,
+                txData: increaseAllowance_txData
             });
             let transferParams = (params) => [params.recipient, this.wallet.utils.toString(params.amount)];
             let transfer_send = async (params, options) => {
@@ -3230,8 +3705,13 @@ define("@scom/oswap-openswap-contract/contracts/libraries/ERC20.ts", ["require",
                 let result = await this.call('transfer', transferParams(params), options);
                 return result;
             };
+            let transfer_txData = async (params, options) => {
+                let result = await this.txData('transfer', transferParams(params), options);
+                return result;
+            };
             this.transfer = Object.assign(transfer_send, {
-                call: transfer_call
+                call: transfer_call,
+                txData: transfer_txData
             });
             let transferFromParams = (params) => [params.sender, params.recipient, this.wallet.utils.toString(params.amount)];
             let transferFrom_send = async (params, options) => {
@@ -3242,8 +3722,13 @@ define("@scom/oswap-openswap-contract/contracts/libraries/ERC20.ts", ["require",
                 let result = await this.call('transferFrom', transferFromParams(params), options);
                 return result;
             };
+            let transferFrom_txData = async (params, options) => {
+                let result = await this.txData('transferFrom', transferFromParams(params), options);
+                return result;
+            };
             this.transferFrom = Object.assign(transferFrom_send, {
-                call: transferFrom_call
+                call: transferFrom_call,
+                txData: transferFrom_txData
             });
         }
     }
@@ -3631,8 +4116,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('addOldOracleToNewPair', addOldOracleToNewPairParams(params), options);
                 return;
             };
+            let addOldOracleToNewPair_txData = async (params, options) => {
+                let result = await this.txData('addOldOracleToNewPair', addOldOracleToNewPairParams(params), options);
+                return result;
+            };
             this.addOldOracleToNewPair = Object.assign(addOldOracleToNewPair_send, {
-                call: addOldOracleToNewPair_call
+                call: addOldOracleToNewPair_call,
+                txData: addOldOracleToNewPair_txData
             });
             let createPairParams = (params) => [params.tokenA, params.tokenB];
             let createPair_send = async (params, options) => {
@@ -3643,8 +4133,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('createPair', createPairParams(params), options);
                 return result;
             };
+            let createPair_txData = async (params, options) => {
+                let result = await this.txData('createPair', createPairParams(params), options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
             let renounceOwnership_send = async (options) => {
                 let result = await this.send('renounceOwnership', [], options);
@@ -3654,8 +4149,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('renounceOwnership', [], options);
                 return;
             };
+            let renounceOwnership_txData = async (options) => {
+                let result = await this.txData('renounceOwnership', [], options);
+                return result;
+            };
             this.renounceOwnership = Object.assign(renounceOwnership_send, {
-                call: renounceOwnership_call
+                call: renounceOwnership_call,
+                txData: renounceOwnership_txData
             });
             let setFeePerDelegator_send = async (feePerDelegator, options) => {
                 let result = await this.send('setFeePerDelegator', [this.wallet.utils.toString(feePerDelegator)], options);
@@ -3665,8 +4165,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setFeePerDelegator', [this.wallet.utils.toString(feePerDelegator)], options);
                 return;
             };
+            let setFeePerDelegator_txData = async (feePerDelegator, options) => {
+                let result = await this.txData('setFeePerDelegator', [this.wallet.utils.toString(feePerDelegator)], options);
+                return result;
+            };
             this.setFeePerDelegator = Object.assign(setFeePerDelegator_send, {
-                call: setFeePerDelegator_call
+                call: setFeePerDelegator_call,
+                txData: setFeePerDelegator_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -3676,8 +4181,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setLiveForPairParams = (params) => [params.pair, params.live];
             let setLiveForPair_send = async (params, options) => {
@@ -3688,8 +4198,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setLiveForPair', setLiveForPairParams(params), options);
                 return;
             };
+            let setLiveForPair_txData = async (params, options) => {
+                let result = await this.txData('setLiveForPair', setLiveForPairParams(params), options);
+                return result;
+            };
             this.setLiveForPair = Object.assign(setLiveForPair_send, {
-                call: setLiveForPair_call
+                call: setLiveForPair_call,
+                txData: setLiveForPair_txData
             });
             let setMinLotSizeParams = (params) => [params.token, this.wallet.utils.toString(params.minLotSize)];
             let setMinLotSize_send = async (params, options) => {
@@ -3700,8 +4215,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setMinLotSize', setMinLotSizeParams(params), options);
                 return;
             };
+            let setMinLotSize_txData = async (params, options) => {
+                let result = await this.txData('setMinLotSize', setMinLotSizeParams(params), options);
+                return result;
+            };
             this.setMinLotSize = Object.assign(setMinLotSize_send, {
-                call: setMinLotSize_call
+                call: setMinLotSize_call,
+                txData: setMinLotSize_txData
             });
             let setOracleParams = (params) => [params.tokenA, params.tokenB, params.oracle];
             let setOracle_send = async (params, options) => {
@@ -3712,8 +4232,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setOracle', setOracleParams(params), options);
                 return;
             };
+            let setOracle_txData = async (params, options) => {
+                let result = await this.txData('setOracle', setOracleParams(params), options);
+                return result;
+            };
             this.setOracle = Object.assign(setOracle_send, {
-                call: setOracle_call
+                call: setOracle_call,
+                txData: setOracle_txData
             });
             let setOracleLiquidityProviderParams = (params) => [params.oracleRouter, params.oracleLiquidityProvider];
             let setOracleLiquidityProvider_send = async (params, options) => {
@@ -3724,8 +4249,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setOracleLiquidityProvider', setOracleLiquidityProviderParams(params), options);
                 return;
             };
+            let setOracleLiquidityProvider_txData = async (params, options) => {
+                let result = await this.txData('setOracleLiquidityProvider', setOracleLiquidityProviderParams(params), options);
+                return result;
+            };
             this.setOracleLiquidityProvider = Object.assign(setOracleLiquidityProvider_send, {
-                call: setOracleLiquidityProvider_call
+                call: setOracleLiquidityProvider_call,
+                txData: setOracleLiquidityProvider_txData
             });
             let setProtocolFee_send = async (protocolFee, options) => {
                 let result = await this.send('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
@@ -3735,8 +4265,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
                 return;
             };
+            let setProtocolFee_txData = async (protocolFee, options) => {
+                let result = await this.txData('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
+                return result;
+            };
             this.setProtocolFee = Object.assign(setProtocolFee_send, {
-                call: setProtocolFee_call
+                call: setProtocolFee_call,
+                txData: setProtocolFee_txData
             });
             let setProtocolFeeTo_send = async (protocolFeeTo, options) => {
                 let result = await this.send('setProtocolFeeTo', [protocolFeeTo], options);
@@ -3746,8 +4281,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setProtocolFeeTo', [protocolFeeTo], options);
                 return;
             };
+            let setProtocolFeeTo_txData = async (protocolFeeTo, options) => {
+                let result = await this.txData('setProtocolFeeTo', [protocolFeeTo], options);
+                return result;
+            };
             this.setProtocolFeeTo = Object.assign(setProtocolFeeTo_send, {
-                call: setProtocolFeeTo_call
+                call: setProtocolFeeTo_call,
+                txData: setProtocolFeeTo_txData
             });
             let setSecurityScoreOracleParams = (params) => [params.securityScoreOracle, this.wallet.utils.toString(params.minOracleScore)];
             let setSecurityScoreOracle_send = async (params, options) => {
@@ -3758,8 +4298,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setSecurityScoreOracle', setSecurityScoreOracleParams(params), options);
                 return;
             };
+            let setSecurityScoreOracle_txData = async (params, options) => {
+                let result = await this.txData('setSecurityScoreOracle', setSecurityScoreOracleParams(params), options);
+                return result;
+            };
             this.setSecurityScoreOracle = Object.assign(setSecurityScoreOracle_send, {
-                call: setSecurityScoreOracle_call
+                call: setSecurityScoreOracle_call,
+                txData: setSecurityScoreOracle_txData
             });
             let setTradeFee_send = async (tradeFee, options) => {
                 let result = await this.send('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
@@ -3769,8 +4314,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
                 return;
             };
+            let setTradeFee_txData = async (tradeFee, options) => {
+                let result = await this.txData('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
+                return result;
+            };
             this.setTradeFee = Object.assign(setTradeFee_send, {
-                call: setTradeFee_call
+                call: setTradeFee_call,
+                txData: setTradeFee_txData
             });
             let setWhiteListParams = (params) => [params.who, params.allow];
             let setWhiteList_send = async (params, options) => {
@@ -3781,8 +4331,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('setWhiteList', setWhiteListParams(params), options);
                 return;
             };
+            let setWhiteList_txData = async (params, options) => {
+                let result = await this.txData('setWhiteList', setWhiteListParams(params), options);
+                return result;
+            };
             this.setWhiteList = Object.assign(setWhiteList_send, {
-                call: setWhiteList_call
+                call: setWhiteList_call,
+                txData: setWhiteList_txData
             });
             let transferOwnership_send = async (newOwner, options) => {
                 let result = await this.send('transferOwnership', [newOwner], options);
@@ -3792,8 +4347,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('transferOwnership', [newOwner], options);
                 return;
             };
+            let transferOwnership_txData = async (newOwner, options) => {
+                let result = await this.txData('transferOwnership', [newOwner], options);
+                return result;
+            };
             this.transferOwnership = Object.assign(transferOwnership_send, {
-                call: transferOwnership_call
+                call: transferOwnership_call,
+                txData: transferOwnership_txData
             });
             let updateOracleScore_send = async (oracle, options) => {
                 let result = await this.send('updateOracleScore', [oracle], options);
@@ -3803,8 +4363,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
                 let result = await this.call('updateOracleScore', [oracle], options);
                 return;
             };
+            let updateOracleScore_txData = async (oracle, options) => {
+                let result = await this.txData('updateOracleScore', [oracle], options);
+                return result;
+            };
             this.updateOracleScore = Object.assign(updateOracleScore_send, {
-                call: updateOracleScore_call
+                call: updateOracleScore_call,
+                txData: updateOracleScore_txData
             });
         }
     }
@@ -3869,8 +4434,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProv
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return new eth_contract_19.BigNumber(result);
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let addLiquidityETHParams = (params) => [params.tokenA, params.addingTokenA, this.wallet.utils.toString(params.staked), this.wallet.utils.toString(params.afterIndex), this.wallet.utils.toString(params.amountAIn), this.wallet.utils.toString(params.expire), params.enable, this.wallet.utils.toString(params.deadline)];
             let addLiquidityETH_send = async (params, options) => {
@@ -3881,8 +4451,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProv
                 let result = await this.call('addLiquidityETH', addLiquidityETHParams(params), options);
                 return new eth_contract_19.BigNumber(result);
             };
+            let addLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('addLiquidityETH', addLiquidityETHParams(params), options);
+                return result;
+            };
             this.addLiquidityETH = Object.assign(addLiquidityETH_send, {
-                call: addLiquidityETH_call
+                call: addLiquidityETH_call,
+                txData: addLiquidityETH_txData
             });
             let removeAllLiquidityParams = (params) => [params.tokenA, params.tokenB, params.to, this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidity_send = async (params, options) => {
@@ -3896,8 +4471,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProv
                     amountB: new eth_contract_19.BigNumber(result.amountB)
                 };
             };
+            let removeAllLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidity', removeAllLiquidityParams(params), options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeAllLiquidityETHParams = (params) => [params.tokenA, params.to, this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidityETH_send = async (params, options) => {
@@ -3911,8 +4491,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProv
                     amountETH: new eth_contract_19.BigNumber(result.amountETH)
                 };
             };
+            let removeAllLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidityETH', removeAllLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeAllLiquidityETH = Object.assign(removeAllLiquidityETH_send, {
-                call: removeAllLiquidityETH_call
+                call: removeAllLiquidityETH_call,
+                txData: removeAllLiquidityETH_txData
             });
             let removeLiquidityParams = (params) => [params.tokenA, params.tokenB, params.removingTokenA, params.to, this.wallet.utils.toString(params.unstake), this.wallet.utils.toString(params.afterIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.reserveOut), this.wallet.utils.toString(params.expire), params.enable, this.wallet.utils.toString(params.deadline)];
             let removeLiquidity_send = async (params, options) => {
@@ -3923,8 +4508,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProv
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let removeLiquidityETHParams = (params) => [params.tokenA, params.removingTokenA, params.to, this.wallet.utils.toString(params.unstake), this.wallet.utils.toString(params.afterIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.reserveOut), this.wallet.utils.toString(params.expire), params.enable, this.wallet.utils.toString(params.deadline)];
             let removeLiquidityETH_send = async (params, options) => {
@@ -3935,8 +4525,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProv
                 let result = await this.call('removeLiquidityETH', removeLiquidityETHParams(params), options);
                 return;
             };
+            let removeLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETH', removeLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeLiquidityETH = Object.assign(removeLiquidityETH_send, {
-                call: removeLiquidityETH_call
+                call: removeLiquidityETH_call,
+                txData: removeLiquidityETH_txData
             });
         }
     }
@@ -4361,8 +4956,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return new eth_contract_20.BigNumber(result);
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let initializeParams = (params) => [params.token0, params.token1];
             let initialize_send = async (params, options) => {
@@ -4373,8 +4973,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('initialize', initializeParams(params), options);
                 return;
             };
+            let initialize_txData = async (params, options) => {
+                let result = await this.txData('initialize', initializeParams(params), options);
+                return result;
+            };
             this.initialize = Object.assign(initialize_send, {
-                call: initialize_call
+                call: initialize_call,
+                txData: initialize_txData
             });
             let pauseOfferParams = (params) => [params.provider, params.direction];
             let pauseOffer_send = async (params, options) => {
@@ -4385,8 +4990,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('pauseOffer', pauseOfferParams(params), options);
                 return;
             };
+            let pauseOffer_txData = async (params, options) => {
+                let result = await this.txData('pauseOffer', pauseOfferParams(params), options);
+                return result;
+            };
             this.pauseOffer = Object.assign(pauseOffer_send, {
-                call: pauseOffer_call
+                call: pauseOffer_call,
+                txData: pauseOffer_txData
             });
             let purgeExpireParams = (params) => [params.direction, this.wallet.utils.toString(params.startingIndex), this.wallet.utils.toString(params.limit)];
             let purgeExpire_send = async (params, options) => {
@@ -4397,8 +5007,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('purgeExpire', purgeExpireParams(params), options);
                 return new eth_contract_20.BigNumber(result);
             };
+            let purgeExpire_txData = async (params, options) => {
+                let result = await this.txData('purgeExpire', purgeExpireParams(params), options);
+                return result;
+            };
             this.purgeExpire = Object.assign(purgeExpire_send, {
-                call: purgeExpire_call
+                call: purgeExpire_call,
+                txData: purgeExpire_txData
             });
             let redeemProtocolFee_send = async (options) => {
                 let result = await this.send('redeemProtocolFee', [], options);
@@ -4408,8 +5023,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('redeemProtocolFee', [], options);
                 return;
             };
+            let redeemProtocolFee_txData = async (options) => {
+                let result = await this.txData('redeemProtocolFee', [], options);
+                return result;
+            };
             this.redeemProtocolFee = Object.assign(redeemProtocolFee_send, {
-                call: redeemProtocolFee_call
+                call: redeemProtocolFee_call,
+                txData: redeemProtocolFee_txData
             });
             let removeAllLiquidity_send = async (provider, options) => {
                 let result = await this.send('removeAllLiquidity', [provider], options);
@@ -4423,8 +5043,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                     staked: new eth_contract_20.BigNumber(result.staked)
                 };
             };
+            let removeAllLiquidity_txData = async (provider, options) => {
+                let result = await this.txData('removeAllLiquidity', [provider], options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeLiquidityParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.unstake), this.wallet.utils.toString(params.afterIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.reserveOut), this.wallet.utils.toString(params.expire), params.enable];
             let removeLiquidity_send = async (params, options) => {
@@ -4435,8 +5060,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let replenishParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.afterIndex), this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.expire)];
             let replenish_send = async (params, options) => {
@@ -4447,8 +5077,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('replenish', replenishParams(params), options);
                 return;
             };
+            let replenish_txData = async (params, options) => {
+                let result = await this.txData('replenish', replenishParams(params), options);
+                return result;
+            };
             this.replenish = Object.assign(replenish_send, {
-                call: replenish_call
+                call: replenish_call,
+                txData: replenish_txData
             });
             let resumeOfferParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.afterIndex)];
             let resumeOffer_send = async (params, options) => {
@@ -4459,8 +5094,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('resumeOffer', resumeOfferParams(params), options);
                 return;
             };
+            let resumeOffer_txData = async (params, options) => {
+                let result = await this.txData('resumeOffer', resumeOfferParams(params), options);
+                return result;
+            };
             this.resumeOffer = Object.assign(resumeOffer_send, {
-                call: resumeOffer_call
+                call: resumeOffer_call,
+                txData: resumeOffer_txData
             });
             let setDelegatorParams = (params) => [params.delegator, this.wallet.utils.toString(params.fee)];
             let setDelegator_send = async (params, options) => {
@@ -4471,8 +5111,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('setDelegator', setDelegatorParams(params), options);
                 return;
             };
+            let setDelegator_txData = async (params, options) => {
+                let result = await this.txData('setDelegator', setDelegatorParams(params), options);
+                return result;
+            };
             this.setDelegator = Object.assign(setDelegator_send, {
-                call: setDelegator_call
+                call: setDelegator_call,
+                txData: setDelegator_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -4482,8 +5127,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setPrivateReplenish_send = async (replenish, options) => {
                 let result = await this.send('setPrivateReplenish', [replenish], options);
@@ -4493,8 +5143,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('setPrivateReplenish', [replenish], options);
                 return;
             };
+            let setPrivateReplenish_txData = async (replenish, options) => {
+                let result = await this.txData('setPrivateReplenish', [replenish], options);
+                return result;
+            };
             this.setPrivateReplenish = Object.assign(setPrivateReplenish_send, {
-                call: setPrivateReplenish_call
+                call: setPrivateReplenish_call,
+                txData: setPrivateReplenish_txData
             });
             let swapParams = (params) => [this.wallet.utils.toString(params.amount0Out), this.wallet.utils.toString(params.amount1Out), params.to, this.wallet.utils.stringToBytes(params.data)];
             let swap_send = async (params, options) => {
@@ -4505,8 +5160,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('swap', swapParams(params), options);
                 return;
             };
+            let swap_txData = async (params, options) => {
+                let result = await this.txData('swap', swapParams(params), options);
+                return result;
+            };
             this.swap = Object.assign(swap_send, {
-                call: swap_call
+                call: swap_call,
+                txData: swap_txData
             });
             let sync_send = async (options) => {
                 let result = await this.send('sync', [], options);
@@ -4516,8 +5176,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
                 let result = await this.call('sync', [], options);
                 return;
             };
+            let sync_txData = async (options) => {
+                let result = await this.txData('sync', [], options);
+                return result;
+            };
             this.sync = Object.assign(sync_send, {
-                call: sync_call
+                call: sync_call,
+                txData: sync_txData
             });
         }
     }
@@ -4556,8 +5221,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePairCreator.t
                 let result = await this.call('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
                 return result;
             };
+            let createPair_txData = async (salt, options) => {
+                let result = await this.txData('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
         }
     }
@@ -4609,8 +5279,13 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_VotingExecutor2.ts"
                 let result = await this.call('execute', [this.wallet.utils.stringToBytes32(params)], options);
                 return;
             };
+            let execute_txData = async (params, options) => {
+                let result = await this.txData('execute', [this.wallet.utils.stringToBytes32(params)], options);
+                return result;
+            };
             this.execute = Object.assign(execute_send, {
-                call: execute_call
+                call: execute_call,
+                txData: execute_txData
             });
         }
     }
@@ -4862,8 +5537,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('createPair', createPairParams(params), options);
                 return result;
             };
+            let createPair_txData = async (params, options) => {
+                let result = await this.txData('createPair', createPairParams(params), options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
             let renounceOwnership_send = async (options) => {
                 let result = await this.send('renounceOwnership', [], options);
@@ -4873,8 +5553,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('renounceOwnership', [], options);
                 return;
             };
+            let renounceOwnership_txData = async (options) => {
+                let result = await this.txData('renounceOwnership', [], options);
+                return result;
+            };
             this.renounceOwnership = Object.assign(renounceOwnership_send, {
-                call: renounceOwnership_call
+                call: renounceOwnership_call,
+                txData: renounceOwnership_txData
             });
             let setLiquidityProviderShareParams = (params) => [this.wallet.utils.toString(params.stakeAmount), this.wallet.utils.toString(params.liquidityProviderShare)];
             let setLiquidityProviderShare_send = async (params, options) => {
@@ -4885,8 +5570,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('setLiquidityProviderShare', setLiquidityProviderShareParams(params), options);
                 return;
             };
+            let setLiquidityProviderShare_txData = async (params, options) => {
+                let result = await this.txData('setLiquidityProviderShare', setLiquidityProviderShareParams(params), options);
+                return result;
+            };
             this.setLiquidityProviderShare = Object.assign(setLiquidityProviderShare_send, {
-                call: setLiquidityProviderShare_call
+                call: setLiquidityProviderShare_call,
+                txData: setLiquidityProviderShare_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -4896,8 +5586,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setLiveForPairParams = (params) => [params.pair, params.live];
             let setLiveForPair_send = async (params, options) => {
@@ -4908,8 +5603,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('setLiveForPair', setLiveForPairParams(params), options);
                 return;
             };
+            let setLiveForPair_txData = async (params, options) => {
+                let result = await this.txData('setLiveForPair', setLiveForPairParams(params), options);
+                return result;
+            };
             this.setLiveForPair = Object.assign(setLiveForPair_send, {
-                call: setLiveForPair_call
+                call: setLiveForPair_call,
+                txData: setLiveForPair_txData
             });
             let setProtocolFeeTo_send = async (protocolFeeTo, options) => {
                 let result = await this.send('setProtocolFeeTo', [protocolFeeTo], options);
@@ -4919,8 +5619,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('setProtocolFeeTo', [protocolFeeTo], options);
                 return;
             };
+            let setProtocolFeeTo_txData = async (protocolFeeTo, options) => {
+                let result = await this.txData('setProtocolFeeTo', [protocolFeeTo], options);
+                return result;
+            };
             this.setProtocolFeeTo = Object.assign(setProtocolFeeTo_send, {
-                call: setProtocolFeeTo_call
+                call: setProtocolFeeTo_call,
+                txData: setProtocolFeeTo_txData
             });
             let setRangeLiquidityProvider_send = async (rangeLiquidityProvider, options) => {
                 let result = await this.send('setRangeLiquidityProvider', [rangeLiquidityProvider], options);
@@ -4930,8 +5635,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('setRangeLiquidityProvider', [rangeLiquidityProvider], options);
                 return;
             };
+            let setRangeLiquidityProvider_txData = async (rangeLiquidityProvider, options) => {
+                let result = await this.txData('setRangeLiquidityProvider', [rangeLiquidityProvider], options);
+                return result;
+            };
             this.setRangeLiquidityProvider = Object.assign(setRangeLiquidityProvider_send, {
-                call: setRangeLiquidityProvider_call
+                call: setRangeLiquidityProvider_call,
+                txData: setRangeLiquidityProvider_txData
             });
             let setTradeFee_send = async (tradeFee, options) => {
                 let result = await this.send('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
@@ -4941,8 +5651,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
                 return;
             };
+            let setTradeFee_txData = async (tradeFee, options) => {
+                let result = await this.txData('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
+                return result;
+            };
             this.setTradeFee = Object.assign(setTradeFee_send, {
-                call: setTradeFee_call
+                call: setTradeFee_call,
+                txData: setTradeFee_txData
             });
             let transferOwnership_send = async (newOwner, options) => {
                 let result = await this.send('transferOwnership', [newOwner], options);
@@ -4952,8 +5667,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
                 let result = await this.call('transferOwnership', [newOwner], options);
                 return;
             };
+            let transferOwnership_txData = async (newOwner, options) => {
+                let result = await this.txData('transferOwnership', [newOwner], options);
+                return result;
+            };
             this.transferOwnership = Object.assign(transferOwnership_send, {
-                call: transferOwnership_call
+                call: transferOwnership_call,
+                txData: transferOwnership_txData
             });
         }
     }
@@ -5019,8 +5739,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvid
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return new eth_contract_24.BigNumber(result);
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let addLiquidityETHParams = (params) => [params.tokenA, params.addingTokenA, this.wallet.utils.toString(params.staked), this.wallet.utils.toString(params.amountAIn), this.wallet.utils.toString(params.lowerLimit), this.wallet.utils.toString(params.upperLimit), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire), this.wallet.utils.toString(params.deadline)];
             let addLiquidityETH_send = async (params, options) => {
@@ -5031,8 +5756,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvid
                 let result = await this.call('addLiquidityETH', addLiquidityETHParams(params), options);
                 return new eth_contract_24.BigNumber(result);
             };
+            let addLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('addLiquidityETH', addLiquidityETHParams(params), options);
+                return result;
+            };
             this.addLiquidityETH = Object.assign(addLiquidityETH_send, {
-                call: addLiquidityETH_call
+                call: addLiquidityETH_call,
+                txData: addLiquidityETH_txData
             });
             let removeAllLiquidityParams = (params) => [params.tokenA, params.tokenB, params.to, this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidity_send = async (params, options) => {
@@ -5046,8 +5776,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvid
                     amountB: new eth_contract_24.BigNumber(result.amountB)
                 };
             };
+            let removeAllLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidity', removeAllLiquidityParams(params), options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeAllLiquidityETHParams = (params) => [params.tokenA, params.to, this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidityETH_send = async (params, options) => {
@@ -5061,8 +5796,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvid
                     amountETH: new eth_contract_24.BigNumber(result.amountETH)
                 };
             };
+            let removeAllLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidityETH', removeAllLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeAllLiquidityETH = Object.assign(removeAllLiquidityETH_send, {
-                call: removeAllLiquidityETH_call
+                call: removeAllLiquidityETH_call,
+                txData: removeAllLiquidityETH_txData
             });
             let removeLiquidityParams = (params) => [params.tokenA, params.tokenB, params.removingTokenA, params.to, this.wallet.utils.toString(params.unstake), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.reserveOut), this.wallet.utils.toString(params.lowerLimit), this.wallet.utils.toString(params.upperLimit), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire), this.wallet.utils.toString(params.deadline)];
             let removeLiquidity_send = async (params, options) => {
@@ -5073,8 +5813,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvid
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let removeLiquidityETHParams = (params) => [params.tokenA, params.removingTokenA, params.to, this.wallet.utils.toString(params.unstake), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.reserveOut), this.wallet.utils.toString(params.lowerLimit), this.wallet.utils.toString(params.upperLimit), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire), this.wallet.utils.toString(params.deadline)];
             let removeLiquidityETH_send = async (params, options) => {
@@ -5085,8 +5830,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvid
                 let result = await this.call('removeLiquidityETH', removeLiquidityETHParams(params), options);
                 return;
             };
+            let removeLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETH', removeLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeLiquidityETH = Object.assign(removeLiquidityETH_send, {
-                call: removeLiquidityETH_call
+                call: removeLiquidityETH_call,
+                txData: removeLiquidityETH_txData
             });
             let updateProviderOfferParams = (params) => [params.tokenA, params.tokenB, this.wallet.utils.toString(params.replenishAmount), this.wallet.utils.toString(params.lowerLimit), this.wallet.utils.toString(params.upperLimit), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire), params.privateReplenish, this.wallet.utils.toString(params.deadline)];
             let updateProviderOffer_send = async (params, options) => {
@@ -5097,8 +5847,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvid
                 let result = await this.call('updateProviderOffer', updateProviderOfferParams(params), options);
                 return;
             };
+            let updateProviderOffer_txData = async (params, options) => {
+                let result = await this.txData('updateProviderOffer', updateProviderOfferParams(params), options);
+                return result;
+            };
             this.updateProviderOffer = Object.assign(updateProviderOffer_send, {
-                call: updateProviderOffer_call
+                call: updateProviderOffer_call,
+                txData: updateProviderOffer_txData
             });
         }
     }
@@ -5484,8 +6239,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return new eth_contract_25.BigNumber(result);
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let initializeParams = (params) => [params.token0, params.token1];
             let initialize_send = async (params, options) => {
@@ -5496,8 +6256,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('initialize', initializeParams(params), options);
                 return;
             };
+            let initialize_txData = async (params, options) => {
+                let result = await this.txData('initialize', initializeParams(params), options);
+                return result;
+            };
             this.initialize = Object.assign(initialize_send, {
-                call: initialize_call
+                call: initialize_call,
+                txData: initialize_txData
             });
             let redeemProtocolFee_send = async (options) => {
                 let result = await this.send('redeemProtocolFee', [], options);
@@ -5507,8 +6272,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('redeemProtocolFee', [], options);
                 return;
             };
+            let redeemProtocolFee_txData = async (options) => {
+                let result = await this.txData('redeemProtocolFee', [], options);
+                return result;
+            };
             this.redeemProtocolFee = Object.assign(redeemProtocolFee_send, {
-                call: redeemProtocolFee_call
+                call: redeemProtocolFee_call,
+                txData: redeemProtocolFee_txData
             });
             let removeAllLiquidity_send = async (provider, options) => {
                 let result = await this.send('removeAllLiquidity', [provider], options);
@@ -5522,8 +6292,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                     staked: new eth_contract_25.BigNumber(result.staked)
                 };
             };
+            let removeAllLiquidity_txData = async (provider, options) => {
+                let result = await this.txData('removeAllLiquidity', [provider], options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeLiquidityParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.unstake), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.reserveOut), this.wallet.utils.toString(params.lowerLimit), this.wallet.utils.toString(params.upperLimit), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire)];
             let removeLiquidity_send = async (params, options) => {
@@ -5534,8 +6309,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let replenishParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.amountIn)];
             let replenish_send = async (params, options) => {
@@ -5546,8 +6326,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('replenish', replenishParams(params), options);
                 return;
             };
+            let replenish_txData = async (params, options) => {
+                let result = await this.txData('replenish', replenishParams(params), options);
+                return result;
+            };
             this.replenish = Object.assign(replenish_send, {
-                call: replenish_call
+                call: replenish_call,
+                txData: replenish_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -5557,8 +6342,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let swapParams = (params) => [this.wallet.utils.toString(params.amount0Out), this.wallet.utils.toString(params.amount1Out), params.to, this.wallet.utils.stringToBytes(params.data)];
             let swap_send = async (params, options) => {
@@ -5569,8 +6359,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('swap', swapParams(params), options);
                 return;
             };
+            let swap_txData = async (params, options) => {
+                let result = await this.txData('swap', swapParams(params), options);
+                return result;
+            };
             this.swap = Object.assign(swap_send, {
-                call: swap_call
+                call: swap_call,
+                txData: swap_txData
             });
             let sync_send = async (options) => {
                 let result = await this.send('sync', [], options);
@@ -5580,8 +6375,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('sync', [], options);
                 return;
             };
+            let sync_txData = async (options) => {
+                let result = await this.txData('sync', [], options);
+                return result;
+            };
             this.sync = Object.assign(sync_send, {
-                call: sync_call
+                call: sync_call,
+                txData: sync_txData
             });
             let updateProviderOfferParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.replenishAmount), this.wallet.utils.toString(params.lowerLimit), this.wallet.utils.toString(params.upperLimit), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire), params.privateReplenish];
             let updateProviderOffer_send = async (params, options) => {
@@ -5592,8 +6392,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
                 let result = await this.call('updateProviderOffer', updateProviderOfferParams(params), options);
                 return;
             };
+            let updateProviderOffer_txData = async (params, options) => {
+                let result = await this.txData('updateProviderOffer', updateProviderOfferParams(params), options);
+                return result;
+            };
             this.updateProviderOffer = Object.assign(updateProviderOffer_send, {
-                call: updateProviderOffer_call
+                call: updateProviderOffer_call,
+                txData: updateProviderOffer_txData
             });
         }
     }
@@ -5632,8 +6437,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePairCreator.ts"
                 let result = await this.call('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
                 return result;
             };
+            let createPair_txData = async (salt, options) => {
+                let result = await this.txData('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
         }
     }
@@ -5691,8 +6501,13 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_VotingExecutor3.ts",
                 let result = await this.call('execute', [this.wallet.utils.stringToBytes32(params)], options);
                 return;
             };
+            let execute_txData = async (params, options) => {
+                let result = await this.txData('execute', [this.wallet.utils.stringToBytes32(params)], options);
+                return result;
+            };
             this.execute = Object.assign(execute_send, {
-                call: execute_call
+                call: execute_call,
+                txData: execute_txData
             });
         }
     }
@@ -5776,8 +6591,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_ConfigStore.ts"
                 let result = await this.call('setCustomParam', setCustomParamParams(params), options);
                 return;
             };
+            let setCustomParam_txData = async (params, options) => {
+                let result = await this.txData('setCustomParam', setCustomParamParams(params), options);
+                return result;
+            };
             this.setCustomParam = Object.assign(setCustomParam_send, {
-                call: setCustomParam_call
+                call: setCustomParam_call,
+                txData: setCustomParam_txData
             });
             let setMultiCustomParamParams = (params) => [this.wallet.utils.stringToBytes32(params.paramName), this.wallet.utils.stringToBytes32(params.paramValue)];
             let setMultiCustomParam_send = async (params, options) => {
@@ -5788,8 +6608,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_ConfigStore.ts"
                 let result = await this.call('setMultiCustomParam', setMultiCustomParamParams(params), options);
                 return;
             };
+            let setMultiCustomParam_txData = async (params, options) => {
+                let result = await this.txData('setMultiCustomParam', setMultiCustomParamParams(params), options);
+                return result;
+            };
             this.setMultiCustomParam = Object.assign(setMultiCustomParam_send, {
-                call: setMultiCustomParam_call
+                call: setMultiCustomParam_call,
+                txData: setMultiCustomParam_txData
             });
         }
     }
@@ -6087,8 +6912,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('addOldOracleToNewPair', addOldOracleToNewPairParams(params), options);
                 return;
             };
+            let addOldOracleToNewPair_txData = async (params, options) => {
+                let result = await this.txData('addOldOracleToNewPair', addOldOracleToNewPairParams(params), options);
+                return result;
+            };
             this.addOldOracleToNewPair = Object.assign(addOldOracleToNewPair_send, {
-                call: addOldOracleToNewPair_call
+                call: addOldOracleToNewPair_call,
+                txData: addOldOracleToNewPair_txData
             });
             let createPairParams = (params) => [params.tokenA, params.tokenB];
             let createPair_send = async (params, options) => {
@@ -6099,8 +6929,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('createPair', createPairParams(params), options);
                 return result;
             };
+            let createPair_txData = async (params, options) => {
+                let result = await this.txData('createPair', createPairParams(params), options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
             let init_send = async (restrictedLiquidityProvider, options) => {
                 let result = await this.send('init', [restrictedLiquidityProvider], options);
@@ -6110,8 +6945,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('init', [restrictedLiquidityProvider], options);
                 return;
             };
+            let init_txData = async (restrictedLiquidityProvider, options) => {
+                let result = await this.txData('init', [restrictedLiquidityProvider], options);
+                return result;
+            };
             this.init = Object.assign(init_send, {
-                call: init_call
+                call: init_call,
+                txData: init_txData
             });
             let renounceOwnership_send = async (options) => {
                 let result = await this.send('renounceOwnership', [], options);
@@ -6121,8 +6961,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('renounceOwnership', [], options);
                 return;
             };
+            let renounceOwnership_txData = async (options) => {
+                let result = await this.txData('renounceOwnership', [], options);
+                return result;
+            };
             this.renounceOwnership = Object.assign(renounceOwnership_send, {
-                call: renounceOwnership_call
+                call: renounceOwnership_call,
+                txData: renounceOwnership_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -6132,8 +6977,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setLiveForPairParams = (params) => [params.pair, params.live];
             let setLiveForPair_send = async (params, options) => {
@@ -6144,8 +6994,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('setLiveForPair', setLiveForPairParams(params), options);
                 return;
             };
+            let setLiveForPair_txData = async (params, options) => {
+                let result = await this.txData('setLiveForPair', setLiveForPairParams(params), options);
+                return result;
+            };
             this.setLiveForPair = Object.assign(setLiveForPair_send, {
-                call: setLiveForPair_call
+                call: setLiveForPair_call,
+                txData: setLiveForPair_txData
             });
             let setOracleParams = (params) => [params.tokenA, params.tokenB, params.oracle];
             let setOracle_send = async (params, options) => {
@@ -6156,8 +7011,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('setOracle', setOracleParams(params), options);
                 return;
             };
+            let setOracle_txData = async (params, options) => {
+                let result = await this.txData('setOracle', setOracleParams(params), options);
+                return result;
+            };
             this.setOracle = Object.assign(setOracle_send, {
-                call: setOracle_call
+                call: setOracle_call,
+                txData: setOracle_txData
             });
             let setProtocolFee_send = async (protocolFee, options) => {
                 let result = await this.send('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
@@ -6167,8 +7027,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
                 return;
             };
+            let setProtocolFee_txData = async (protocolFee, options) => {
+                let result = await this.txData('setProtocolFee', [this.wallet.utils.toString(protocolFee)], options);
+                return result;
+            };
             this.setProtocolFee = Object.assign(setProtocolFee_send, {
-                call: setProtocolFee_call
+                call: setProtocolFee_call,
+                txData: setProtocolFee_txData
             });
             let setProtocolFeeTo_send = async (protocolFeeTo, options) => {
                 let result = await this.send('setProtocolFeeTo', [protocolFeeTo], options);
@@ -6178,8 +7043,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('setProtocolFeeTo', [protocolFeeTo], options);
                 return;
             };
+            let setProtocolFeeTo_txData = async (protocolFeeTo, options) => {
+                let result = await this.txData('setProtocolFeeTo', [protocolFeeTo], options);
+                return result;
+            };
             this.setProtocolFeeTo = Object.assign(setProtocolFeeTo_send, {
-                call: setProtocolFeeTo_call
+                call: setProtocolFeeTo_call,
+                txData: setProtocolFeeTo_txData
             });
             let setTradeFee_send = async (tradeFee, options) => {
                 let result = await this.send('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
@@ -6189,8 +7059,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
                 return;
             };
+            let setTradeFee_txData = async (tradeFee, options) => {
+                let result = await this.txData('setTradeFee', [this.wallet.utils.toString(tradeFee)], options);
+                return result;
+            };
             this.setTradeFee = Object.assign(setTradeFee_send, {
-                call: setTradeFee_call
+                call: setTradeFee_call,
+                txData: setTradeFee_txData
             });
             let transferOwnership_send = async (newOwner, options) => {
                 let result = await this.send('transferOwnership', [newOwner], options);
@@ -6200,8 +7075,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
                 let result = await this.call('transferOwnership', [newOwner], options);
                 return;
             };
+            let transferOwnership_txData = async (newOwner, options) => {
+                let result = await this.txData('transferOwnership', [newOwner], options);
+                return result;
+            };
             this.transferOwnership = Object.assign(transferOwnership_send, {
-                call: transferOwnership_call
+                call: transferOwnership_call,
+                txData: transferOwnership_txData
             });
         }
     }
@@ -6277,8 +7157,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     _offerIndex: new eth_contract_30.BigNumber(result._offerIndex)
                 };
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let addLiquidityAndTraderParams = (params) => [this.wallet.utils.toString(params.param), params.trader, this.wallet.utils.toString(params.allocation)];
             let addLiquidityAndTrader_send = async (params, options) => {
@@ -6292,8 +7177,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     offerIndex: new eth_contract_30.BigNumber(result.offerIndex)
                 };
             };
+            let addLiquidityAndTrader_txData = async (params, options) => {
+                let result = await this.txData('addLiquidityAndTrader', addLiquidityAndTraderParams(params), options);
+                return result;
+            };
             this.addLiquidityAndTrader = Object.assign(addLiquidityAndTrader_send, {
-                call: addLiquidityAndTrader_call
+                call: addLiquidityAndTrader_call,
+                txData: addLiquidityAndTrader_txData
             });
             let addLiquidityETHParams = (params) => [params.tokenA, params.addingTokenA, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.offerIndex), this.wallet.utils.toString(params.amountAIn), params.allowAll, this.wallet.utils.toString(params.restrictedPrice), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire), this.wallet.utils.toString(params.deadline)];
             let addLiquidityETH_send = async (params, options) => {
@@ -6307,8 +7197,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     _offerIndex: new eth_contract_30.BigNumber(result._offerIndex)
                 };
             };
+            let addLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('addLiquidityETH', addLiquidityETHParams(params), options);
+                return result;
+            };
             this.addLiquidityETH = Object.assign(addLiquidityETH_send, {
-                call: addLiquidityETH_call
+                call: addLiquidityETH_call,
+                txData: addLiquidityETH_txData
             });
             let addLiquidityETHAndTraderParams = (params) => [this.wallet.utils.toString(params.param), params.trader, this.wallet.utils.toString(params.allocation)];
             let addLiquidityETHAndTrader_send = async (params, options) => {
@@ -6322,8 +7217,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     offerIndex: new eth_contract_30.BigNumber(result.offerIndex)
                 };
             };
+            let addLiquidityETHAndTrader_txData = async (params, options) => {
+                let result = await this.txData('addLiquidityETHAndTrader', addLiquidityETHAndTraderParams(params), options);
+                return result;
+            };
             this.addLiquidityETHAndTrader = Object.assign(addLiquidityETHAndTrader_send, {
-                call: addLiquidityETHAndTrader_call
+                call: addLiquidityETHAndTrader_call,
+                txData: addLiquidityETHAndTrader_txData
             });
             let removeAllLiquidityParams = (params) => [params.tokenA, params.tokenB, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidity_send = async (params, options) => {
@@ -6337,8 +7237,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     amountB: new eth_contract_30.BigNumber(result.amountB)
                 };
             };
+            let removeAllLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidity', removeAllLiquidityParams(params), options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeAllLiquidityETHParams = (params) => [params.tokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidityETH_send = async (params, options) => {
@@ -6352,8 +7257,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     amountETH: new eth_contract_30.BigNumber(result.amountETH)
                 };
             };
+            let removeAllLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidityETH', removeAllLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeAllLiquidityETH = Object.assign(removeAllLiquidityETH_send, {
-                call: removeAllLiquidityETH_call
+                call: removeAllLiquidityETH_call,
+                txData: removeAllLiquidityETH_txData
             });
             let removeLiquidityParams = (params) => [params.tokenA, params.tokenB, params.removingTokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.offerIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut), this.wallet.utils.toString(params.deadline)];
             let removeLiquidity_send = async (params, options) => {
@@ -6364,8 +7274,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let removeLiquidityETHParams = (params) => [params.tokenA, params.removingTokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.offerIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut), this.wallet.utils.toString(params.deadline)];
             let removeLiquidityETH_send = async (params, options) => {
@@ -6376,8 +7291,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('removeLiquidityETH', removeLiquidityETHParams(params), options);
                 return;
             };
+            let removeLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETH', removeLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeLiquidityETH = Object.assign(removeLiquidityETH_send, {
-                call: removeLiquidityETH_call
+                call: removeLiquidityETH_call,
+                txData: removeLiquidityETH_txData
             });
         }
     }
@@ -6451,8 +7371,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     _offerIndex: new eth_contract_31.BigNumber(result._offerIndex)
                 };
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let addLiquidityETHParams = (params) => [params.tokenA, params.addingTokenA, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.offerIndex), this.wallet.utils.toString(params.amountAIn), params.allowAll, this.wallet.utils.toString(params.restrictedPrice), this.wallet.utils.toString(params.startDateAndExpire), this.wallet.utils.toString(params.feeIn), this.wallet.utils.toString(params.deadline)];
             let addLiquidityETH_send = async (params, options) => {
@@ -6466,8 +7391,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     _offerIndex: new eth_contract_31.BigNumber(result._offerIndex)
                 };
             };
+            let addLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('addLiquidityETH', addLiquidityETHParams(params), options);
+                return result;
+            };
             this.addLiquidityETH = Object.assign(addLiquidityETH_send, {
-                call: addLiquidityETH_call
+                call: addLiquidityETH_call,
+                txData: addLiquidityETH_txData
             });
             let removeAllLiquidityParams = (params) => [params.tokenA, params.tokenB, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidity_send = async (params, options) => {
@@ -6482,8 +7412,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     feeOut: new eth_contract_31.BigNumber(result.feeOut)
                 };
             };
+            let removeAllLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidity', removeAllLiquidityParams(params), options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeAllLiquidityETHParams = (params) => [params.tokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidityETH_send = async (params, options) => {
@@ -6498,8 +7433,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     feeOut: new eth_contract_31.BigNumber(result.feeOut)
                 };
             };
+            let removeAllLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidityETH', removeAllLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeAllLiquidityETH = Object.assign(removeAllLiquidityETH_send, {
-                call: removeAllLiquidityETH_call
+                call: removeAllLiquidityETH_call,
+                txData: removeAllLiquidityETH_txData
             });
             let removeLiquidityParams = (params) => [params.tokenA, params.tokenB, params.removingTokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.offerIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut), this.wallet.utils.toString(params.feeOut), this.wallet.utils.toString(params.deadline)];
             let removeLiquidity_send = async (params, options) => {
@@ -6510,8 +7450,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let removeLiquidityETHParams = (params) => [params.tokenA, params.removingTokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.offerIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut), this.wallet.utils.toString(params.feeOut), this.wallet.utils.toString(params.deadline)];
             let removeLiquidityETH_send = async (params, options) => {
@@ -6522,8 +7467,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('removeLiquidityETH', removeLiquidityETHParams(params), options);
                 return;
             };
+            let removeLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETH', removeLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeLiquidityETH = Object.assign(removeLiquidityETH_send, {
-                call: removeLiquidityETH_call
+                call: removeLiquidityETH_call,
+                txData: removeLiquidityETH_txData
             });
         }
     }
@@ -6597,8 +7547,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     _offerIndex: new eth_contract_32.BigNumber(result._offerIndex)
                 };
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let addLiquidityETHParams = (params) => [params.tokenA, params.addingTokenA, this.wallet.utils.toString(params.params), this.wallet.utils.stringToBytes32(params.merkleRoot), params.allowlistIpfsCid];
             let addLiquidityETH_send = async (params, options) => {
@@ -6612,8 +7567,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     _offerIndex: new eth_contract_32.BigNumber(result._offerIndex)
                 };
             };
+            let addLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('addLiquidityETH', addLiquidityETHParams(params), options);
+                return result;
+            };
             this.addLiquidityETH = Object.assign(addLiquidityETH_send, {
-                call: addLiquidityETH_call
+                call: addLiquidityETH_call,
+                txData: addLiquidityETH_txData
             });
             let removeAllLiquidityParams = (params) => [params.tokenA, params.tokenB, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidity_send = async (params, options) => {
@@ -6628,8 +7588,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     feeOut: new eth_contract_32.BigNumber(result.feeOut)
                 };
             };
+            let removeAllLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidity', removeAllLiquidityParams(params), options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeAllLiquidityETHParams = (params) => [params.tokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.deadline)];
             let removeAllLiquidityETH_send = async (params, options) => {
@@ -6644,8 +7609,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                     feeOut: new eth_contract_32.BigNumber(result.feeOut)
                 };
             };
+            let removeAllLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidityETH', removeAllLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeAllLiquidityETH = Object.assign(removeAllLiquidityETH_send, {
-                call: removeAllLiquidityETH_call
+                call: removeAllLiquidityETH_call,
+                txData: removeAllLiquidityETH_txData
             });
             let removeLiquidityParams = (params) => [params.tokenA, params.tokenB, params.removingTokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.offerIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut), this.wallet.utils.toString(params.feeOut), this.wallet.utils.toString(params.deadline)];
             let removeLiquidity_send = async (params, options) => {
@@ -6656,8 +7626,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let removeLiquidityETHParams = (params) => [params.tokenA, params.removingTokenA, params.to, this.wallet.utils.toString(params.pairIndex), this.wallet.utils.toString(params.offerIndex), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut), this.wallet.utils.toString(params.feeOut), this.wallet.utils.toString(params.deadline)];
             let removeLiquidityETH_send = async (params, options) => {
@@ -6668,8 +7643,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('removeLiquidityETH', removeLiquidityETHParams(params), options);
                 return;
             };
+            let removeLiquidityETH_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidityETH', removeLiquidityETHParams(params), options);
+                return result;
+            };
             this.removeLiquidityETH = Object.assign(removeLiquidityETH_send, {
-                call: removeLiquidityETH_call
+                call: removeLiquidityETH_call,
+                txData: removeLiquidityETH_txData
             });
         }
     }
@@ -7051,8 +8031,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.
                 let result = await this.call('createOrder', createOrderParams(params), options);
                 return new eth_contract_33.BigNumber(result);
             };
+            let createOrder_txData = async (params, options) => {
+                let result = await this.txData('createOrder', createOrderParams(params), options);
+                return result;
+            };
             this.createOrder = Object.assign(createOrder_send, {
-                call: createOrder_call
+                call: createOrder_call,
+                txData: createOrder_txData
             });
             let initializeParams = (params) => [params.token0, params.token1];
             let initialize_send = async (params, options) => {
@@ -7063,8 +8048,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.
                 let result = await this.call('initialize', initializeParams(params), options);
                 return;
             };
+            let initialize_txData = async (params, options) => {
+                let result = await this.txData('initialize', initializeParams(params), options);
+                return result;
+            };
             this.initialize = Object.assign(initialize_send, {
-                call: initialize_call
+                call: initialize_call,
+                txData: initialize_txData
             });
             let lockOfferParams = (params) => [params.direction, this.wallet.utils.toString(params.index)];
             let lockOffer_send = async (params, options) => {
@@ -7075,8 +8065,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.
                 let result = await this.call('lockOffer', lockOfferParams(params), options);
                 return;
             };
+            let lockOffer_txData = async (params, options) => {
+                let result = await this.txData('lockOffer', lockOfferParams(params), options);
+                return result;
+            };
             this.lockOffer = Object.assign(lockOffer_send, {
-                call: lockOffer_call
+                call: lockOffer_call,
+                txData: lockOffer_txData
             });
             let redeemProtocolFee_send = async (options) => {
                 let result = await this.send('redeemProtocolFee', [], options);
@@ -7086,8 +8081,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.
                 let result = await this.call('redeemProtocolFee', [], options);
                 return;
             };
+            let redeemProtocolFee_txData = async (options) => {
+                let result = await this.txData('redeemProtocolFee', [], options);
+                return result;
+            };
             this.redeemProtocolFee = Object.assign(redeemProtocolFee_send, {
-                call: redeemProtocolFee_call
+                call: redeemProtocolFee_call,
+                txData: redeemProtocolFee_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -7097,8 +8097,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let swapParams = (params) => [this.wallet.utils.toString(params.amount0Out), this.wallet.utils.toString(params.amount1Out), params.to, params.trader, this.wallet.utils.stringToBytes(params.param5)];
             let swap_send = async (params, options) => {
@@ -7109,8 +8114,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.
                 let result = await this.call('swap', swapParams(params), options);
                 return;
             };
+            let swap_txData = async (params, options) => {
+                let result = await this.txData('swap', swapParams(params), options);
+                return result;
+            };
             this.swap = Object.assign(swap_send, {
-                call: swap_call
+                call: swap_call,
+                txData: swap_txData
             });
             let sync_send = async (options) => {
                 let result = await this.send('sync', [], options);
@@ -7120,8 +8130,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.
                 let result = await this.call('sync', [], options);
                 return;
             };
+            let sync_txData = async (options) => {
+                let result = await this.txData('sync', [], options);
+                return result;
+            };
             this.sync = Object.assign(sync_send, {
-                call: sync_call
+                call: sync_call,
+                txData: sync_txData
             });
         }
     }
@@ -7244,8 +8259,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingExecutor4
                 let result = await this.call('execute', [this.wallet.utils.stringToBytes32(params)], options);
                 return;
             };
+            let execute_txData = async (params, options) => {
+                let result = await this.txData('execute', [this.wallet.utils.stringToBytes32(params)], options);
+                return result;
+            };
             this.execute = Object.assign(execute_send, {
-                call: execute_call
+                call: execute_call,
+                txData: execute_txData
             });
         }
     }
@@ -7328,8 +8348,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapETHForExactTokens', swapETHForExactTokensParams(params), options);
                 return result.map(e => new eth_contract_36.BigNumber(e));
             };
+            let swapETHForExactTokens_txData = async (params, options) => {
+                let result = await this.txData('swapETHForExactTokens', swapETHForExactTokensParams(params), options);
+                return result;
+            };
             this.swapETHForExactTokens = Object.assign(swapETHForExactTokens_send, {
-                call: swapETHForExactTokens_call
+                call: swapETHForExactTokens_call,
+                txData: swapETHForExactTokens_txData
             });
             let swapExactETHForTokensParams = (params) => [this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.pair, this.wallet.utils.toString(params.fee), this.wallet.utils.stringToBytes(params.data)];
             let swapExactETHForTokens_send = async (params, options) => {
@@ -7340,8 +8365,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapExactETHForTokens', swapExactETHForTokensParams(params), options);
                 return result.map(e => new eth_contract_36.BigNumber(e));
             };
+            let swapExactETHForTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactETHForTokens', swapExactETHForTokensParams(params), options);
+                return result;
+            };
             this.swapExactETHForTokens = Object.assign(swapExactETHForTokens_send, {
-                call: swapExactETHForTokens_call
+                call: swapExactETHForTokens_call,
+                txData: swapExactETHForTokens_txData
             });
             let swapExactETHForTokensSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.pair, this.wallet.utils.toString(params.fee)];
             let swapExactETHForTokensSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -7352,8 +8382,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapExactETHForTokensSupportingFeeOnTransferTokens', swapExactETHForTokensSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactETHForTokensSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactETHForTokensSupportingFeeOnTransferTokens', swapExactETHForTokensSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactETHForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactETHForTokensSupportingFeeOnTransferTokens_send, {
-                call: swapExactETHForTokensSupportingFeeOnTransferTokens_call
+                call: swapExactETHForTokensSupportingFeeOnTransferTokens_call,
+                txData: swapExactETHForTokensSupportingFeeOnTransferTokens_txData
             });
             let swapExactTokensForETHParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.pair, this.wallet.utils.toString(params.fee), this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForETH_send = async (params, options) => {
@@ -7364,8 +8399,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapExactTokensForETH', swapExactTokensForETHParams(params), options);
                 return result.map(e => new eth_contract_36.BigNumber(e));
             };
+            let swapExactTokensForETH_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForETH', swapExactTokensForETHParams(params), options);
+                return result;
+            };
             this.swapExactTokensForETH = Object.assign(swapExactTokensForETH_send, {
-                call: swapExactTokensForETH_call
+                call: swapExactTokensForETH_call,
+                txData: swapExactTokensForETH_txData
             });
             let swapExactTokensForETHSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.pair, this.wallet.utils.toString(params.fee)];
             let swapExactTokensForETHSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -7376,8 +8416,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapExactTokensForETHSupportingFeeOnTransferTokens', swapExactTokensForETHSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactTokensForETHSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForETHSupportingFeeOnTransferTokens', swapExactTokensForETHSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForETHSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForETHSupportingFeeOnTransferTokens_send, {
-                call: swapExactTokensForETHSupportingFeeOnTransferTokens_call
+                call: swapExactTokensForETHSupportingFeeOnTransferTokens_call,
+                txData: swapExactTokensForETHSupportingFeeOnTransferTokens_txData
             });
             let swapExactTokensForTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.pair, this.wallet.utils.toString(params.fee), this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForTokens_send = async (params, options) => {
@@ -7388,8 +8433,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapExactTokensForTokens', swapExactTokensForTokensParams(params), options);
                 return result.map(e => new eth_contract_36.BigNumber(e));
             };
+            let swapExactTokensForTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForTokens', swapExactTokensForTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForTokens = Object.assign(swapExactTokensForTokens_send, {
-                call: swapExactTokensForTokens_call
+                call: swapExactTokensForTokens_call,
+                txData: swapExactTokensForTokens_txData
             });
             let swapExactTokensForTokensSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.pair, this.wallet.utils.toString(params.fee)];
             let swapExactTokensForTokensSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -7400,8 +8450,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapExactTokensForTokensSupportingFeeOnTransferTokens', swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactTokensForTokensSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForTokensSupportingFeeOnTransferTokens', swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForTokensSupportingFeeOnTransferTokens_send, {
-                call: swapExactTokensForTokensSupportingFeeOnTransferTokens_call
+                call: swapExactTokensForTokensSupportingFeeOnTransferTokens_call,
+                txData: swapExactTokensForTokensSupportingFeeOnTransferTokens_txData
             });
             let swapTokensForExactETHParams = (params) => [this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.amountInMax), params.path, params.to, this.wallet.utils.toString(params.deadline), params.pair, this.wallet.utils.toString(params.fee), this.wallet.utils.stringToBytes(params.data)];
             let swapTokensForExactETH_send = async (params, options) => {
@@ -7412,8 +8467,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapTokensForExactETH', swapTokensForExactETHParams(params), options);
                 return result.map(e => new eth_contract_36.BigNumber(e));
             };
+            let swapTokensForExactETH_txData = async (params, options) => {
+                let result = await this.txData('swapTokensForExactETH', swapTokensForExactETHParams(params), options);
+                return result;
+            };
             this.swapTokensForExactETH = Object.assign(swapTokensForExactETH_send, {
-                call: swapTokensForExactETH_call
+                call: swapTokensForExactETH_call,
+                txData: swapTokensForExactETH_txData
             });
             let swapTokensForExactTokensParams = (params) => [this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.amountInMax), params.path, params.to, this.wallet.utils.toString(params.deadline), params.pair, this.wallet.utils.toString(params.fee), this.wallet.utils.stringToBytes(params.data)];
             let swapTokensForExactTokens_send = async (params, options) => {
@@ -7424,8 +8484,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
                 let result = await this.call('swapTokensForExactTokens', swapTokensForExactTokensParams(params), options);
                 return result.map(e => new eth_contract_36.BigNumber(e));
             };
+            let swapTokensForExactTokens_txData = async (params, options) => {
+                let result = await this.txData('swapTokensForExactTokens', swapTokensForExactTokensParams(params), options);
+                return result;
+            };
             this.swapTokensForExactTokens = Object.assign(swapTokensForExactTokens_send, {
-                call: swapTokensForExactTokens_call
+                call: swapTokensForExactTokens_call,
+                txData: swapTokensForExactTokens_txData
             });
         }
     }
@@ -7613,8 +8678,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('execute', [this.wallet.utils.stringToBytes32(params)], options);
                 return;
             };
+            let execute_txData = async (params, options) => {
+                let result = await this.txData('execute', [this.wallet.utils.stringToBytes32(params)], options);
+                return result;
+            };
             this.execute = Object.assign(execute_send, {
-                call: execute_call
+                call: execute_call,
+                txData: execute_txData
             });
             let initParams = (params) => [this.wallet.utils.stringToBytes32(params.name), params.factory, this.wallet.utils.toString(params.fee), this.wallet.utils.toString(params.feeBase), this.wallet.utils.toString(params.typeCode)];
             let init_send = async (params, options) => {
@@ -7625,8 +8695,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('init', initParams(params), options);
                 return;
             };
+            let init_txData = async (params, options) => {
+                let result = await this.txData('init', initParams(params), options);
+                return result;
+            };
             this.init = Object.assign(init_send, {
-                call: init_call
+                call: init_call,
+                txData: init_txData
             });
             let registerPairParams = (params) => [params.token0, params.token1, params.pairAddress, this.wallet.utils.toString(params.fee), this.wallet.utils.toString(params.feeBase), this.wallet.utils.toString(params.typeCode)];
             let registerPair_send = async (params, options) => {
@@ -7637,8 +8712,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPair', registerPairParams(params), options);
                 return;
             };
+            let registerPair_txData = async (params, options) => {
+                let result = await this.txData('registerPair', registerPairParams(params), options);
+                return result;
+            };
             this.registerPair = Object.assign(registerPair_send, {
-                call: registerPair_call
+                call: registerPair_call,
+                txData: registerPair_txData
             });
             let registerPairByAddressParams = (params) => [params.factory, params.pairAddress];
             let registerPairByAddress_send = async (params, options) => {
@@ -7649,8 +8729,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairByAddress', registerPairByAddressParams(params), options);
                 return;
             };
+            let registerPairByAddress_txData = async (params, options) => {
+                let result = await this.txData('registerPairByAddress', registerPairByAddressParams(params), options);
+                return result;
+            };
             this.registerPairByAddress = Object.assign(registerPairByAddress_send, {
-                call: registerPairByAddress_call
+                call: registerPairByAddress_call,
+                txData: registerPairByAddress_txData
             });
             let registerPairByIndexParams = (params) => [params.factory, this.wallet.utils.toString(params.index)];
             let registerPairByIndex_send = async (params, options) => {
@@ -7661,8 +8746,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairByIndex', registerPairByIndexParams(params), options);
                 return;
             };
+            let registerPairByIndex_txData = async (params, options) => {
+                let result = await this.txData('registerPairByIndex', registerPairByIndexParams(params), options);
+                return result;
+            };
             this.registerPairByIndex = Object.assign(registerPairByIndex_send, {
-                call: registerPairByIndex_call
+                call: registerPairByIndex_call,
+                txData: registerPairByIndex_txData
             });
             let registerPairByTokensParams = (params) => [params.factory, params.token0, params.token1];
             let registerPairByTokens_send = async (params, options) => {
@@ -7673,8 +8763,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairByTokens', registerPairByTokensParams(params), options);
                 return;
             };
+            let registerPairByTokens_txData = async (params, options) => {
+                let result = await this.txData('registerPairByTokens', registerPairByTokensParams(params), options);
+                return result;
+            };
             this.registerPairByTokens = Object.assign(registerPairByTokens_send, {
-                call: registerPairByTokens_call
+                call: registerPairByTokens_call,
+                txData: registerPairByTokens_txData
             });
             let registerPairByTokensV3Params = (params) => [params.factory, params.token0, params.token1, this.wallet.utils.toString(params.pairIndex)];
             let registerPairByTokensV3_send = async (params, options) => {
@@ -7685,8 +8780,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairByTokensV3', registerPairByTokensV3Params(params), options);
                 return;
             };
+            let registerPairByTokensV3_txData = async (params, options) => {
+                let result = await this.txData('registerPairByTokensV3', registerPairByTokensV3Params(params), options);
+                return result;
+            };
             this.registerPairByTokensV3 = Object.assign(registerPairByTokensV3_send, {
-                call: registerPairByTokensV3_call
+                call: registerPairByTokensV3_call,
+                txData: registerPairByTokensV3_txData
             });
             let registerPairsByAddressParams = (params) => [params.factory, params.pairAddress];
             let registerPairsByAddress_send = async (params, options) => {
@@ -7697,8 +8797,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairsByAddress', registerPairsByAddressParams(params), options);
                 return;
             };
+            let registerPairsByAddress_txData = async (params, options) => {
+                let result = await this.txData('registerPairsByAddress', registerPairsByAddressParams(params), options);
+                return result;
+            };
             this.registerPairsByAddress = Object.assign(registerPairsByAddress_send, {
-                call: registerPairsByAddress_call
+                call: registerPairsByAddress_call,
+                txData: registerPairsByAddress_txData
             });
             let registerPairsByAddress2Params = (params) => [params.factory, params.pairAddress];
             let registerPairsByAddress2_send = async (params, options) => {
@@ -7709,8 +8814,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairsByAddress2', registerPairsByAddress2Params(params), options);
                 return;
             };
+            let registerPairsByAddress2_txData = async (params, options) => {
+                let result = await this.txData('registerPairsByAddress2', registerPairsByAddress2Params(params), options);
+                return result;
+            };
             this.registerPairsByAddress2 = Object.assign(registerPairsByAddress2_send, {
-                call: registerPairsByAddress2_call
+                call: registerPairsByAddress2_call,
+                txData: registerPairsByAddress2_txData
             });
             let registerPairsByIndexParams = (params) => [params.factory, this.wallet.utils.toString(params.index)];
             let registerPairsByIndex_send = async (params, options) => {
@@ -7721,8 +8831,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairsByIndex', registerPairsByIndexParams(params), options);
                 return;
             };
+            let registerPairsByIndex_txData = async (params, options) => {
+                let result = await this.txData('registerPairsByIndex', registerPairsByIndexParams(params), options);
+                return result;
+            };
             this.registerPairsByIndex = Object.assign(registerPairsByIndex_send, {
-                call: registerPairsByIndex_call
+                call: registerPairsByIndex_call,
+                txData: registerPairsByIndex_txData
             });
             let registerPairsByTokensParams = (params) => [params.factory, params.token0, params.token1];
             let registerPairsByTokens_send = async (params, options) => {
@@ -7733,8 +8848,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairsByTokens', registerPairsByTokensParams(params), options);
                 return;
             };
+            let registerPairsByTokens_txData = async (params, options) => {
+                let result = await this.txData('registerPairsByTokens', registerPairsByTokensParams(params), options);
+                return result;
+            };
             this.registerPairsByTokens = Object.assign(registerPairsByTokens_send, {
-                call: registerPairsByTokens_call
+                call: registerPairsByTokens_call,
+                txData: registerPairsByTokens_txData
             });
             let registerPairsByTokensV3Params = (params) => [params.factory, params.token0, params.token1, this.wallet.utils.toString(params.pairIndex)];
             let registerPairsByTokensV3_send = async (params, options) => {
@@ -7745,8 +8865,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerPairsByTokensV3', registerPairsByTokensV3Params(params), options);
                 return;
             };
+            let registerPairsByTokensV3_txData = async (params, options) => {
+                let result = await this.txData('registerPairsByTokensV3', registerPairsByTokensV3Params(params), options);
+                return result;
+            };
             this.registerPairsByTokensV3 = Object.assign(registerPairsByTokensV3_send, {
-                call: registerPairsByTokensV3_call
+                call: registerPairsByTokensV3_call,
+                txData: registerPairsByTokensV3_txData
             });
             let registerProtocolParams = (params) => [this.wallet.utils.stringToBytes32(params.name), params.factory, this.wallet.utils.toString(params.fee), this.wallet.utils.toString(params.feeBase), this.wallet.utils.toString(params.typeCode)];
             let registerProtocol_send = async (params, options) => {
@@ -7757,8 +8882,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('registerProtocol', registerProtocolParams(params), options);
                 return;
             };
+            let registerProtocol_txData = async (params, options) => {
+                let result = await this.txData('registerProtocol', registerProtocolParams(params), options);
+                return result;
+            };
             this.registerProtocol = Object.assign(registerProtocol_send, {
-                call: registerProtocol_call
+                call: registerProtocol_call,
+                txData: registerProtocol_txData
             });
             let renounceOwnership_send = async (options) => {
                 let result = await this.send('renounceOwnership', [], options);
@@ -7768,8 +8898,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('renounceOwnership', [], options);
                 return;
             };
+            let renounceOwnership_txData = async (options) => {
+                let result = await this.txData('renounceOwnership', [], options);
+                return result;
+            };
             this.renounceOwnership = Object.assign(renounceOwnership_send, {
-                call: renounceOwnership_call
+                call: renounceOwnership_call,
+                txData: renounceOwnership_txData
             });
             let transferOwnership_send = async (newOwner, options) => {
                 let result = await this.send('transferOwnership', [newOwner], options);
@@ -7779,8 +8914,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
                 let result = await this.call('transferOwnership', [newOwner], options);
                 return;
             };
+            let transferOwnership_txData = async (newOwner, options) => {
+                let result = await this.txData('transferOwnership', [newOwner], options);
+                return result;
+            };
             this.transferOwnership = Object.assign(transferOwnership_send, {
-                call: transferOwnership_call
+                call: transferOwnership_call,
+                txData: transferOwnership_txData
             });
         }
     }
@@ -7883,8 +9023,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapETHForExactTokens', swapETHForExactTokensParams(params), options);
                 return result.map(e => new eth_contract_38.BigNumber(e));
             };
+            let swapETHForExactTokens_txData = async (params, options) => {
+                let result = await this.txData('swapETHForExactTokens', swapETHForExactTokensParams(params), options);
+                return result;
+            };
             this.swapETHForExactTokens = Object.assign(swapETHForExactTokens_send, {
-                call: swapETHForExactTokens_call
+                call: swapETHForExactTokens_call,
+                txData: swapETHForExactTokens_txData
             });
             let swapExactETHForTokensParams = (params) => [this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.useOracle, this.wallet.utils.stringToBytes(params.data)];
             let swapExactETHForTokens_send = async (params, options) => {
@@ -7895,8 +9040,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapExactETHForTokens', swapExactETHForTokensParams(params), options);
                 return result.map(e => new eth_contract_38.BigNumber(e));
             };
+            let swapExactETHForTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactETHForTokens', swapExactETHForTokensParams(params), options);
+                return result;
+            };
             this.swapExactETHForTokens = Object.assign(swapExactETHForTokens_send, {
-                call: swapExactETHForTokens_call
+                call: swapExactETHForTokens_call,
+                txData: swapExactETHForTokens_txData
             });
             let swapExactETHForTokensSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.useOracle, this.wallet.utils.stringToBytes(params.data)];
             let swapExactETHForTokensSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -7907,8 +9057,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapExactETHForTokensSupportingFeeOnTransferTokens', swapExactETHForTokensSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactETHForTokensSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactETHForTokensSupportingFeeOnTransferTokens', swapExactETHForTokensSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactETHForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactETHForTokensSupportingFeeOnTransferTokens_send, {
-                call: swapExactETHForTokensSupportingFeeOnTransferTokens_call
+                call: swapExactETHForTokensSupportingFeeOnTransferTokens_call,
+                txData: swapExactETHForTokensSupportingFeeOnTransferTokens_txData
             });
             let swapExactTokensForETHParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.useOracle, this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForETH_send = async (params, options) => {
@@ -7919,8 +9074,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapExactTokensForETH', swapExactTokensForETHParams(params), options);
                 return result.map(e => new eth_contract_38.BigNumber(e));
             };
+            let swapExactTokensForETH_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForETH', swapExactTokensForETHParams(params), options);
+                return result;
+            };
             this.swapExactTokensForETH = Object.assign(swapExactTokensForETH_send, {
-                call: swapExactTokensForETH_call
+                call: swapExactTokensForETH_call,
+                txData: swapExactTokensForETH_txData
             });
             let swapExactTokensForETHSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.useOracle, this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForETHSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -7931,8 +9091,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapExactTokensForETHSupportingFeeOnTransferTokens', swapExactTokensForETHSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactTokensForETHSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForETHSupportingFeeOnTransferTokens', swapExactTokensForETHSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForETHSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForETHSupportingFeeOnTransferTokens_send, {
-                call: swapExactTokensForETHSupportingFeeOnTransferTokens_call
+                call: swapExactTokensForETHSupportingFeeOnTransferTokens_call,
+                txData: swapExactTokensForETHSupportingFeeOnTransferTokens_txData
             });
             let swapExactTokensForTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.useOracle, this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForTokens_send = async (params, options) => {
@@ -7943,8 +9108,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapExactTokensForTokens', swapExactTokensForTokensParams(params), options);
                 return result.map(e => new eth_contract_38.BigNumber(e));
             };
+            let swapExactTokensForTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForTokens', swapExactTokensForTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForTokens = Object.assign(swapExactTokensForTokens_send, {
-                call: swapExactTokensForTokens_call
+                call: swapExactTokensForTokens_call,
+                txData: swapExactTokensForTokens_txData
             });
             let swapExactTokensForTokensSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.path, params.to, this.wallet.utils.toString(params.deadline), params.useOracle, this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForTokensSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -7955,8 +9125,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapExactTokensForTokensSupportingFeeOnTransferTokens', swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactTokensForTokensSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForTokensSupportingFeeOnTransferTokens', swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForTokensSupportingFeeOnTransferTokens_send, {
-                call: swapExactTokensForTokensSupportingFeeOnTransferTokens_call
+                call: swapExactTokensForTokensSupportingFeeOnTransferTokens_call,
+                txData: swapExactTokensForTokensSupportingFeeOnTransferTokens_txData
             });
             let swapTokensForExactETHParams = (params) => [this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.amountInMax), params.path, params.to, this.wallet.utils.toString(params.deadline), params.useOracle, this.wallet.utils.stringToBytes(params.data)];
             let swapTokensForExactETH_send = async (params, options) => {
@@ -7967,8 +9142,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapTokensForExactETH', swapTokensForExactETHParams(params), options);
                 return result.map(e => new eth_contract_38.BigNumber(e));
             };
+            let swapTokensForExactETH_txData = async (params, options) => {
+                let result = await this.txData('swapTokensForExactETH', swapTokensForExactETHParams(params), options);
+                return result;
+            };
             this.swapTokensForExactETH = Object.assign(swapTokensForExactETH_send, {
-                call: swapTokensForExactETH_call
+                call: swapTokensForExactETH_call,
+                txData: swapTokensForExactETH_txData
             });
             let swapTokensForExactTokensParams = (params) => [this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.amountInMax), params.path, params.to, this.wallet.utils.toString(params.deadline), params.useOracle, this.wallet.utils.stringToBytes(params.data)];
             let swapTokensForExactTokens_send = async (params, options) => {
@@ -7979,8 +9159,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
                 let result = await this.call('swapTokensForExactTokens', swapTokensForExactTokensParams(params), options);
                 return result.map(e => new eth_contract_38.BigNumber(e));
             };
+            let swapTokensForExactTokens_txData = async (params, options) => {
+                let result = await this.txData('swapTokensForExactTokens', swapTokensForExactTokensParams(params), options);
+                return result;
+            };
             this.swapTokensForExactTokens = Object.assign(swapTokensForExactTokens_send, {
-                call: swapTokensForExactTokens_call
+                call: swapTokensForExactTokens_call,
+                txData: swapTokensForExactTokens_txData
             });
         }
     }
@@ -8399,8 +9584,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return;
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let createOrderParams = (params) => [params.provider, params.direction, params.allowAll, this.wallet.utils.toString(params.restrictedPrice), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire)];
             let createOrder_send = async (params, options) => {
@@ -8411,8 +9601,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('createOrder', createOrderParams(params), options);
                 return new eth_contract_39.BigNumber(result);
             };
+            let createOrder_txData = async (params, options) => {
+                let result = await this.txData('createOrder', createOrderParams(params), options);
+                return result;
+            };
             this.createOrder = Object.assign(createOrder_send, {
-                call: createOrder_call
+                call: createOrder_call,
+                txData: createOrder_txData
             });
             let initializeParams = (params) => [params.token0, params.token1];
             let initialize_send = async (params, options) => {
@@ -8423,8 +9618,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('initialize', initializeParams(params), options);
                 return;
             };
+            let initialize_txData = async (params, options) => {
+                let result = await this.txData('initialize', initializeParams(params), options);
+                return result;
+            };
             this.initialize = Object.assign(initialize_send, {
-                call: initialize_call
+                call: initialize_call,
+                txData: initialize_txData
             });
             let lockOfferParams = (params) => [params.direction, this.wallet.utils.toString(params.index)];
             let lockOffer_send = async (params, options) => {
@@ -8435,8 +9635,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('lockOffer', lockOfferParams(params), options);
                 return;
             };
+            let lockOffer_txData = async (params, options) => {
+                let result = await this.txData('lockOffer', lockOfferParams(params), options);
+                return result;
+            };
             this.lockOffer = Object.assign(lockOffer_send, {
-                call: lockOffer_call
+                call: lockOffer_call,
+                txData: lockOffer_txData
             });
             let redeemProtocolFee_send = async (options) => {
                 let result = await this.send('redeemProtocolFee', [], options);
@@ -8446,8 +9651,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('redeemProtocolFee', [], options);
                 return;
             };
+            let redeemProtocolFee_txData = async (options) => {
+                let result = await this.txData('redeemProtocolFee', [], options);
+                return result;
+            };
             this.redeemProtocolFee = Object.assign(redeemProtocolFee_send, {
-                call: redeemProtocolFee_call
+                call: redeemProtocolFee_call,
+                txData: redeemProtocolFee_txData
             });
             let removeAllLiquidity_send = async (provider, options) => {
                 let result = await this.send('removeAllLiquidity', [provider], options);
@@ -8460,8 +9670,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                     amount1: new eth_contract_39.BigNumber(result.amount1)
                 };
             };
+            let removeAllLiquidity_txData = async (provider, options) => {
+                let result = await this.txData('removeAllLiquidity', [provider], options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeAllLiquidity1DParams = (params) => [params.provider, params.direction];
             let removeAllLiquidity1D_send = async (params, options) => {
@@ -8475,8 +9690,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                     totalReceiving: new eth_contract_39.BigNumber(result.totalReceiving)
                 };
             };
+            let removeAllLiquidity1D_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidity1D', removeAllLiquidity1DParams(params), options);
+                return result;
+            };
             this.removeAllLiquidity1D = Object.assign(removeAllLiquidity1D_send, {
-                call: removeAllLiquidity1D_call
+                call: removeAllLiquidity1D_call,
+                txData: removeAllLiquidity1D_txData
             });
             let removeLiquidityParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.index), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut)];
             let removeLiquidity_send = async (params, options) => {
@@ -8487,8 +9707,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let setApprovedTraderParams = (params) => [params.direction, this.wallet.utils.toString(params.offerIndex), params.trader, this.wallet.utils.toString(params.allocation)];
             let setApprovedTrader_send = async (params, options) => {
@@ -8499,8 +9724,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('setApprovedTrader', setApprovedTraderParams(params), options);
                 return;
             };
+            let setApprovedTrader_txData = async (params, options) => {
+                let result = await this.txData('setApprovedTrader', setApprovedTraderParams(params), options);
+                return result;
+            };
             this.setApprovedTrader = Object.assign(setApprovedTrader_send, {
-                call: setApprovedTrader_call
+                call: setApprovedTrader_call,
+                txData: setApprovedTrader_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -8510,8 +9740,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setMultipleApprovedTradersParams = (params) => [params.direction, this.wallet.utils.toString(params.offerIndex), params.trader, this.wallet.utils.toString(params.allocation)];
             let setMultipleApprovedTraders_send = async (params, options) => {
@@ -8522,8 +9757,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('setMultipleApprovedTraders', setMultipleApprovedTradersParams(params), options);
                 return;
             };
+            let setMultipleApprovedTraders_txData = async (params, options) => {
+                let result = await this.txData('setMultipleApprovedTraders', setMultipleApprovedTradersParams(params), options);
+                return result;
+            };
             this.setMultipleApprovedTraders = Object.assign(setMultipleApprovedTraders_send, {
-                call: setMultipleApprovedTraders_call
+                call: setMultipleApprovedTraders_call,
+                txData: setMultipleApprovedTraders_txData
             });
             let swapParams = (params) => [this.wallet.utils.toString(params.amount0Out), this.wallet.utils.toString(params.amount1Out), params.to, params.trader, this.wallet.utils.stringToBytes(params.param5)];
             let swap_send = async (params, options) => {
@@ -8534,8 +9774,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('swap', swapParams(params), options);
                 return;
             };
+            let swap_txData = async (params, options) => {
+                let result = await this.txData('swap', swapParams(params), options);
+                return result;
+            };
             this.swap = Object.assign(swap_send, {
-                call: swap_call
+                call: swap_call,
+                txData: swap_txData
             });
             let sync_send = async (options) => {
                 let result = await this.send('sync', [], options);
@@ -8545,8 +9790,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
                 let result = await this.call('sync', [], options);
                 return;
             };
+            let sync_txData = async (options) => {
+                let result = await this.txData('sync', [], options);
+                return result;
+            };
             this.sync = Object.assign(sync_send, {
-                call: sync_call
+                call: sync_call,
+                txData: sync_txData
             });
         }
     }
@@ -8982,8 +10232,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return;
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let createOrderParams = (params) => [params.provider, params.direction, params.allowAll, this.wallet.utils.toString(params.restrictedPrice), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire)];
             let createOrder_send = async (params, options) => {
@@ -8994,8 +10249,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('createOrder', createOrderParams(params), options);
                 return new eth_contract_40.BigNumber(result);
             };
+            let createOrder_txData = async (params, options) => {
+                let result = await this.txData('createOrder', createOrderParams(params), options);
+                return result;
+            };
             this.createOrder = Object.assign(createOrder_send, {
-                call: createOrder_call
+                call: createOrder_call,
+                txData: createOrder_txData
             });
             let initializeParams = (params) => [params.token0, params.token1];
             let initialize_send = async (params, options) => {
@@ -9006,8 +10266,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('initialize', initializeParams(params), options);
                 return;
             };
+            let initialize_txData = async (params, options) => {
+                let result = await this.txData('initialize', initializeParams(params), options);
+                return result;
+            };
             this.initialize = Object.assign(initialize_send, {
-                call: initialize_call
+                call: initialize_call,
+                txData: initialize_txData
             });
             let lockOfferParams = (params) => [params.direction, this.wallet.utils.toString(params.index)];
             let lockOffer_send = async (params, options) => {
@@ -9018,8 +10283,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('lockOffer', lockOfferParams(params), options);
                 return;
             };
+            let lockOffer_txData = async (params, options) => {
+                let result = await this.txData('lockOffer', lockOfferParams(params), options);
+                return result;
+            };
             this.lockOffer = Object.assign(lockOffer_send, {
-                call: lockOffer_call
+                call: lockOffer_call,
+                txData: lockOffer_txData
             });
             let redeemProtocolFee_send = async (options) => {
                 let result = await this.send('redeemProtocolFee', [], options);
@@ -9029,8 +10299,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('redeemProtocolFee', [], options);
                 return;
             };
+            let redeemProtocolFee_txData = async (options) => {
+                let result = await this.txData('redeemProtocolFee', [], options);
+                return result;
+            };
             this.redeemProtocolFee = Object.assign(redeemProtocolFee_send, {
-                call: redeemProtocolFee_call
+                call: redeemProtocolFee_call,
+                txData: redeemProtocolFee_txData
             });
             let removeAllLiquidity_send = async (provider, options) => {
                 let result = await this.send('removeAllLiquidity', [provider], options);
@@ -9044,8 +10319,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                     feeOut: new eth_contract_40.BigNumber(result.feeOut)
                 };
             };
+            let removeAllLiquidity_txData = async (provider, options) => {
+                let result = await this.txData('removeAllLiquidity', [provider], options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeAllLiquidity1DParams = (params) => [params.provider, params.direction];
             let removeAllLiquidity1D_send = async (params, options) => {
@@ -9060,8 +10340,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                     totalRemainingFee: new eth_contract_40.BigNumber(result.totalRemainingFee)
                 };
             };
+            let removeAllLiquidity1D_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidity1D', removeAllLiquidity1DParams(params), options);
+                return result;
+            };
             this.removeAllLiquidity1D = Object.assign(removeAllLiquidity1D_send, {
-                call: removeAllLiquidity1D_call
+                call: removeAllLiquidity1D_call,
+                txData: removeAllLiquidity1D_txData
             });
             let removeLiquidityParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.index), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut), this.wallet.utils.toString(params.feeOut)];
             let removeLiquidity_send = async (params, options) => {
@@ -9072,8 +10357,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let setApprovedTraderBySignatureParams = (params) => [params.direction, this.wallet.utils.toString(params.offerIndex), params.trader, this.wallet.utils.toString(params.allocation), this.wallet.utils.stringToBytes(params.signature)];
             let setApprovedTraderBySignature_send = async (params, options) => {
@@ -9084,8 +10374,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('setApprovedTraderBySignature', setApprovedTraderBySignatureParams(params), options);
                 return;
             };
+            let setApprovedTraderBySignature_txData = async (params, options) => {
+                let result = await this.txData('setApprovedTraderBySignature', setApprovedTraderBySignatureParams(params), options);
+                return result;
+            };
             this.setApprovedTraderBySignature = Object.assign(setApprovedTraderBySignature_send, {
-                call: setApprovedTraderBySignature_call
+                call: setApprovedTraderBySignature_call,
+                txData: setApprovedTraderBySignature_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -9095,8 +10390,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let swapParams = (params) => [this.wallet.utils.toString(params.amount0Out), this.wallet.utils.toString(params.amount1Out), params.to, params.trader, this.wallet.utils.stringToBytes(params.param5)];
             let swap_send = async (params, options) => {
@@ -9107,8 +10407,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('swap', swapParams(params), options);
                 return;
             };
+            let swap_txData = async (params, options) => {
+                let result = await this.txData('swap', swapParams(params), options);
+                return result;
+            };
             this.swap = Object.assign(swap_send, {
-                call: swap_call
+                call: swap_call,
+                txData: swap_txData
             });
             let sync_send = async (options) => {
                 let result = await this.send('sync', [], options);
@@ -9118,8 +10423,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
                 let result = await this.call('sync', [], options);
                 return;
             };
+            let sync_txData = async (options) => {
+                let result = await this.txData('sync', [], options);
+                return result;
+            };
             this.sync = Object.assign(sync_send, {
-                call: sync_call
+                call: sync_call,
+                txData: sync_txData
             });
         }
     }
@@ -9585,8 +10895,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return;
             };
+            let addLiquidity_txData = async (params, options) => {
+                let result = await this.txData('addLiquidity', addLiquidityParams(params), options);
+                return result;
+            };
             this.addLiquidity = Object.assign(addLiquidity_send, {
-                call: addLiquidity_call
+                call: addLiquidity_call,
+                txData: addLiquidity_txData
             });
             let createOrderParams = (params) => [params.provider, params.direction, params.allowAll, this.wallet.utils.toString(params.restrictedPrice), this.wallet.utils.toString(params.startDate), this.wallet.utils.toString(params.expire)];
             let createOrder_send = async (params, options) => {
@@ -9597,8 +10912,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('createOrder', createOrderParams(params), options);
                 return new eth_contract_41.BigNumber(result);
             };
+            let createOrder_txData = async (params, options) => {
+                let result = await this.txData('createOrder', createOrderParams(params), options);
+                return result;
+            };
             this.createOrder = Object.assign(createOrder_send, {
-                call: createOrder_call
+                call: createOrder_call,
+                txData: createOrder_txData
             });
             let initializeParams = (params) => [params.token0, params.token1];
             let initialize_send = async (params, options) => {
@@ -9609,8 +10929,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('initialize', initializeParams(params), options);
                 return;
             };
+            let initialize_txData = async (params, options) => {
+                let result = await this.txData('initialize', initializeParams(params), options);
+                return result;
+            };
             this.initialize = Object.assign(initialize_send, {
-                call: initialize_call
+                call: initialize_call,
+                txData: initialize_txData
             });
             let lockOfferParams = (params) => [params.direction, this.wallet.utils.toString(params.index)];
             let lockOffer_send = async (params, options) => {
@@ -9621,8 +10946,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('lockOffer', lockOfferParams(params), options);
                 return;
             };
+            let lockOffer_txData = async (params, options) => {
+                let result = await this.txData('lockOffer', lockOfferParams(params), options);
+                return result;
+            };
             this.lockOffer = Object.assign(lockOffer_send, {
-                call: lockOffer_call
+                call: lockOffer_call,
+                txData: lockOffer_txData
             });
             let redeemProtocolFee_send = async (options) => {
                 let result = await this.send('redeemProtocolFee', [], options);
@@ -9632,8 +10962,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('redeemProtocolFee', [], options);
                 return;
             };
+            let redeemProtocolFee_txData = async (options) => {
+                let result = await this.txData('redeemProtocolFee', [], options);
+                return result;
+            };
             this.redeemProtocolFee = Object.assign(redeemProtocolFee_send, {
-                call: redeemProtocolFee_call
+                call: redeemProtocolFee_call,
+                txData: redeemProtocolFee_txData
             });
             let removeAllLiquidity_send = async (provider, options) => {
                 let result = await this.send('removeAllLiquidity', [provider], options);
@@ -9647,8 +10982,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                     feeOut: new eth_contract_41.BigNumber(result.feeOut)
                 };
             };
+            let removeAllLiquidity_txData = async (provider, options) => {
+                let result = await this.txData('removeAllLiquidity', [provider], options);
+                return result;
+            };
             this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
-                call: removeAllLiquidity_call
+                call: removeAllLiquidity_call,
+                txData: removeAllLiquidity_txData
             });
             let removeAllLiquidity1DParams = (params) => [params.provider, params.direction];
             let removeAllLiquidity1D_send = async (params, options) => {
@@ -9663,8 +11003,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                     totalRemainingFee: new eth_contract_41.BigNumber(result.totalRemainingFee)
                 };
             };
+            let removeAllLiquidity1D_txData = async (params, options) => {
+                let result = await this.txData('removeAllLiquidity1D', removeAllLiquidity1DParams(params), options);
+                return result;
+            };
             this.removeAllLiquidity1D = Object.assign(removeAllLiquidity1D_send, {
-                call: removeAllLiquidity1D_call
+                call: removeAllLiquidity1D_call,
+                txData: removeAllLiquidity1D_txData
             });
             let removeLiquidityParams = (params) => [params.provider, params.direction, this.wallet.utils.toString(params.index), this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.receivingOut), this.wallet.utils.toString(params.feeOut)];
             let removeLiquidity_send = async (params, options) => {
@@ -9675,8 +11020,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('removeLiquidity', removeLiquidityParams(params), options);
                 return;
             };
+            let removeLiquidity_txData = async (params, options) => {
+                let result = await this.txData('removeLiquidity', removeLiquidityParams(params), options);
+                return result;
+            };
             this.removeLiquidity = Object.assign(removeLiquidity_send, {
-                call: removeLiquidity_call
+                call: removeLiquidity_call,
+                txData: removeLiquidity_txData
             });
             let setApprovedTraderByMerkleProofParams = (params) => [params.direction, this.wallet.utils.toString(params.offerIndex), params.trader, this.wallet.utils.toString(params.allocation), this.wallet.utils.stringToBytes32(params.proof)];
             let setApprovedTraderByMerkleProof_send = async (params, options) => {
@@ -9687,8 +11037,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('setApprovedTraderByMerkleProof', setApprovedTraderByMerkleProofParams(params), options);
                 return;
             };
+            let setApprovedTraderByMerkleProof_txData = async (params, options) => {
+                let result = await this.txData('setApprovedTraderByMerkleProof', setApprovedTraderByMerkleProofParams(params), options);
+                return result;
+            };
             this.setApprovedTraderByMerkleProof = Object.assign(setApprovedTraderByMerkleProof_send, {
-                call: setApprovedTraderByMerkleProof_call
+                call: setApprovedTraderByMerkleProof_call,
+                txData: setApprovedTraderByMerkleProof_txData
             });
             let setLive_send = async (isLive, options) => {
                 let result = await this.send('setLive', [isLive], options);
@@ -9698,8 +11053,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('setLive', [isLive], options);
                 return;
             };
+            let setLive_txData = async (isLive, options) => {
+                let result = await this.txData('setLive', [isLive], options);
+                return result;
+            };
             this.setLive = Object.assign(setLive_send, {
-                call: setLive_call
+                call: setLive_call,
+                txData: setLive_txData
             });
             let setMerkleRootParams = (params) => [params.direction, this.wallet.utils.toString(params.index), this.wallet.utils.stringToBytes32(params.merkleRoot), params.ipfsCid];
             let setMerkleRoot_send = async (params, options) => {
@@ -9710,8 +11070,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('setMerkleRoot', setMerkleRootParams(params), options);
                 return;
             };
+            let setMerkleRoot_txData = async (params, options) => {
+                let result = await this.txData('setMerkleRoot', setMerkleRootParams(params), options);
+                return result;
+            };
             this.setMerkleRoot = Object.assign(setMerkleRoot_send, {
-                call: setMerkleRoot_call
+                call: setMerkleRoot_call,
+                txData: setMerkleRoot_txData
             });
             let swapParams = (params) => [this.wallet.utils.toString(params.amount0Out), this.wallet.utils.toString(params.amount1Out), params.to, params.trader, this.wallet.utils.stringToBytes(params.param5)];
             let swap_send = async (params, options) => {
@@ -9722,8 +11087,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('swap', swapParams(params), options);
                 return;
             };
+            let swap_txData = async (params, options) => {
+                let result = await this.txData('swap', swapParams(params), options);
+                return result;
+            };
             this.swap = Object.assign(swap_send, {
-                call: swap_call
+                call: swap_call,
+                txData: swap_txData
             });
             let sync_send = async (options) => {
                 let result = await this.send('sync', [], options);
@@ -9733,8 +11103,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
                 let result = await this.call('sync', [], options);
                 return;
             };
+            let sync_txData = async (options) => {
+                let result = await this.txData('sync', [], options);
+                return result;
+            };
             this.sync = Object.assign(sync_send, {
-                call: sync_call
+                call: sync_call,
+                txData: sync_txData
             });
         }
     }
@@ -9773,8 +11148,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairC
                 let result = await this.call('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
                 return result;
             };
+            let createPair_txData = async (salt, options) => {
+                let result = await this.txData('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
         }
     }
@@ -9813,8 +11193,13 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairC
                 let result = await this.call('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
                 return result;
             };
+            let createPair_txData = async (salt, options) => {
+                let result = await this.txData('createPair', [this.wallet.utils.stringToBytes32(salt)], options);
+                return result;
+            };
             this.createPair = Object.assign(createPair_send, {
-                call: createPair_call
+                call: createPair_call,
+                txData: createPair_txData
             });
         }
     }
@@ -9921,8 +11306,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                     amounts: result.amounts.map(e => new eth_contract_44.BigNumber(e))
                 };
             };
+            let swapETHForExactTokens_txData = async (params, options) => {
+                let result = await this.txData('swapETHForExactTokens', swapETHForExactTokensParams(params), options);
+                return result;
+            };
             this.swapETHForExactTokens = Object.assign(swapETHForExactTokens_send, {
-                call: swapETHForExactTokens_call
+                call: swapETHForExactTokens_call,
+                txData: swapETHForExactTokens_txData
             });
             let swapExactETHForTokensParams = (params) => [this.wallet.utils.toString(params.amountOutMin), params.pair, params.to, this.wallet.utils.toString(params.deadline), this.wallet.utils.stringToBytes(params.data)];
             let swapExactETHForTokens_send = async (params, options) => {
@@ -9936,8 +11326,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                     amounts: result.amounts.map(e => new eth_contract_44.BigNumber(e))
                 };
             };
+            let swapExactETHForTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactETHForTokens', swapExactETHForTokensParams(params), options);
+                return result;
+            };
             this.swapExactETHForTokens = Object.assign(swapExactETHForTokens_send, {
-                call: swapExactETHForTokens_call
+                call: swapExactETHForTokens_call,
+                txData: swapExactETHForTokens_txData
             });
             let swapExactETHForTokensSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountOutMin), params.pair, params.to, this.wallet.utils.toString(params.deadline), this.wallet.utils.stringToBytes(params.data)];
             let swapExactETHForTokensSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -9948,8 +11343,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                 let result = await this.call('swapExactETHForTokensSupportingFeeOnTransferTokens', swapExactETHForTokensSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactETHForTokensSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactETHForTokensSupportingFeeOnTransferTokens', swapExactETHForTokensSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactETHForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactETHForTokensSupportingFeeOnTransferTokens_send, {
-                call: swapExactETHForTokensSupportingFeeOnTransferTokens_call
+                call: swapExactETHForTokensSupportingFeeOnTransferTokens_call,
+                txData: swapExactETHForTokensSupportingFeeOnTransferTokens_txData
             });
             let swapExactTokensForETHParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.pair, params.to, this.wallet.utils.toString(params.deadline), this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForETH_send = async (params, options) => {
@@ -9963,8 +11363,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                     amounts: result.amounts.map(e => new eth_contract_44.BigNumber(e))
                 };
             };
+            let swapExactTokensForETH_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForETH', swapExactTokensForETHParams(params), options);
+                return result;
+            };
             this.swapExactTokensForETH = Object.assign(swapExactTokensForETH_send, {
-                call: swapExactTokensForETH_call
+                call: swapExactTokensForETH_call,
+                txData: swapExactTokensForETH_txData
             });
             let swapExactTokensForETHSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.pair, params.to, this.wallet.utils.toString(params.deadline), this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForETHSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -9975,8 +11380,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                 let result = await this.call('swapExactTokensForETHSupportingFeeOnTransferTokens', swapExactTokensForETHSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactTokensForETHSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForETHSupportingFeeOnTransferTokens', swapExactTokensForETHSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForETHSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForETHSupportingFeeOnTransferTokens_send, {
-                call: swapExactTokensForETHSupportingFeeOnTransferTokens_call
+                call: swapExactTokensForETHSupportingFeeOnTransferTokens_call,
+                txData: swapExactTokensForETHSupportingFeeOnTransferTokens_txData
             });
             let swapExactTokensForTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.pair, params.tokenIn, params.to, this.wallet.utils.toString(params.deadline), this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForTokens_send = async (params, options) => {
@@ -9990,8 +11400,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                     amounts: result.amounts.map(e => new eth_contract_44.BigNumber(e))
                 };
             };
+            let swapExactTokensForTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForTokens', swapExactTokensForTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForTokens = Object.assign(swapExactTokensForTokens_send, {
-                call: swapExactTokensForTokens_call
+                call: swapExactTokensForTokens_call,
+                txData: swapExactTokensForTokens_txData
             });
             let swapExactTokensForTokensSupportingFeeOnTransferTokensParams = (params) => [this.wallet.utils.toString(params.amountIn), this.wallet.utils.toString(params.amountOutMin), params.pair, params.tokenIn, params.to, this.wallet.utils.toString(params.deadline), this.wallet.utils.stringToBytes(params.data)];
             let swapExactTokensForTokensSupportingFeeOnTransferTokens_send = async (params, options) => {
@@ -10002,8 +11417,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                 let result = await this.call('swapExactTokensForTokensSupportingFeeOnTransferTokens', swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params), options);
                 return;
             };
+            let swapExactTokensForTokensSupportingFeeOnTransferTokens_txData = async (params, options) => {
+                let result = await this.txData('swapExactTokensForTokensSupportingFeeOnTransferTokens', swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params), options);
+                return result;
+            };
             this.swapExactTokensForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForTokensSupportingFeeOnTransferTokens_send, {
-                call: swapExactTokensForTokensSupportingFeeOnTransferTokens_call
+                call: swapExactTokensForTokensSupportingFeeOnTransferTokens_call,
+                txData: swapExactTokensForTokensSupportingFeeOnTransferTokens_txData
             });
             let swapTokensForExactETHParams = (params) => [this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.amountInMax), params.pair, params.to, this.wallet.utils.toString(params.deadline), this.wallet.utils.stringToBytes(params.data)];
             let swapTokensForExactETH_send = async (params, options) => {
@@ -10017,8 +11437,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                     amounts: result.amounts.map(e => new eth_contract_44.BigNumber(e))
                 };
             };
+            let swapTokensForExactETH_txData = async (params, options) => {
+                let result = await this.txData('swapTokensForExactETH', swapTokensForExactETHParams(params), options);
+                return result;
+            };
             this.swapTokensForExactETH = Object.assign(swapTokensForExactETH_send, {
-                call: swapTokensForExactETH_call
+                call: swapTokensForExactETH_call,
+                txData: swapTokensForExactETH_txData
             });
             let swapTokensForExactTokensParams = (params) => [this.wallet.utils.toString(params.amountOut), this.wallet.utils.toString(params.amountInMax), params.pair, params.tokenOut, params.to, this.wallet.utils.toString(params.deadline), this.wallet.utils.stringToBytes(params.data)];
             let swapTokensForExactTokens_send = async (params, options) => {
@@ -10032,8 +11457,13 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
                     amounts: result.amounts.map(e => new eth_contract_44.BigNumber(e))
                 };
             };
+            let swapTokensForExactTokens_txData = async (params, options) => {
+                let result = await this.txData('swapTokensForExactTokens', swapTokensForExactTokensParams(params), options);
+                return result;
+            };
             this.swapTokensForExactTokens = Object.assign(swapTokensForExactTokens_send, {
-                call: swapTokensForExactTokens_call
+                call: swapTokensForExactTokens_call,
+                txData: swapTokensForExactTokens_txData
             });
         }
     }

@@ -4,6 +4,7 @@
     "sourceDir": "contracts",
     "outputDir": "src/contracts",
     "outputObjects": "bytecode",
+    "outputOptions": {"txData":true},
     "overrides": [
         {
             "sources": [

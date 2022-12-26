@@ -47,6 +47,7 @@ export class OpenSwap extends _Contract{
     approve: {
         (params: IApproveParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IApproveParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: IApproveParams, options?: TransactionOptions) => Promise<string>;
     }
     balanceOf: {
         (account:string, options?: TransactionOptions): Promise<BigNumber>;
@@ -60,14 +61,17 @@ export class OpenSwap extends _Contract{
     decreaseAllowance: {
         (params: IDecreaseAllowanceParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IDecreaseAllowanceParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: IDecreaseAllowanceParams, options?: TransactionOptions) => Promise<string>;
     }
     increaseAllowance: {
         (params: IIncreaseAllowanceParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IIncreaseAllowanceParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: IIncreaseAllowanceParams, options?: TransactionOptions) => Promise<string>;
     }
     mint: {
         (params: IMintParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IMintParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IMintParams, options?: TransactionOptions) => Promise<string>;
     }
     minter: {
         (options?: TransactionOptions): Promise<string>;
@@ -84,10 +88,12 @@ export class OpenSwap extends _Contract{
     transfer: {
         (params: ITransferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ITransferParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: ITransferParams, options?: TransactionOptions) => Promise<string>;
     }
     transferFrom: {
         (params: ITransferFromParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ITransferFromParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: ITransferFromParams, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let allowanceParams = (params: IAllowanceParams) => [params.owner,params.spender];
@@ -140,8 +146,13 @@ export class OpenSwap extends _Contract{
             let result = await this.call('approve',approveParams(params),options);
             return result;
         }
+        let approve_txData = async (params: IApproveParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('approve',approveParams(params),options);
+            return result;
+        }
         this.approve = Object.assign(approve_send, {
             call:approve_call
+            , txData:approve_txData
         });
         let decreaseAllowanceParams = (params: IDecreaseAllowanceParams) => [params.spender,this.wallet.utils.toString(params.subtractedValue)];
         let decreaseAllowance_send = async (params: IDecreaseAllowanceParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -152,8 +163,13 @@ export class OpenSwap extends _Contract{
             let result = await this.call('decreaseAllowance',decreaseAllowanceParams(params),options);
             return result;
         }
+        let decreaseAllowance_txData = async (params: IDecreaseAllowanceParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('decreaseAllowance',decreaseAllowanceParams(params),options);
+            return result;
+        }
         this.decreaseAllowance = Object.assign(decreaseAllowance_send, {
             call:decreaseAllowance_call
+            , txData:decreaseAllowance_txData
         });
         let increaseAllowanceParams = (params: IIncreaseAllowanceParams) => [params.spender,this.wallet.utils.toString(params.addedValue)];
         let increaseAllowance_send = async (params: IIncreaseAllowanceParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -164,8 +180,13 @@ export class OpenSwap extends _Contract{
             let result = await this.call('increaseAllowance',increaseAllowanceParams(params),options);
             return result;
         }
+        let increaseAllowance_txData = async (params: IIncreaseAllowanceParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('increaseAllowance',increaseAllowanceParams(params),options);
+            return result;
+        }
         this.increaseAllowance = Object.assign(increaseAllowance_send, {
             call:increaseAllowance_call
+            , txData:increaseAllowance_txData
         });
         let mintParams = (params: IMintParams) => [params.account,this.wallet.utils.toString(params.amount)];
         let mint_send = async (params: IMintParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -176,8 +197,13 @@ export class OpenSwap extends _Contract{
             let result = await this.call('mint',mintParams(params),options);
             return;
         }
+        let mint_txData = async (params: IMintParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('mint',mintParams(params),options);
+            return result;
+        }
         this.mint = Object.assign(mint_send, {
             call:mint_call
+            , txData:mint_txData
         });
         let transferParams = (params: ITransferParams) => [params.recipient,this.wallet.utils.toString(params.amount)];
         let transfer_send = async (params: ITransferParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -188,8 +214,13 @@ export class OpenSwap extends _Contract{
             let result = await this.call('transfer',transferParams(params),options);
             return result;
         }
+        let transfer_txData = async (params: ITransferParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('transfer',transferParams(params),options);
+            return result;
+        }
         this.transfer = Object.assign(transfer_send, {
             call:transfer_call
+            , txData:transfer_txData
         });
         let transferFromParams = (params: ITransferFromParams) => [params.sender,params.recipient,this.wallet.utils.toString(params.amount)];
         let transferFrom_send = async (params: ITransferFromParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -200,8 +231,13 @@ export class OpenSwap extends _Contract{
             let result = await this.call('transferFrom',transferFromParams(params),options);
             return result;
         }
+        let transferFrom_txData = async (params: ITransferFromParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('transferFrom',transferFromParams(params),options);
+            return result;
+        }
         this.transferFrom = Object.assign(transferFrom_send, {
             call:transferFrom_call
+            , txData:transferFrom_txData
         });
     }
 }

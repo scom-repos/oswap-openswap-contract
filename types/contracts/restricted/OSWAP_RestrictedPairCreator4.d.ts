@@ -6,6 +6,7 @@ export declare class OSWAP_RestrictedPairCreator4 extends _Contract {
     createPair: {
         (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (salt: string, options?: TransactionOptions) => Promise<string>;
+        txData: (salt: string, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

@@ -84,6 +84,7 @@ export declare class OSWAP_Pair extends _Contract {
     approve: {
         (params: IApproveParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IApproveParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: IApproveParams, options?: TransactionOptions) => Promise<string>;
     };
     balanceOf: {
         (param1: string, options?: TransactionOptions): Promise<BigNumber>;
@@ -94,6 +95,7 @@ export declare class OSWAP_Pair extends _Contract {
             amount0: BigNumber;
             amount1: BigNumber;
         }>;
+        txData: (to: string, options?: TransactionOptions) => Promise<string>;
     };
     decimals: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -117,6 +119,7 @@ export declare class OSWAP_Pair extends _Contract {
     initialize: {
         (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IInitializeParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IInitializeParams, options?: TransactionOptions) => Promise<string>;
     };
     isLive: {
         (options?: TransactionOptions): Promise<boolean>;
@@ -127,6 +130,7 @@ export declare class OSWAP_Pair extends _Contract {
     mint: {
         (to: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (to: string, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (to: string, options?: TransactionOptions) => Promise<string>;
     };
     name: {
         (options?: TransactionOptions): Promise<string>;
@@ -137,6 +141,7 @@ export declare class OSWAP_Pair extends _Contract {
     permit: {
         (params: IPermitParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IPermitParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IPermitParams, options?: TransactionOptions) => Promise<string>;
     };
     price0CumulativeLast: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -150,14 +155,17 @@ export declare class OSWAP_Pair extends _Contract {
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     skim: {
         (to: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (to: string, options?: TransactionOptions) => Promise<void>;
+        txData: (to: string, options?: TransactionOptions) => Promise<string>;
     };
     swap: {
         (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapParams, options?: TransactionOptions) => Promise<string>;
     };
     symbol: {
         (options?: TransactionOptions): Promise<string>;
@@ -165,6 +173,7 @@ export declare class OSWAP_Pair extends _Contract {
     sync: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     token0: {
         (options?: TransactionOptions): Promise<string>;
@@ -181,18 +190,22 @@ export declare class OSWAP_Pair extends _Contract {
     transfer: {
         (params: ITransferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ITransferParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: ITransferParams, options?: TransactionOptions) => Promise<string>;
     };
     transferFrom: {
         (params: ITransferFromParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ITransferFromParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: ITransferFromParams, options?: TransactionOptions) => Promise<string>;
     };
     updateFee: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     updateProtocolFee: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

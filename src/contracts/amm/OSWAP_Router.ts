@@ -39,10 +39,12 @@ export class OSWAP_Router extends _Contract{
     addLiquidity: {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{amountA:BigNumber,amountB:BigNumber,liquidity:BigNumber}>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     addLiquidityETH: {
         (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions) => Promise<{amountToken:BigNumber,amountETH:BigNumber,liquidity:BigNumber}>;
+        txData: (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions) => Promise<string>;
     }
     factory: {
         (options?: TransactionOptions): Promise<string>;
@@ -68,62 +70,77 @@ export class OSWAP_Router extends _Contract{
     removeLiquidity: {
         (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<{amountA:BigNumber,amountB:BigNumber}>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidityETH: {
         (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<{amountToken:BigNumber,amountETH:BigNumber}>;
+        txData: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidityETHSupportingFeeOnTransferTokens: {
         (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidityETHWithPermit: {
         (params: IRemoveLiquidityETHWithPermitParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHWithPermitParams, options?: TransactionOptions) => Promise<{amountToken:BigNumber,amountETH:BigNumber}>;
+        txData: (params: IRemoveLiquidityETHWithPermitParams, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidityETHWithPermitSupportingFeeOnTransferTokens: {
         (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidityWithPermit: {
         (params: IRemoveLiquidityWithPermitParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityWithPermitParams, options?: TransactionOptions) => Promise<{amountA:BigNumber,amountB:BigNumber}>;
+        txData: (params: IRemoveLiquidityWithPermitParams, options?: TransactionOptions) => Promise<string>;
     }
     swapETHForExactTokens: {
         (params: ISwapETHForExactTokensParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapETHForExactTokensParams, options?: number|BigNumber|TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapETHForExactTokensParams, options?: number|BigNumber|TransactionOptions) => Promise<string>;
     }
     swapExactETHForTokens: {
         (params: ISwapExactETHForTokensParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactETHForTokensParams, options?: number|BigNumber|TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapExactETHForTokensParams, options?: number|BigNumber|TransactionOptions) => Promise<string>;
     }
     swapExactETHForTokensSupportingFeeOnTransferTokens: {
         (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams, options?: number|BigNumber|TransactionOptions) => Promise<void>;
+        txData: (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams, options?: number|BigNumber|TransactionOptions) => Promise<string>;
     }
     swapExactTokensForETH: {
         (params: ISwapExactTokensForETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactTokensForETHParams, options?: TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapExactTokensForETHParams, options?: TransactionOptions) => Promise<string>;
     }
     swapExactTokensForETHSupportingFeeOnTransferTokens: {
         (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<string>;
     }
     swapExactTokensForTokens: {
         (params: ISwapExactTokensForTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactTokensForTokensParams, options?: TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapExactTokensForTokensParams, options?: TransactionOptions) => Promise<string>;
     }
     swapExactTokensForTokensSupportingFeeOnTransferTokens: {
         (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<string>;
     }
     swapTokensForExactETH: {
         (params: ISwapTokensForExactETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapTokensForExactETHParams, options?: TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapTokensForExactETHParams, options?: TransactionOptions) => Promise<string>;
     }
     swapTokensForExactTokens: {
         (params: ISwapTokensForExactTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapTokensForExactTokensParams, options?: TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapTokensForExactTokensParams, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let WETH_call = async (options?: TransactionOptions): Promise<string> => {
@@ -188,8 +205,13 @@ export class OSWAP_Router extends _Contract{
                 liquidity: new BigNumber(result.liquidity)
             };
         }
+        let addLiquidity_txData = async (params: IAddLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('addLiquidity',addLiquidityParams(params),options);
+            return result;
+        }
         this.addLiquidity = Object.assign(addLiquidity_send, {
             call:addLiquidity_call
+            , txData:addLiquidity_txData
         });
         let addLiquidityETHParams = (params: IAddLiquidityETHParams) => [params.token,this.wallet.utils.toString(params.amountTokenDesired),this.wallet.utils.toString(params.amountTokenMin),this.wallet.utils.toString(params.amountETHMin),params.to,this.wallet.utils.toString(params.deadline)];
         let addLiquidityETH_send = async (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt> => {
@@ -204,8 +226,13 @@ export class OSWAP_Router extends _Contract{
                 liquidity: new BigNumber(result.liquidity)
             };
         }
+        let addLiquidityETH_txData = async (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<string> => {
+            let result = await this.txData('addLiquidityETH',addLiquidityETHParams(params),options);
+            return result;
+        }
         this.addLiquidityETH = Object.assign(addLiquidityETH_send, {
             call:addLiquidityETH_call
+            , txData:addLiquidityETH_txData
         });
         let removeLiquidityParams = (params: IRemoveLiquidityParams) => [params.tokenA,params.tokenB,this.wallet.utils.toString(params.liquidity),this.wallet.utils.toString(params.amountAMin),this.wallet.utils.toString(params.amountBMin),params.to,this.wallet.utils.toString(params.deadline)];
         let removeLiquidity_send = async (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -219,8 +246,13 @@ export class OSWAP_Router extends _Contract{
                 amountB: new BigNumber(result.amountB)
             };
         }
+        let removeLiquidity_txData = async (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidity',removeLiquidityParams(params),options);
+            return result;
+        }
         this.removeLiquidity = Object.assign(removeLiquidity_send, {
             call:removeLiquidity_call
+            , txData:removeLiquidity_txData
         });
         let removeLiquidityETHParams = (params: IRemoveLiquidityETHParams) => [params.token,this.wallet.utils.toString(params.liquidity),this.wallet.utils.toString(params.amountTokenMin),this.wallet.utils.toString(params.amountETHMin),params.to,this.wallet.utils.toString(params.deadline)];
         let removeLiquidityETH_send = async (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -234,8 +266,13 @@ export class OSWAP_Router extends _Contract{
                 amountETH: new BigNumber(result.amountETH)
             };
         }
+        let removeLiquidityETH_txData = async (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidityETH',removeLiquidityETHParams(params),options);
+            return result;
+        }
         this.removeLiquidityETH = Object.assign(removeLiquidityETH_send, {
             call:removeLiquidityETH_call
+            , txData:removeLiquidityETH_txData
         });
         let removeLiquidityETHSupportingFeeOnTransferTokensParams = (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams) => [params.token,this.wallet.utils.toString(params.liquidity),this.wallet.utils.toString(params.amountTokenMin),this.wallet.utils.toString(params.amountETHMin),params.to,this.wallet.utils.toString(params.deadline)];
         let removeLiquidityETHSupportingFeeOnTransferTokens_send = async (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -246,8 +283,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('removeLiquidityETHSupportingFeeOnTransferTokens',removeLiquidityETHSupportingFeeOnTransferTokensParams(params),options);
             return new BigNumber(result);
         }
+        let removeLiquidityETHSupportingFeeOnTransferTokens_txData = async (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidityETHSupportingFeeOnTransferTokens',removeLiquidityETHSupportingFeeOnTransferTokensParams(params),options);
+            return result;
+        }
         this.removeLiquidityETHSupportingFeeOnTransferTokens = Object.assign(removeLiquidityETHSupportingFeeOnTransferTokens_send, {
             call:removeLiquidityETHSupportingFeeOnTransferTokens_call
+            , txData:removeLiquidityETHSupportingFeeOnTransferTokens_txData
         });
         let removeLiquidityETHWithPermitParams = (params: IRemoveLiquidityETHWithPermitParams) => [params.token,this.wallet.utils.toString(params.liquidity),this.wallet.utils.toString(params.amountTokenMin),this.wallet.utils.toString(params.amountETHMin),params.to,this.wallet.utils.toString(params.deadline),params.approveMax,this.wallet.utils.toString(params.v),this.wallet.utils.stringToBytes32(params.r),this.wallet.utils.stringToBytes32(params.s)];
         let removeLiquidityETHWithPermit_send = async (params: IRemoveLiquidityETHWithPermitParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -261,8 +303,13 @@ export class OSWAP_Router extends _Contract{
                 amountETH: new BigNumber(result.amountETH)
             };
         }
+        let removeLiquidityETHWithPermit_txData = async (params: IRemoveLiquidityETHWithPermitParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidityETHWithPermit',removeLiquidityETHWithPermitParams(params),options);
+            return result;
+        }
         this.removeLiquidityETHWithPermit = Object.assign(removeLiquidityETHWithPermit_send, {
             call:removeLiquidityETHWithPermit_call
+            , txData:removeLiquidityETHWithPermit_txData
         });
         let removeLiquidityETHWithPermitSupportingFeeOnTransferTokensParams = (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams) => [params.token,this.wallet.utils.toString(params.liquidity),this.wallet.utils.toString(params.amountTokenMin),this.wallet.utils.toString(params.amountETHMin),params.to,this.wallet.utils.toString(params.deadline),params.approveMax,this.wallet.utils.toString(params.v),this.wallet.utils.stringToBytes32(params.r),this.wallet.utils.stringToBytes32(params.s)];
         let removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_send = async (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -273,8 +320,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('removeLiquidityETHWithPermitSupportingFeeOnTransferTokens',removeLiquidityETHWithPermitSupportingFeeOnTransferTokensParams(params),options);
             return new BigNumber(result);
         }
+        let removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_txData = async (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidityETHWithPermitSupportingFeeOnTransferTokens',removeLiquidityETHWithPermitSupportingFeeOnTransferTokensParams(params),options);
+            return result;
+        }
         this.removeLiquidityETHWithPermitSupportingFeeOnTransferTokens = Object.assign(removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_send, {
             call:removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_call
+            , txData:removeLiquidityETHWithPermitSupportingFeeOnTransferTokens_txData
         });
         let removeLiquidityWithPermitParams = (params: IRemoveLiquidityWithPermitParams) => [params.tokenA,params.tokenB,this.wallet.utils.toString(params.liquidity),this.wallet.utils.toString(params.amountAMin),this.wallet.utils.toString(params.amountBMin),params.to,this.wallet.utils.toString(params.deadline),params.approveMax,this.wallet.utils.toString(params.v),this.wallet.utils.stringToBytes32(params.r),this.wallet.utils.stringToBytes32(params.s)];
         let removeLiquidityWithPermit_send = async (params: IRemoveLiquidityWithPermitParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -288,8 +340,13 @@ export class OSWAP_Router extends _Contract{
                 amountB: new BigNumber(result.amountB)
             };
         }
+        let removeLiquidityWithPermit_txData = async (params: IRemoveLiquidityWithPermitParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidityWithPermit',removeLiquidityWithPermitParams(params),options);
+            return result;
+        }
         this.removeLiquidityWithPermit = Object.assign(removeLiquidityWithPermit_send, {
             call:removeLiquidityWithPermit_call
+            , txData:removeLiquidityWithPermit_txData
         });
         let swapETHForExactTokensParams = (params: ISwapETHForExactTokensParams) => [this.wallet.utils.toString(params.amountOut),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapETHForExactTokens_send = async (params: ISwapETHForExactTokensParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt> => {
@@ -300,8 +357,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapETHForExactTokens',swapETHForExactTokensParams(params),options);
             return result.map(e=>new BigNumber(e));
         }
+        let swapETHForExactTokens_txData = async (params: ISwapETHForExactTokensParams, options?: number|BigNumber|TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapETHForExactTokens',swapETHForExactTokensParams(params),options);
+            return result;
+        }
         this.swapETHForExactTokens = Object.assign(swapETHForExactTokens_send, {
             call:swapETHForExactTokens_call
+            , txData:swapETHForExactTokens_txData
         });
         let swapExactETHForTokensParams = (params: ISwapExactETHForTokensParams) => [this.wallet.utils.toString(params.amountOutMin),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapExactETHForTokens_send = async (params: ISwapExactETHForTokensParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt> => {
@@ -312,8 +374,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapExactETHForTokens',swapExactETHForTokensParams(params),options);
             return result.map(e=>new BigNumber(e));
         }
+        let swapExactETHForTokens_txData = async (params: ISwapExactETHForTokensParams, options?: number|BigNumber|TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapExactETHForTokens',swapExactETHForTokensParams(params),options);
+            return result;
+        }
         this.swapExactETHForTokens = Object.assign(swapExactETHForTokens_send, {
             call:swapExactETHForTokens_call
+            , txData:swapExactETHForTokens_txData
         });
         let swapExactETHForTokensSupportingFeeOnTransferTokensParams = (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams) => [this.wallet.utils.toString(params.amountOutMin),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapExactETHForTokensSupportingFeeOnTransferTokens_send = async (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt> => {
@@ -324,8 +391,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapExactETHForTokensSupportingFeeOnTransferTokens',swapExactETHForTokensSupportingFeeOnTransferTokensParams(params),options);
             return;
         }
+        let swapExactETHForTokensSupportingFeeOnTransferTokens_txData = async (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams, options?: number|BigNumber|TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapExactETHForTokensSupportingFeeOnTransferTokens',swapExactETHForTokensSupportingFeeOnTransferTokensParams(params),options);
+            return result;
+        }
         this.swapExactETHForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactETHForTokensSupportingFeeOnTransferTokens_send, {
             call:swapExactETHForTokensSupportingFeeOnTransferTokens_call
+            , txData:swapExactETHForTokensSupportingFeeOnTransferTokens_txData
         });
         let swapExactTokensForETHParams = (params: ISwapExactTokensForETHParams) => [this.wallet.utils.toString(params.amountIn),this.wallet.utils.toString(params.amountOutMin),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapExactTokensForETH_send = async (params: ISwapExactTokensForETHParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -336,8 +408,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapExactTokensForETH',swapExactTokensForETHParams(params),options);
             return result.map(e=>new BigNumber(e));
         }
+        let swapExactTokensForETH_txData = async (params: ISwapExactTokensForETHParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapExactTokensForETH',swapExactTokensForETHParams(params),options);
+            return result;
+        }
         this.swapExactTokensForETH = Object.assign(swapExactTokensForETH_send, {
             call:swapExactTokensForETH_call
+            , txData:swapExactTokensForETH_txData
         });
         let swapExactTokensForETHSupportingFeeOnTransferTokensParams = (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams) => [this.wallet.utils.toString(params.amountIn),this.wallet.utils.toString(params.amountOutMin),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapExactTokensForETHSupportingFeeOnTransferTokens_send = async (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -348,8 +425,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapExactTokensForETHSupportingFeeOnTransferTokens',swapExactTokensForETHSupportingFeeOnTransferTokensParams(params),options);
             return;
         }
+        let swapExactTokensForETHSupportingFeeOnTransferTokens_txData = async (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapExactTokensForETHSupportingFeeOnTransferTokens',swapExactTokensForETHSupportingFeeOnTransferTokensParams(params),options);
+            return result;
+        }
         this.swapExactTokensForETHSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForETHSupportingFeeOnTransferTokens_send, {
             call:swapExactTokensForETHSupportingFeeOnTransferTokens_call
+            , txData:swapExactTokensForETHSupportingFeeOnTransferTokens_txData
         });
         let swapExactTokensForTokensParams = (params: ISwapExactTokensForTokensParams) => [this.wallet.utils.toString(params.amountIn),this.wallet.utils.toString(params.amountOutMin),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapExactTokensForTokens_send = async (params: ISwapExactTokensForTokensParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -360,8 +442,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapExactTokensForTokens',swapExactTokensForTokensParams(params),options);
             return result.map(e=>new BigNumber(e));
         }
+        let swapExactTokensForTokens_txData = async (params: ISwapExactTokensForTokensParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapExactTokensForTokens',swapExactTokensForTokensParams(params),options);
+            return result;
+        }
         this.swapExactTokensForTokens = Object.assign(swapExactTokensForTokens_send, {
             call:swapExactTokensForTokens_call
+            , txData:swapExactTokensForTokens_txData
         });
         let swapExactTokensForTokensSupportingFeeOnTransferTokensParams = (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams) => [this.wallet.utils.toString(params.amountIn),this.wallet.utils.toString(params.amountOutMin),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapExactTokensForTokensSupportingFeeOnTransferTokens_send = async (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -372,8 +459,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapExactTokensForTokensSupportingFeeOnTransferTokens',swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params),options);
             return;
         }
+        let swapExactTokensForTokensSupportingFeeOnTransferTokens_txData = async (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapExactTokensForTokensSupportingFeeOnTransferTokens',swapExactTokensForTokensSupportingFeeOnTransferTokensParams(params),options);
+            return result;
+        }
         this.swapExactTokensForTokensSupportingFeeOnTransferTokens = Object.assign(swapExactTokensForTokensSupportingFeeOnTransferTokens_send, {
             call:swapExactTokensForTokensSupportingFeeOnTransferTokens_call
+            , txData:swapExactTokensForTokensSupportingFeeOnTransferTokens_txData
         });
         let swapTokensForExactETHParams = (params: ISwapTokensForExactETHParams) => [this.wallet.utils.toString(params.amountOut),this.wallet.utils.toString(params.amountInMax),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapTokensForExactETH_send = async (params: ISwapTokensForExactETHParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -384,8 +476,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapTokensForExactETH',swapTokensForExactETHParams(params),options);
             return result.map(e=>new BigNumber(e));
         }
+        let swapTokensForExactETH_txData = async (params: ISwapTokensForExactETHParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapTokensForExactETH',swapTokensForExactETHParams(params),options);
+            return result;
+        }
         this.swapTokensForExactETH = Object.assign(swapTokensForExactETH_send, {
             call:swapTokensForExactETH_call
+            , txData:swapTokensForExactETH_txData
         });
         let swapTokensForExactTokensParams = (params: ISwapTokensForExactTokensParams) => [this.wallet.utils.toString(params.amountOut),this.wallet.utils.toString(params.amountInMax),params.path,params.to,this.wallet.utils.toString(params.deadline)];
         let swapTokensForExactTokens_send = async (params: ISwapTokensForExactTokensParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -396,8 +493,13 @@ export class OSWAP_Router extends _Contract{
             let result = await this.call('swapTokensForExactTokens',swapTokensForExactTokensParams(params),options);
             return result.map(e=>new BigNumber(e));
         }
+        let swapTokensForExactTokens_txData = async (params: ISwapTokensForExactTokensParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('swapTokensForExactTokens',swapTokensForExactTokensParams(params),options);
+            return result;
+        }
         this.swapTokensForExactTokens = Object.assign(swapTokensForExactTokens_send, {
             call:swapTokensForExactTokens_call
+            , txData:swapTokensForExactTokens_txData
         });
     }
 }

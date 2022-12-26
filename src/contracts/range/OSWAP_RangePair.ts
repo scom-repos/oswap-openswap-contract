@@ -152,6 +152,7 @@ export class OSWAP_RangePair extends _Contract{
     addLiquidity: {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     counter: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -189,6 +190,7 @@ export class OSWAP_RangePair extends _Contract{
     initialize: {
         (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IInitializeParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IInitializeParams, options?: TransactionOptions) => Promise<string>;
     }
     isLive: {
         (options?: TransactionOptions): Promise<boolean>;
@@ -226,18 +228,22 @@ export class OSWAP_RangePair extends _Contract{
     redeemProtocolFee: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     removeAllLiquidity: {
         (provider:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (provider:string, options?: TransactionOptions) => Promise<{amount0:BigNumber,amount1:BigNumber,staked:BigNumber}>;
+        txData: (provider:string, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidity: {
         (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     replenish: {
         (params: IReplenishParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IReplenishParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IReplenishParams, options?: TransactionOptions) => Promise<string>;
     }
     scaleDirection: {
         (options?: TransactionOptions): Promise<boolean>;
@@ -248,6 +254,7 @@ export class OSWAP_RangePair extends _Contract{
     setLive: {
         (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive:boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive:boolean, options?: TransactionOptions) => Promise<string>;
     }
     stakeBalance: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -255,10 +262,12 @@ export class OSWAP_RangePair extends _Contract{
     swap: {
         (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapParams, options?: TransactionOptions) => Promise<string>;
     }
     sync: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     token0: {
         (options?: TransactionOptions): Promise<string>;
@@ -269,6 +278,7 @@ export class OSWAP_RangePair extends _Contract{
     updateProviderOffer: {
         (params: IUpdateProviderOfferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IUpdateProviderOfferParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IUpdateProviderOfferParams, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let counter_call = async (options?: TransactionOptions): Promise<BigNumber> => {
@@ -453,8 +463,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('addLiquidity',addLiquidityParams(params),options);
             return new BigNumber(result);
         }
+        let addLiquidity_txData = async (params: IAddLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('addLiquidity',addLiquidityParams(params),options);
+            return result;
+        }
         this.addLiquidity = Object.assign(addLiquidity_send, {
             call:addLiquidity_call
+            , txData:addLiquidity_txData
         });
         let initializeParams = (params: IInitializeParams) => [params.token0,params.token1];
         let initialize_send = async (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -465,8 +480,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('initialize',initializeParams(params),options);
             return;
         }
+        let initialize_txData = async (params: IInitializeParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('initialize',initializeParams(params),options);
+            return result;
+        }
         this.initialize = Object.assign(initialize_send, {
             call:initialize_call
+            , txData:initialize_txData
         });
         let redeemProtocolFee_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('redeemProtocolFee',[],options);
@@ -476,8 +496,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('redeemProtocolFee',[],options);
             return;
         }
+        let redeemProtocolFee_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('redeemProtocolFee',[],options);
+            return result;
+        }
         this.redeemProtocolFee = Object.assign(redeemProtocolFee_send, {
             call:redeemProtocolFee_call
+            , txData:redeemProtocolFee_txData
         });
         let removeAllLiquidity_send = async (provider:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('removeAllLiquidity',[provider],options);
@@ -491,8 +516,13 @@ export class OSWAP_RangePair extends _Contract{
                 staked: new BigNumber(result.staked)
             };
         }
+        let removeAllLiquidity_txData = async (provider:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeAllLiquidity',[provider],options);
+            return result;
+        }
         this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
             call:removeAllLiquidity_call
+            , txData:removeAllLiquidity_txData
         });
         let removeLiquidityParams = (params: IRemoveLiquidityParams) => [params.provider,params.direction,this.wallet.utils.toString(params.unstake),this.wallet.utils.toString(params.amountOut),this.wallet.utils.toString(params.reserveOut),this.wallet.utils.toString(params.lowerLimit),this.wallet.utils.toString(params.upperLimit),this.wallet.utils.toString(params.startDate),this.wallet.utils.toString(params.expire)];
         let removeLiquidity_send = async (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -503,8 +533,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('removeLiquidity',removeLiquidityParams(params),options);
             return;
         }
+        let removeLiquidity_txData = async (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidity',removeLiquidityParams(params),options);
+            return result;
+        }
         this.removeLiquidity = Object.assign(removeLiquidity_send, {
             call:removeLiquidity_call
+            , txData:removeLiquidity_txData
         });
         let replenishParams = (params: IReplenishParams) => [params.provider,params.direction,this.wallet.utils.toString(params.amountIn)];
         let replenish_send = async (params: IReplenishParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -515,8 +550,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('replenish',replenishParams(params),options);
             return;
         }
+        let replenish_txData = async (params: IReplenishParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('replenish',replenishParams(params),options);
+            return result;
+        }
         this.replenish = Object.assign(replenish_send, {
             call:replenish_call
+            , txData:replenish_txData
         });
         let setLive_send = async (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setLive',[isLive],options);
@@ -526,8 +566,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('setLive',[isLive],options);
             return;
         }
+        let setLive_txData = async (isLive:boolean, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLive',[isLive],options);
+            return result;
+        }
         this.setLive = Object.assign(setLive_send, {
             call:setLive_call
+            , txData:setLive_txData
         });
         let swapParams = (params: ISwapParams) => [this.wallet.utils.toString(params.amount0Out),this.wallet.utils.toString(params.amount1Out),params.to,this.wallet.utils.stringToBytes(params.data)];
         let swap_send = async (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -538,8 +583,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('swap',swapParams(params),options);
             return;
         }
+        let swap_txData = async (params: ISwapParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('swap',swapParams(params),options);
+            return result;
+        }
         this.swap = Object.assign(swap_send, {
             call:swap_call
+            , txData:swap_txData
         });
         let sync_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('sync',[],options);
@@ -549,8 +599,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('sync',[],options);
             return;
         }
+        let sync_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('sync',[],options);
+            return result;
+        }
         this.sync = Object.assign(sync_send, {
             call:sync_call
+            , txData:sync_txData
         });
         let updateProviderOfferParams = (params: IUpdateProviderOfferParams) => [params.provider,params.direction,this.wallet.utils.toString(params.replenishAmount),this.wallet.utils.toString(params.lowerLimit),this.wallet.utils.toString(params.upperLimit),this.wallet.utils.toString(params.startDate),this.wallet.utils.toString(params.expire),params.privateReplenish];
         let updateProviderOffer_send = async (params: IUpdateProviderOfferParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -561,8 +616,13 @@ export class OSWAP_RangePair extends _Contract{
             let result = await this.call('updateProviderOffer',updateProviderOfferParams(params),options);
             return;
         }
+        let updateProviderOffer_txData = async (params: IUpdateProviderOfferParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('updateProviderOffer',updateProviderOfferParams(params),options);
+            return result;
+        }
         this.updateProviderOffer = Object.assign(updateProviderOffer_send, {
             call:updateProviderOffer_call
+            , txData:updateProviderOffer_txData
         });
     }
 }

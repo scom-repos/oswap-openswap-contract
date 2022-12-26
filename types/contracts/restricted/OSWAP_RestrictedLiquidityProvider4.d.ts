@@ -67,6 +67,7 @@ export declare class OSWAP_RestrictedLiquidityProvider4 extends _Contract {
             pair: string;
             _offerIndex: BigNumber;
         }>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     addLiquidityETH: {
         (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
@@ -74,6 +75,7 @@ export declare class OSWAP_RestrictedLiquidityProvider4 extends _Contract {
             pair: string;
             _offerIndex: BigNumber;
         }>;
+        txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
     };
     configStore: {
         (options?: TransactionOptions): Promise<string>;
@@ -91,6 +93,7 @@ export declare class OSWAP_RestrictedLiquidityProvider4 extends _Contract {
             amountB: BigNumber;
             feeOut: BigNumber;
         }>;
+        txData: (params: IRemoveAllLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     removeAllLiquidityETH: {
         (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -99,14 +102,17 @@ export declare class OSWAP_RestrictedLiquidityProvider4 extends _Contract {
             amountETH: BigNumber;
             feeOut: BigNumber;
         }>;
+        txData: (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidity: {
         (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidityETH: {
         (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

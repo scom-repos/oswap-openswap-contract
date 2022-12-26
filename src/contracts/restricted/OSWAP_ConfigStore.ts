@@ -40,10 +40,12 @@ export class OSWAP_ConfigStore extends _Contract{
     setCustomParam: {
         (params: ISetCustomParamParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetCustomParamParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetCustomParamParams, options?: TransactionOptions) => Promise<string>;
     }
     setMultiCustomParam: {
         (params: ISetMultiCustomParamParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetMultiCustomParamParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetMultiCustomParamParams, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let customParam_call = async (param1:string, options?: TransactionOptions): Promise<string> => {
@@ -80,8 +82,13 @@ export class OSWAP_ConfigStore extends _Contract{
             let result = await this.call('setCustomParam',setCustomParamParams(params),options);
             return;
         }
+        let setCustomParam_txData = async (params: ISetCustomParamParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setCustomParam',setCustomParamParams(params),options);
+            return result;
+        }
         this.setCustomParam = Object.assign(setCustomParam_send, {
             call:setCustomParam_call
+            , txData:setCustomParam_txData
         });
         let setMultiCustomParamParams = (params: ISetMultiCustomParamParams) => [this.wallet.utils.stringToBytes32(params.paramName),this.wallet.utils.stringToBytes32(params.paramValue)];
         let setMultiCustomParam_send = async (params: ISetMultiCustomParamParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -92,8 +99,13 @@ export class OSWAP_ConfigStore extends _Contract{
             let result = await this.call('setMultiCustomParam',setMultiCustomParamParams(params),options);
             return;
         }
+        let setMultiCustomParam_txData = async (params: ISetMultiCustomParamParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setMultiCustomParam',setMultiCustomParamParams(params),options);
+            return result;
+        }
         this.setMultiCustomParam = Object.assign(setMultiCustomParam_send, {
             call:setMultiCustomParam_call
+            , txData:setMultiCustomParam_txData
         });
     }
 }

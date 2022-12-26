@@ -142,6 +142,7 @@ export class OSWAP_RestrictedPair3 extends _Contract{
     addLiquidity: {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     allocationSet: {
         (params: IAllocationSetParams, options?: TransactionOptions): Promise<boolean>;
@@ -158,6 +159,7 @@ export class OSWAP_RestrictedPair3 extends _Contract{
     createOrder: {
         (params: ICreateOrderParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreateOrderParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: ICreateOrderParams, options?: TransactionOptions) => Promise<string>;
     }
     factory: {
         (options?: TransactionOptions): Promise<string>;
@@ -204,6 +206,7 @@ export class OSWAP_RestrictedPair3 extends _Contract{
     initialize: {
         (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IInitializeParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IInitializeParams, options?: TransactionOptions) => Promise<string>;
     }
     isApprovedTrader: {
         (params: IIsApprovedTraderParams, options?: TransactionOptions): Promise<boolean>;
@@ -223,6 +226,7 @@ export class OSWAP_RestrictedPair3 extends _Contract{
     lockOffer: {
         (params: ILockOfferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ILockOfferParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ILockOfferParams, options?: TransactionOptions) => Promise<string>;
     }
     offers: {
         (params: IOffersParams, options?: TransactionOptions): Promise<{provider:string,locked:boolean,allowAll:boolean,amount:BigNumber,receiving:BigNumber,restrictedPrice:BigNumber,startDate:BigNumber,expire:BigNumber}>;
@@ -242,18 +246,22 @@ export class OSWAP_RestrictedPair3 extends _Contract{
     redeemProtocolFee: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     removeAllLiquidity: {
         (provider:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (provider:string, options?: TransactionOptions) => Promise<{amount0:BigNumber,amount1:BigNumber,feeOut:BigNumber}>;
+        txData: (provider:string, options?: TransactionOptions) => Promise<string>;
     }
     removeAllLiquidity1D: {
         (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions) => Promise<{totalAmount:BigNumber,totalReceiving:BigNumber,totalRemainingFee:BigNumber}>;
+        txData: (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidity: {
         (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     restrictedLiquidityProvider: {
         (options?: TransactionOptions): Promise<string>;
@@ -267,18 +275,22 @@ export class OSWAP_RestrictedPair3 extends _Contract{
     setApprovedTraderBySignature: {
         (params: ISetApprovedTraderBySignatureParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetApprovedTraderBySignatureParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetApprovedTraderBySignatureParams, options?: TransactionOptions) => Promise<string>;
     }
     setLive: {
         (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive:boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive:boolean, options?: TransactionOptions) => Promise<string>;
     }
     swap: {
         (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapParams, options?: TransactionOptions) => Promise<string>;
     }
     sync: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     token0: {
         (options?: TransactionOptions): Promise<string>;
@@ -541,8 +553,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('addLiquidity',addLiquidityParams(params),options);
             return;
         }
+        let addLiquidity_txData = async (params: IAddLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('addLiquidity',addLiquidityParams(params),options);
+            return result;
+        }
         this.addLiquidity = Object.assign(addLiquidity_send, {
             call:addLiquidity_call
+            , txData:addLiquidity_txData
         });
         let createOrderParams = (params: ICreateOrderParams) => [params.provider,params.direction,params.allowAll,this.wallet.utils.toString(params.restrictedPrice),this.wallet.utils.toString(params.startDate),this.wallet.utils.toString(params.expire)];
         let createOrder_send = async (params: ICreateOrderParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -553,8 +570,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('createOrder',createOrderParams(params),options);
             return new BigNumber(result);
         }
+        let createOrder_txData = async (params: ICreateOrderParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('createOrder',createOrderParams(params),options);
+            return result;
+        }
         this.createOrder = Object.assign(createOrder_send, {
             call:createOrder_call
+            , txData:createOrder_txData
         });
         let initializeParams = (params: IInitializeParams) => [params.token0,params.token1];
         let initialize_send = async (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -565,8 +587,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('initialize',initializeParams(params),options);
             return;
         }
+        let initialize_txData = async (params: IInitializeParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('initialize',initializeParams(params),options);
+            return result;
+        }
         this.initialize = Object.assign(initialize_send, {
             call:initialize_call
+            , txData:initialize_txData
         });
         let lockOfferParams = (params: ILockOfferParams) => [params.direction,this.wallet.utils.toString(params.index)];
         let lockOffer_send = async (params: ILockOfferParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -577,8 +604,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('lockOffer',lockOfferParams(params),options);
             return;
         }
+        let lockOffer_txData = async (params: ILockOfferParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('lockOffer',lockOfferParams(params),options);
+            return result;
+        }
         this.lockOffer = Object.assign(lockOffer_send, {
             call:lockOffer_call
+            , txData:lockOffer_txData
         });
         let redeemProtocolFee_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('redeemProtocolFee',[],options);
@@ -588,8 +620,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('redeemProtocolFee',[],options);
             return;
         }
+        let redeemProtocolFee_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('redeemProtocolFee',[],options);
+            return result;
+        }
         this.redeemProtocolFee = Object.assign(redeemProtocolFee_send, {
             call:redeemProtocolFee_call
+            , txData:redeemProtocolFee_txData
         });
         let removeAllLiquidity_send = async (provider:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('removeAllLiquidity',[provider],options);
@@ -603,8 +640,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
                 feeOut: new BigNumber(result.feeOut)
             };
         }
+        let removeAllLiquidity_txData = async (provider:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeAllLiquidity',[provider],options);
+            return result;
+        }
         this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
             call:removeAllLiquidity_call
+            , txData:removeAllLiquidity_txData
         });
         let removeAllLiquidity1DParams = (params: IRemoveAllLiquidity1DParams) => [params.provider,params.direction];
         let removeAllLiquidity1D_send = async (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -619,8 +661,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
                 totalRemainingFee: new BigNumber(result.totalRemainingFee)
             };
         }
+        let removeAllLiquidity1D_txData = async (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeAllLiquidity1D',removeAllLiquidity1DParams(params),options);
+            return result;
+        }
         this.removeAllLiquidity1D = Object.assign(removeAllLiquidity1D_send, {
             call:removeAllLiquidity1D_call
+            , txData:removeAllLiquidity1D_txData
         });
         let removeLiquidityParams = (params: IRemoveLiquidityParams) => [params.provider,params.direction,this.wallet.utils.toString(params.index),this.wallet.utils.toString(params.amountOut),this.wallet.utils.toString(params.receivingOut),this.wallet.utils.toString(params.feeOut)];
         let removeLiquidity_send = async (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -631,8 +678,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('removeLiquidity',removeLiquidityParams(params),options);
             return;
         }
+        let removeLiquidity_txData = async (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidity',removeLiquidityParams(params),options);
+            return result;
+        }
         this.removeLiquidity = Object.assign(removeLiquidity_send, {
             call:removeLiquidity_call
+            , txData:removeLiquidity_txData
         });
         let setApprovedTraderBySignatureParams = (params: ISetApprovedTraderBySignatureParams) => [params.direction,this.wallet.utils.toString(params.offerIndex),params.trader,this.wallet.utils.toString(params.allocation),this.wallet.utils.stringToBytes(params.signature)];
         let setApprovedTraderBySignature_send = async (params: ISetApprovedTraderBySignatureParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -643,8 +695,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('setApprovedTraderBySignature',setApprovedTraderBySignatureParams(params),options);
             return;
         }
+        let setApprovedTraderBySignature_txData = async (params: ISetApprovedTraderBySignatureParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setApprovedTraderBySignature',setApprovedTraderBySignatureParams(params),options);
+            return result;
+        }
         this.setApprovedTraderBySignature = Object.assign(setApprovedTraderBySignature_send, {
             call:setApprovedTraderBySignature_call
+            , txData:setApprovedTraderBySignature_txData
         });
         let setLive_send = async (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setLive',[isLive],options);
@@ -654,8 +711,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('setLive',[isLive],options);
             return;
         }
+        let setLive_txData = async (isLive:boolean, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLive',[isLive],options);
+            return result;
+        }
         this.setLive = Object.assign(setLive_send, {
             call:setLive_call
+            , txData:setLive_txData
         });
         let swapParams = (params: ISwapParams) => [this.wallet.utils.toString(params.amount0Out),this.wallet.utils.toString(params.amount1Out),params.to,params.trader,this.wallet.utils.stringToBytes(params.param5)];
         let swap_send = async (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -666,8 +728,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('swap',swapParams(params),options);
             return;
         }
+        let swap_txData = async (params: ISwapParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('swap',swapParams(params),options);
+            return result;
+        }
         this.swap = Object.assign(swap_send, {
             call:swap_call
+            , txData:swap_txData
         });
         let sync_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('sync',[],options);
@@ -677,8 +744,13 @@ export class OSWAP_RestrictedPair3 extends _Contract{
             let result = await this.call('sync',[],options);
             return;
         }
+        let sync_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('sync',[],options);
+            return result;
+        }
         this.sync = Object.assign(sync_send, {
             call:sync_call
+            , txData:sync_txData
         });
     }
 }

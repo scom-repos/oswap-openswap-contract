@@ -86,6 +86,7 @@ export declare class OSWAP_OracleFactory extends _Contract {
     addOldOracleToNewPair: {
         (params: IAddOldOracleToNewPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddOldOracleToNewPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IAddOldOracleToNewPairParams, options?: TransactionOptions) => Promise<string>;
     };
     allPairs: {
         (param1: number | BigNumber, options?: TransactionOptions): Promise<string>;
@@ -112,6 +113,7 @@ export declare class OSWAP_OracleFactory extends _Contract {
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
+        txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     };
     feePerDelegator: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -161,6 +163,7 @@ export declare class OSWAP_OracleFactory extends _Contract {
     renounceOwnership: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     securityScoreOracle: {
         (options?: TransactionOptions): Promise<string>;
@@ -168,46 +171,57 @@ export declare class OSWAP_OracleFactory extends _Contract {
     setFeePerDelegator: {
         (feePerDelegator: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (feePerDelegator: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (feePerDelegator: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     };
     setMinLotSize: {
         (params: ISetMinLotSizeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetMinLotSizeParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetMinLotSizeParams, options?: TransactionOptions) => Promise<string>;
     };
     setOracle: {
         (params: ISetOracleParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetOracleParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetOracleParams, options?: TransactionOptions) => Promise<string>;
     };
     setOracleLiquidityProvider: {
         (params: ISetOracleLiquidityProviderParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetOracleLiquidityProviderParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetOracleLiquidityProviderParams, options?: TransactionOptions) => Promise<string>;
     };
     setProtocolFee: {
         (protocolFee: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFee: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFee: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     setProtocolFeeTo: {
         (protocolFeeTo: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFeeTo: string, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFeeTo: string, options?: TransactionOptions) => Promise<string>;
     };
     setSecurityScoreOracle: {
         (params: ISetSecurityScoreOracleParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetSecurityScoreOracleParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetSecurityScoreOracleParams, options?: TransactionOptions) => Promise<string>;
     };
     setTradeFee: {
         (tradeFee: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (tradeFee: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (tradeFee: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     setWhiteList: {
         (params: ISetWhiteListParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetWhiteListParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetWhiteListParams, options?: TransactionOptions) => Promise<string>;
     };
     tradeFee: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -215,10 +229,12 @@ export declare class OSWAP_OracleFactory extends _Contract {
     transferOwnership: {
         (newOwner: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (newOwner: string, options?: TransactionOptions) => Promise<void>;
+        txData: (newOwner: string, options?: TransactionOptions) => Promise<string>;
     };
     updateOracleScore: {
         (oracle: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (oracle: string, options?: TransactionOptions) => Promise<void>;
+        txData: (oracle: string, options?: TransactionOptions) => Promise<string>;
     };
     whitelisted: {
         (param1: number | BigNumber, options?: TransactionOptions): Promise<string>;

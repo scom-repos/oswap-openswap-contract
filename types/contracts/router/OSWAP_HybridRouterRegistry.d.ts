@@ -85,6 +85,7 @@ export declare class OSWAP_HybridRouterRegistry extends _Contract {
     execute: {
         (params: string[], options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: string[], options?: TransactionOptions) => Promise<void>;
+        txData: (params: string[], options?: TransactionOptions) => Promise<string>;
     };
     getFee: {
         (pairAddress: string, options?: TransactionOptions): Promise<{
@@ -107,6 +108,7 @@ export declare class OSWAP_HybridRouterRegistry extends _Contract {
     init: {
         (params: IInitParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IInitParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IInitParams, options?: TransactionOptions) => Promise<string>;
     };
     owner: {
         (options?: TransactionOptions): Promise<string>;
@@ -135,54 +137,67 @@ export declare class OSWAP_HybridRouterRegistry extends _Contract {
     registerPair: {
         (params: IRegisterPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairParams, options?: TransactionOptions) => Promise<string>;
     };
     registerPairByAddress: {
         (params: IRegisterPairByAddressParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairByAddressParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairByAddressParams, options?: TransactionOptions) => Promise<string>;
     };
     registerPairByIndex: {
         (params: IRegisterPairByIndexParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairByIndexParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairByIndexParams, options?: TransactionOptions) => Promise<string>;
     };
     registerPairByTokens: {
         (params: IRegisterPairByTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairByTokensParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairByTokensParams, options?: TransactionOptions) => Promise<string>;
     };
     registerPairByTokensV3: {
         (params: IRegisterPairByTokensV3Params, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairByTokensV3Params, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairByTokensV3Params, options?: TransactionOptions) => Promise<string>;
     };
     registerPairsByAddress: {
         (params: IRegisterPairsByAddressParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByAddressParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByAddressParams, options?: TransactionOptions) => Promise<string>;
     };
     registerPairsByAddress2: {
         (params: IRegisterPairsByAddress2Params, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByAddress2Params, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByAddress2Params, options?: TransactionOptions) => Promise<string>;
     };
     registerPairsByIndex: {
         (params: IRegisterPairsByIndexParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByIndexParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByIndexParams, options?: TransactionOptions) => Promise<string>;
     };
     registerPairsByTokens: {
         (params: IRegisterPairsByTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByTokensParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByTokensParams, options?: TransactionOptions) => Promise<string>;
     };
     registerPairsByTokensV3: {
         (params: IRegisterPairsByTokensV3Params, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByTokensV3Params, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByTokensV3Params, options?: TransactionOptions) => Promise<string>;
     };
     registerProtocol: {
         (params: IRegisterProtocolParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterProtocolParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterProtocolParams, options?: TransactionOptions) => Promise<string>;
     };
     renounceOwnership: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     transferOwnership: {
         (newOwner: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (newOwner: string, options?: TransactionOptions) => Promise<void>;
+        txData: (newOwner: string, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

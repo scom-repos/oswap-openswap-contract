@@ -12,6 +12,7 @@ export class OSWAP_RestrictedPairCreator4 extends _Contract{
     createPair: {
         (salt:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (salt:string, options?: TransactionOptions) => Promise<string>;
+        txData: (salt:string, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let createPair_send = async (salt:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -22,8 +23,13 @@ export class OSWAP_RestrictedPairCreator4 extends _Contract{
             let result = await this.call('createPair',[this.wallet.utils.stringToBytes32(salt)],options);
             return result;
         }
+        let createPair_txData = async (salt:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('createPair',[this.wallet.utils.stringToBytes32(salt)],options);
+            return result;
+        }
         this.createPair = Object.assign(createPair_send, {
             call:createPair_call
+            , txData:createPair_txData
         });
     }
 }

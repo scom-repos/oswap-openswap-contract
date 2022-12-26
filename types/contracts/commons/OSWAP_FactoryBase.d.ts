@@ -38,6 +38,7 @@ export declare class OSWAP_FactoryBase extends _Contract {
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
+        txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     };
     getPair: {
         (params: IGetPairParams, options?: TransactionOptions): Promise<string>;
@@ -54,10 +55,12 @@ export declare class OSWAP_FactoryBase extends _Contract {
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

@@ -22,10 +22,12 @@ export class OSWAP_OracleLiquidityProvider extends _Contract{
     addLiquidity: {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     addLiquidityETH: {
         (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions) => Promise<string>;
     }
     factory: {
         (options?: TransactionOptions): Promise<string>;
@@ -36,18 +38,22 @@ export class OSWAP_OracleLiquidityProvider extends _Contract{
     removeAllLiquidity: {
         (params: IRemoveAllLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveAllLiquidityParams, options?: TransactionOptions) => Promise<{amountA:BigNumber,amountB:BigNumber}>;
+        txData: (params: IRemoveAllLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     removeAllLiquidityETH: {
         (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions) => Promise<{amountToken:BigNumber,amountETH:BigNumber}>;
+        txData: (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidity: {
         (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     removeLiquidityETH: {
         (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let WETH_call = async (options?: TransactionOptions): Promise<string> => {
@@ -74,8 +80,13 @@ export class OSWAP_OracleLiquidityProvider extends _Contract{
             let result = await this.call('addLiquidity',addLiquidityParams(params),options);
             return new BigNumber(result);
         }
+        let addLiquidity_txData = async (params: IAddLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('addLiquidity',addLiquidityParams(params),options);
+            return result;
+        }
         this.addLiquidity = Object.assign(addLiquidity_send, {
             call:addLiquidity_call
+            , txData:addLiquidity_txData
         });
         let addLiquidityETHParams = (params: IAddLiquidityETHParams) => [params.tokenA,params.addingTokenA,this.wallet.utils.toString(params.staked),this.wallet.utils.toString(params.afterIndex),this.wallet.utils.toString(params.amountAIn),this.wallet.utils.toString(params.expire),params.enable,this.wallet.utils.toString(params.deadline)];
         let addLiquidityETH_send = async (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt> => {
@@ -86,8 +97,13 @@ export class OSWAP_OracleLiquidityProvider extends _Contract{
             let result = await this.call('addLiquidityETH',addLiquidityETHParams(params),options);
             return new BigNumber(result);
         }
+        let addLiquidityETH_txData = async (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<string> => {
+            let result = await this.txData('addLiquidityETH',addLiquidityETHParams(params),options);
+            return result;
+        }
         this.addLiquidityETH = Object.assign(addLiquidityETH_send, {
             call:addLiquidityETH_call
+            , txData:addLiquidityETH_txData
         });
         let removeAllLiquidityParams = (params: IRemoveAllLiquidityParams) => [params.tokenA,params.tokenB,params.to,this.wallet.utils.toString(params.deadline)];
         let removeAllLiquidity_send = async (params: IRemoveAllLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -101,8 +117,13 @@ export class OSWAP_OracleLiquidityProvider extends _Contract{
                 amountB: new BigNumber(result.amountB)
             };
         }
+        let removeAllLiquidity_txData = async (params: IRemoveAllLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeAllLiquidity',removeAllLiquidityParams(params),options);
+            return result;
+        }
         this.removeAllLiquidity = Object.assign(removeAllLiquidity_send, {
             call:removeAllLiquidity_call
+            , txData:removeAllLiquidity_txData
         });
         let removeAllLiquidityETHParams = (params: IRemoveAllLiquidityETHParams) => [params.tokenA,params.to,this.wallet.utils.toString(params.deadline)];
         let removeAllLiquidityETH_send = async (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -116,8 +137,13 @@ export class OSWAP_OracleLiquidityProvider extends _Contract{
                 amountETH: new BigNumber(result.amountETH)
             };
         }
+        let removeAllLiquidityETH_txData = async (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeAllLiquidityETH',removeAllLiquidityETHParams(params),options);
+            return result;
+        }
         this.removeAllLiquidityETH = Object.assign(removeAllLiquidityETH_send, {
             call:removeAllLiquidityETH_call
+            , txData:removeAllLiquidityETH_txData
         });
         let removeLiquidityParams = (params: IRemoveLiquidityParams) => [params.tokenA,params.tokenB,params.removingTokenA,params.to,this.wallet.utils.toString(params.unstake),this.wallet.utils.toString(params.afterIndex),this.wallet.utils.toString(params.amountOut),this.wallet.utils.toString(params.reserveOut),this.wallet.utils.toString(params.expire),params.enable,this.wallet.utils.toString(params.deadline)];
         let removeLiquidity_send = async (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -128,8 +154,13 @@ export class OSWAP_OracleLiquidityProvider extends _Contract{
             let result = await this.call('removeLiquidity',removeLiquidityParams(params),options);
             return;
         }
+        let removeLiquidity_txData = async (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidity',removeLiquidityParams(params),options);
+            return result;
+        }
         this.removeLiquidity = Object.assign(removeLiquidity_send, {
             call:removeLiquidity_call
+            , txData:removeLiquidity_txData
         });
         let removeLiquidityETHParams = (params: IRemoveLiquidityETHParams) => [params.tokenA,params.removingTokenA,params.to,this.wallet.utils.toString(params.unstake),this.wallet.utils.toString(params.afterIndex),this.wallet.utils.toString(params.amountOut),this.wallet.utils.toString(params.reserveOut),this.wallet.utils.toString(params.expire),params.enable,this.wallet.utils.toString(params.deadline)];
         let removeLiquidityETH_send = async (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -140,8 +171,13 @@ export class OSWAP_OracleLiquidityProvider extends _Contract{
             let result = await this.call('removeLiquidityETH',removeLiquidityETHParams(params),options);
             return;
         }
+        let removeLiquidityETH_txData = async (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('removeLiquidityETH',removeLiquidityETHParams(params),options);
+            return result;
+        }
         this.removeLiquidityETH = Object.assign(removeLiquidityETH_send, {
             call:removeLiquidityETH_call
+            , txData:removeLiquidityETH_txData
         });
     }
 }

@@ -48,6 +48,7 @@ export declare class OpenSwap extends _Contract {
     approve: {
         (params: IApproveParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IApproveParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: IApproveParams, options?: TransactionOptions) => Promise<string>;
     };
     balanceOf: {
         (account: string, options?: TransactionOptions): Promise<BigNumber>;
@@ -61,14 +62,17 @@ export declare class OpenSwap extends _Contract {
     decreaseAllowance: {
         (params: IDecreaseAllowanceParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IDecreaseAllowanceParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: IDecreaseAllowanceParams, options?: TransactionOptions) => Promise<string>;
     };
     increaseAllowance: {
         (params: IIncreaseAllowanceParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IIncreaseAllowanceParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: IIncreaseAllowanceParams, options?: TransactionOptions) => Promise<string>;
     };
     mint: {
         (params: IMintParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IMintParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IMintParams, options?: TransactionOptions) => Promise<string>;
     };
     minter: {
         (options?: TransactionOptions): Promise<string>;
@@ -85,10 +89,12 @@ export declare class OpenSwap extends _Contract {
     transfer: {
         (params: ITransferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ITransferParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: ITransferParams, options?: TransactionOptions) => Promise<string>;
     };
     transferFrom: {
         (params: ITransferFromParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ITransferFromParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: ITransferFromParams, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

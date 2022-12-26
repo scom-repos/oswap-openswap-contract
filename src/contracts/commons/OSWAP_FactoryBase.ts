@@ -73,6 +73,7 @@ export class OSWAP_FactoryBase extends _Contract{
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
+        txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     }
     getPair: {
         (params: IGetPairParams, options?: TransactionOptions): Promise<string>;
@@ -89,10 +90,12 @@ export class OSWAP_FactoryBase extends _Contract{
     setLive: {
         (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive:boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive:boolean, options?: TransactionOptions) => Promise<string>;
     }
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let allPairs_call = async (param1:number|BigNumber, options?: TransactionOptions): Promise<string> => {
@@ -135,8 +138,13 @@ export class OSWAP_FactoryBase extends _Contract{
             let result = await this.call('createPair',createPairParams(params),options);
             return result;
         }
+        let createPair_txData = async (params: ICreatePairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('createPair',createPairParams(params),options);
+            return result;
+        }
         this.createPair = Object.assign(createPair_send, {
             call:createPair_call
+            , txData:createPair_txData
         });
         let setLive_send = async (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setLive',[isLive],options);
@@ -146,8 +154,13 @@ export class OSWAP_FactoryBase extends _Contract{
             let result = await this.call('setLive',[isLive],options);
             return;
         }
+        let setLive_txData = async (isLive:boolean, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLive',[isLive],options);
+            return result;
+        }
         this.setLive = Object.assign(setLive_send, {
             call:setLive_call
+            , txData:setLive_txData
         });
         let setLiveForPairParams = (params: ISetLiveForPairParams) => [params.pair,params.live];
         let setLiveForPair_send = async (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -158,8 +171,13 @@ export class OSWAP_FactoryBase extends _Contract{
             let result = await this.call('setLiveForPair',setLiveForPairParams(params),options);
             return;
         }
+        let setLiveForPair_txData = async (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLiveForPair',setLiveForPairParams(params),options);
+            return result;
+        }
         this.setLiveForPair = Object.assign(setLiveForPair_send, {
             call:setLiveForPair_call
+            , txData:setLiveForPair_txData
         });
     }
 }

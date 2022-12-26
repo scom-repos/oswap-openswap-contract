@@ -31,10 +31,12 @@ export declare class OSWAP_ConfigStore extends _Contract {
     setCustomParam: {
         (params: ISetCustomParamParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetCustomParamParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetCustomParamParams, options?: TransactionOptions) => Promise<string>;
     };
     setMultiCustomParam: {
         (params: ISetMultiCustomParamParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetMultiCustomParamParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetMultiCustomParamParams, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

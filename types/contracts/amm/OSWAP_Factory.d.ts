@@ -45,6 +45,7 @@ export declare class OSWAP_Factory extends _Contract {
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
+        txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     };
     getPair: {
         (params: IGetPairParams, options?: TransactionOptions): Promise<string>;
@@ -73,22 +74,27 @@ export declare class OSWAP_Factory extends _Contract {
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     };
     setProtocolFee: {
         (protocolFee: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFee: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFee: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     setProtocolFeeTo: {
         (protocolFeeTo: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFeeTo: string, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFeeTo: string, options?: TransactionOptions) => Promise<string>;
     };
     setTradeFee: {
         (tradeFee: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (tradeFee: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (tradeFee: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     tradeFee: {
         (options?: TransactionOptions): Promise<BigNumber>;

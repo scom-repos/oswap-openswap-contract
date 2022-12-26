@@ -167,6 +167,7 @@ export class OAXDEX_Governance extends _Contract{
     addVotingConfig: {
         (params: IAddVotingConfigParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddVotingConfigParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IAddVotingConfigParams, options?: TransactionOptions) => Promise<string>;
     }
     admin: {
         (options?: TransactionOptions): Promise<string>;
@@ -177,10 +178,12 @@ export class OAXDEX_Governance extends _Contract{
     closeVote: {
         (vote:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (vote:string, options?: TransactionOptions) => Promise<void>;
+        txData: (vote:string, options?: TransactionOptions) => Promise<string>;
     }
     executed: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     freezedStake: {
         (param1:string, options?: TransactionOptions): Promise<{amount:BigNumber,timestamp:BigNumber}>;
@@ -188,6 +191,7 @@ export class OAXDEX_Governance extends _Contract{
     getNewVoteId: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     getVotingConfigProfiles: {
         (params: IGetVotingConfigProfilesParams, options?: TransactionOptions): Promise<string[]>;
@@ -204,10 +208,12 @@ export class OAXDEX_Governance extends _Contract{
     initAdmin: {
         (admin:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (admin:string, options?: TransactionOptions) => Promise<void>;
+        txData: (admin:string, options?: TransactionOptions) => Promise<string>;
     }
     initVotingExecutor: {
         (votingExecutor:string[], options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (votingExecutor:string[], options?: TransactionOptions) => Promise<void>;
+        txData: (votingExecutor:string[], options?: TransactionOptions) => Promise<string>;
     }
     isVotingContract: {
         (votingContract:string, options?: TransactionOptions): Promise<boolean>;
@@ -221,6 +227,7 @@ export class OAXDEX_Governance extends _Contract{
     newVote: {
         (params: INewVoteParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: INewVoteParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: INewVoteParams, options?: TransactionOptions) => Promise<string>;
     }
     oaxToken: {
         (options?: TransactionOptions): Promise<string>;
@@ -231,30 +238,37 @@ export class OAXDEX_Governance extends _Contract{
     renounceOwnership: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     setAdmin: {
         (admin:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (admin:string, options?: TransactionOptions) => Promise<void>;
+        txData: (admin:string, options?: TransactionOptions) => Promise<string>;
     }
     setMinStakePeriod: {
         (minStakePeriod:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (minStakePeriod:number|BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (minStakePeriod:number|BigNumber, options?: TransactionOptions) => Promise<string>;
     }
     setVotingConfig: {
         (params: ISetVotingConfigParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetVotingConfigParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetVotingConfigParams, options?: TransactionOptions) => Promise<string>;
     }
     setVotingExecutor: {
         (params: ISetVotingExecutorParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetVotingExecutorParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetVotingExecutorParams, options?: TransactionOptions) => Promise<string>;
     }
     setVotingRegister: {
         (votingRegister:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (votingRegister:string, options?: TransactionOptions) => Promise<void>;
+        txData: (votingRegister:string, options?: TransactionOptions) => Promise<string>;
     }
     stake: {
         (value:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (value:number|BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (value:number|BigNumber, options?: TransactionOptions) => Promise<string>;
     }
     stakeOf: {
         (param1:string, options?: TransactionOptions): Promise<BigNumber>;
@@ -265,18 +279,22 @@ export class OAXDEX_Governance extends _Contract{
     transferOwnership: {
         (newOwner:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (newOwner:string, options?: TransactionOptions) => Promise<void>;
+        txData: (newOwner:string, options?: TransactionOptions) => Promise<string>;
     }
     unlockStake: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     unstake: {
         (value:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (value:number|BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (value:number|BigNumber, options?: TransactionOptions) => Promise<string>;
     }
     veto: {
         (voting:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (voting:string, options?: TransactionOptions) => Promise<void>;
+        txData: (voting:string, options?: TransactionOptions) => Promise<string>;
     }
     voteCount: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -284,6 +302,7 @@ export class OAXDEX_Governance extends _Contract{
     voted: {
         (params: IVotedParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IVotedParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IVotedParams, options?: TransactionOptions) => Promise<string>;
     }
     votingConfigProfiles: {
         (param1:number|BigNumber, options?: TransactionOptions): Promise<string>;
@@ -467,8 +486,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('addVotingConfig',addVotingConfigParams(params),options);
             return;
         }
+        let addVotingConfig_txData = async (params: IAddVotingConfigParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('addVotingConfig',addVotingConfigParams(params),options);
+            return result;
+        }
         this.addVotingConfig = Object.assign(addVotingConfig_send, {
             call:addVotingConfig_call
+            , txData:addVotingConfig_txData
         });
         let closeVote_send = async (vote:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('closeVote',[vote],options);
@@ -478,8 +502,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('closeVote',[vote],options);
             return;
         }
+        let closeVote_txData = async (vote:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('closeVote',[vote],options);
+            return result;
+        }
         this.closeVote = Object.assign(closeVote_send, {
             call:closeVote_call
+            , txData:closeVote_txData
         });
         let executed_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('executed',[],options);
@@ -489,8 +518,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('executed',[],options);
             return;
         }
+        let executed_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('executed',[],options);
+            return result;
+        }
         this.executed = Object.assign(executed_send, {
             call:executed_call
+            , txData:executed_txData
         });
         let getNewVoteId_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('getNewVoteId',[],options);
@@ -500,8 +534,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('getNewVoteId',[],options);
             return new BigNumber(result);
         }
+        let getNewVoteId_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('getNewVoteId',[],options);
+            return result;
+        }
         this.getNewVoteId = Object.assign(getNewVoteId_send, {
             call:getNewVoteId_call
+            , txData:getNewVoteId_txData
         });
         let initAdmin_send = async (admin:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('initAdmin',[admin],options);
@@ -511,8 +550,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('initAdmin',[admin],options);
             return;
         }
+        let initAdmin_txData = async (admin:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('initAdmin',[admin],options);
+            return result;
+        }
         this.initAdmin = Object.assign(initAdmin_send, {
             call:initAdmin_call
+            , txData:initAdmin_txData
         });
         let initVotingExecutor_send = async (votingExecutor:string[], options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('initVotingExecutor',[votingExecutor],options);
@@ -522,8 +566,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('initVotingExecutor',[votingExecutor],options);
             return;
         }
+        let initVotingExecutor_txData = async (votingExecutor:string[], options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('initVotingExecutor',[votingExecutor],options);
+            return result;
+        }
         this.initVotingExecutor = Object.assign(initVotingExecutor_send, {
             call:initVotingExecutor_call
+            , txData:initVotingExecutor_txData
         });
         let newVoteParams = (params: INewVoteParams) => [params.vote,params.isExecutiveVote];
         let newVote_send = async (params: INewVoteParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -534,8 +583,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('newVote',newVoteParams(params),options);
             return;
         }
+        let newVote_txData = async (params: INewVoteParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('newVote',newVoteParams(params),options);
+            return result;
+        }
         this.newVote = Object.assign(newVote_send, {
             call:newVote_call
+            , txData:newVote_txData
         });
         let renounceOwnership_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('renounceOwnership',[],options);
@@ -545,8 +599,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('renounceOwnership',[],options);
             return;
         }
+        let renounceOwnership_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('renounceOwnership',[],options);
+            return result;
+        }
         this.renounceOwnership = Object.assign(renounceOwnership_send, {
             call:renounceOwnership_call
+            , txData:renounceOwnership_txData
         });
         let setAdmin_send = async (admin:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setAdmin',[admin],options);
@@ -556,8 +615,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('setAdmin',[admin],options);
             return;
         }
+        let setAdmin_txData = async (admin:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setAdmin',[admin],options);
+            return result;
+        }
         this.setAdmin = Object.assign(setAdmin_send, {
             call:setAdmin_call
+            , txData:setAdmin_txData
         });
         let setMinStakePeriod_send = async (minStakePeriod:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setMinStakePeriod',[this.wallet.utils.toString(minStakePeriod)],options);
@@ -567,8 +631,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('setMinStakePeriod',[this.wallet.utils.toString(minStakePeriod)],options);
             return;
         }
+        let setMinStakePeriod_txData = async (minStakePeriod:number|BigNumber, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setMinStakePeriod',[this.wallet.utils.toString(minStakePeriod)],options);
+            return result;
+        }
         this.setMinStakePeriod = Object.assign(setMinStakePeriod_send, {
             call:setMinStakePeriod_call
+            , txData:setMinStakePeriod_txData
         });
         let setVotingConfigParams = (params: ISetVotingConfigParams) => [this.wallet.utils.stringToBytes32(params.configName),this.wallet.utils.stringToBytes32(params.paramName),this.wallet.utils.toString(params.paramValue)];
         let setVotingConfig_send = async (params: ISetVotingConfigParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -579,8 +648,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('setVotingConfig',setVotingConfigParams(params),options);
             return;
         }
+        let setVotingConfig_txData = async (params: ISetVotingConfigParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setVotingConfig',setVotingConfigParams(params),options);
+            return result;
+        }
         this.setVotingConfig = Object.assign(setVotingConfig_send, {
             call:setVotingConfig_call
+            , txData:setVotingConfig_txData
         });
         let setVotingExecutorParams = (params: ISetVotingExecutorParams) => [params.votingExecutor,params.bool];
         let setVotingExecutor_send = async (params: ISetVotingExecutorParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -591,8 +665,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('setVotingExecutor',setVotingExecutorParams(params),options);
             return;
         }
+        let setVotingExecutor_txData = async (params: ISetVotingExecutorParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setVotingExecutor',setVotingExecutorParams(params),options);
+            return result;
+        }
         this.setVotingExecutor = Object.assign(setVotingExecutor_send, {
             call:setVotingExecutor_call
+            , txData:setVotingExecutor_txData
         });
         let setVotingRegister_send = async (votingRegister:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setVotingRegister',[votingRegister],options);
@@ -602,8 +681,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('setVotingRegister',[votingRegister],options);
             return;
         }
+        let setVotingRegister_txData = async (votingRegister:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setVotingRegister',[votingRegister],options);
+            return result;
+        }
         this.setVotingRegister = Object.assign(setVotingRegister_send, {
             call:setVotingRegister_call
+            , txData:setVotingRegister_txData
         });
         let stake_send = async (value:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('stake',[this.wallet.utils.toString(value)],options);
@@ -613,8 +697,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('stake',[this.wallet.utils.toString(value)],options);
             return;
         }
+        let stake_txData = async (value:number|BigNumber, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('stake',[this.wallet.utils.toString(value)],options);
+            return result;
+        }
         this.stake = Object.assign(stake_send, {
             call:stake_call
+            , txData:stake_txData
         });
         let transferOwnership_send = async (newOwner:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('transferOwnership',[newOwner],options);
@@ -624,8 +713,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('transferOwnership',[newOwner],options);
             return;
         }
+        let transferOwnership_txData = async (newOwner:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('transferOwnership',[newOwner],options);
+            return result;
+        }
         this.transferOwnership = Object.assign(transferOwnership_send, {
             call:transferOwnership_call
+            , txData:transferOwnership_txData
         });
         let unlockStake_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('unlockStake',[],options);
@@ -635,8 +729,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('unlockStake',[],options);
             return;
         }
+        let unlockStake_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('unlockStake',[],options);
+            return result;
+        }
         this.unlockStake = Object.assign(unlockStake_send, {
             call:unlockStake_call
+            , txData:unlockStake_txData
         });
         let unstake_send = async (value:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('unstake',[this.wallet.utils.toString(value)],options);
@@ -646,8 +745,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('unstake',[this.wallet.utils.toString(value)],options);
             return;
         }
+        let unstake_txData = async (value:number|BigNumber, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('unstake',[this.wallet.utils.toString(value)],options);
+            return result;
+        }
         this.unstake = Object.assign(unstake_send, {
             call:unstake_call
+            , txData:unstake_txData
         });
         let veto_send = async (voting:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('veto',[voting],options);
@@ -657,8 +761,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('veto',[voting],options);
             return;
         }
+        let veto_txData = async (voting:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('veto',[voting],options);
+            return result;
+        }
         this.veto = Object.assign(veto_send, {
             call:veto_call
+            , txData:veto_txData
         });
         let votedParams = (params: IVotedParams) => [params.poll,params.account,this.wallet.utils.toString(params.option)];
         let voted_send = async (params: IVotedParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -669,8 +778,13 @@ export class OAXDEX_Governance extends _Contract{
             let result = await this.call('voted',votedParams(params),options);
             return;
         }
+        let voted_txData = async (params: IVotedParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('voted',votedParams(params),options);
+            return result;
+        }
         this.voted = Object.assign(voted_send, {
             call:voted_call
+            , txData:voted_txData
         });
     }
 }

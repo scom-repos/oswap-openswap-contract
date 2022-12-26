@@ -78,6 +78,7 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
     execute: {
         (params:string[], options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params:string[], options?: TransactionOptions) => Promise<void>;
+        txData: (params:string[], options?: TransactionOptions) => Promise<string>;
     }
     getFee: {
         (pairAddress:string, options?: TransactionOptions): Promise<{fee:BigNumber,feeBase:BigNumber}>;
@@ -94,6 +95,7 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
     init: {
         (params: IInitParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IInitParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IInitParams, options?: TransactionOptions) => Promise<string>;
     }
     owner: {
         (options?: TransactionOptions): Promise<string>;
@@ -113,54 +115,67 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
     registerPair: {
         (params: IRegisterPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairParams, options?: TransactionOptions) => Promise<string>;
     }
     registerPairByAddress: {
         (params: IRegisterPairByAddressParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairByAddressParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairByAddressParams, options?: TransactionOptions) => Promise<string>;
     }
     registerPairByIndex: {
         (params: IRegisterPairByIndexParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairByIndexParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairByIndexParams, options?: TransactionOptions) => Promise<string>;
     }
     registerPairByTokens: {
         (params: IRegisterPairByTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairByTokensParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairByTokensParams, options?: TransactionOptions) => Promise<string>;
     }
     registerPairByTokensV3: {
         (params: IRegisterPairByTokensV3Params, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairByTokensV3Params, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairByTokensV3Params, options?: TransactionOptions) => Promise<string>;
     }
     registerPairsByAddress: {
         (params: IRegisterPairsByAddressParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByAddressParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByAddressParams, options?: TransactionOptions) => Promise<string>;
     }
     registerPairsByAddress2: {
         (params: IRegisterPairsByAddress2Params, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByAddress2Params, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByAddress2Params, options?: TransactionOptions) => Promise<string>;
     }
     registerPairsByIndex: {
         (params: IRegisterPairsByIndexParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByIndexParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByIndexParams, options?: TransactionOptions) => Promise<string>;
     }
     registerPairsByTokens: {
         (params: IRegisterPairsByTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByTokensParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByTokensParams, options?: TransactionOptions) => Promise<string>;
     }
     registerPairsByTokensV3: {
         (params: IRegisterPairsByTokensV3Params, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterPairsByTokensV3Params, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterPairsByTokensV3Params, options?: TransactionOptions) => Promise<string>;
     }
     registerProtocol: {
         (params: IRegisterProtocolParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRegisterProtocolParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IRegisterProtocolParams, options?: TransactionOptions) => Promise<string>;
     }
     renounceOwnership: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     }
     transferOwnership: {
         (newOwner:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (newOwner:string, options?: TransactionOptions) => Promise<void>;
+        txData: (newOwner:string, options?: TransactionOptions) => Promise<string>;
     }
     private assign(){
         let customPairs_call = async (param1:string, options?: TransactionOptions): Promise<{fee:BigNumber,feeBase:BigNumber,typeCode:BigNumber}> => {
@@ -240,8 +255,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('execute',[this.wallet.utils.stringToBytes32(params)],options);
             return;
         }
+        let execute_txData = async (params:string[], options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('execute',[this.wallet.utils.stringToBytes32(params)],options);
+            return result;
+        }
         this.execute = Object.assign(execute_send, {
             call:execute_call
+            , txData:execute_txData
         });
         let initParams = (params: IInitParams) => [this.wallet.utils.stringToBytes32(params.name),params.factory,this.wallet.utils.toString(params.fee),this.wallet.utils.toString(params.feeBase),this.wallet.utils.toString(params.typeCode)];
         let init_send = async (params: IInitParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -252,8 +272,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('init',initParams(params),options);
             return;
         }
+        let init_txData = async (params: IInitParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('init',initParams(params),options);
+            return result;
+        }
         this.init = Object.assign(init_send, {
             call:init_call
+            , txData:init_txData
         });
         let registerPairParams = (params: IRegisterPairParams) => [params.token0,params.token1,params.pairAddress,this.wallet.utils.toString(params.fee),this.wallet.utils.toString(params.feeBase),this.wallet.utils.toString(params.typeCode)];
         let registerPair_send = async (params: IRegisterPairParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -264,8 +289,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPair',registerPairParams(params),options);
             return;
         }
+        let registerPair_txData = async (params: IRegisterPairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPair',registerPairParams(params),options);
+            return result;
+        }
         this.registerPair = Object.assign(registerPair_send, {
             call:registerPair_call
+            , txData:registerPair_txData
         });
         let registerPairByAddressParams = (params: IRegisterPairByAddressParams) => [params.factory,params.pairAddress];
         let registerPairByAddress_send = async (params: IRegisterPairByAddressParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -276,8 +306,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairByAddress',registerPairByAddressParams(params),options);
             return;
         }
+        let registerPairByAddress_txData = async (params: IRegisterPairByAddressParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairByAddress',registerPairByAddressParams(params),options);
+            return result;
+        }
         this.registerPairByAddress = Object.assign(registerPairByAddress_send, {
             call:registerPairByAddress_call
+            , txData:registerPairByAddress_txData
         });
         let registerPairByIndexParams = (params: IRegisterPairByIndexParams) => [params.factory,this.wallet.utils.toString(params.index)];
         let registerPairByIndex_send = async (params: IRegisterPairByIndexParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -288,8 +323,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairByIndex',registerPairByIndexParams(params),options);
             return;
         }
+        let registerPairByIndex_txData = async (params: IRegisterPairByIndexParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairByIndex',registerPairByIndexParams(params),options);
+            return result;
+        }
         this.registerPairByIndex = Object.assign(registerPairByIndex_send, {
             call:registerPairByIndex_call
+            , txData:registerPairByIndex_txData
         });
         let registerPairByTokensParams = (params: IRegisterPairByTokensParams) => [params.factory,params.token0,params.token1];
         let registerPairByTokens_send = async (params: IRegisterPairByTokensParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -300,8 +340,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairByTokens',registerPairByTokensParams(params),options);
             return;
         }
+        let registerPairByTokens_txData = async (params: IRegisterPairByTokensParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairByTokens',registerPairByTokensParams(params),options);
+            return result;
+        }
         this.registerPairByTokens = Object.assign(registerPairByTokens_send, {
             call:registerPairByTokens_call
+            , txData:registerPairByTokens_txData
         });
         let registerPairByTokensV3Params = (params: IRegisterPairByTokensV3Params) => [params.factory,params.token0,params.token1,this.wallet.utils.toString(params.pairIndex)];
         let registerPairByTokensV3_send = async (params: IRegisterPairByTokensV3Params, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -312,8 +357,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairByTokensV3',registerPairByTokensV3Params(params),options);
             return;
         }
+        let registerPairByTokensV3_txData = async (params: IRegisterPairByTokensV3Params, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairByTokensV3',registerPairByTokensV3Params(params),options);
+            return result;
+        }
         this.registerPairByTokensV3 = Object.assign(registerPairByTokensV3_send, {
             call:registerPairByTokensV3_call
+            , txData:registerPairByTokensV3_txData
         });
         let registerPairsByAddressParams = (params: IRegisterPairsByAddressParams) => [params.factory,params.pairAddress];
         let registerPairsByAddress_send = async (params: IRegisterPairsByAddressParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -324,8 +374,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairsByAddress',registerPairsByAddressParams(params),options);
             return;
         }
+        let registerPairsByAddress_txData = async (params: IRegisterPairsByAddressParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairsByAddress',registerPairsByAddressParams(params),options);
+            return result;
+        }
         this.registerPairsByAddress = Object.assign(registerPairsByAddress_send, {
             call:registerPairsByAddress_call
+            , txData:registerPairsByAddress_txData
         });
         let registerPairsByAddress2Params = (params: IRegisterPairsByAddress2Params) => [params.factory,params.pairAddress];
         let registerPairsByAddress2_send = async (params: IRegisterPairsByAddress2Params, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -336,8 +391,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairsByAddress2',registerPairsByAddress2Params(params),options);
             return;
         }
+        let registerPairsByAddress2_txData = async (params: IRegisterPairsByAddress2Params, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairsByAddress2',registerPairsByAddress2Params(params),options);
+            return result;
+        }
         this.registerPairsByAddress2 = Object.assign(registerPairsByAddress2_send, {
             call:registerPairsByAddress2_call
+            , txData:registerPairsByAddress2_txData
         });
         let registerPairsByIndexParams = (params: IRegisterPairsByIndexParams) => [params.factory,this.wallet.utils.toString(params.index)];
         let registerPairsByIndex_send = async (params: IRegisterPairsByIndexParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -348,8 +408,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairsByIndex',registerPairsByIndexParams(params),options);
             return;
         }
+        let registerPairsByIndex_txData = async (params: IRegisterPairsByIndexParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairsByIndex',registerPairsByIndexParams(params),options);
+            return result;
+        }
         this.registerPairsByIndex = Object.assign(registerPairsByIndex_send, {
             call:registerPairsByIndex_call
+            , txData:registerPairsByIndex_txData
         });
         let registerPairsByTokensParams = (params: IRegisterPairsByTokensParams) => [params.factory,params.token0,params.token1];
         let registerPairsByTokens_send = async (params: IRegisterPairsByTokensParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -360,8 +425,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairsByTokens',registerPairsByTokensParams(params),options);
             return;
         }
+        let registerPairsByTokens_txData = async (params: IRegisterPairsByTokensParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairsByTokens',registerPairsByTokensParams(params),options);
+            return result;
+        }
         this.registerPairsByTokens = Object.assign(registerPairsByTokens_send, {
             call:registerPairsByTokens_call
+            , txData:registerPairsByTokens_txData
         });
         let registerPairsByTokensV3Params = (params: IRegisterPairsByTokensV3Params) => [params.factory,params.token0,params.token1,this.wallet.utils.toString(params.pairIndex)];
         let registerPairsByTokensV3_send = async (params: IRegisterPairsByTokensV3Params, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -372,8 +442,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerPairsByTokensV3',registerPairsByTokensV3Params(params),options);
             return;
         }
+        let registerPairsByTokensV3_txData = async (params: IRegisterPairsByTokensV3Params, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerPairsByTokensV3',registerPairsByTokensV3Params(params),options);
+            return result;
+        }
         this.registerPairsByTokensV3 = Object.assign(registerPairsByTokensV3_send, {
             call:registerPairsByTokensV3_call
+            , txData:registerPairsByTokensV3_txData
         });
         let registerProtocolParams = (params: IRegisterProtocolParams) => [this.wallet.utils.stringToBytes32(params.name),params.factory,this.wallet.utils.toString(params.fee),this.wallet.utils.toString(params.feeBase),this.wallet.utils.toString(params.typeCode)];
         let registerProtocol_send = async (params: IRegisterProtocolParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -384,8 +459,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('registerProtocol',registerProtocolParams(params),options);
             return;
         }
+        let registerProtocol_txData = async (params: IRegisterProtocolParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('registerProtocol',registerProtocolParams(params),options);
+            return result;
+        }
         this.registerProtocol = Object.assign(registerProtocol_send, {
             call:registerProtocol_call
+            , txData:registerProtocol_txData
         });
         let renounceOwnership_send = async (options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('renounceOwnership',[],options);
@@ -395,8 +475,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('renounceOwnership',[],options);
             return;
         }
+        let renounceOwnership_txData = async (options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('renounceOwnership',[],options);
+            return result;
+        }
         this.renounceOwnership = Object.assign(renounceOwnership_send, {
             call:renounceOwnership_call
+            , txData:renounceOwnership_txData
         });
         let transferOwnership_send = async (newOwner:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('transferOwnership',[newOwner],options);
@@ -406,8 +491,13 @@ export class OSWAP_HybridRouterRegistry extends _Contract{
             let result = await this.call('transferOwnership',[newOwner],options);
             return;
         }
+        let transferOwnership_txData = async (newOwner:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('transferOwnership',[newOwner],options);
+            return result;
+        }
         this.transferOwnership = Object.assign(transferOwnership_send, {
             call:transferOwnership_call
+            , txData:transferOwnership_txData
         });
     }
 }

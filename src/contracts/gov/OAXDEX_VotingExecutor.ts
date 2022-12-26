@@ -16,6 +16,7 @@ export class OAXDEX_VotingExecutor extends _Contract{
     execute: {
         (params:string[], options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params:string[], options?: TransactionOptions) => Promise<void>;
+        txData: (params:string[], options?: TransactionOptions) => Promise<string>;
     }
     governance: {
         (options?: TransactionOptions): Promise<string>;
@@ -39,8 +40,13 @@ export class OAXDEX_VotingExecutor extends _Contract{
             let result = await this.call('execute',[this.wallet.utils.stringToBytes32(params)],options);
             return;
         }
+        let execute_txData = async (params:string[], options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('execute',[this.wallet.utils.stringToBytes32(params)],options);
+            return result;
+        }
         this.execute = Object.assign(execute_send, {
             call:execute_call
+            , txData:execute_txData
         });
     }
 }

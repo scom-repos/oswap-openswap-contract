@@ -56,6 +56,7 @@ export declare class OSWAP_RangeFactory extends _Contract {
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
+        txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     };
     getAllLiquidityProviderShare: {
         (options?: TransactionOptions): Promise<{
@@ -103,30 +104,37 @@ export declare class OSWAP_RangeFactory extends _Contract {
     renounceOwnership: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     setLiquidityProviderShare: {
         (params: ISetLiquidityProviderShareParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiquidityProviderShareParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiquidityProviderShareParams, options?: TransactionOptions) => Promise<string>;
     };
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     };
     setProtocolFeeTo: {
         (protocolFeeTo: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFeeTo: string, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFeeTo: string, options?: TransactionOptions) => Promise<string>;
     };
     setRangeLiquidityProvider: {
         (rangeLiquidityProvider: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (rangeLiquidityProvider: string, options?: TransactionOptions) => Promise<void>;
+        txData: (rangeLiquidityProvider: string, options?: TransactionOptions) => Promise<string>;
     };
     setTradeFee: {
         (tradeFee: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (tradeFee: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (tradeFee: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     stakeAmount: {
         (param1: number | BigNumber, options?: TransactionOptions): Promise<BigNumber>;
@@ -137,6 +145,7 @@ export declare class OSWAP_RangeFactory extends _Contract {
     transferOwnership: {
         (newOwner: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (newOwner: string, options?: TransactionOptions) => Promise<void>;
+        txData: (newOwner: string, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

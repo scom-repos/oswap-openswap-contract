@@ -96,6 +96,7 @@ export class OSWAP_Factory extends _Contract{
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
+        txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     }
     getPair: {
         (params: IGetPairParams, options?: TransactionOptions): Promise<string>;
@@ -121,22 +122,27 @@ export class OSWAP_Factory extends _Contract{
     setLive: {
         (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive:boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive:boolean, options?: TransactionOptions) => Promise<string>;
     }
     setLiveForPair: {
         (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetLiveForPairParams, options?: TransactionOptions) => Promise<string>;
     }
     setProtocolFee: {
         (protocolFee:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFee:number|BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFee:number|BigNumber, options?: TransactionOptions) => Promise<string>;
     }
     setProtocolFeeTo: {
         (protocolFeeTo:string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (protocolFeeTo:string, options?: TransactionOptions) => Promise<void>;
+        txData: (protocolFeeTo:string, options?: TransactionOptions) => Promise<string>;
     }
     setTradeFee: {
         (tradeFee:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (tradeFee:number|BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (tradeFee:number|BigNumber, options?: TransactionOptions) => Promise<string>;
     }
     tradeFee: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -205,8 +211,13 @@ export class OSWAP_Factory extends _Contract{
             let result = await this.call('createPair',createPairParams(params),options);
             return result;
         }
+        let createPair_txData = async (params: ICreatePairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('createPair',createPairParams(params),options);
+            return result;
+        }
         this.createPair = Object.assign(createPair_send, {
             call:createPair_call
+            , txData:createPair_txData
         });
         let setLive_send = async (isLive:boolean, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setLive',[isLive],options);
@@ -216,8 +227,13 @@ export class OSWAP_Factory extends _Contract{
             let result = await this.call('setLive',[isLive],options);
             return;
         }
+        let setLive_txData = async (isLive:boolean, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLive',[isLive],options);
+            return result;
+        }
         this.setLive = Object.assign(setLive_send, {
             call:setLive_call
+            , txData:setLive_txData
         });
         let setLiveForPairParams = (params: ISetLiveForPairParams) => [params.pair,params.live];
         let setLiveForPair_send = async (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<TransactionReceipt> => {
@@ -228,8 +244,13 @@ export class OSWAP_Factory extends _Contract{
             let result = await this.call('setLiveForPair',setLiveForPairParams(params),options);
             return;
         }
+        let setLiveForPair_txData = async (params: ISetLiveForPairParams, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setLiveForPair',setLiveForPairParams(params),options);
+            return result;
+        }
         this.setLiveForPair = Object.assign(setLiveForPair_send, {
             call:setLiveForPair_call
+            , txData:setLiveForPair_txData
         });
         let setProtocolFee_send = async (protocolFee:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setProtocolFee',[this.wallet.utils.toString(protocolFee)],options);
@@ -239,8 +260,13 @@ export class OSWAP_Factory extends _Contract{
             let result = await this.call('setProtocolFee',[this.wallet.utils.toString(protocolFee)],options);
             return;
         }
+        let setProtocolFee_txData = async (protocolFee:number|BigNumber, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setProtocolFee',[this.wallet.utils.toString(protocolFee)],options);
+            return result;
+        }
         this.setProtocolFee = Object.assign(setProtocolFee_send, {
             call:setProtocolFee_call
+            , txData:setProtocolFee_txData
         });
         let setProtocolFeeTo_send = async (protocolFeeTo:string, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setProtocolFeeTo',[protocolFeeTo],options);
@@ -250,8 +276,13 @@ export class OSWAP_Factory extends _Contract{
             let result = await this.call('setProtocolFeeTo',[protocolFeeTo],options);
             return;
         }
+        let setProtocolFeeTo_txData = async (protocolFeeTo:string, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setProtocolFeeTo',[protocolFeeTo],options);
+            return result;
+        }
         this.setProtocolFeeTo = Object.assign(setProtocolFeeTo_send, {
             call:setProtocolFeeTo_call
+            , txData:setProtocolFeeTo_txData
         });
         let setTradeFee_send = async (tradeFee:number|BigNumber, options?: TransactionOptions): Promise<TransactionReceipt> => {
             let result = await this.send('setTradeFee',[this.wallet.utils.toString(tradeFee)],options);
@@ -261,8 +292,13 @@ export class OSWAP_Factory extends _Contract{
             let result = await this.call('setTradeFee',[this.wallet.utils.toString(tradeFee)],options);
             return;
         }
+        let setTradeFee_txData = async (tradeFee:number|BigNumber, options?: TransactionOptions): Promise<string> => {
+            let result = await this.txData('setTradeFee',[this.wallet.utils.toString(tradeFee)],options);
+            return result;
+        }
         this.setTradeFee = Object.assign(setTradeFee_send, {
             call:setTradeFee_call
+            , txData:setTradeFee_txData
         });
     }
 }

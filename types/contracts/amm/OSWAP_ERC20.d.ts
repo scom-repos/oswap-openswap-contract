@@ -51,6 +51,7 @@ export declare class OSWAP_ERC20 extends _Contract {
     approve: {
         (params: IApproveParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IApproveParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: IApproveParams, options?: TransactionOptions) => Promise<string>;
     };
     balanceOf: {
         (param1: string, options?: TransactionOptions): Promise<BigNumber>;
@@ -67,6 +68,7 @@ export declare class OSWAP_ERC20 extends _Contract {
     permit: {
         (params: IPermitParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IPermitParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IPermitParams, options?: TransactionOptions) => Promise<string>;
     };
     symbol: {
         (options?: TransactionOptions): Promise<string>;
@@ -77,10 +79,12 @@ export declare class OSWAP_ERC20 extends _Contract {
     transfer: {
         (params: ITransferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ITransferParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: ITransferParams, options?: TransactionOptions) => Promise<string>;
     };
     transferFrom: {
         (params: ITransferFromParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ITransferFromParams, options?: TransactionOptions) => Promise<boolean>;
+        txData: (params: ITransferFromParams, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

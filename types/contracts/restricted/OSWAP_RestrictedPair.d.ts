@@ -120,6 +120,7 @@ export declare class OSWAP_RestrictedPair extends _Contract {
     createOrder: {
         (params: ICreateOrderParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ICreateOrderParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: ICreateOrderParams, options?: TransactionOptions) => Promise<string>;
     };
     factory: {
         (options?: TransactionOptions): Promise<string>;
@@ -197,6 +198,7 @@ export declare class OSWAP_RestrictedPair extends _Contract {
     initialize: {
         (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IInitializeParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IInitializeParams, options?: TransactionOptions) => Promise<string>;
     };
     isApprovedTrader: {
         (params: IIsApprovedTraderParams, options?: TransactionOptions): Promise<boolean>;
@@ -216,6 +218,7 @@ export declare class OSWAP_RestrictedPair extends _Contract {
     lockOffer: {
         (params: ILockOfferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ILockOfferParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ILockOfferParams, options?: TransactionOptions) => Promise<string>;
     };
     offers: {
         (params: IOffersParams, options?: TransactionOptions): Promise<{
@@ -241,6 +244,7 @@ export declare class OSWAP_RestrictedPair extends _Contract {
     redeemProtocolFee: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     restrictedLiquidityProvider: {
         (options?: TransactionOptions): Promise<string>;
@@ -254,14 +258,17 @@ export declare class OSWAP_RestrictedPair extends _Contract {
     setLive: {
         (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+        txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
     };
     swap: {
         (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapParams, options?: TransactionOptions) => Promise<string>;
     };
     sync: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     token0: {
         (options?: TransactionOptions): Promise<string>;

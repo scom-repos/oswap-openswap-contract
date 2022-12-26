@@ -184,6 +184,7 @@ export declare class OSWAP_Router extends _Contract {
             amountB: BigNumber;
             liquidity: BigNumber;
         }>;
+        txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     addLiquidityETH: {
         (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
@@ -192,6 +193,7 @@ export declare class OSWAP_Router extends _Contract {
             amountETH: BigNumber;
             liquidity: BigNumber;
         }>;
+        txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
     };
     factory: {
         (options?: TransactionOptions): Promise<string>;
@@ -223,6 +225,7 @@ export declare class OSWAP_Router extends _Contract {
             amountA: BigNumber;
             amountB: BigNumber;
         }>;
+        txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidityETH: {
         (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -230,10 +233,12 @@ export declare class OSWAP_Router extends _Contract {
             amountToken: BigNumber;
             amountETH: BigNumber;
         }>;
+        txData: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidityETHSupportingFeeOnTransferTokens: {
         (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IRemoveLiquidityETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidityETHWithPermit: {
         (params: IRemoveLiquidityETHWithPermitParams, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -241,10 +246,12 @@ export declare class OSWAP_Router extends _Contract {
             amountToken: BigNumber;
             amountETH: BigNumber;
         }>;
+        txData: (params: IRemoveLiquidityETHWithPermitParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidityETHWithPermitSupportingFeeOnTransferTokens: {
         (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (params: IRemoveLiquidityETHWithPermitSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<string>;
     };
     removeLiquidityWithPermit: {
         (params: IRemoveLiquidityWithPermitParams, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -252,42 +259,52 @@ export declare class OSWAP_Router extends _Contract {
             amountA: BigNumber;
             amountB: BigNumber;
         }>;
+        txData: (params: IRemoveLiquidityWithPermitParams, options?: TransactionOptions) => Promise<string>;
     };
     swapETHForExactTokens: {
         (params: ISwapETHForExactTokensParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapETHForExactTokensParams, options?: number | BigNumber | TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapETHForExactTokensParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
     };
     swapExactETHForTokens: {
         (params: ISwapExactETHForTokensParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactETHForTokensParams, options?: number | BigNumber | TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapExactETHForTokensParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
     };
     swapExactETHForTokensSupportingFeeOnTransferTokens: {
         (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams, options?: number | BigNumber | TransactionOptions) => Promise<void>;
+        txData: (params: ISwapExactETHForTokensSupportingFeeOnTransferTokensParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
     };
     swapExactTokensForETH: {
         (params: ISwapExactTokensForETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactTokensForETHParams, options?: TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapExactTokensForETHParams, options?: TransactionOptions) => Promise<string>;
     };
     swapExactTokensForETHSupportingFeeOnTransferTokens: {
         (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapExactTokensForETHSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<string>;
     };
     swapExactTokensForTokens: {
         (params: ISwapExactTokensForTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactTokensForTokensParams, options?: TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapExactTokensForTokensParams, options?: TransactionOptions) => Promise<string>;
     };
     swapExactTokensForTokensSupportingFeeOnTransferTokens: {
         (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISwapExactTokensForTokensSupportingFeeOnTransferTokensParams, options?: TransactionOptions) => Promise<string>;
     };
     swapTokensForExactETH: {
         (params: ISwapTokensForExactETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapTokensForExactETHParams, options?: TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapTokensForExactETHParams, options?: TransactionOptions) => Promise<string>;
     };
     swapTokensForExactTokens: {
         (params: ISwapTokensForExactTokensParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISwapTokensForExactTokensParams, options?: TransactionOptions) => Promise<BigNumber[]>;
+        txData: (params: ISwapTokensForExactTokensParams, options?: TransactionOptions) => Promise<string>;
     };
     private assign;
 }

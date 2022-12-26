@@ -77,6 +77,7 @@ export declare class OAXDEX_Governance extends _Contract {
     addVotingConfig: {
         (params: IAddVotingConfigParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddVotingConfigParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IAddVotingConfigParams, options?: TransactionOptions) => Promise<string>;
     };
     admin: {
         (options?: TransactionOptions): Promise<string>;
@@ -87,10 +88,12 @@ export declare class OAXDEX_Governance extends _Contract {
     closeVote: {
         (vote: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (vote: string, options?: TransactionOptions) => Promise<void>;
+        txData: (vote: string, options?: TransactionOptions) => Promise<string>;
     };
     executed: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     freezedStake: {
         (param1: string, options?: TransactionOptions): Promise<{
@@ -101,6 +104,7 @@ export declare class OAXDEX_Governance extends _Contract {
     getNewVoteId: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<BigNumber>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     getVotingConfigProfiles: {
         (params: IGetVotingConfigProfilesParams, options?: TransactionOptions): Promise<string[]>;
@@ -123,10 +127,12 @@ export declare class OAXDEX_Governance extends _Contract {
     initAdmin: {
         (admin: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (admin: string, options?: TransactionOptions) => Promise<void>;
+        txData: (admin: string, options?: TransactionOptions) => Promise<string>;
     };
     initVotingExecutor: {
         (votingExecutor: string[], options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (votingExecutor: string[], options?: TransactionOptions) => Promise<void>;
+        txData: (votingExecutor: string[], options?: TransactionOptions) => Promise<string>;
     };
     isVotingContract: {
         (votingContract: string, options?: TransactionOptions): Promise<boolean>;
@@ -140,6 +146,7 @@ export declare class OAXDEX_Governance extends _Contract {
     newVote: {
         (params: INewVoteParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: INewVoteParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: INewVoteParams, options?: TransactionOptions) => Promise<string>;
     };
     oaxToken: {
         (options?: TransactionOptions): Promise<string>;
@@ -150,30 +157,37 @@ export declare class OAXDEX_Governance extends _Contract {
     renounceOwnership: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     setAdmin: {
         (admin: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (admin: string, options?: TransactionOptions) => Promise<void>;
+        txData: (admin: string, options?: TransactionOptions) => Promise<string>;
     };
     setMinStakePeriod: {
         (minStakePeriod: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (minStakePeriod: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (minStakePeriod: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     setVotingConfig: {
         (params: ISetVotingConfigParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetVotingConfigParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetVotingConfigParams, options?: TransactionOptions) => Promise<string>;
     };
     setVotingExecutor: {
         (params: ISetVotingExecutorParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: ISetVotingExecutorParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: ISetVotingExecutorParams, options?: TransactionOptions) => Promise<string>;
     };
     setVotingRegister: {
         (votingRegister: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (votingRegister: string, options?: TransactionOptions) => Promise<void>;
+        txData: (votingRegister: string, options?: TransactionOptions) => Promise<string>;
     };
     stake: {
         (value: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (value: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (value: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     stakeOf: {
         (param1: string, options?: TransactionOptions): Promise<BigNumber>;
@@ -184,18 +198,22 @@ export declare class OAXDEX_Governance extends _Contract {
     transferOwnership: {
         (newOwner: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (newOwner: string, options?: TransactionOptions) => Promise<void>;
+        txData: (newOwner: string, options?: TransactionOptions) => Promise<string>;
     };
     unlockStake: {
         (options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (options?: TransactionOptions) => Promise<void>;
+        txData: (options?: TransactionOptions) => Promise<string>;
     };
     unstake: {
         (value: number | BigNumber, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (value: number | BigNumber, options?: TransactionOptions) => Promise<void>;
+        txData: (value: number | BigNumber, options?: TransactionOptions) => Promise<string>;
     };
     veto: {
         (voting: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (voting: string, options?: TransactionOptions) => Promise<void>;
+        txData: (voting: string, options?: TransactionOptions) => Promise<string>;
     };
     voteCount: {
         (options?: TransactionOptions): Promise<BigNumber>;
@@ -203,6 +221,7 @@ export declare class OAXDEX_Governance extends _Contract {
     voted: {
         (params: IVotedParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IVotedParams, options?: TransactionOptions) => Promise<void>;
+        txData: (params: IVotedParams, options?: TransactionOptions) => Promise<string>;
     };
     votingConfigProfiles: {
         (param1: number | BigNumber, options?: TransactionOptions): Promise<string>;

@@ -13,6 +13,7 @@ export declare class OAXDEX_VotingExecutor extends _Contract {
     execute: {
         (params: string[], options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: string[], options?: TransactionOptions) => Promise<void>;
+        txData: (params: string[], options?: TransactionOptions) => Promise<string>;
     };
     governance: {
         (options?: TransactionOptions): Promise<string>;
