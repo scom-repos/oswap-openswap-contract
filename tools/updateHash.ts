@@ -4,7 +4,15 @@ import Web3 from 'web3';
 
 const sourceDir = "contracts/";
 async function updateHash(){
-    const SOURCE = ["amm/OSWAP_Pair", "oracle/OSWAP_OraclePair", "range/OSWAP_RangePair", "restricted/OSWAP_RestrictedPair1", "restricted/OSWAP_RestrictedPair3", "restricted/OSWAP_RestrictedPair4"];
+    const SOURCE = [
+        "amm/OSWAP_Pair", 
+        "oracle/OSWAP_OraclePair", 
+        "range/OSWAP_RangePair", 
+        "restricted/OSWAP_RestrictedPair1", 
+        "restricted/OSWAP_RestrictedPair3", 
+        "restricted/OSWAP_RestrictedPair4",
+        "restricted/OSWAP_OtcPair"
+    ];
 
     var hex = [];
     for (var i = 0 ; i < SOURCE.length ; i++) {
@@ -59,5 +67,10 @@ async function updateHash(){
     var data = fs.readFileSync(RestrictedLiquidityProvider4, 'utf-8');
     data = data.replace(/\/\*restricted\*\/hex\'[a-f0-9]{64}\'/,`/*restricted*/hex'${hex[5]}'`);
     fs.writeFileSync(RestrictedLiquidityProvider4, data);
+
+    const OtcLiquidityProvider = path.join(__dirname,"../" + sourceDir + "restricted/OSWAP_OtcLiquidityProvider.sol");
+    var data = fs.readFileSync(OtcLiquidityProvider, 'utf-8');
+    data = data.replace(/\/\*otc\*\/hex\'[a-f0-9]{64}\'/,`/*otc*/hex'${hex[6]}'`);
+    fs.writeFileSync(OtcLiquidityProvider, data);
 }
 updateHash();

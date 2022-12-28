@@ -4726,9 +4726,273 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_ConfigS
         }
     }
 }
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.json.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.json.ts" {
+    const _default_28: {
+        abi: ({
+            inputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            stateMutability: string;
+            type: string;
+            name?: undefined;
+            outputs?: undefined;
+        } | {
+            inputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            name: string;
+            outputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            stateMutability: string;
+            type: string;
+        } | {
+            stateMutability: string;
+            type: string;
+            inputs?: undefined;
+            name?: undefined;
+            outputs?: undefined;
+        })[];
+        bytecode: string;
+    };
+    export default _default_28;
+}
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.ts" {
+    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    export interface IDeployParams {
+        factory: string;
+        WETH: string;
+    }
+    export interface IAddLiquidityParams {
+        tokenA: string;
+        tokenB: string;
+        addingTokenA: boolean;
+        pairIndex: number | BigNumber;
+        offerIndex: number | BigNumber;
+        amountIn: number | BigNumber;
+        allowAll: boolean;
+        restrictedPrice: number | BigNumber;
+        startDate: number | BigNumber;
+        expire: number | BigNumber;
+        deadline: number | BigNumber;
+    }
+    export interface IAddLiquidityAndTraderParams {
+        param: (number | BigNumber)[];
+        trader: string[];
+        allocation: (number | BigNumber)[];
+    }
+    export interface IAddLiquidityETHParams {
+        tokenA: string;
+        addingTokenA: boolean;
+        pairIndex: number | BigNumber;
+        offerIndex: number | BigNumber;
+        amountAIn: number | BigNumber;
+        allowAll: boolean;
+        restrictedPrice: number | BigNumber;
+        startDate: number | BigNumber;
+        expire: number | BigNumber;
+        deadline: number | BigNumber;
+    }
+    export interface IAddLiquidityETHAndTraderParams {
+        param: (number | BigNumber)[];
+        trader: string[];
+        allocation: (number | BigNumber)[];
+    }
+    export interface IRemoveAllLiquidityParams {
+        tokenA: string;
+        tokenB: string;
+        to: string;
+        pairIndex: number | BigNumber;
+        deadline: number | BigNumber;
+    }
+    export interface IRemoveAllLiquidityETHParams {
+        tokenA: string;
+        to: string;
+        pairIndex: number | BigNumber;
+        deadline: number | BigNumber;
+    }
+    export interface IRemoveLiquidityParams {
+        tokenA: string;
+        tokenB: string;
+        removingTokenA: boolean;
+        to: string;
+        pairIndex: number | BigNumber;
+        offerIndex: number | BigNumber;
+        amountOut: number | BigNumber;
+        receivingOut: number | BigNumber;
+        deadline: number | BigNumber;
+    }
+    export interface IRemoveLiquidityETHParams {
+        tokenA: string;
+        removingTokenA: boolean;
+        to: string;
+        pairIndex: number | BigNumber;
+        offerIndex: number | BigNumber;
+        amountOut: number | BigNumber;
+        receivingOut: number | BigNumber;
+        deadline: number | BigNumber;
+    }
+    export class OSWAP_OtcLiquidityProvider extends _Contract {
+        static _abi: any;
+        constructor(wallet: IWallet, address?: string);
+        deploy(params: IDeployParams, options?: TransactionOptions): Promise<string>;
+        WETH: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        addLiquidity: {
+            (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{
+                pair: string;
+                _offerIndex: BigNumber;
+            }>;
+            txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
+        };
+        addLiquidityAndTrader: {
+            (params: IAddLiquidityAndTraderParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IAddLiquidityAndTraderParams, options?: TransactionOptions) => Promise<{
+                pair: string;
+                offerIndex: BigNumber;
+            }>;
+            txData: (params: IAddLiquidityAndTraderParams, options?: TransactionOptions) => Promise<string>;
+        };
+        addLiquidityETH: {
+            (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<{
+                pair: string;
+                _offerIndex: BigNumber;
+            }>;
+            txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
+        };
+        addLiquidityETHAndTrader: {
+            (params: IAddLiquidityETHAndTraderParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IAddLiquidityETHAndTraderParams, options?: number | BigNumber | TransactionOptions) => Promise<{
+                pair: string;
+                offerIndex: BigNumber;
+            }>;
+            txData: (params: IAddLiquidityETHAndTraderParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
+        };
+        configStore: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        factory: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        govToken: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        removeAllLiquidity: {
+            (params: IRemoveAllLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IRemoveAllLiquidityParams, options?: TransactionOptions) => Promise<{
+                amountA: BigNumber;
+                amountB: BigNumber;
+            }>;
+            txData: (params: IRemoveAllLiquidityParams, options?: TransactionOptions) => Promise<string>;
+        };
+        removeAllLiquidityETH: {
+            (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions) => Promise<{
+                amountToken: BigNumber;
+                amountETH: BigNumber;
+            }>;
+            txData: (params: IRemoveAllLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
+        };
+        removeLiquidity: {
+            (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
+        };
+        removeLiquidityETH: {
+            (params: IRemoveLiquidityETHParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: IRemoveLiquidityETHParams, options?: TransactionOptions) => Promise<string>;
+        };
+        private assign;
+    }
+}
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.json.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.json.ts" {
+    const _default_29: {
+        abi: ({
+            inputs: any[];
+            stateMutability: string;
+            type: string;
+            name?: undefined;
+            outputs?: undefined;
+        } | {
+            inputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            name: string;
+            outputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            stateMutability: string;
+            type: string;
+        })[];
+        bytecode: string;
+    };
+    export default _default_29;
+}
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.ts" {
+    import { IWallet, Contract as _Contract, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    export interface IGetLatestPriceParams {
+        from: string;
+        to: string;
+        payload: string;
+    }
+    export interface IGetRatioParams {
+        from: string;
+        to: string;
+        param3: number | BigNumber;
+        param4: number | BigNumber;
+        param5: string;
+        payload: string;
+    }
+    export interface IIsSupportedParams {
+        param1: string;
+        param2: string;
+    }
+    export class OSWAP_OtcPairOracle extends _Contract {
+        static _abi: any;
+        constructor(wallet: IWallet, address?: string);
+        deploy(options?: TransactionOptions): Promise<string>;
+        WEI: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        decimals: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        getLatestPrice: {
+            (params: IGetLatestPriceParams, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        getRatio: {
+            (params: IGetRatioParams, options?: TransactionOptions): Promise<{
+                numerator: BigNumber;
+                denominator: BigNumber;
+            }>;
+        };
+        isSupported: {
+            (params: IIsSupportedParams, options?: TransactionOptions): Promise<boolean>;
+        };
+        private assign;
+    }
+}
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFactory.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFactory.json.ts" {
-    const _default_28: {
+    const _default_30: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -4770,7 +5034,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_28;
+    export default _default_30;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFactory.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFactory.ts" {
@@ -5023,7 +5287,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider1.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider1.json.ts" {
-    const _default_29: {
+    const _default_31: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -5057,7 +5321,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_29;
+    export default _default_31;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider1.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider1.ts" {
@@ -5214,7 +5478,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider3.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider3.json.ts" {
-    const _default_30: {
+    const _default_32: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -5248,7 +5512,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_30;
+    export default _default_32;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider3.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider3.ts" {
@@ -5383,7 +5647,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider4.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider4.json.ts" {
-    const _default_31: {
+    const _default_33: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -5417,7 +5681,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_31;
+    export default _default_33;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider4.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider4.ts" {
@@ -5542,7 +5806,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.json.ts" {
-    const _default_32: {
+    const _default_34: {
         abi: ({
             inputs: any[];
             stateMutability: string;
@@ -5580,7 +5844,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_32;
+    export default _default_34;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.ts" {
@@ -5920,7 +6184,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairOracle.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairOracle.json.ts" {
-    const _default_33: {
+    const _default_35: {
         abi: ({
             inputs: any[];
             stateMutability: string;
@@ -5944,7 +6208,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_33;
+    export default _default_35;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairOracle.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairOracle.ts" {
@@ -5993,7 +6257,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingExecutor4.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingExecutor4.json.ts" {
-    const _default_34: {
+    const _default_36: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -6027,7 +6291,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingE
         })[];
         bytecode: string;
     };
-    export default _default_34;
+    export default _default_36;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingExecutor4.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingExecutor4.ts" {
@@ -6060,7 +6324,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingE
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.json.ts" {
-    const _default_35: {
+    const _default_37: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -6094,7 +6358,7 @@ declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRoute
         })[];
         bytecode: string;
     };
-    export default _default_35;
+    export default _default_37;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts" {
@@ -6274,7 +6538,7 @@ declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRoute
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistry.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistry.json.ts" {
-    const _default_36: {
+    const _default_38: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -6316,7 +6580,7 @@ declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRoute
         })[];
         bytecode: string;
     };
-    export default _default_36;
+    export default _default_38;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistry.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistry.ts" {
@@ -6555,7 +6819,7 @@ declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRoute
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.json.ts" {
-    const _default_37: {
+    const _default_39: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -6589,7 +6853,7 @@ declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRoute
         })[];
         bytecode: string;
     };
-    export default _default_37;
+    export default _default_39;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts" {
@@ -6782,9 +7046,511 @@ declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRoute
         private assign;
     }
 }
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair.json.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair.json.ts" {
+    const _default_40: {
+        abi: ({
+            inputs: any[];
+            stateMutability: string;
+            type: string;
+            anonymous?: undefined;
+            name?: undefined;
+            outputs?: undefined;
+        } | {
+            anonymous: boolean;
+            inputs: {
+                indexed: boolean;
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            name: string;
+            type: string;
+            stateMutability?: undefined;
+            outputs?: undefined;
+        } | {
+            inputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            name: string;
+            outputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            stateMutability: string;
+            type: string;
+            anonymous?: undefined;
+        })[];
+        bytecode: string;
+    };
+    export default _default_40;
+}
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair.ts" {
+    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, Event, TransactionOptions } from "@ijstech/eth-contract";
+    export interface IAddLiquidityParams {
+        direction: boolean;
+        index: number | BigNumber;
+    }
+    export interface IApprovedTraderParams {
+        param1: boolean;
+        param2: number | BigNumber;
+        param3: number | BigNumber;
+    }
+    export interface ICreateOrderParams {
+        provider: string;
+        direction: boolean;
+        allowAll: boolean;
+        restrictedPrice: number | BigNumber;
+        startDate: number | BigNumber;
+        expire: number | BigNumber;
+    }
+    export interface IGetAmountInParams {
+        param1: string;
+        param2: number | BigNumber;
+        param3: string;
+        param4: string;
+    }
+    export interface IGetAmountOutParams {
+        tokenIn: string;
+        amountIn: number | BigNumber;
+        trader: string;
+        param4: string;
+    }
+    export interface IGetApprovedTraderParams {
+        direction: boolean;
+        offerIndex: number | BigNumber;
+        start: number | BigNumber;
+        length: number | BigNumber;
+    }
+    export interface IGetApprovedTraderLengthParams {
+        direction: boolean;
+        offerIndex: number | BigNumber;
+    }
+    export interface IGetOffersParams {
+        direction: boolean;
+        start: number | BigNumber;
+        length: number | BigNumber;
+    }
+    export interface IGetProviderOfferParams {
+        provider: string;
+        direction: boolean;
+        start: number | BigNumber;
+        length: number | BigNumber;
+    }
+    export interface IGetProviderOfferIndexLengthParams {
+        provider: string;
+        direction: boolean;
+    }
+    export interface IGetTraderOfferParams {
+        trader: string;
+        direction: boolean;
+        start: number | BigNumber;
+        length: number | BigNumber;
+    }
+    export interface IInitializeParams {
+        token0: string;
+        token1: string;
+    }
+    export interface IIsApprovedTraderParams {
+        param1: boolean;
+        param2: number | BigNumber;
+        param3: string;
+    }
+    export interface ILockOfferParams {
+        direction: boolean;
+        index: number | BigNumber;
+    }
+    export interface IOffersParams {
+        param1: boolean;
+        param2: number | BigNumber;
+    }
+    export interface IProviderOfferIndexParams {
+        param1: boolean;
+        param2: string;
+        param3: number | BigNumber;
+    }
+    export interface IRemoveAllLiquidity1DParams {
+        provider: string;
+        direction: boolean;
+    }
+    export interface IRemoveLiquidityParams {
+        provider: string;
+        direction: boolean;
+        index: number | BigNumber;
+        amountOut: number | BigNumber;
+        receivingOut: number | BigNumber;
+    }
+    export interface ISetApprovedTraderParams {
+        direction: boolean;
+        offerIndex: number | BigNumber;
+        trader: string;
+        allocation: number | BigNumber;
+    }
+    export interface ISetMultipleApprovedTradersParams {
+        direction: boolean;
+        offerIndex: number | BigNumber;
+        trader: string[];
+        allocation: (number | BigNumber)[];
+    }
+    export interface ISwapParams {
+        amount0Out: number | BigNumber;
+        amount1Out: number | BigNumber;
+        to: string;
+        trader: string;
+        param5: string;
+    }
+    export interface ITraderAllocationParams {
+        param1: boolean;
+        param2: number | BigNumber;
+        param3: string;
+    }
+    export interface ITraderOfferParams {
+        param1: boolean;
+        param2: string;
+        param3: number | BigNumber;
+    }
+    export class OSWAP_OtcPair extends _Contract {
+        static _abi: any;
+        constructor(wallet: IWallet, address?: string);
+        deploy(options?: TransactionOptions): Promise<string>;
+        parseAddLiquidityEvent(receipt: TransactionReceipt): OSWAP_OtcPair.AddLiquidityEvent[];
+        decodeAddLiquidityEvent(event: Event): OSWAP_OtcPair.AddLiquidityEvent;
+        parseApprovedTraderEvent(receipt: TransactionReceipt): OSWAP_OtcPair.ApprovedTraderEvent[];
+        decodeApprovedTraderEvent(event: Event): OSWAP_OtcPair.ApprovedTraderEvent;
+        parseLockEvent(receipt: TransactionReceipt): OSWAP_OtcPair.LockEvent[];
+        decodeLockEvent(event: Event): OSWAP_OtcPair.LockEvent;
+        parseNewProviderOfferEvent(receipt: TransactionReceipt): OSWAP_OtcPair.NewProviderOfferEvent[];
+        decodeNewProviderOfferEvent(event: Event): OSWAP_OtcPair.NewProviderOfferEvent;
+        parseRemoveLiquidityEvent(receipt: TransactionReceipt): OSWAP_OtcPair.RemoveLiquidityEvent[];
+        decodeRemoveLiquidityEvent(event: Event): OSWAP_OtcPair.RemoveLiquidityEvent;
+        parseSwapEvent(receipt: TransactionReceipt): OSWAP_OtcPair.SwapEvent[];
+        decodeSwapEvent(event: Event): OSWAP_OtcPair.SwapEvent;
+        parseSwappedOneOfferEvent(receipt: TransactionReceipt): OSWAP_OtcPair.SwappedOneOfferEvent[];
+        decodeSwappedOneOfferEvent(event: Event): OSWAP_OtcPair.SwappedOneOfferEvent;
+        addLiquidity: {
+            (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
+        };
+        approvedTrader: {
+            (params: IApprovedTraderParams, options?: TransactionOptions): Promise<string>;
+        };
+        configStore: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        counter: {
+            (param1: boolean, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        createOrder: {
+            (params: ICreateOrderParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: ICreateOrderParams, options?: TransactionOptions) => Promise<BigNumber>;
+            txData: (params: ICreateOrderParams, options?: TransactionOptions) => Promise<string>;
+        };
+        factory: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        feeBalance: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        getAmountIn: {
+            (params: IGetAmountInParams, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        getAmountOut: {
+            (params: IGetAmountOutParams, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        getApprovedTrader: {
+            (params: IGetApprovedTraderParams, options?: TransactionOptions): Promise<{
+                trader: string[];
+                allocation: BigNumber[];
+            }>;
+        };
+        getApprovedTraderLength: {
+            (params: IGetApprovedTraderLengthParams, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        getBalances: {
+            (options?: TransactionOptions): Promise<{
+                param1: BigNumber;
+                param2: BigNumber;
+                param3: BigNumber;
+            }>;
+        };
+        getLastBalances: {
+            (options?: TransactionOptions): Promise<{
+                param1: BigNumber;
+                param2: BigNumber;
+            }>;
+        };
+        getOffers: {
+            (params: IGetOffersParams, options?: TransactionOptions): Promise<{
+                index: BigNumber[];
+                provider: string[];
+                lockedAndAllowAll: boolean[];
+                receiving: BigNumber[];
+                amountAndPrice: BigNumber[];
+                startDateAndExpire: BigNumber[];
+            }>;
+        };
+        getProviderOffer: {
+            (params: IGetProviderOfferParams, options?: TransactionOptions): Promise<{
+                index: BigNumber[];
+                provider: string[];
+                lockedAndAllowAll: boolean[];
+                receiving: BigNumber[];
+                amountAndPrice: BigNumber[];
+                startDateAndExpire: BigNumber[];
+            }>;
+        };
+        getProviderOfferIndexLength: {
+            (params: IGetProviderOfferIndexLengthParams, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        getTraderOffer: {
+            (params: IGetTraderOfferParams, options?: TransactionOptions): Promise<{
+                index: BigNumber[];
+                provider: string[];
+                lockedAndAllowAll: boolean[];
+                receiving: BigNumber[];
+                amountAndPrice: BigNumber[];
+                startDateAndExpire: BigNumber[];
+            }>;
+        };
+        govToken: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        governance: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        initialize: {
+            (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IInitializeParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: IInitializeParams, options?: TransactionOptions) => Promise<string>;
+        };
+        isApprovedTrader: {
+            (params: IIsApprovedTraderParams, options?: TransactionOptions): Promise<boolean>;
+        };
+        isLive: {
+            (options?: TransactionOptions): Promise<boolean>;
+        };
+        lastGovBalance: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        lastToken0Balance: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        lastToken1Balance: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        lockOffer: {
+            (params: ILockOfferParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: ILockOfferParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: ILockOfferParams, options?: TransactionOptions) => Promise<string>;
+        };
+        offers: {
+            (params: IOffersParams, options?: TransactionOptions): Promise<{
+                provider: string;
+                locked: boolean;
+                allowAll: boolean;
+                originalAmount: BigNumber;
+                amount: BigNumber;
+                swappedAmount: BigNumber;
+                receiving: BigNumber;
+                restrictedPrice: BigNumber;
+                startDate: BigNumber;
+                expire: BigNumber;
+            }>;
+        };
+        protocolFeeBalance0: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        protocolFeeBalance1: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        providerOfferIndex: {
+            (params: IProviderOfferIndexParams, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        redeemProtocolFee: {
+            (options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (options?: TransactionOptions) => Promise<void>;
+            txData: (options?: TransactionOptions) => Promise<string>;
+        };
+        removeAllLiquidity: {
+            (provider: string, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (provider: string, options?: TransactionOptions) => Promise<{
+                amount0: BigNumber;
+                amount1: BigNumber;
+            }>;
+            txData: (provider: string, options?: TransactionOptions) => Promise<string>;
+        };
+        removeAllLiquidity1D: {
+            (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions) => Promise<{
+                totalAmount: BigNumber;
+                totalReceiving: BigNumber;
+            }>;
+            txData: (params: IRemoveAllLiquidity1DParams, options?: TransactionOptions) => Promise<string>;
+        };
+        removeLiquidity: {
+            (params: IRemoveLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: IRemoveLiquidityParams, options?: TransactionOptions) => Promise<string>;
+        };
+        restrictedLiquidityProvider: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        scaleDirection: {
+            (options?: TransactionOptions): Promise<boolean>;
+        };
+        scaler: {
+            (options?: TransactionOptions): Promise<BigNumber>;
+        };
+        setApprovedTrader: {
+            (params: ISetApprovedTraderParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: ISetApprovedTraderParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: ISetApprovedTraderParams, options?: TransactionOptions) => Promise<string>;
+        };
+        setLive: {
+            (isLive: boolean, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (isLive: boolean, options?: TransactionOptions) => Promise<void>;
+            txData: (isLive: boolean, options?: TransactionOptions) => Promise<string>;
+        };
+        setMultipleApprovedTraders: {
+            (params: ISetMultipleApprovedTradersParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: ISetMultipleApprovedTradersParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: ISetMultipleApprovedTradersParams, options?: TransactionOptions) => Promise<string>;
+        };
+        swap: {
+            (params: ISwapParams, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (params: ISwapParams, options?: TransactionOptions) => Promise<void>;
+            txData: (params: ISwapParams, options?: TransactionOptions) => Promise<string>;
+        };
+        sync: {
+            (options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (options?: TransactionOptions) => Promise<void>;
+            txData: (options?: TransactionOptions) => Promise<string>;
+        };
+        token0: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        token1: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        traderAllocation: {
+            (params: ITraderAllocationParams, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        traderOffer: {
+            (params: ITraderOfferParams, options?: TransactionOptions): Promise<BigNumber>;
+        };
+        whitelistFactory: {
+            (options?: TransactionOptions): Promise<string>;
+        };
+        private assign;
+    }
+    export module OSWAP_OtcPair {
+        interface AddLiquidityEvent {
+            provider: string;
+            direction: boolean;
+            index: BigNumber;
+            amount: BigNumber;
+            newAmountBalance: BigNumber;
+            _event: Event;
+        }
+        interface ApprovedTraderEvent {
+            direction: boolean;
+            offerIndex: BigNumber;
+            trader: string;
+            allocation: BigNumber;
+            _event: Event;
+        }
+        interface LockEvent {
+            direction: boolean;
+            index: BigNumber;
+            _event: Event;
+        }
+        interface NewProviderOfferEvent {
+            provider: string;
+            direction: boolean;
+            index: BigNumber;
+            allowAll: boolean;
+            restrictedPrice: BigNumber;
+            startDate: BigNumber;
+            expire: BigNumber;
+            _event: Event;
+        }
+        interface RemoveLiquidityEvent {
+            provider: string;
+            direction: boolean;
+            index: BigNumber;
+            amountOut: BigNumber;
+            receivingOut: BigNumber;
+            newAmountBalance: BigNumber;
+            newReceivingBalance: BigNumber;
+            _event: Event;
+        }
+        interface SwapEvent {
+            to: string;
+            direction: boolean;
+            amountIn: BigNumber;
+            amountOut: BigNumber;
+            tradeFee: BigNumber;
+            protocolFee: BigNumber;
+            _event: Event;
+        }
+        interface SwappedOneOfferEvent {
+            provider: string;
+            direction: boolean;
+            index: BigNumber;
+            price: BigNumber;
+            amountOut: BigNumber;
+            amountIn: BigNumber;
+            newAmountBalance: BigNumber;
+            newReceivingBalance: BigNumber;
+            _event: Event;
+        }
+    }
+}
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.json.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.json.ts" {
+    const _default_41: {
+        abi: {
+            inputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            name: string;
+            outputs: {
+                internalType: string;
+                name: string;
+                type: string;
+            }[];
+            stateMutability: string;
+            type: string;
+        }[];
+        bytecode: string;
+    };
+    export default _default_41;
+}
+/// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.ts" />
+declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.ts" {
+    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    export class OSWAP_OtcPairCreator extends _Contract {
+        static _abi: any;
+        constructor(wallet: IWallet, address?: string);
+        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        createPair: {
+            (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
+            call: (salt: string, options?: TransactionOptions) => Promise<string>;
+            txData: (salt: string, options?: TransactionOptions) => Promise<string>;
+        };
+        private assign;
+    }
+}
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1.json.ts" {
-    const _default_38: {
+    const _default_42: {
         abi: ({
             anonymous: boolean;
             inputs: {
@@ -6815,7 +7581,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_38;
+    export default _default_42;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1.ts" {
@@ -7240,7 +8006,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3.json.ts" {
-    const _default_39: {
+    const _default_43: {
         abi: ({
             anonymous: boolean;
             inputs: {
@@ -7271,7 +8037,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_39;
+    export default _default_43;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3.ts" {
@@ -7709,7 +8475,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4.json.ts" {
-    const _default_40: {
+    const _default_44: {
         abi: ({
             anonymous: boolean;
             inputs: {
@@ -7740,7 +8506,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         })[];
         bytecode: string;
     };
-    export default _default_40;
+    export default _default_44;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4.ts" {
@@ -8213,7 +8979,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.json.ts" {
-    const _default_41: {
+    const _default_45: {
         abi: {
             inputs: {
                 internalType: string;
@@ -8231,7 +8997,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         }[];
         bytecode: string;
     };
-    export default _default_41;
+    export default _default_45;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.ts" {
@@ -8250,7 +9016,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.json.ts" {
-    const _default_42: {
+    const _default_46: {
         abi: {
             inputs: {
                 internalType: string;
@@ -8268,7 +9034,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         }[];
         bytecode: string;
     };
-    export default _default_42;
+    export default _default_46;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.ts" {
@@ -8287,7 +9053,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.json.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.json.ts" {
-    const _default_43: {
+    const _default_47: {
         abi: ({
             inputs: {
                 internalType: string;
@@ -8321,7 +9087,7 @@ declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRoute
         })[];
         bytecode: string;
     };
-    export default _default_43;
+    export default _default_47;
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts" {
@@ -8558,6 +9324,8 @@ declare module "@scom/oswap-openswap-contract/contracts/index.ts" {
     export { OSWAP_RangePairCreator } from "@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePairCreator.ts";
     export { OSWAP_VotingExecutor3 } from "@scom/oswap-openswap-contract/contracts/range/OSWAP_VotingExecutor3.ts";
     export { OSWAP_ConfigStore } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_ConfigStore.ts";
+    export { OSWAP_OtcLiquidityProvider } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.ts";
+    export { OSWAP_OtcPairOracle } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.ts";
     export { OSWAP_RestrictedFactory } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFactory.ts";
     export { OSWAP_RestrictedLiquidityProvider1 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider1.ts";
     export { OSWAP_RestrictedLiquidityProvider3 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider3.ts";
@@ -8568,6 +9336,8 @@ declare module "@scom/oswap-openswap-contract/contracts/index.ts" {
     export { OSWAP_HybridRouter } from "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts";
     export { OSWAP_HybridRouterRegistry } from "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistry.ts";
     export { OSWAP_OracleRouter } from "@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts";
+    export { OSWAP_OtcPair } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair.ts";
+    export { OSWAP_OtcPairCreator } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.ts";
     export { OSWAP_RestrictedPair1 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1.ts";
     export { OSWAP_RestrictedPair3 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3.ts";
     export { OSWAP_RestrictedPair4 } from "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4.ts";
@@ -8736,6 +9506,7 @@ declare module "@scom/oswap-openswap-contract/deploy.ts" {
         tradeFee?: number | BigNumber;
         protocolFee?: number | BigNumber;
         protocolFeeTo?: string;
+        type?: 'Restricted1' | 'Otc';
     }
     export interface IHybridRouterOptions {
         registryAddress?: string;
@@ -8784,7 +9555,7 @@ declare module "@scom/oswap-openswap-contract/deploy.ts" {
     export function deployOracleContracts(wallet: IWallet, options: IOracleFactoryOptions, coreContractsResult: ICoreContractsDeploymentResult): Promise<IOracleContractsDeploymentResult>;
     export function deployRangeContracts(wallet: IWallet, options: IRangeFactoryOptions, weth: string, hybridRegistry: string): Promise<IRangeContractsDeploymentResult>;
     export function deployRestrictedContracts(wallet: IWallet, options: IRestrictedFactoryOptions, weth: string): Promise<IRestrictedContractsDeploymentResult>;
-    export function deployRestrictedPairOracle(wallet: IWallet): Promise<string>;
+    export function deployRestrictedPairOracle(wallet: IWallet, isOtc?: boolean): Promise<any>;
     export function initHybridRouterRegistry(wallet: IWallet, options: IHybridRouterOptions): Promise<void>;
     export function deployHybridRouter(wallet: IWallet, options: IHybridRouterOptions): Promise<IHybridRouterDeploymentResult>;
     export function deploy(wallet: IWallet, options?: IDeployOptions): Promise<IDeploymentResult>;

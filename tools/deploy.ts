@@ -23,7 +23,8 @@ async function deployOracle() {
     })   
     let accounts = await wallet.accounts;
     wallet.defaultAccount = accounts[0];
-    let result = await deployRestrictedPairOracle(wallet);
+    const isOtc = true;
+    let result = await deployRestrictedPairOracle(wallet, isOtc);
     console.log('result', result);
 }
 
@@ -59,7 +60,8 @@ async function deployRestrictedQueue() {
         whitelistFactory: deploymentConfig.oracle.factory,
         tradeFee: new BigNumber(deploymentConfig.restricted.tradeFee),
         protocolFee: new BigNumber(deploymentConfig.restricted.protocolFee),
-        protocolFeeTo: deploymentConfig.restricted.protocolFeeTo
+        protocolFeeTo: deploymentConfig.restricted.protocolFeeTo,
+        type: 'Otc'
     }, deploymentConfig.tokens.weth);
     console.log('result', result);
 }
@@ -188,7 +190,7 @@ async function setupHybridRouter(){
     console.log('result', result);
 }
 
-deployAll();
+// deployAll();
 // deployOracle();
 // deployPeggedQueue();
 // setupHybridRouter();

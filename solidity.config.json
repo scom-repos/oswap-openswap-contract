@@ -12,7 +12,9 @@
                 "restricted/OSWAP_RestrictedPair3.sol",
                 "restricted/OSWAP_RestrictedPair4.sol",
                 "restricted/OSWAP_RestrictedPairCreator1.sol",
-                "restricted/OSWAP_RestrictedPairCreator4.sol"
+                "restricted/OSWAP_RestrictedPairCreator4.sol",
+                "restricted/OSWAP_OtcPair.sol",
+                "restricted/OSWAP_OtcPairCreator.sol"
             ],
             "optimizerRuns": 5000
         },
@@ -31,6 +33,10 @@
         "contracts/restricted/OSWAP_RestrictedLiquidityProvider4.sol",
         "contracts/restricted/OSWAP_RestrictedPairCreator1.sol",
         "contracts/restricted/OSWAP_RestrictedPairCreator4.sol",
-        "contracts/gov/OAXDEX_VotingRegistry.sol"
+        "contracts/restricted/OSWAP_OtcPair.sol",
+        "contracts/restricted/OSWAP_OtcLiquidityProvider.sol",
+        "contracts/restricted/OSWAP_OtcPairCreator.sol",
+        "contracts/gov/OAXDEX_VotingRegistry.sol",
+        "contracts/restricted/OSWAP_ConfigStore.sol"
     ]
 }

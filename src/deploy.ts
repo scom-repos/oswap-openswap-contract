@@ -26,6 +26,9 @@ import {
     OSWAP_RestrictedPairOracle,
     OSWAP_RestrictedLiquidityProvider1
 } from './contracts/index';
+import { OSWAP_OtcLiquidityProvider } from "./contracts/restricted/OSWAP_OtcLiquidityProvider";
+import { OSWAP_OtcPairCreator } from "./contracts/restricted/OSWAP_OtcPairCreator";
+import { OSWAP_OtcPairOracle } from "./contracts/restricted/OSWAP_OtcPairOracle";
 import {OpenSwap} from './OpenSwap';
 export interface ICoreContractsDeploymentResult {
     administrator?: string;
@@ -146,6 +149,7 @@ export interface IRestrictedFactoryOptions{
     tradeFee?: number|BigNumber;
     protocolFee?: number|BigNumber;
     protocolFeeTo?: string;
+    type?: 'Restricted1' | 'Otc';
 }
 export interface IHybridRouterOptions{
     registryAddress?: string;
@@ -365,7 +369,13 @@ export async function deployRestrictedContracts(wallet: IWallet, options: IRestr
     }
     //RestrictedPairCreator
     if (!options.pairCreator) {
-        let restrictedPairCreator = new OSWAP_RestrictedPairCreator1(wallet);
+        let restrictedPairCreator;
+        if (options.type == 'Otc') {
+            restrictedPairCreator = new OSWAP_OtcPairCreator(wallet);
+        }
+        else {
+            restrictedPairCreator = new OSWAP_RestrictedPairCreator1(wallet);
+        }
         result.restrictedPairCreator = await restrictedPairCreator.deploy(); 
     }
     else {
@@ -384,7 +394,13 @@ export async function deployRestrictedContracts(wallet: IWallet, options: IRestr
         protocolFeeTo: options.protocolFeeTo || nullAddress
     });
     //RestrictedLiquidityProvider
-    let restrictedLiquidityProvider = new OSWAP_RestrictedLiquidityProvider1(wallet);
+    let restrictedLiquidityProvider;
+    if (options.type == 'Otc') {
+        restrictedLiquidityProvider = new OSWAP_OtcLiquidityProvider(wallet);
+    }
+    else {
+        restrictedLiquidityProvider = new OSWAP_RestrictedLiquidityProvider1(wallet);
+    }
     result.restrictedLiquidityProvider = await restrictedLiquidityProvider.deploy({
         WETH: weth,
         factory: result.restrictedFactory
@@ -400,8 +416,14 @@ export async function deployRestrictedContracts(wallet: IWallet, options: IRestr
     return result;
 } 
 
-export async function deployRestrictedPairOracle(wallet: IWallet){
-    let restrictedPairOracle = new OSWAP_RestrictedPairOracle(wallet);
+export async function deployRestrictedPairOracle(wallet: IWallet, isOtc?: boolean){
+    let restrictedPairOracle;
+    if (isOtc) {
+        restrictedPairOracle = new OSWAP_OtcPairOracle(wallet);
+    }
+    else {
+        restrictedPairOracle = new OSWAP_RestrictedPairOracle(wallet);
+    }
     let result = await restrictedPairOracle.deploy();
     return result;
 }
