@@ -7453,6 +7453,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair
             provider: string;
             direction: boolean;
             index: BigNumber;
+            originalAmount: BigNumber;
             amount: BigNumber;
             newAmountBalance: BigNumber;
             _event: Event;
@@ -7507,6 +7508,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair
             amountIn: BigNumber;
             newAmountBalance: BigNumber;
             newReceivingBalance: BigNumber;
+            swappedAmountBalance: BigNumber;
             _event: Event;
         }
     }

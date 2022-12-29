@@ -688,10 +688,10 @@ interface IOSWAP_OtcPair is IOSWAP_PausablePair {
     event Lock(bool indexed direction, uint256 indexed index);
     // event RemoveLiquidity(address indexed provider, bool indexed direction, uint256 indexed index, uint256 amountOut, uint256 receivingOut, uint256 newAmountBalance, uint256 newReceivingBalance);
     event Swap(address indexed to, bool indexed direction, uint256 amountIn, uint256 amountOut, uint256 tradeFee, uint256 protocolFee);
-    event SwappedOneOffer(address indexed provider, bool indexed direction, uint256 indexed index, uint256 price, uint256 amountOut, uint256 amountIn, uint256 newAmountBalance, uint256 newReceivingBalance);
+    event SwappedOneOffer(address indexed provider, bool indexed direction, uint256 indexed index, uint256 price, uint256 amountOut, uint256 amountIn, uint256 newAmountBalance, uint256 newReceivingBalance, uint256 swappedAmountBalance);
 
     event ApprovedTrader(bool indexed direction, uint256 indexed offerIndex, address indexed trader, uint256 allocation);
-    event AddLiquidity(address indexed provider, bool indexed direction, uint256 indexed index, uint256 amount, uint256 newAmountBalance);
+    event AddLiquidity(address indexed provider, bool indexed direction, uint256 indexed index, uint256 originalAmount, uint256 amount, uint256 newAmountBalance);
     event RemoveLiquidity(address indexed provider, bool indexed direction, uint256 indexed index, uint256 amountOut, uint256 receivingOut, uint256 newAmountBalance, uint256 newReceivingBalance);
 
     function counter(bool direction) external view returns (uint256);
@@ -1189,7 +1189,7 @@ contract OSWAP_OtcPair is IOSWAP_OtcPair, OSWAP_PausablePair {
         offer.swappedAmount = offer.swappedAmount.add(amountOut);
         offer.receiving = offer.receiving.add(amountInWithholdProtocolFee);
 
-        emit SwappedOneOffer(offer.provider, direction, offerIdx, price, amountOut, amountInWithholdProtocolFee, offer.amount, offer.receiving);
+        emit SwappedOneOffer(offer.provider, direction, offerIdx, price, amountOut, amountInWithholdProtocolFee, offer.amount, offer.receiving, offer.swappedAmount);
     }
     function _swap(bool direction, uint256 amountIn, address trader/*, bytes calldata data*/) internal returns (uint256 totalOut, uint256 totalProtocolFeeCollected) {
         (uint256[] memory idxList, uint256[] memory amountList) = _decodeData(0xa4);
@@ -1254,7 +1254,7 @@ contract OSWAP_OtcPair is IOSWAP_OtcPair, OSWAP_PausablePair {
         lastToken0Balance = newToken0Balance;
         lastToken1Balance = newToken1Balance;
 
-        emit AddLiquidity(offer.provider, direction, index, amountIn, offer.amount);
+        emit AddLiquidity(offer.provider, direction, index, offer.originalAmount, amountIn, offer.amount);
     }
 
     function removeLiquidity(address provider, bool direction, uint256 index, uint256 amountOut, uint256 receivingOut) external override lock {

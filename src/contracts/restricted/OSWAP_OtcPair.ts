@@ -41,6 +41,7 @@ export class OSWAP_OtcPair extends _Contract{
             provider: result.provider,
             direction: result.direction,
             index: new BigNumber(result.index),
+            originalAmount: new BigNumber(result.originalAmount),
             amount: new BigNumber(result.amount),
             newAmountBalance: new BigNumber(result.newAmountBalance),
             _event: event
@@ -131,6 +132,7 @@ export class OSWAP_OtcPair extends _Contract{
             amountIn: new BigNumber(result.amountIn),
             newAmountBalance: new BigNumber(result.newAmountBalance),
             newReceivingBalance: new BigNumber(result.newReceivingBalance),
+            swappedAmountBalance: new BigNumber(result.swappedAmountBalance),
             _event: event
         };
     }
@@ -754,11 +756,11 @@ export class OSWAP_OtcPair extends _Contract{
     }
 }
 export module OSWAP_OtcPair{
-    export interface AddLiquidityEvent {provider:string,direction:boolean,index:BigNumber,amount:BigNumber,newAmountBalance:BigNumber,_event:Event}
+    export interface AddLiquidityEvent {provider:string,direction:boolean,index:BigNumber,originalAmount:BigNumber,amount:BigNumber,newAmountBalance:BigNumber,_event:Event}
     export interface ApprovedTraderEvent {direction:boolean,offerIndex:BigNumber,trader:string,allocation:BigNumber,_event:Event}
     export interface LockEvent {direction:boolean,index:BigNumber,_event:Event}
     export interface NewProviderOfferEvent {provider:string,direction:boolean,index:BigNumber,allowAll:boolean,restrictedPrice:BigNumber,startDate:BigNumber,expire:BigNumber,_event:Event}
     export interface RemoveLiquidityEvent {provider:string,direction:boolean,index:BigNumber,amountOut:BigNumber,receivingOut:BigNumber,newAmountBalance:BigNumber,newReceivingBalance:BigNumber,_event:Event}
     export interface SwapEvent {to:string,direction:boolean,amountIn:BigNumber,amountOut:BigNumber,tradeFee:BigNumber,protocolFee:BigNumber,_event:Event}
-    export interface SwappedOneOfferEvent {provider:string,direction:boolean,index:BigNumber,price:BigNumber,amountOut:BigNumber,amountIn:BigNumber,newAmountBalance:BigNumber,newReceivingBalance:BigNumber,_event:Event}
+    export interface SwappedOneOfferEvent {provider:string,direction:boolean,index:BigNumber,price:BigNumber,amountOut:BigNumber,amountIn:BigNumber,newAmountBalance:BigNumber,newReceivingBalance:BigNumber,swappedAmountBalance:BigNumber,_event:Event}
 }

@@ -295,7 +295,7 @@ contract OSWAP_OtcLiquidityProvider is IOSWAP_OtcLiquidityProvider {
                 hex'ff',    
                 factory,
                 keccak256(abi.encodePacked(token0, token1, index)),
-                /*otc*/hex'24dc749f3a0628db4238fbb2a14c6eb65625a0b393adb516954443956ba02b58' // otc init code hash
+                /*otc*/hex'35bb042e5b5cf7284a42c18aa8eaaaa38843b3ed693f0987a9a347554f9028c9' // otc init code hash
             ))));
     }
 

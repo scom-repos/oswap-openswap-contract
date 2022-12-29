@@ -361,6 +361,7 @@ export declare module OSWAP_OtcPair {
         provider: string;
         direction: boolean;
         index: BigNumber;
+        originalAmount: BigNumber;
         amount: BigNumber;
         newAmountBalance: BigNumber;
         _event: Event;
@@ -415,6 +416,7 @@ export declare module OSWAP_OtcPair {
         amountIn: BigNumber;
         newAmountBalance: BigNumber;
         newReceivingBalance: BigNumber;
+        swappedAmountBalance: BigNumber;
         _event: Event;
     }
 }
