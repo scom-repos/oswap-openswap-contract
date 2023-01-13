@@ -36,7 +36,9 @@
         "contracts/restricted/OSWAP_OtcPair.sol",
         "contracts/restricted/OSWAP_OtcLiquidityProvider.sol",
         "contracts/restricted/OSWAP_OtcPairCreator.sol",
+        "contracts/restricted/OSWAP_OtcPairOracle.sol",
         "contracts/gov/OAXDEX_VotingRegistry.sol",
-        "contracts/restricted/OSWAP_ConfigStore.sol"
+        "contracts/restricted/OSWAP_ConfigStore.sol",
+        "contracts/restricted/OSWAP_VotingExecutor4.sol"
     ]
 }
