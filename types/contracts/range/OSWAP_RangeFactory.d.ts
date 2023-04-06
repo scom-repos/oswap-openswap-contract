@@ -60,15 +60,15 @@ export declare class OSWAP_RangeFactory extends _Contract {
     };
     getAllLiquidityProviderShare: {
         (options?: TransactionOptions): Promise<{
-            _stakeAmount: BigNumber[];
-            _liquidityProviderShare: BigNumber[];
+            stakeAmount: BigNumber[];
+            liquidityProviderShare: BigNumber[];
         }>;
     };
     getCreateAddresses: {
         (options?: TransactionOptions): Promise<{
-            _governance: string;
-            _rangeLiquidityProvider: string;
-            _oracleFactory: string;
+            governance: string;
+            rangeLiquidityProvider: string;
+            oracleFactory: string;
         }>;
     };
     getLiquidityProviderShare: {

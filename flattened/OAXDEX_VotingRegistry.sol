@@ -1,5 +1,162 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
+pragma solidity =0.6.11;
+
+interface IOAXDEX_VotingRegistry {
+    function governance() external view returns (address);
+    function newVote(address executor,
+                        bytes32 name, 
+                        bytes32[] calldata options, 
+                        uint256 quorum, 
+                        uint256 threshold, 
+                        uint256 voteEndTime,
+                        uint256 executeDelay, 
+                        bytes32[] calldata executeParam
+    ) external;
+}
+pragma solidity =0.6.11;
+
+interface IOAXDEX_Governance {
+
+    struct NewStake {
+        uint256 amount;
+        uint256 timestamp;
+    }
+    struct VotingConfig {
+        uint256 minExeDelay;
+        uint256 minVoteDuration;
+        uint256 maxVoteDuration;
+        uint256 minOaxTokenToCreateVote;
+        uint256 minQuorum;
+    }
+
+    event ParamSet(bytes32 indexed name, bytes32 value);
+    event ParamSet2(bytes32 name, bytes32 value1, bytes32 value2);
+    event AddVotingConfig(bytes32 name, 
+        uint256 minExeDelay,
+        uint256 minVoteDuration,
+        uint256 maxVoteDuration,
+        uint256 minOaxTokenToCreateVote,
+        uint256 minQuorum);
+    event SetVotingConfig(bytes32 indexed configName, bytes32 indexed paramName, uint256 minExeDelay);
+
+    event Stake(address indexed who, uint256 value);
+    event Unstake(address indexed who, uint256 value);
+
+    event NewVote(address indexed vote);
+    event NewPoll(address indexed poll);
+    event Vote(address indexed account, address indexed vote, uint256 option);
+    event Poll(address indexed account, address indexed poll, uint256 option);
+    event Executed(address indexed vote);
+    event Veto(address indexed vote);
+
+    function votingConfigs(bytes32) external view returns (uint256 minExeDelay,
+        uint256 minVoteDuration,
+        uint256 maxVoteDuration,
+        uint256 minOaxTokenToCreateVote,
+        uint256 minQuorum);
+    function votingConfigProfiles(uint256) external view returns (bytes32);
+
+    function oaxToken() external view returns (address);
+    function votingToken() external view returns (address);
+    function freezedStake(address) external view returns (uint256 amount, uint256 timestamp);
+    function stakeOf(address) external view returns (uint256);
+    function totalStake() external view returns (uint256);
+
+    function votingRegister() external view returns (address);
+    function votingExecutor(uint256) external view returns (address);
+    function votingExecutorInv(address) external view returns (uint256);
+    function isVotingExecutor(address) external view returns (bool);
+    function admin() external view returns (address);
+    function minStakePeriod() external view returns (uint256);
+
+    function voteCount() external view returns (uint256);
+    function votingIdx(address) external view returns (uint256);
+    function votings(uint256) external view returns (address);
+
+
+	function votingConfigProfilesLength() external view returns(uint256);
+	function getVotingConfigProfiles(uint256 start, uint256 length) external view returns(bytes32[] memory profiles);
+    function getVotingParams(bytes32) external view returns (uint256 _minExeDelay, uint256 _minVoteDuration, uint256 _maxVoteDuration, uint256 _minOaxTokenToCreateVote, uint256 _minQuorum);
+
+    function setVotingRegister(address _votingRegister) external;
+    function votingExecutorLength() external view returns (uint256);
+    function initVotingExecutor(address[] calldata _setVotingExecutor) external;
+    function setVotingExecutor(address _setVotingExecutor, bool _bool) external;
+    function initAdmin(address _admin) external;
+    function setAdmin(address _admin) external;
+    function addVotingConfig(bytes32 name, uint256 minExeDelay, uint256 minVoteDuration, uint256 maxVoteDuration, uint256 minOaxTokenToCreateVote, uint256 minQuorum) external;
+    function setVotingConfig(bytes32 configName, bytes32 paramName, uint256 paramValue) external;
+    function setMinStakePeriod(uint _minStakePeriod) external;
+
+    function stake(uint256 value) external;
+    function unlockStake() external;
+    function unstake(uint256 value) external;
+    function allVotings() external view returns (address[] memory);
+    function getVotingCount() external view returns (uint256);
+    function getVotings(uint256 start, uint256 count) external view returns (address[] memory _votings);
+
+    function isVotingContract(address votingContract) external view returns (bool);
+
+    function getNewVoteId() external returns (uint256);
+    function newVote(address vote, bool isExecutiveVote) external;
+    function voted(bool poll, address account, uint256 option) external;
+    function executed() external;
+    function veto(address voting) external;
+    function closeVote(address vote) external;
+}
+
+pragma solidity =0.6.11;
+
+interface IOAXDEX_VotingContract {
+
+    function governance() external view returns (address);
+    function executor() external view returns (address);
+
+    function id() external view returns (uint256);
+    function name() external view returns (bytes32);
+    function _options(uint256) external view returns (bytes32);
+    function quorum() external view returns (uint256);
+    function threshold() external view returns (uint256);
+
+    function voteStartTime() external view returns (uint256);
+    function voteEndTime() external view returns (uint256);
+    function executeDelay() external view returns (uint256);
+
+    function executed() external view returns (bool);
+    function vetoed() external view returns (bool);
+
+    function accountVoteOption(address) external view returns (uint256);
+    function accountVoteWeight(address) external view returns (uint256);
+
+    function _optionsWeight(uint256) external view returns (uint256);
+    function totalVoteWeight() external view returns (uint256);
+    function totalWeight() external view returns (uint256);
+    function _executeParam(uint256) external view returns (bytes32);
+
+    function getParams() external view returns (
+        address executor_,
+        uint256 id_,
+        bytes32 name_,
+        bytes32[] memory options_,
+        uint256 voteStartTime_,
+        uint256 voteEndTime_,
+        uint256 executeDelay_,
+        bool[2] memory status_, // [executed, vetoed]
+        uint256[] memory optionsWeight_,
+        uint256[3] memory quorum_, // [quorum, threshold, totalWeight]
+        bytes32[] memory executeParam_
+    );
+
+    function veto() external;
+    function optionsCount() external view returns(uint256);
+    function options() external view returns (bytes32[] memory);
+    function optionsWeight() external view returns (uint256[] memory);
+    function execute() external;
+    function vote(uint256 option) external;
+    function updateWeight(address account) external;
+    function executeParam() external view returns (bytes32[] memory);
+}
 
 pragma solidity >=0.6.0 <0.8.0;
 
@@ -159,163 +316,6 @@ library SafeMath {
     }
 }
 
-pragma solidity =0.6.11;
-
-interface IOAXDEX_VotingRegistry {
-    function governance() external view returns (address);
-    function newVote(address executor,
-                        bytes32 name, 
-                        bytes32[] calldata options, 
-                        uint256 quorum, 
-                        uint256 threshold, 
-                        uint256 voteEndTime,
-                        uint256 executeDelay, 
-                        bytes32[] calldata executeParam
-    ) external;
-}
-pragma solidity =0.6.11;
-
-interface IOAXDEX_Governance {
-
-    struct NewStake {
-        uint256 amount;
-        uint256 timestamp;
-    }
-    struct VotingConfig {
-        uint256 minExeDelay;
-        uint256 minVoteDuration;
-        uint256 maxVoteDuration;
-        uint256 minOaxTokenToCreateVote;
-        uint256 minQuorum;
-    }
-
-    event ParamSet(bytes32 indexed name, bytes32 value);
-    event ParamSet2(bytes32 name, bytes32 value1, bytes32 value2);
-    event AddVotingConfig(bytes32 name, 
-        uint256 minExeDelay,
-        uint256 minVoteDuration,
-        uint256 maxVoteDuration,
-        uint256 minOaxTokenToCreateVote,
-        uint256 minQuorum);
-    event SetVotingConfig(bytes32 indexed configName, bytes32 indexed paramName, uint256 minExeDelay);
-
-    event Stake(address indexed who, uint256 value);
-    event Unstake(address indexed who, uint256 value);
-
-    event NewVote(address indexed vote);
-    event NewPoll(address indexed poll);
-    event Vote(address indexed account, address indexed vote, uint256 option);
-    event Poll(address indexed account, address indexed poll, uint256 option);
-    event Executed(address indexed vote);
-    event Veto(address indexed vote);
-
-    function votingConfigs(bytes32) external view returns (uint256 minExeDelay,
-        uint256 minVoteDuration,
-        uint256 maxVoteDuration,
-        uint256 minOaxTokenToCreateVote,
-        uint256 minQuorum);
-    function votingConfigProfiles(uint256) external view returns (bytes32);
-
-    function oaxToken() external view returns (address);
-    function votingToken() external view returns (address);
-    function freezedStake(address) external view returns (uint256 amount, uint256 timestamp);
-    function stakeOf(address) external view returns (uint256);
-    function totalStake() external view returns (uint256);
-
-    function votingRegister() external view returns (address);
-    function votingExecutor(uint256) external view returns (address);
-    function votingExecutorInv(address) external view returns (uint256);
-    function isVotingExecutor(address) external view returns (bool);
-    function admin() external view returns (address);
-    function minStakePeriod() external view returns (uint256);
-
-    function voteCount() external view returns (uint256);
-    function votingIdx(address) external view returns (uint256);
-    function votings(uint256) external view returns (address);
-
-
-	function votingConfigProfilesLength() external view returns(uint256);
-	function getVotingConfigProfiles(uint256 start, uint256 length) external view returns(bytes32[] memory profiles);
-    function getVotingParams(bytes32) external view returns (uint256 _minExeDelay, uint256 _minVoteDuration, uint256 _maxVoteDuration, uint256 _minOaxTokenToCreateVote, uint256 _minQuorum);
-
-    function setVotingRegister(address _votingRegister) external;
-    function votingExecutorLength() external view returns (uint256);
-    function initVotingExecutor(address[] calldata _setVotingExecutor) external;
-    function setVotingExecutor(address _setVotingExecutor, bool _bool) external;
-    function initAdmin(address _admin) external;
-    function setAdmin(address _admin) external;
-    function addVotingConfig(bytes32 name, uint256 minExeDelay, uint256 minVoteDuration, uint256 maxVoteDuration, uint256 minOaxTokenToCreateVote, uint256 minQuorum) external;
-    function setVotingConfig(bytes32 configName, bytes32 paramName, uint256 paramValue) external;
-    function setMinStakePeriod(uint _minStakePeriod) external;
-
-    function stake(uint256 value) external;
-    function unlockStake() external;
-    function unstake(uint256 value) external;
-    function allVotings() external view returns (address[] memory);
-    function getVotingCount() external view returns (uint256);
-    function getVotings(uint256 start, uint256 count) external view returns (address[] memory _votings);
-
-    function isVotingContract(address votingContract) external view returns (bool);
-
-    function getNewVoteId() external returns (uint256);
-    function newVote(address vote, bool isExecutiveVote) external;
-    function voted(bool poll, address account, uint256 option) external;
-    function executed() external;
-    function veto(address voting) external;
-    function closeVote(address vote) external;
-}
-
-pragma solidity =0.6.11;
-
-interface IOAXDEX_VotingContract {
-
-    function governance() external view returns (address);
-    function executor() external view returns (address);
-
-    function id() external view returns (uint256);
-    function name() external view returns (bytes32);
-    function _options(uint256) external view returns (bytes32);
-    function quorum() external view returns (uint256);
-    function threshold() external view returns (uint256);
-
-    function voteStartTime() external view returns (uint256);
-    function voteEndTime() external view returns (uint256);
-    function executeDelay() external view returns (uint256);
-
-    function executed() external view returns (bool);
-    function vetoed() external view returns (bool);
-
-    function accountVoteOption(address) external view returns (uint256);
-    function accountVoteWeight(address) external view returns (uint256);
-
-    function _optionsWeight(uint256) external view returns (uint256);
-    function totalVoteWeight() external view returns (uint256);
-    function totalWeight() external view returns (uint256);
-    function _executeParam(uint256) external view returns (bytes32);
-
-    function getParams() external view returns (
-        address executor_,
-        uint256 id_,
-        bytes32 name_,
-        bytes32[] memory options_,
-        uint256 voteStartTime_,
-        uint256 voteEndTime_,
-        uint256 executeDelay_,
-        bool[2] memory status_, // [executed, vetoed]
-        uint256[] memory optionsWeight_,
-        uint256[3] memory quorum_, // [quorum, threshold, totalWeight]
-        bytes32[] memory executeParam_
-    );
-
-    function veto() external;
-    function optionsCount() external view returns(uint256);
-    function options() external view returns (bytes32[] memory);
-    function optionsWeight() external view returns (uint256[] memory);
-    function execute() external;
-    function vote(uint256 option) external;
-    function updateWeight(address account) external;
-    function executeParam() external view returns (bytes32[] memory);
-}
 pragma solidity =0.6.11;
 
 interface IOAXDEX_VotingExecutor {

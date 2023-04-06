@@ -30,7 +30,7 @@ export class OSWAP_RestrictedPair3 extends _Contract{
         super(wallet, address, Bin.abi, Bin.bytecode);
         this.assign()
     }
-    deploy(options?: number|BigNumber|TransactionOptions): Promise<string>{
+    deploy(options?: TransactionOptions): Promise<string>{
         return this.__deploy([], options);
     }
     parseAddLiquidityEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair3.AddLiquidityEvent[]{

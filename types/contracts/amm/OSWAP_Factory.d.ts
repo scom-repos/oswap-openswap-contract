@@ -64,8 +64,8 @@ export declare class OSWAP_Factory extends _Contract {
     };
     protocolFeeParams: {
         (options?: TransactionOptions): Promise<{
-            _protocolFee: BigNumber;
-            _protocolFeeTo: string;
+            protocolFee: BigNumber;
+            protocolFeeTo: string;
         }>;
     };
     protocolFeeTo: {

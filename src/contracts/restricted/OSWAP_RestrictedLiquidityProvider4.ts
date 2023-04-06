@@ -21,12 +21,12 @@ export class OSWAP_RestrictedLiquidityProvider4 extends _Contract{
     }
     addLiquidity: {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
-        call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{pair:string,_offerIndex:BigNumber}>;
+        call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{pair:string,offerIndex:BigNumber}>;
         txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     }
     addLiquidityETH: {
         (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<TransactionReceipt>;
-        call: (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions) => Promise<{pair:string,_offerIndex:BigNumber}>;
+        call: (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions) => Promise<{pair:string,offerIndex:BigNumber}>;
         txData: (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions) => Promise<string>;
     }
     configStore: {
@@ -84,11 +84,11 @@ export class OSWAP_RestrictedLiquidityProvider4 extends _Contract{
             let result = await this.send('addLiquidity',addLiquidityParams(params),options);
             return result;
         }
-        let addLiquidity_call = async (params: IAddLiquidityParams, options?: TransactionOptions): Promise<{pair:string,_offerIndex:BigNumber}> => {
+        let addLiquidity_call = async (params: IAddLiquidityParams, options?: TransactionOptions): Promise<{pair:string,offerIndex:BigNumber}> => {
             let result = await this.call('addLiquidity',addLiquidityParams(params),options);
             return {
                 pair: result.pair,
-                _offerIndex: new BigNumber(result._offerIndex)
+                offerIndex: new BigNumber(result._offerIndex)
             };
         }
         let addLiquidity_txData = async (params: IAddLiquidityParams, options?: TransactionOptions): Promise<string> => {
@@ -104,11 +104,11 @@ export class OSWAP_RestrictedLiquidityProvider4 extends _Contract{
             let result = await this.send('addLiquidityETH',addLiquidityETHParams(params),options);
             return result;
         }
-        let addLiquidityETH_call = async (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<{pair:string,_offerIndex:BigNumber}> => {
+        let addLiquidityETH_call = async (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<{pair:string,offerIndex:BigNumber}> => {
             let result = await this.call('addLiquidityETH',addLiquidityETHParams(params),options);
             return {
                 pair: result.pair,
-                _offerIndex: new BigNumber(result._offerIndex)
+                offerIndex: new BigNumber(result._offerIndex)
             };
         }
         let addLiquidityETH_txData = async (params: IAddLiquidityETHParams, options?: number|BigNumber|TransactionOptions): Promise<string> => {

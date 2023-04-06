@@ -111,9 +111,9 @@ export declare class OSWAP_Pair extends _Contract {
     };
     getReserves: {
         (options?: TransactionOptions): Promise<{
-            _reserve0: BigNumber;
-            _reserve1: BigNumber;
-            _blockTimestampLast: BigNumber;
+            reserve0: BigNumber;
+            reserve1: BigNumber;
+            blockTimestampLast: BigNumber;
         }>;
     };
     initialize: {

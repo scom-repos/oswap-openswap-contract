@@ -43,7 +43,7 @@ export class OAXDEX_VotingContract extends _Contract{
         (options?: TransactionOptions): Promise<string>;
     }
     getParams: {
-        (options?: TransactionOptions): Promise<{executor_:string,id_:BigNumber,name_:string,options_:string[],voteStartTime_:BigNumber,voteEndTime_:BigNumber,executeDelay_:BigNumber,status_:boolean[],optionsWeight_:BigNumber[],quorum_:BigNumber[],executeParam_:string[]}>;
+        (options?: TransactionOptions): Promise<{executor:string,id:BigNumber,name:string,options:string[],voteStartTime:BigNumber,voteEndTime:BigNumber,executeDelay:BigNumber,status:boolean[],optionsWeight:BigNumber[],quorum:BigNumber[],executeParam:string[]}>;
     }
     governance: {
         (options?: TransactionOptions): Promise<string>;
@@ -145,20 +145,20 @@ export class OAXDEX_VotingContract extends _Contract{
             return result;
         }
         this.executor = executor_call
-        let getParams_call = async (options?: TransactionOptions): Promise<{executor_:string,id_:BigNumber,name_:string,options_:string[],voteStartTime_:BigNumber,voteEndTime_:BigNumber,executeDelay_:BigNumber,status_:boolean[],optionsWeight_:BigNumber[],quorum_:BigNumber[],executeParam_:string[]}> => {
+        let getParams_call = async (options?: TransactionOptions): Promise<{executor:string,id:BigNumber,name:string,options:string[],voteStartTime:BigNumber,voteEndTime:BigNumber,executeDelay:BigNumber,status:boolean[],optionsWeight:BigNumber[],quorum:BigNumber[],executeParam:string[]}> => {
             let result = await this.call('getParams',[],options);
             return {
-                executor_: result.executor_,
-                id_: new BigNumber(result.id_),
-                name_: result.name_,
-                options_: result.options_,
-                voteStartTime_: new BigNumber(result.voteStartTime_),
-                voteEndTime_: new BigNumber(result.voteEndTime_),
-                executeDelay_: new BigNumber(result.executeDelay_),
-                status_: result.status_,
-                optionsWeight_: result.optionsWeight_.map(e=>new BigNumber(e)),
-                quorum_: result.quorum_.map(e=>new BigNumber(e)),
-                executeParam_: result.executeParam_
+                executor: result.executor_,
+                id: new BigNumber(result.id_),
+                name: result.name_,
+                options: result.options_,
+                voteStartTime: new BigNumber(result.voteStartTime_),
+                voteEndTime: new BigNumber(result.voteEndTime_),
+                executeDelay: new BigNumber(result.executeDelay_),
+                status: result.status_,
+                optionsWeight: result.optionsWeight_.map(e=>new BigNumber(e)),
+                quorum: result.quorum_.map(e=>new BigNumber(e)),
+                executeParam: result.executeParam_
             };
         }
         this.getParams = getParams_call

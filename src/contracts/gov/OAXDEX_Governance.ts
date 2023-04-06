@@ -200,7 +200,7 @@ export class OAXDEX_Governance extends _Contract{
         (options?: TransactionOptions): Promise<BigNumber>;
     }
     getVotingParams: {
-        (name:string, options?: TransactionOptions): Promise<{_minExeDelay:BigNumber,_minVoteDuration:BigNumber,_maxVoteDuration:BigNumber,_minOaxTokenToCreateVote:BigNumber,_minQuorum:BigNumber}>;
+        (name:string, options?: TransactionOptions): Promise<{minExeDelay:BigNumber,minVoteDuration:BigNumber,maxVoteDuration:BigNumber,minOaxTokenToCreateVote:BigNumber,minQuorum:BigNumber}>;
     }
     getVotings: {
         (params: IGetVotingsParams, options?: TransactionOptions): Promise<string[]>;
@@ -364,14 +364,14 @@ export class OAXDEX_Governance extends _Contract{
             return new BigNumber(result);
         }
         this.getVotingCount = getVotingCount_call
-        let getVotingParams_call = async (name:string, options?: TransactionOptions): Promise<{_minExeDelay:BigNumber,_minVoteDuration:BigNumber,_maxVoteDuration:BigNumber,_minOaxTokenToCreateVote:BigNumber,_minQuorum:BigNumber}> => {
+        let getVotingParams_call = async (name:string, options?: TransactionOptions): Promise<{minExeDelay:BigNumber,minVoteDuration:BigNumber,maxVoteDuration:BigNumber,minOaxTokenToCreateVote:BigNumber,minQuorum:BigNumber}> => {
             let result = await this.call('getVotingParams',[this.wallet.utils.stringToBytes32(name)],options);
             return {
-                _minExeDelay: new BigNumber(result._minExeDelay),
-                _minVoteDuration: new BigNumber(result._minVoteDuration),
-                _maxVoteDuration: new BigNumber(result._maxVoteDuration),
-                _minOaxTokenToCreateVote: new BigNumber(result._minOaxTokenToCreateVote),
-                _minQuorum: new BigNumber(result._minQuorum)
+                minExeDelay: new BigNumber(result._minExeDelay),
+                minVoteDuration: new BigNumber(result._minVoteDuration),
+                maxVoteDuration: new BigNumber(result._maxVoteDuration),
+                minOaxTokenToCreateVote: new BigNumber(result._minOaxTokenToCreateVote),
+                minQuorum: new BigNumber(result._minQuorum)
             };
         }
         this.getVotingParams = getVotingParams_call

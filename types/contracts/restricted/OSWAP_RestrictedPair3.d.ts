@@ -130,7 +130,7 @@ export interface ITraderOfferParams {
 export declare class OSWAP_RestrictedPair3 extends _Contract {
     static _abi: any;
     constructor(wallet: IWallet, address?: string);
-    deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+    deploy(options?: TransactionOptions): Promise<string>;
     parseAddLiquidityEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair3.AddLiquidityEvent[];
     decodeAddLiquidityEvent(event: Event): OSWAP_RestrictedPair3.AddLiquidityEvent;
     parseApprovedTraderEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair3.ApprovedTraderEvent[];

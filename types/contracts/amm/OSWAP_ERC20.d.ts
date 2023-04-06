@@ -28,7 +28,7 @@ export interface ITransferFromParams {
 export declare class OSWAP_ERC20 extends _Contract {
     static _abi: any;
     constructor(wallet: IWallet, address?: string);
-    deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+    deploy(options?: TransactionOptions): Promise<string>;
     parseApprovalEvent(receipt: TransactionReceipt): OSWAP_ERC20.ApprovalEvent[];
     decodeApprovalEvent(event: Event): OSWAP_ERC20.ApprovalEvent;
     parseTransferEvent(receipt: TransactionReceipt): OSWAP_ERC20.TransferEvent[];

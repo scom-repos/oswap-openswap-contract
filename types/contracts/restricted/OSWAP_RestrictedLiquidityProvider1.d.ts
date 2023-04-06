@@ -83,7 +83,7 @@ export declare class OSWAP_RestrictedLiquidityProvider1 extends _Contract {
         (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{
             pair: string;
-            _offerIndex: BigNumber;
+            offerIndex: BigNumber;
         }>;
         txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
     };
@@ -99,7 +99,7 @@ export declare class OSWAP_RestrictedLiquidityProvider1 extends _Contract {
         (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
         call: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<{
             pair: string;
-            _offerIndex: BigNumber;
+            offerIndex: BigNumber;
         }>;
         txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
     };

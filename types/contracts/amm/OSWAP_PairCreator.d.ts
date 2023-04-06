@@ -1,8 +1,8 @@
-import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+import { IWallet, Contract as _Contract, TransactionReceipt, TransactionOptions } from "@ijstech/eth-contract";
 export declare class OSWAP_PairCreator extends _Contract {
     static _abi: any;
     constructor(wallet: IWallet, address?: string);
-    deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+    deploy(options?: TransactionOptions): Promise<string>;
     createPair: {
         (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
         call: (salt: string, options?: TransactionOptions) => Promise<string>;

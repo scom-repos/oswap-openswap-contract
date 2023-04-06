@@ -228,7 +228,7 @@ declare module "@scom/oswap-openswap-contract/contracts/amm/OSWAP_ERC20.ts" {
     export class OSWAP_ERC20 extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         parseApprovalEvent(receipt: TransactionReceipt): OSWAP_ERC20.ApprovalEvent[];
         decodeApprovalEvent(event: Event): OSWAP_ERC20.ApprovalEvent;
         parseTransferEvent(receipt: TransactionReceipt): OSWAP_ERC20.TransferEvent[];
@@ -417,8 +417,8 @@ declare module "@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts" {
         };
         protocolFeeParams: {
             (options?: TransactionOptions): Promise<{
-                _protocolFee: BigNumber;
-                _protocolFeeTo: string;
+                protocolFee: BigNumber;
+                protocolFeeTo: string;
             }>;
         };
         protocolFeeTo: {
@@ -646,9 +646,9 @@ declare module "@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts" {
         };
         getReserves: {
             (options?: TransactionOptions): Promise<{
-                _reserve0: BigNumber;
-                _reserve1: BigNumber;
-                _blockTimestampLast: BigNumber;
+                reserve0: BigNumber;
+                reserve1: BigNumber;
+                blockTimestampLast: BigNumber;
             }>;
         };
         initialize: {
@@ -818,11 +818,11 @@ declare module "@scom/oswap-openswap-contract/contracts/amm/OSWAP_PairCreator.js
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/amm/OSWAP_PairCreator.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/amm/OSWAP_PairCreator.ts" {
-    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    import { IWallet, Contract as _Contract, TransactionReceipt, TransactionOptions } from "@ijstech/eth-contract";
     export class OSWAP_PairCreator extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         createPair: {
             (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (salt: string, options?: TransactionOptions) => Promise<string>;
@@ -1979,11 +1979,11 @@ declare module "@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts
         };
         getVotingParams: {
             (name: string, options?: TransactionOptions): Promise<{
-                _minExeDelay: BigNumber;
-                _minVoteDuration: BigNumber;
-                _maxVoteDuration: BigNumber;
-                _minOaxTokenToCreateVote: BigNumber;
-                _minQuorum: BigNumber;
+                minExeDelay: BigNumber;
+                minVoteDuration: BigNumber;
+                maxVoteDuration: BigNumber;
+                minOaxTokenToCreateVote: BigNumber;
+                minQuorum: BigNumber;
             }>;
         };
         getVotings: {
@@ -2283,17 +2283,17 @@ declare module "@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContrac
         };
         getParams: {
             (options?: TransactionOptions): Promise<{
-                executor_: string;
-                id_: BigNumber;
-                name_: string;
-                options_: string[];
-                voteStartTime_: BigNumber;
-                voteEndTime_: BigNumber;
-                executeDelay_: BigNumber;
-                status_: boolean[];
-                optionsWeight_: BigNumber[];
-                quorum_: BigNumber[];
-                executeParam_: string[];
+                executor: string;
+                id: BigNumber;
+                name: string;
+                options: string[];
+                voteStartTime: BigNumber;
+                voteEndTime: BigNumber;
+                executeDelay: BigNumber;
+                status: boolean[];
+                optionsWeight: BigNumber[];
+                quorum: BigNumber[];
+                executeParam: string[];
             }>;
         };
         governance: {
@@ -2831,9 +2831,9 @@ declare module "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFacto
         };
         checkAndGetOracleSwapParams: {
             (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{
-                oracle_: string;
-                tradeFee_: BigNumber;
-                protocolFee_: BigNumber;
+                oracle: string;
+                tradeFee: BigNumber;
+                protocolFee: BigNumber;
             }>;
         };
         createPair: {
@@ -3650,11 +3650,11 @@ declare module "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePairC
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePairCreator.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePairCreator.ts" {
-    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    import { IWallet, Contract as _Contract, TransactionReceipt, TransactionOptions } from "@ijstech/eth-contract";
     export class OSWAP_OraclePairCreator extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         createPair: {
             (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (salt: string, options?: TransactionOptions) => Promise<string>;
@@ -3832,15 +3832,15 @@ declare module "@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory
         };
         getAllLiquidityProviderShare: {
             (options?: TransactionOptions): Promise<{
-                _stakeAmount: BigNumber[];
-                _liquidityProviderShare: BigNumber[];
+                stakeAmount: BigNumber[];
+                liquidityProviderShare: BigNumber[];
             }>;
         };
         getCreateAddresses: {
             (options?: TransactionOptions): Promise<{
-                _governance: string;
-                _rangeLiquidityProvider: string;
-                _oracleFactory: string;
+                governance: string;
+                rangeLiquidityProvider: string;
+                oracleFactory: string;
             }>;
         };
         getLiquidityProviderShare: {
@@ -4548,11 +4548,11 @@ declare module "@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePairCre
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePairCreator.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePairCreator.ts" {
-    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    import { IWallet, Contract as _Contract, TransactionReceipt, TransactionOptions } from "@ijstech/eth-contract";
     export class OSWAP_RangePairCreator extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         createPair: {
             (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (salt: string, options?: TransactionOptions) => Promise<string>;
@@ -4851,7 +4851,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiqu
             (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{
                 pair: string;
-                _offerIndex: BigNumber;
+                offerIndex: BigNumber;
             }>;
             txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
         };
@@ -4867,7 +4867,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiqu
             (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
             call: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<{
                 pair: string;
-                _offerIndex: BigNumber;
+                offerIndex: BigNumber;
             }>;
             txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
         };
@@ -5125,9 +5125,9 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         };
         checkAndGetOracleSwapParams: {
             (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{
-                oracle_: string;
-                tradeFee_: BigNumber;
-                protocolFee_: BigNumber;
+                oracle: string;
+                tradeFee: BigNumber;
+                protocolFee: BigNumber;
             }>;
         };
         configStore: {
@@ -5140,10 +5140,10 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
         };
         getCreateAddresses: {
             (options?: TransactionOptions): Promise<{
-                _governance: string;
-                _whitelistFactory: string;
-                _restrictedLiquidityProvider: string;
-                _configStore: string;
+                governance: string;
+                whitelistFactory: string;
+                restrictedLiquidityProvider: string;
+                configStore: string;
             }>;
         };
         getPair: {
@@ -5410,7 +5410,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
             (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{
                 pair: string;
-                _offerIndex: BigNumber;
+                offerIndex: BigNumber;
             }>;
             txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
         };
@@ -5426,7 +5426,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
             (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
             call: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<{
                 pair: string;
-                _offerIndex: BigNumber;
+                offerIndex: BigNumber;
             }>;
             txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
         };
@@ -5593,7 +5593,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
             (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{
                 pair: string;
-                _offerIndex: BigNumber;
+                offerIndex: BigNumber;
             }>;
             txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
         };
@@ -5601,7 +5601,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
             (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
             call: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<{
                 pair: string;
-                _offerIndex: BigNumber;
+                offerIndex: BigNumber;
             }>;
             txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
         };
@@ -5752,7 +5752,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
             (params: IAddLiquidityParams, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<{
                 pair: string;
-                _offerIndex: BigNumber;
+                offerIndex: BigNumber;
             }>;
             txData: (params: IAddLiquidityParams, options?: TransactionOptions) => Promise<string>;
         };
@@ -5760,7 +5760,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
             (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions): Promise<TransactionReceipt>;
             call: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<{
                 pair: string;
-                _offerIndex: BigNumber;
+                offerIndex: BigNumber;
             }>;
             txData: (params: IAddLiquidityETHParams, options?: number | BigNumber | TransactionOptions) => Promise<string>;
         };
@@ -7537,11 +7537,11 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.ts" {
-    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    import { IWallet, Contract as _Contract, TransactionReceipt, TransactionOptions } from "@ijstech/eth-contract";
     export class OSWAP_OtcPairCreator extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         createPair: {
             (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (salt: string, options?: TransactionOptions) => Promise<string>;
@@ -7713,7 +7713,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
     export class OSWAP_RestrictedPair1 extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         parseAddLiquidityEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair1.AddLiquidityEvent[];
         decodeAddLiquidityEvent(event: Event): OSWAP_RestrictedPair1.AddLiquidityEvent;
         parseApprovedTraderEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair1.ApprovedTraderEvent[];
@@ -8175,7 +8175,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
     export class OSWAP_RestrictedPair3 extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         parseAddLiquidityEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair3.AddLiquidityEvent[];
         decodeAddLiquidityEvent(event: Event): OSWAP_RestrictedPair3.AddLiquidityEvent;
         parseApprovedTraderEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair3.ApprovedTraderEvent[];
@@ -8658,7 +8658,7 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
     export class OSWAP_RestrictedPair4 extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         parseAddLiquidityEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair4.AddLiquidityEvent[];
         decodeAddLiquidityEvent(event: Event): OSWAP_RestrictedPair4.AddLiquidityEvent;
         parseApprovedTraderEvent(receipt: TransactionReceipt): OSWAP_RestrictedPair4.ApprovedTraderEvent[];
@@ -9003,11 +9003,11 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.ts" {
-    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    import { IWallet, Contract as _Contract, TransactionReceipt, TransactionOptions } from "@ijstech/eth-contract";
     export class OSWAP_RestrictedPairCreator1 extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         createPair: {
             (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (salt: string, options?: TransactionOptions) => Promise<string>;
@@ -9040,11 +9040,11 @@ declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_Restric
 }
 /// <amd-module name="@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.ts" />
 declare module "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.ts" {
-    import { IWallet, Contract as _Contract, TransactionReceipt, BigNumber, TransactionOptions } from "@ijstech/eth-contract";
+    import { IWallet, Contract as _Contract, TransactionReceipt, TransactionOptions } from "@ijstech/eth-contract";
     export class OSWAP_RestrictedPairCreator4 extends _Contract {
         static _abi: any;
         constructor(wallet: IWallet, address?: string);
-        deploy(options?: number | BigNumber | TransactionOptions): Promise<string>;
+        deploy(options?: TransactionOptions): Promise<string>;
         createPair: {
             (salt: string, options?: TransactionOptions): Promise<TransactionReceipt>;
             call: (salt: string, options?: TransactionOptions) => Promise<string>;

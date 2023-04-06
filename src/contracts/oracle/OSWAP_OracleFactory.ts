@@ -159,7 +159,7 @@ export class OSWAP_OracleFactory extends _Contract{
         (params: ICheckAndGetOracleParams, options?: TransactionOptions): Promise<string>;
     }
     checkAndGetOracleSwapParams: {
-        (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{oracle_:string,tradeFee_:BigNumber,protocolFee_:BigNumber}>;
+        (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{oracle:string,tradeFee:BigNumber,protocolFee:BigNumber}>;
     }
     createPair: {
         (params: ICreatePairParams, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -322,12 +322,12 @@ export class OSWAP_OracleFactory extends _Contract{
         }
         this.checkAndGetOracle = checkAndGetOracle_call
         let checkAndGetOracleSwapParamsParams = (params: ICheckAndGetOracleSwapParamsParams) => [params.tokenA,params.tokenB];
-        let checkAndGetOracleSwapParams_call = async (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{oracle_:string,tradeFee_:BigNumber,protocolFee_:BigNumber}> => {
+        let checkAndGetOracleSwapParams_call = async (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{oracle:string,tradeFee:BigNumber,protocolFee:BigNumber}> => {
             let result = await this.call('checkAndGetOracleSwapParams',checkAndGetOracleSwapParamsParams(params),options);
             return {
-                oracle_: result.oracle_,
-                tradeFee_: new BigNumber(result.tradeFee_),
-                protocolFee_: new BigNumber(result.protocolFee_)
+                oracle: result.oracle_,
+                tradeFee: new BigNumber(result.tradeFee_),
+                protocolFee: new BigNumber(result.protocolFee_)
             };
         }
         this.checkAndGetOracleSwapParams = checkAndGetOracleSwapParams_call

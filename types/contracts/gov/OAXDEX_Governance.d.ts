@@ -114,11 +114,11 @@ export declare class OAXDEX_Governance extends _Contract {
     };
     getVotingParams: {
         (name: string, options?: TransactionOptions): Promise<{
-            _minExeDelay: BigNumber;
-            _minVoteDuration: BigNumber;
-            _maxVoteDuration: BigNumber;
-            _minOaxTokenToCreateVote: BigNumber;
-            _minQuorum: BigNumber;
+            minExeDelay: BigNumber;
+            minVoteDuration: BigNumber;
+            maxVoteDuration: BigNumber;
+            minOaxTokenToCreateVote: BigNumber;
+            minQuorum: BigNumber;
         }>;
     };
     getVotings: {

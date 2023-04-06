@@ -114,10 +114,10 @@ export class OSWAP_RangeFactory extends _Contract{
         txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     }
     getAllLiquidityProviderShare: {
-        (options?: TransactionOptions): Promise<{_stakeAmount:BigNumber[],_liquidityProviderShare:BigNumber[]}>;
+        (options?: TransactionOptions): Promise<{stakeAmount:BigNumber[],liquidityProviderShare:BigNumber[]}>;
     }
     getCreateAddresses: {
-        (options?: TransactionOptions): Promise<{_governance:string,_rangeLiquidityProvider:string,_oracleFactory:string}>;
+        (options?: TransactionOptions): Promise<{governance:string,rangeLiquidityProvider:string,oracleFactory:string}>;
     }
     getLiquidityProviderShare: {
         (stake:number|BigNumber, options?: TransactionOptions): Promise<BigNumber>;
@@ -211,20 +211,20 @@ export class OSWAP_RangeFactory extends _Contract{
             return new BigNumber(result);
         }
         this.checkAndGetSwapParams = checkAndGetSwapParams_call
-        let getAllLiquidityProviderShare_call = async (options?: TransactionOptions): Promise<{_stakeAmount:BigNumber[],_liquidityProviderShare:BigNumber[]}> => {
+        let getAllLiquidityProviderShare_call = async (options?: TransactionOptions): Promise<{stakeAmount:BigNumber[],liquidityProviderShare:BigNumber[]}> => {
             let result = await this.call('getAllLiquidityProviderShare',[],options);
             return {
-                _stakeAmount: result._stakeAmount.map(e=>new BigNumber(e)),
-                _liquidityProviderShare: result._liquidityProviderShare.map(e=>new BigNumber(e))
+                stakeAmount: result._stakeAmount.map(e=>new BigNumber(e)),
+                liquidityProviderShare: result._liquidityProviderShare.map(e=>new BigNumber(e))
             };
         }
         this.getAllLiquidityProviderShare = getAllLiquidityProviderShare_call
-        let getCreateAddresses_call = async (options?: TransactionOptions): Promise<{_governance:string,_rangeLiquidityProvider:string,_oracleFactory:string}> => {
+        let getCreateAddresses_call = async (options?: TransactionOptions): Promise<{governance:string,rangeLiquidityProvider:string,oracleFactory:string}> => {
             let result = await this.call('getCreateAddresses',[],options);
             return {
-                _governance: result._governance,
-                _rangeLiquidityProvider: result._rangeLiquidityProvider,
-                _oracleFactory: result._oracleFactory
+                governance: result._governance,
+                rangeLiquidityProvider: result._rangeLiquidityProvider,
+                oracleFactory: result._oracleFactory
             };
         }
         this.getCreateAddresses = getCreateAddresses_call

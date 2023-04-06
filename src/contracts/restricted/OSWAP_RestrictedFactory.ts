@@ -132,7 +132,7 @@ export class OSWAP_RestrictedFactory extends _Contract{
         (params: ICheckAndGetOracleParams, options?: TransactionOptions): Promise<string>;
     }
     checkAndGetOracleSwapParams: {
-        (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{oracle_:string,tradeFee_:BigNumber,protocolFee_:BigNumber}>;
+        (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{oracle:string,tradeFee:BigNumber,protocolFee:BigNumber}>;
     }
     configStore: {
         (options?: TransactionOptions): Promise<string>;
@@ -143,7 +143,7 @@ export class OSWAP_RestrictedFactory extends _Contract{
         txData: (params: ICreatePairParams, options?: TransactionOptions) => Promise<string>;
     }
     getCreateAddresses: {
-        (options?: TransactionOptions): Promise<{_governance:string,_whitelistFactory:string,_restrictedLiquidityProvider:string,_configStore:string}>;
+        (options?: TransactionOptions): Promise<{governance:string,whitelistFactory:string,restrictedLiquidityProvider:string,configStore:string}>;
     }
     getPair: {
         (params: IGetPairParams, options?: TransactionOptions): Promise<string>;
@@ -253,12 +253,12 @@ export class OSWAP_RestrictedFactory extends _Contract{
         }
         this.checkAndGetOracle = checkAndGetOracle_call
         let checkAndGetOracleSwapParamsParams = (params: ICheckAndGetOracleSwapParamsParams) => [params.tokenA,params.tokenB];
-        let checkAndGetOracleSwapParams_call = async (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{oracle_:string,tradeFee_:BigNumber,protocolFee_:BigNumber}> => {
+        let checkAndGetOracleSwapParams_call = async (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{oracle:string,tradeFee:BigNumber,protocolFee:BigNumber}> => {
             let result = await this.call('checkAndGetOracleSwapParams',checkAndGetOracleSwapParamsParams(params),options);
             return {
-                oracle_: result.oracle_,
-                tradeFee_: new BigNumber(result.tradeFee_),
-                protocolFee_: new BigNumber(result.protocolFee_)
+                oracle: result.oracle_,
+                tradeFee: new BigNumber(result.tradeFee_),
+                protocolFee: new BigNumber(result.protocolFee_)
             };
         }
         this.checkAndGetOracleSwapParams = checkAndGetOracleSwapParams_call
@@ -267,13 +267,13 @@ export class OSWAP_RestrictedFactory extends _Contract{
             return result;
         }
         this.configStore = configStore_call
-        let getCreateAddresses_call = async (options?: TransactionOptions): Promise<{_governance:string,_whitelistFactory:string,_restrictedLiquidityProvider:string,_configStore:string}> => {
+        let getCreateAddresses_call = async (options?: TransactionOptions): Promise<{governance:string,whitelistFactory:string,restrictedLiquidityProvider:string,configStore:string}> => {
             let result = await this.call('getCreateAddresses',[],options);
             return {
-                _governance: result._governance,
-                _whitelistFactory: result._whitelistFactory,
-                _restrictedLiquidityProvider: result._restrictedLiquidityProvider,
-                _configStore: result._configStore
+                governance: result._governance,
+                whitelistFactory: result._whitelistFactory,
+                restrictedLiquidityProvider: result._restrictedLiquidityProvider,
+                configStore: result._configStore
             };
         }
         this.getCreateAddresses = getCreateAddresses_call

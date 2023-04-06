@@ -85,9 +85,9 @@ export declare class OSWAP_RestrictedFactory extends _Contract {
     };
     checkAndGetOracleSwapParams: {
         (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{
-            oracle_: string;
-            tradeFee_: BigNumber;
-            protocolFee_: BigNumber;
+            oracle: string;
+            tradeFee: BigNumber;
+            protocolFee: BigNumber;
         }>;
     };
     configStore: {
@@ -100,10 +100,10 @@ export declare class OSWAP_RestrictedFactory extends _Contract {
     };
     getCreateAddresses: {
         (options?: TransactionOptions): Promise<{
-            _governance: string;
-            _whitelistFactory: string;
-            _restrictedLiquidityProvider: string;
-            _configStore: string;
+            governance: string;
+            whitelistFactory: string;
+            restrictedLiquidityProvider: string;
+            configStore: string;
         }>;
     };
     getPair: {

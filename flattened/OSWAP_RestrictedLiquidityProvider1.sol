@@ -2,6 +2,88 @@
 
 pragma solidity =0.6.11;
 
+interface IOSWAP_RestrictedLiquidityProvider1 {
+    function factory() external view returns (address);
+    function WETH() external view returns (address);
+    function govToken() external view returns (address);
+    function configStore() external view returns (address);
+
+    // **** ADD LIQUIDITY ****
+    function addLiquidity(
+        address tokenA,
+        address tokenB,
+        bool addingTokenA,
+        uint256 pairIndex,
+        uint256 offerIndex,
+        uint256 amountIn,
+        bool locked,
+        uint256 restrictedPrice,
+        uint256 startDate,
+        uint256 expire,
+        uint256 deadline
+    ) external returns (address pair, uint256 _offerIndex);
+    function addLiquidityETH(
+        address tokenA,
+        bool addingTokenA,
+        uint256 pairIndex,
+        uint256 offerIndex,
+        uint256 amountAIn,
+        bool locked,
+        uint256 restrictedPrice,
+        uint256 startDate,
+        uint256 expire,
+        uint256 deadline
+    ) external payable returns (address pair, uint256 _offerIndex);
+    function addLiquidityAndTrader(
+        uint256[11] calldata param, 
+        address[] calldata trader, 
+        uint256[] calldata allocation
+    ) external returns (address pair, uint256 offerIndex);
+    function addLiquidityETHAndTrader(
+        uint256[10] calldata param, 
+        address[] calldata trader, 
+        uint256[] calldata allocation
+    ) external payable returns (address pair, uint256 offerIndex);
+
+    // **** REMOVE LIQUIDITY ****
+    function removeLiquidity(
+        address tokenA,
+        address tokenB,
+        bool removingTokenA,
+        address to,
+        uint256 pairIndex,
+        uint256 offerIndex,
+        uint256 amountOut,
+        uint256 receivingOut,
+        uint256 deadline
+    ) external;
+    function removeLiquidityETH(
+        address tokenA,
+        bool removingTokenA,
+        address to,
+        uint256 pairIndex,
+        uint256 offerIndex,
+        uint256 amountOut,
+        uint256 receivingOut,
+        uint256 deadline
+    ) external;
+    function removeAllLiquidity(
+        address tokenA,
+        address tokenB,
+        address to,
+        uint256 pairIndex,
+        uint256 deadline
+    ) external returns (uint256 amountA, uint256 amountB);
+    function removeAllLiquidityETH(
+        address tokenA,
+        address to,
+        uint256 pairIndex,
+        uint256 deadline
+    ) external returns (uint256 amountToken, uint256 amountETH);
+}
+
+pragma solidity =0.6.11;
+
 interface IOSWAP_PausablePair {
     function isLive() external view returns (bool);
     function factory() external view returns (address);
@@ -275,6 +357,34 @@ interface IOAXDEX_Governance {
     function closeVote(address vote) external;
 }
 
+pragma solidity =0.6.11;
+
+// helper methods for interacting with ERC20 tokens and sending ETH that do not consistently return true/false
+library TransferHelper {
+    function safeApprove(address token, address to, uint value) internal {
+        // bytes4(keccak256(bytes('approve(address,uint256)')));
+        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(0x095ea7b3, to, value));
+        require(success && (data.length == 0 || abi.decode(data, (bool))), 'TransferHelper: APPROVE_FAILED');
+    }
+
+    function safeTransfer(address token, address to, uint value) internal {
+        // bytes4(keccak256(bytes('transfer(address,uint256)')));
+        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(0xa9059cbb, to, value));
+        require(success && (data.length == 0 || abi.decode(data, (bool))), 'TransferHelper: TRANSFER_FAILED');
+    }
+
+    function safeTransferFrom(address token, address from, address to, uint value) internal {
+        // bytes4(keccak256(bytes('transferFrom(address,address,uint256)')));
+        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(0x23b872dd, from, to, value));
+        require(success && (data.length == 0 || abi.decode(data, (bool))), 'TransferHelper: TRANSFER_FROM_FAILED');
+    }
+
+    function safeTransferETH(address to, uint value) internal {
+        (bool success,) = to.call{value:value}(new bytes(0));
+        require(success, 'TransferHelper: ETH_TRANSFER_FAILED');
+    }
+}
+
 
 pragma solidity >=0.6.0 <0.8.0;
 
@@ -436,6 +546,14 @@ library SafeMath {
 
 pragma solidity =0.6.11;
 
+interface IWETH {
+    function deposit() external payable;
+    function transfer(address to, uint value) external returns (bool);
+    function withdraw(uint) external;
+}
+
+pragma solidity =0.6.11;
+
 interface IOSWAP_ConfigStore {
     event ParamSet(bytes32 indexed name, bytes32 value);
 
@@ -448,124 +566,6 @@ interface IOSWAP_ConfigStore {
 
     function setCustomParam(bytes32 paramName, bytes32 paramValue) external;
     function setMultiCustomParam(bytes32[] calldata paramName, bytes32[] calldata paramValue) external;
-}
-
-pragma solidity =0.6.11;
-
-interface IOSWAP_RestrictedLiquidityProvider1 {
-    function factory() external view returns (address);
-    function WETH() external view returns (address);
-    function govToken() external view returns (address);
-    function configStore() external view returns (address);
-
-    // **** ADD LIQUIDITY ****
-    function addLiquidity(
-        address tokenA,
-        address tokenB,
-        bool addingTokenA,
-        uint256 pairIndex,
-        uint256 offerIndex,
-        uint256 amountIn,
-        bool locked,
-        uint256 restrictedPrice,
-        uint256 startDate,
-        uint256 expire,
-        uint256 deadline
-    ) external returns (address pair, uint256 _offerIndex);
-    function addLiquidityETH(
-        address tokenA,
-        bool addingTokenA,
-        uint256 pairIndex,
-        uint256 offerIndex,
-        uint256 amountAIn,
-        bool locked,
-        uint256 restrictedPrice,
-        uint256 startDate,
-        uint256 expire,
-        uint256 deadline
-    ) external payable returns (address pair, uint256 _offerIndex);
-    function addLiquidityAndTrader(
-        uint256[11] calldata param, 
-        address[] calldata trader, 
-        uint256[] calldata allocation
-    ) external returns (address pair, uint256 offerIndex);
-    function addLiquidityETHAndTrader(
-        uint256[10] calldata param, 
-        address[] calldata trader, 
-        uint256[] calldata allocation
-    ) external payable returns (address pair, uint256 offerIndex);
-
-    // **** REMOVE LIQUIDITY ****
-    function removeLiquidity(
-        address tokenA,
-        address tokenB,
-        bool removingTokenA,
-        address to,
-        uint256 pairIndex,
-        uint256 offerIndex,
-        uint256 amountOut,
-        uint256 receivingOut,
-        uint256 deadline
-    ) external;
-    function removeLiquidityETH(
-        address tokenA,
-        bool removingTokenA,
-        address to,
-        uint256 pairIndex,
-        uint256 offerIndex,
-        uint256 amountOut,
-        uint256 receivingOut,
-        uint256 deadline
-    ) external;
-    function removeAllLiquidity(
-        address tokenA,
-        address tokenB,
-        address to,
-        uint256 pairIndex,
-        uint256 deadline
-    ) external returns (uint256 amountA, uint256 amountB);
-    function removeAllLiquidityETH(
-        address tokenA,
-        address to,
-        uint256 pairIndex,
-        uint256 deadline
-    ) external returns (uint256 amountToken, uint256 amountETH);
-}
-
-pragma solidity =0.6.11;
-
-// helper methods for interacting with ERC20 tokens and sending ETH that do not consistently return true/false
-library TransferHelper {
-    function safeApprove(address token, address to, uint value) internal {
-        // bytes4(keccak256(bytes('approve(address,uint256)')));
-        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(0x095ea7b3, to, value));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), 'TransferHelper: APPROVE_FAILED');
-    }
-
-    function safeTransfer(address token, address to, uint value) internal {
-        // bytes4(keccak256(bytes('transfer(address,uint256)')));
-        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(0xa9059cbb, to, value));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), 'TransferHelper: TRANSFER_FAILED');
-    }
-
-    function safeTransferFrom(address token, address from, address to, uint value) internal {
-        // bytes4(keccak256(bytes('transferFrom(address,address,uint256)')));
-        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(0x23b872dd, from, to, value));
-        require(success && (data.length == 0 || abi.decode(data, (bool))), 'TransferHelper: TRANSFER_FROM_FAILED');
-    }
-
-    function safeTransferETH(address to, uint value) internal {
-        (bool success,) = to.call{value:value}(new bytes(0));
-        require(success, 'TransferHelper: ETH_TRANSFER_FAILED');
-    }
-}
-
-pragma solidity =0.6.11;
-
-interface IWETH {
-    function deposit() external payable;
-    function transfer(address to, uint value) external returns (bool);
-    function withdraw(uint) external;
 }
 
 pragma solidity =0.6.11;

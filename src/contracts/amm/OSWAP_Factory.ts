@@ -114,7 +114,7 @@ export class OSWAP_Factory extends _Contract{
         (options?: TransactionOptions): Promise<BigNumber>;
     }
     protocolFeeParams: {
-        (options?: TransactionOptions): Promise<{_protocolFee:BigNumber,_protocolFeeTo:string}>;
+        (options?: TransactionOptions): Promise<{protocolFee:BigNumber,protocolFeeTo:string}>;
     }
     protocolFeeTo: {
         (options?: TransactionOptions): Promise<string>;
@@ -184,11 +184,11 @@ export class OSWAP_Factory extends _Contract{
             return new BigNumber(result);
         }
         this.protocolFee = protocolFee_call
-        let protocolFeeParams_call = async (options?: TransactionOptions): Promise<{_protocolFee:BigNumber,_protocolFeeTo:string}> => {
+        let protocolFeeParams_call = async (options?: TransactionOptions): Promise<{protocolFee:BigNumber,protocolFeeTo:string}> => {
             let result = await this.call('protocolFeeParams',[],options);
             return {
-                _protocolFee: new BigNumber(result._protocolFee),
-                _protocolFeeTo: result._protocolFeeTo
+                protocolFee: new BigNumber(result._protocolFee),
+                protocolFeeTo: result._protocolFeeTo
             };
         }
         this.protocolFeeParams = protocolFeeParams_call

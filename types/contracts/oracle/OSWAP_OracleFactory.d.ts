@@ -105,9 +105,9 @@ export declare class OSWAP_OracleFactory extends _Contract {
     };
     checkAndGetOracleSwapParams: {
         (params: ICheckAndGetOracleSwapParamsParams, options?: TransactionOptions): Promise<{
-            oracle_: string;
-            tradeFee_: BigNumber;
-            protocolFee_: BigNumber;
+            oracle: string;
+            tradeFee: BigNumber;
+            protocolFee: BigNumber;
         }>;
     };
     createPair: {

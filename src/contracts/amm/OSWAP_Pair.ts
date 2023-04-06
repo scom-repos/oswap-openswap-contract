@@ -157,7 +157,7 @@ export class OSWAP_Pair extends _Contract{
         (params: IGetAmountOutParams, options?: TransactionOptions): Promise<BigNumber>;
     }
     getReserves: {
-        (options?: TransactionOptions): Promise<{_reserve0:BigNumber,_reserve1:BigNumber,_blockTimestampLast:BigNumber}>;
+        (options?: TransactionOptions): Promise<{reserve0:BigNumber,reserve1:BigNumber,blockTimestampLast:BigNumber}>;
     }
     initialize: {
         (params: IInitializeParams, options?: TransactionOptions): Promise<TransactionReceipt>;
@@ -309,12 +309,12 @@ export class OSWAP_Pair extends _Contract{
             return new BigNumber(result);
         }
         this.getAmountOut = getAmountOut_call
-        let getReserves_call = async (options?: TransactionOptions): Promise<{_reserve0:BigNumber,_reserve1:BigNumber,_blockTimestampLast:BigNumber}> => {
+        let getReserves_call = async (options?: TransactionOptions): Promise<{reserve0:BigNumber,reserve1:BigNumber,blockTimestampLast:BigNumber}> => {
             let result = await this.call('getReserves',[],options);
             return {
-                _reserve0: new BigNumber(result._reserve0),
-                _reserve1: new BigNumber(result._reserve1),
-                _blockTimestampLast: new BigNumber(result._blockTimestampLast)
+                reserve0: new BigNumber(result._reserve0),
+                reserve1: new BigNumber(result._reserve1),
+                blockTimestampLast: new BigNumber(result._blockTimestampLast)
             };
         }
         this.getReserves = getReserves_call

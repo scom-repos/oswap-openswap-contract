@@ -563,8 +563,8 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", ["require
             let protocolFeeParams_call = async (options) => {
                 let result = await this.call('protocolFeeParams', [], options);
                 return {
-                    _protocolFee: new eth_contract_3.BigNumber(result._protocolFee),
-                    _protocolFeeTo: result._protocolFeeTo
+                    protocolFee: new eth_contract_3.BigNumber(result._protocolFee),
+                    protocolFeeTo: result._protocolFeeTo
                 };
             };
             this.protocolFeeParams = protocolFeeParams_call;
@@ -906,9 +906,9 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
             let getReserves_call = async (options) => {
                 let result = await this.call('getReserves', [], options);
                 return {
-                    _reserve0: new eth_contract_4.BigNumber(result._reserve0),
-                    _reserve1: new eth_contract_4.BigNumber(result._reserve1),
-                    _blockTimestampLast: new eth_contract_4.BigNumber(result._blockTimestampLast)
+                    reserve0: new eth_contract_4.BigNumber(result._reserve0),
+                    reserve1: new eth_contract_4.BigNumber(result._reserve1),
+                    blockTimestampLast: new eth_contract_4.BigNumber(result._blockTimestampLast)
                 };
             };
             this.getReserves = getReserves_call;
@@ -2771,11 +2771,11 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
             let getVotingParams_call = async (name, options) => {
                 let result = await this.call('getVotingParams', [this.wallet.utils.stringToBytes32(name)], options);
                 return {
-                    _minExeDelay: new eth_contract_12.BigNumber(result._minExeDelay),
-                    _minVoteDuration: new eth_contract_12.BigNumber(result._minVoteDuration),
-                    _maxVoteDuration: new eth_contract_12.BigNumber(result._maxVoteDuration),
-                    _minOaxTokenToCreateVote: new eth_contract_12.BigNumber(result._minOaxTokenToCreateVote),
-                    _minQuorum: new eth_contract_12.BigNumber(result._minQuorum)
+                    minExeDelay: new eth_contract_12.BigNumber(result._minExeDelay),
+                    minVoteDuration: new eth_contract_12.BigNumber(result._minVoteDuration),
+                    maxVoteDuration: new eth_contract_12.BigNumber(result._maxVoteDuration),
+                    minOaxTokenToCreateVote: new eth_contract_12.BigNumber(result._minOaxTokenToCreateVote),
+                    minQuorum: new eth_contract_12.BigNumber(result._minQuorum)
                 };
             };
             this.getVotingParams = getVotingParams_call;
@@ -3294,17 +3294,17 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContract.ts", [
             let getParams_call = async (options) => {
                 let result = await this.call('getParams', [], options);
                 return {
-                    executor_: result.executor_,
-                    id_: new eth_contract_13.BigNumber(result.id_),
-                    name_: result.name_,
-                    options_: result.options_,
-                    voteStartTime_: new eth_contract_13.BigNumber(result.voteStartTime_),
-                    voteEndTime_: new eth_contract_13.BigNumber(result.voteEndTime_),
-                    executeDelay_: new eth_contract_13.BigNumber(result.executeDelay_),
-                    status_: result.status_,
-                    optionsWeight_: result.optionsWeight_.map(e => new eth_contract_13.BigNumber(e)),
-                    quorum_: result.quorum_.map(e => new eth_contract_13.BigNumber(e)),
-                    executeParam_: result.executeParam_
+                    executor: result.executor_,
+                    id: new eth_contract_13.BigNumber(result.id_),
+                    name: result.name_,
+                    options: result.options_,
+                    voteStartTime: new eth_contract_13.BigNumber(result.voteStartTime_),
+                    voteEndTime: new eth_contract_13.BigNumber(result.voteEndTime_),
+                    executeDelay: new eth_contract_13.BigNumber(result.executeDelay_),
+                    status: result.status_,
+                    optionsWeight: result.optionsWeight_.map(e => new eth_contract_13.BigNumber(e)),
+                    quorum: result.quorum_.map(e => new eth_contract_13.BigNumber(e)),
+                    executeParam: result.executeParam_
                 };
             };
             this.getParams = getParams_call;
@@ -3999,9 +3999,9 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
             let checkAndGetOracleSwapParams_call = async (params, options) => {
                 let result = await this.call('checkAndGetOracleSwapParams', checkAndGetOracleSwapParamsParams(params), options);
                 return {
-                    oracle_: result.oracle_,
-                    tradeFee_: new eth_contract_18.BigNumber(result.tradeFee_),
-                    protocolFee_: new eth_contract_18.BigNumber(result.protocolFee_)
+                    oracle: result.oracle_,
+                    tradeFee: new eth_contract_18.BigNumber(result.tradeFee_),
+                    protocolFee: new eth_contract_18.BigNumber(result.protocolFee_)
                 };
             };
             this.checkAndGetOracleSwapParams = checkAndGetOracleSwapParams_call;
@@ -5453,17 +5453,17 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
             let getAllLiquidityProviderShare_call = async (options) => {
                 let result = await this.call('getAllLiquidityProviderShare', [], options);
                 return {
-                    _stakeAmount: result._stakeAmount.map(e => new eth_contract_23.BigNumber(e)),
-                    _liquidityProviderShare: result._liquidityProviderShare.map(e => new eth_contract_23.BigNumber(e))
+                    stakeAmount: result._stakeAmount.map(e => new eth_contract_23.BigNumber(e)),
+                    liquidityProviderShare: result._liquidityProviderShare.map(e => new eth_contract_23.BigNumber(e))
                 };
             };
             this.getAllLiquidityProviderShare = getAllLiquidityProviderShare_call;
             let getCreateAddresses_call = async (options) => {
                 let result = await this.call('getCreateAddresses', [], options);
                 return {
-                    _governance: result._governance,
-                    _rangeLiquidityProvider: result._rangeLiquidityProvider,
-                    _oracleFactory: result._oracleFactory
+                    governance: result._governance,
+                    rangeLiquidityProvider: result._rangeLiquidityProvider,
+                    oracleFactory: result._oracleFactory
                 };
             };
             this.getCreateAddresses = getCreateAddresses_call;
@@ -6687,7 +6687,7 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityPro
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return {
                     pair: result.pair,
-                    _offerIndex: new eth_contract_29.BigNumber(result._offerIndex)
+                    offerIndex: new eth_contract_29.BigNumber(result._offerIndex)
                 };
             };
             let addLiquidity_txData = async (params, options) => {
@@ -6727,7 +6727,7 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityPro
                 let result = await this.call('addLiquidityETH', addLiquidityETHParams(params), options);
                 return {
                     pair: result.pair,
-                    _offerIndex: new eth_contract_29.BigNumber(result._offerIndex)
+                    offerIndex: new eth_contract_29.BigNumber(result._offerIndex)
                 };
             };
             let addLiquidityETH_txData = async (params, options) => {
@@ -7085,9 +7085,9 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
             let checkAndGetOracleSwapParams_call = async (params, options) => {
                 let result = await this.call('checkAndGetOracleSwapParams', checkAndGetOracleSwapParamsParams(params), options);
                 return {
-                    oracle_: result.oracle_,
-                    tradeFee_: new eth_contract_31.BigNumber(result.tradeFee_),
-                    protocolFee_: new eth_contract_31.BigNumber(result.protocolFee_)
+                    oracle: result.oracle_,
+                    tradeFee: new eth_contract_31.BigNumber(result.tradeFee_),
+                    protocolFee: new eth_contract_31.BigNumber(result.protocolFee_)
                 };
             };
             this.checkAndGetOracleSwapParams = checkAndGetOracleSwapParams_call;
@@ -7099,10 +7099,10 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
             let getCreateAddresses_call = async (options) => {
                 let result = await this.call('getCreateAddresses', [], options);
                 return {
-                    _governance: result._governance,
-                    _whitelistFactory: result._whitelistFactory,
-                    _restrictedLiquidityProvider: result._restrictedLiquidityProvider,
-                    _configStore: result._configStore
+                    governance: result._governance,
+                    whitelistFactory: result._whitelistFactory,
+                    restrictedLiquidityProvider: result._restrictedLiquidityProvider,
+                    configStore: result._configStore
                 };
             };
             this.getCreateAddresses = getCreateAddresses_call;
@@ -7435,7 +7435,7 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return {
                     pair: result.pair,
-                    _offerIndex: new eth_contract_32.BigNumber(result._offerIndex)
+                    offerIndex: new eth_contract_32.BigNumber(result._offerIndex)
                 };
             };
             let addLiquidity_txData = async (params, options) => {
@@ -7475,7 +7475,7 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('addLiquidityETH', addLiquidityETHParams(params), options);
                 return {
                     pair: result.pair,
-                    _offerIndex: new eth_contract_32.BigNumber(result._offerIndex)
+                    offerIndex: new eth_contract_32.BigNumber(result._offerIndex)
                 };
             };
             let addLiquidityETH_txData = async (params, options) => {
@@ -7649,7 +7649,7 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return {
                     pair: result.pair,
-                    _offerIndex: new eth_contract_33.BigNumber(result._offerIndex)
+                    offerIndex: new eth_contract_33.BigNumber(result._offerIndex)
                 };
             };
             let addLiquidity_txData = async (params, options) => {
@@ -7669,7 +7669,7 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('addLiquidityETH', addLiquidityETHParams(params), options);
                 return {
                     pair: result.pair,
-                    _offerIndex: new eth_contract_33.BigNumber(result._offerIndex)
+                    offerIndex: new eth_contract_33.BigNumber(result._offerIndex)
                 };
             };
             let addLiquidityETH_txData = async (params, options) => {
@@ -7825,7 +7825,7 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('addLiquidity', addLiquidityParams(params), options);
                 return {
                     pair: result.pair,
-                    _offerIndex: new eth_contract_34.BigNumber(result._offerIndex)
+                    offerIndex: new eth_contract_34.BigNumber(result._offerIndex)
                 };
             };
             let addLiquidity_txData = async (params, options) => {
@@ -7845,7 +7845,7 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
                 let result = await this.call('addLiquidityETH', addLiquidityETHParams(params), options);
                 return {
                     pair: result.pair,
-                    _offerIndex: new eth_contract_34.BigNumber(result._offerIndex)
+                    offerIndex: new eth_contract_34.BigNumber(result._offerIndex)
                 };
             };
             let addLiquidityETH_txData = async (params, options) => {

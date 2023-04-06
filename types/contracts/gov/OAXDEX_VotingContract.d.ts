@@ -49,17 +49,17 @@ export declare class OAXDEX_VotingContract extends _Contract {
     };
     getParams: {
         (options?: TransactionOptions): Promise<{
-            executor_: string;
-            id_: BigNumber;
-            name_: string;
-            options_: string[];
-            voteStartTime_: BigNumber;
-            voteEndTime_: BigNumber;
-            executeDelay_: BigNumber;
-            status_: boolean[];
-            optionsWeight_: BigNumber[];
-            quorum_: BigNumber[];
-            executeParam_: string[];
+            executor: string;
+            id: BigNumber;
+            name: string;
+            options: string[];
+            voteStartTime: BigNumber;
+            voteEndTime: BigNumber;
+            executeDelay: BigNumber;
+            status: boolean[];
+            optionsWeight: BigNumber[];
+            quorum: BigNumber[];
+            executeParam: string[];
         }>;
     };
     governance: {

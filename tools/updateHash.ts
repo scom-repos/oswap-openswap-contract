@@ -1,6 +1,6 @@
+import { Wallet } from '@ijstech/eth-wallet';
 import fs from 'fs';
 import path from 'path';
-import Web3 from 'web3';
 
 const sourceDir = "contracts/";
 async function updateHash(){
@@ -14,12 +14,12 @@ async function updateHash(){
         "restricted/OSWAP_OtcPair"
     ];
 
-    var hex = [];
+    let hex: any[] = [];
     for (var i = 0 ; i < SOURCE.length ; i++) {
         try {
             hex[i] = (await import(path.join(__dirname, "../src/contracts/", SOURCE[i] + ".json.ts"))).default;
             hex[i] = "0x" + hex[i].bytecode;
-            hex[i] = Web3.utils.soliditySha3(hex[i]);
+            hex[i] = Wallet.getInstance().soliditySha3(hex[i]);
             hex[i] = hex[i].replace("0x", "");
             console.log(SOURCE[i], hex[i]);
         } catch(e) {
