@@ -1,4 +1,4 @@
-import {IWallet,BigNumber,nullAddress} from "@ijstech/eth-contract";
+import {IWallet, BigNumber, Utils} from "@ijstech/eth-wallet";
 import {
     OSWAP_Factory, 
     OSWAP_PairCreator, 
@@ -265,7 +265,7 @@ export async function deployCoreContracts(wallet: IWallet, options: IDeployOptio
         governance: options.amm.governance || result.governance,
         pairCreator: result.pairCreator,
         protocolFee: 0,
-        protocolFeeTo: options.amm.protocolFeeTo || nullAddress,
+        protocolFeeTo: options.amm.protocolFeeTo || Utils.nullAddress,
         tradeFee: 0
     });
     //Router
@@ -298,7 +298,7 @@ export async function deployOracleContracts(wallet: IWallet, options: IOracleFac
         governance: options.governance || coreContractsResult.governance,
         pairCreator: options.pairCreator || result.oraclePairCreator,
         protocolFee: options.protocolFee || 0,
-        protocolFeeTo: options.protocolFeeTo || nullAddress,
+        protocolFeeTo: options.protocolFeeTo || Utils.nullAddress,
         tradeFee: options.tradeFee || 0
     });
     //OracleRouter
@@ -338,7 +338,7 @@ export async function deployRangeContracts(wallet: IWallet, options: IRangeFacto
         tradeFee: options.tradeFee || 0,
         stakeAmount: options.stakeAmount || [],
         liquidityProviderShare: options.liquidityProviderShare || [],
-        protocolFeeTo: options.protocolFeeTo || nullAddress
+        protocolFeeTo: options.protocolFeeTo || Utils.nullAddress
     });
     //RangeLiquidityProvider
     let rangeLiquidityProvider = new OSWAP_RangeLiquidityProvider(wallet);
@@ -391,7 +391,7 @@ export async function deployRestrictedContracts(wallet: IWallet, options: IRestr
         tradeFee: options.tradeFee || 0,
         configStore: result.configStore,
         protocolFee: options.protocolFee || 0,
-        protocolFeeTo: options.protocolFeeTo || nullAddress
+        protocolFeeTo: options.protocolFeeTo || Utils.nullAddress
     });
     //RestrictedLiquidityProvider
     let restrictedLiquidityProvider;

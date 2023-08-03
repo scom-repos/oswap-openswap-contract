@@ -9349,7 +9349,7 @@ declare module "@scom/oswap-openswap-contract/contracts/index.ts" {
 }
 /// <amd-module name="@scom/oswap-openswap-contract/OpenSwap.ts" />
 declare module "@scom/oswap-openswap-contract/OpenSwap.ts" {
-    import { IWallet, BigNumber } from "@ijstech/eth-contract";
+    import { IWallet, BigNumber } from '@ijstech/eth-wallet';
     import { OpenSwap as OpenSwapContract } from "@scom/oswap-openswap-contract/contracts/index.ts";
     export class OpenSwap {
         wallet: IWallet;
@@ -9405,7 +9405,7 @@ declare module "@scom/oswap-openswap-contract/OpenSwap.ts" {
 }
 /// <amd-module name="@scom/oswap-openswap-contract/deploy.ts" />
 declare module "@scom/oswap-openswap-contract/deploy.ts" {
-    import { IWallet, BigNumber } from "@ijstech/eth-contract";
+    import { IWallet, BigNumber } from "@ijstech/eth-wallet";
     import { OSWAP_Factory, OSWAP_PairCreator, OSWAP_Router, OSWAP_VotingExecutor1, OAXDEX_Governance, OAXDEX_VotingExecutor, OAXDEX_Administrator, OAXDEX_VotingRegistry, OSWAP_OraclePairCreator, OSWAP_VotingExecutor2, OSWAP_OracleFactory, OSWAP_OracleLiquidityProvider, OSWAP_OracleRouter, OSWAP_HybridRouterRegistry, OSWAP_HybridRouter2 } from "@scom/oswap-openswap-contract/contracts/index.ts";
     import { OpenSwap } from "@scom/oswap-openswap-contract/OpenSwap.ts";
     export interface ICoreContractsDeploymentResult {

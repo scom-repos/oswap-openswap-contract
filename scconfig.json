@@ -1,0 +1,52 @@
+{
+    "type": "contract",
+    "solidity": {
+        "version": "0.6.11",
+        "optimizerRuns": 999999,
+        "sourceDir": "contracts",
+        "outputDir": "src/contracts",
+        "outputObjects": "bytecode",
+        "outputOptions": {
+            "txData": true
+        },
+        "overrides": [
+            {
+                "sources": [
+                    "restricted/OSWAP_RestrictedPair1.sol",
+                    "restricted/OSWAP_RestrictedPair3.sol",
+                    "restricted/OSWAP_RestrictedPair4.sol",
+                    "restricted/OSWAP_RestrictedPairCreator1.sol",
+                    "restricted/OSWAP_RestrictedPairCreator4.sol",
+                    "restricted/OSWAP_OtcPair.sol",
+                    "restricted/OSWAP_OtcPairCreator.sol"
+                ],
+                "optimizerRuns": 5000
+            },
+            {
+                "sources": [
+                    "router/OSWAP_HybridRouter2.sol"
+                ],
+                "optimizerRuns": 30000
+            }
+        ],
+        "flattenFiles": [
+            "contracts/restricted/OSWAP_RestrictedFactory.sol",
+            "contracts/restricted/OSWAP_RestrictedPair1.sol",
+            "contracts/restricted/OSWAP_RestrictedPair4.sol",
+            "contracts/restricted/OSWAP_RestrictedLiquidityProvider1.sol",
+            "contracts/restricted/OSWAP_RestrictedLiquidityProvider4.sol",
+            "contracts/restricted/OSWAP_RestrictedPairCreator1.sol",
+            "contracts/restricted/OSWAP_RestrictedPairCreator4.sol",
+            "contracts/restricted/OSWAP_OtcPair.sol",
+            "contracts/restricted/OSWAP_OtcLiquidityProvider.sol",
+            "contracts/restricted/OSWAP_OtcPairCreator.sol",
+            "contracts/restricted/OSWAP_OtcPairOracle.sol",
+            "contracts/gov/OAXDEX_VotingRegistry.sol",
+            "contracts/restricted/OSWAP_ConfigStore.sol",
+            "contracts/restricted/OSWAP_VotingExecutor4.sol",
+            "contracts/amm/OSWAP_Router.sol",
+            "contracts/router/OSWAP_OracleRouter.sol",
+            "contracts/oracle/OSWAP_OracleLiquidityProvider.sol"
+        ]
+    }
+}

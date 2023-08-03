@@ -207,8 +207,8 @@ define("@scom/oswap-openswap-contract/contracts/OpenSwap.ts", ["require", "expor
             });
         }
     }
-    exports.OpenSwap = OpenSwap;
     OpenSwap._abi = OpenSwap_json_1.default.abi;
+    exports.OpenSwap = OpenSwap;
 });
 define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_ERC20.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -400,8 +400,8 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_ERC20.ts", ["require",
             });
         }
     }
-    exports.OSWAP_ERC20 = OSWAP_ERC20;
     OSWAP_ERC20._abi = OSWAP_ERC20_json_1.default.abi;
+    exports.OSWAP_ERC20 = OSWAP_ERC20;
 });
 define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -678,8 +678,8 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", ["require
             });
         }
     }
-    exports.OSWAP_Factory = OSWAP_Factory;
     OSWAP_Factory._abi = OSWAP_Factory_json_1.default.abi;
+    exports.OSWAP_Factory = OSWAP_Factory;
 });
 define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -1191,8 +1191,8 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", ["require", 
             });
         }
     }
-    exports.OSWAP_Pair = OSWAP_Pair;
     OSWAP_Pair._abi = OSWAP_Pair_json_1.default.abi;
+    exports.OSWAP_Pair = OSWAP_Pair;
 });
 define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_PairCreator.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -1236,8 +1236,8 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_PairCreator.ts", ["req
             });
         }
     }
-    exports.OSWAP_PairCreator = OSWAP_PairCreator;
     OSWAP_PairCreator._abi = OSWAP_PairCreator_json_1.default.abi;
+    exports.OSWAP_PairCreator = OSWAP_PairCreator;
 });
 define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -1649,8 +1649,8 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", ["require"
             });
         }
     }
-    exports.OSWAP_Router = OSWAP_Router;
     OSWAP_Router._abi = OSWAP_Router_json_1.default.abi;
+    exports.OSWAP_Router = OSWAP_Router;
 });
 define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_VotingExecutor1.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -1707,8 +1707,8 @@ define("@scom/oswap-openswap-contract/contracts/amm/OSWAP_VotingExecutor1.ts", [
             });
         }
     }
-    exports.OSWAP_VotingExecutor1 = OSWAP_VotingExecutor1;
     OSWAP_VotingExecutor1._abi = OSWAP_VotingExecutor1_json_1.default.abi;
+    exports.OSWAP_VotingExecutor1 = OSWAP_VotingExecutor1;
 });
 define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_FactoryBase.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -1882,8 +1882,8 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_FactoryBase.ts", [
             });
         }
     }
-    exports.OSWAP_FactoryBase = OSWAP_FactoryBase;
     OSWAP_FactoryBase._abi = OSWAP_FactoryBase_json_1.default.abi;
+    exports.OSWAP_FactoryBase = OSWAP_FactoryBase;
 });
 define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausableFactory.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -2000,8 +2000,8 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausableFactory.ts
             });
         }
     }
-    exports.OSWAP_PausableFactory = OSWAP_PausableFactory;
     OSWAP_PausableFactory._abi = OSWAP_PausableFactory_json_1.default.abi;
+    exports.OSWAP_PausableFactory = OSWAP_PausableFactory;
 });
 define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausablePair.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -2058,8 +2058,8 @@ define("@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausablePair.ts", 
             });
         }
     }
-    exports.OSWAP_PausablePair = OSWAP_PausablePair;
     OSWAP_PausablePair._abi = OSWAP_PausablePair_json_1.default.abi;
+    exports.OSWAP_PausablePair = OSWAP_PausablePair;
 });
 define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -2508,8 +2508,8 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", ["
             });
         }
     }
-    exports.OAXDEX_Administrator = OAXDEX_Administrator;
     OAXDEX_Administrator._abi = OAXDEX_Administrator_json_1.default.abi;
+    exports.OAXDEX_Administrator = OAXDEX_Administrator;
 });
 define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -3192,8 +3192,8 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", ["req
             });
         }
     }
-    exports.OAXDEX_Governance = OAXDEX_Governance;
     OAXDEX_Governance._abi = OAXDEX_Governance_json_1.default.abi;
+    exports.OAXDEX_Governance = OAXDEX_Governance;
 });
 define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContract.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -3439,8 +3439,8 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContract.ts", [
             });
         }
     }
-    exports.OAXDEX_VotingContract = OAXDEX_VotingContract;
     OAXDEX_VotingContract._abi = OAXDEX_VotingContract_json_1.default.abi;
+    exports.OAXDEX_VotingContract = OAXDEX_VotingContract;
 });
 define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingExecutor.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -3497,8 +3497,8 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingExecutor.ts", [
             });
         }
     }
-    exports.OAXDEX_VotingExecutor = OAXDEX_VotingExecutor;
     OAXDEX_VotingExecutor._abi = OAXDEX_VotingExecutor_json_1.default.abi;
+    exports.OAXDEX_VotingExecutor = OAXDEX_VotingExecutor;
 });
 define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingRegistry.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -3550,8 +3550,8 @@ define("@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingRegistry.ts", [
             });
         }
     }
-    exports.OAXDEX_VotingRegistry = OAXDEX_VotingRegistry;
     OAXDEX_VotingRegistry._abi = OAXDEX_VotingRegistry_json_1.default.abi;
+    exports.OAXDEX_VotingRegistry = OAXDEX_VotingRegistry;
 });
 define("@scom/oswap-openswap-contract/contracts/libraries/ERC20.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -3732,8 +3732,8 @@ define("@scom/oswap-openswap-contract/contracts/libraries/ERC20.ts", ["require",
             });
         }
     }
-    exports.ERC20 = ERC20;
     ERC20._abi = ERC20_json_1.default.abi;
+    exports.ERC20 = ERC20;
 });
 define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_CertiKSecurityOracle.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -3773,8 +3773,8 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_CertiKSecurityOracl
             this.oracleAddress = oracleAddress_call;
         }
     }
-    exports.OSWAP_CertiKSecurityOracle = OSWAP_CertiKSecurityOracle;
     OSWAP_CertiKSecurityOracle._abi = OSWAP_CertiKSecurityOracle_json_1.default.abi;
+    exports.OSWAP_CertiKSecurityOracle = OSWAP_CertiKSecurityOracle;
 });
 define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -4373,8 +4373,8 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", 
             });
         }
     }
-    exports.OSWAP_OracleFactory = OSWAP_OracleFactory;
     OSWAP_OracleFactory._abi = OSWAP_OracleFactory_json_1.default.abi;
+    exports.OSWAP_OracleFactory = OSWAP_OracleFactory;
 });
 define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProvider.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -4535,8 +4535,8 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProv
             });
         }
     }
-    exports.OSWAP_OracleLiquidityProvider = OSWAP_OracleLiquidityProvider;
     OSWAP_OracleLiquidityProvider._abi = OSWAP_OracleLiquidityProvider_json_1.default.abi;
+    exports.OSWAP_OracleLiquidityProvider = OSWAP_OracleLiquidityProvider;
 });
 define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -5186,8 +5186,8 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", ["r
             });
         }
     }
-    exports.OSWAP_OraclePair = OSWAP_OraclePair;
     OSWAP_OraclePair._abi = OSWAP_OraclePair_json_1.default.abi;
+    exports.OSWAP_OraclePair = OSWAP_OraclePair;
 });
 define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePairCreator.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -5231,8 +5231,8 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePairCreator.t
             });
         }
     }
-    exports.OSWAP_OraclePairCreator = OSWAP_OraclePairCreator;
     OSWAP_OraclePairCreator._abi = OSWAP_OraclePairCreator_json_1.default.abi;
+    exports.OSWAP_OraclePairCreator = OSWAP_OraclePairCreator;
 });
 define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_VotingExecutor2.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -5289,8 +5289,8 @@ define("@scom/oswap-openswap-contract/contracts/oracle/OSWAP_VotingExecutor2.ts"
             });
         }
     }
-    exports.OSWAP_VotingExecutor2 = OSWAP_VotingExecutor2;
     OSWAP_VotingExecutor2._abi = OSWAP_VotingExecutor2_json_1.default.abi;
+    exports.OSWAP_VotingExecutor2 = OSWAP_VotingExecutor2;
 });
 define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -5677,8 +5677,8 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", ["
             });
         }
     }
-    exports.OSWAP_RangeFactory = OSWAP_RangeFactory;
     OSWAP_RangeFactory._abi = OSWAP_RangeFactory_json_1.default.abi;
+    exports.OSWAP_RangeFactory = OSWAP_RangeFactory;
 });
 define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvider.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -5857,8 +5857,8 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvid
             });
         }
     }
-    exports.OSWAP_RangeLiquidityProvider = OSWAP_RangeLiquidityProvider;
     OSWAP_RangeLiquidityProvider._abi = OSWAP_RangeLiquidityProvider_json_1.default.abi;
+    exports.OSWAP_RangeLiquidityProvider = OSWAP_RangeLiquidityProvider;
 });
 define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -6402,8 +6402,8 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", ["req
             });
         }
     }
-    exports.OSWAP_RangePair = OSWAP_RangePair;
     OSWAP_RangePair._abi = OSWAP_RangePair_json_1.default.abi;
+    exports.OSWAP_RangePair = OSWAP_RangePair;
 });
 define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePairCreator.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -6447,8 +6447,8 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePairCreator.ts"
             });
         }
     }
-    exports.OSWAP_RangePairCreator = OSWAP_RangePairCreator;
     OSWAP_RangePairCreator._abi = OSWAP_RangePairCreator_json_1.default.abi;
+    exports.OSWAP_RangePairCreator = OSWAP_RangePairCreator;
 });
 define("@scom/oswap-openswap-contract/contracts/range/OSWAP_VotingExecutor3.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -6511,8 +6511,8 @@ define("@scom/oswap-openswap-contract/contracts/range/OSWAP_VotingExecutor3.ts",
             });
         }
     }
-    exports.OSWAP_VotingExecutor3 = OSWAP_VotingExecutor3;
     OSWAP_VotingExecutor3._abi = OSWAP_VotingExecutor3_json_1.default.abi;
+    exports.OSWAP_VotingExecutor3 = OSWAP_VotingExecutor3;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_ConfigStore.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -6618,8 +6618,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_ConfigStore.ts"
             });
         }
     }
-    exports.OSWAP_ConfigStore = OSWAP_ConfigStore;
     OSWAP_ConfigStore._abi = OSWAP_ConfigStore_json_1.default.abi;
+    exports.OSWAP_ConfigStore = OSWAP_ConfigStore;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -6834,8 +6834,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityPro
             });
         }
     }
-    exports.OSWAP_OtcLiquidityProvider = OSWAP_OtcLiquidityProvider;
     OSWAP_OtcLiquidityProvider._abi = OSWAP_OtcLiquidityProvider_json_1.default.abi;
+    exports.OSWAP_OtcLiquidityProvider = OSWAP_OtcLiquidityProvider;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -6899,8 +6899,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.t
             this.isSupported = isSupported_call;
         }
     }
-    exports.OSWAP_OtcPairOracle = OSWAP_OtcPairOracle;
     OSWAP_OtcPairOracle._abi = OSWAP_OtcPairOracle_json_1.default.abi;
+    exports.OSWAP_OtcPairOracle = OSWAP_OtcPairOracle;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFactory.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -7366,8 +7366,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFacto
             });
         }
     }
-    exports.OSWAP_RestrictedFactory = OSWAP_RestrictedFactory;
     OSWAP_RestrictedFactory._abi = OSWAP_RestrictedFactory_json_1.default.abi;
+    exports.OSWAP_RestrictedFactory = OSWAP_RestrictedFactory;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider1.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -7582,8 +7582,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
             });
         }
     }
-    exports.OSWAP_RestrictedLiquidityProvider1 = OSWAP_RestrictedLiquidityProvider1;
     OSWAP_RestrictedLiquidityProvider1._abi = OSWAP_RestrictedLiquidityProvider1_json_1.default.abi;
+    exports.OSWAP_RestrictedLiquidityProvider1 = OSWAP_RestrictedLiquidityProvider1;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider3.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -7758,8 +7758,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
             });
         }
     }
-    exports.OSWAP_RestrictedLiquidityProvider3 = OSWAP_RestrictedLiquidityProvider3;
     OSWAP_RestrictedLiquidityProvider3._abi = OSWAP_RestrictedLiquidityProvider3_json_1.default.abi;
+    exports.OSWAP_RestrictedLiquidityProvider3 = OSWAP_RestrictedLiquidityProvider3;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider4.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -7934,8 +7934,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiqui
             });
         }
     }
-    exports.OSWAP_RestrictedLiquidityProvider4 = OSWAP_RestrictedLiquidityProvider4;
     OSWAP_RestrictedLiquidityProvider4._abi = OSWAP_RestrictedLiquidityProvider4_json_1.default.abi;
+    exports.OSWAP_RestrictedLiquidityProvider4 = OSWAP_RestrictedLiquidityProvider4;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -8421,8 +8421,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.
             });
         }
     }
-    exports.OSWAP_RestrictedPair = OSWAP_RestrictedPair;
     OSWAP_RestrictedPair._abi = OSWAP_RestrictedPair_json_1.default.abi;
+    exports.OSWAP_RestrictedPair = OSWAP_RestrictedPair;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairOracle.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -8486,8 +8486,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairO
             this.isSupported = isSupported_call;
         }
     }
-    exports.OSWAP_RestrictedPairOracle = OSWAP_RestrictedPairOracle;
     OSWAP_RestrictedPairOracle._abi = OSWAP_RestrictedPairOracle_json_1.default.abi;
+    exports.OSWAP_RestrictedPairOracle = OSWAP_RestrictedPairOracle;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingExecutor4.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -8550,8 +8550,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingExecutor4
             });
         }
     }
-    exports.OSWAP_VotingExecutor4 = OSWAP_VotingExecutor4;
     OSWAP_VotingExecutor4._abi = OSWAP_VotingExecutor4_json_1.default.abi;
+    exports.OSWAP_VotingExecutor4 = OSWAP_VotingExecutor4;
 });
 define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -8775,8 +8775,8 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", [
             });
         }
     }
-    exports.OSWAP_HybridRouter = OSWAP_HybridRouter;
     OSWAP_HybridRouter._abi = OSWAP_HybridRouter_json_1.default.abi;
+    exports.OSWAP_HybridRouter = OSWAP_HybridRouter;
 });
 define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistry.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -9205,8 +9205,8 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistr
             });
         }
     }
-    exports.OSWAP_HybridRouterRegistry = OSWAP_HybridRouterRegistry;
     OSWAP_HybridRouterRegistry._abi = OSWAP_HybridRouterRegistry_json_1.default.abi;
+    exports.OSWAP_HybridRouterRegistry = OSWAP_HybridRouterRegistry;
 });
 define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -9450,8 +9450,8 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", [
             });
         }
     }
-    exports.OSWAP_OracleRouter = OSWAP_OracleRouter;
     OSWAP_OracleRouter._abi = OSWAP_OracleRouter_json_1.default.abi;
+    exports.OSWAP_OracleRouter = OSWAP_OracleRouter;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -10086,8 +10086,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair.ts", ["
             });
         }
     }
-    exports.OSWAP_OtcPair = OSWAP_OtcPair;
     OSWAP_OtcPair._abi = OSWAP_OtcPair_json_1.default.abi;
+    exports.OSWAP_OtcPair = OSWAP_OtcPair;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -10131,8 +10131,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.
             });
         }
     }
-    exports.OSWAP_OtcPairCreator = OSWAP_OtcPairCreator;
     OSWAP_OtcPairCreator._abi = OSWAP_OtcPairCreator_json_1.default.abi;
+    exports.OSWAP_OtcPairCreator = OSWAP_OtcPairCreator;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -10762,8 +10762,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1
             });
         }
     }
-    exports.OSWAP_RestrictedPair1 = OSWAP_RestrictedPair1;
     OSWAP_RestrictedPair1._abi = OSWAP_RestrictedPair1_json_1.default.abi;
+    exports.OSWAP_RestrictedPair1 = OSWAP_RestrictedPair1;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -11395,8 +11395,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3
             });
         }
     }
-    exports.OSWAP_RestrictedPair3 = OSWAP_RestrictedPair3;
     OSWAP_RestrictedPair3._abi = OSWAP_RestrictedPair3_json_1.default.abi;
+    exports.OSWAP_RestrictedPair3 = OSWAP_RestrictedPair3;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -12075,8 +12075,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4
             });
         }
     }
-    exports.OSWAP_RestrictedPair4 = OSWAP_RestrictedPair4;
     OSWAP_RestrictedPair4._abi = OSWAP_RestrictedPair4_json_1.default.abi;
+    exports.OSWAP_RestrictedPair4 = OSWAP_RestrictedPair4;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -12120,8 +12120,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairC
             });
         }
     }
-    exports.OSWAP_RestrictedPairCreator1 = OSWAP_RestrictedPairCreator1;
     OSWAP_RestrictedPairCreator1._abi = OSWAP_RestrictedPairCreator1_json_1.default.abi;
+    exports.OSWAP_RestrictedPairCreator1 = OSWAP_RestrictedPairCreator1;
 });
 define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -12165,8 +12165,8 @@ define("@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairC
             });
         }
     }
-    exports.OSWAP_RestrictedPairCreator4 = OSWAP_RestrictedPairCreator4;
     OSWAP_RestrictedPairCreator4._abi = OSWAP_RestrictedPairCreator4_json_1.default.abi;
+    exports.OSWAP_RestrictedPairCreator4 = OSWAP_RestrictedPairCreator4;
 });
 define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.json.ts", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -12429,8 +12429,8 @@ define("@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts", 
             });
         }
     }
-    exports.OSWAP_HybridRouter2 = OSWAP_HybridRouter2;
     OSWAP_HybridRouter2._abi = OSWAP_HybridRouter2_json_1.default.abi;
+    exports.OSWAP_HybridRouter2 = OSWAP_HybridRouter2;
 });
 define("@scom/oswap-openswap-contract/contracts/index.ts", ["require", "exports", "@scom/oswap-openswap-contract/contracts/OpenSwap.ts", "@scom/oswap-openswap-contract/contracts/amm/OSWAP_ERC20.ts", "@scom/oswap-openswap-contract/contracts/amm/OSWAP_Factory.ts", "@scom/oswap-openswap-contract/contracts/amm/OSWAP_Pair.ts", "@scom/oswap-openswap-contract/contracts/amm/OSWAP_PairCreator.ts", "@scom/oswap-openswap-contract/contracts/amm/OSWAP_Router.ts", "@scom/oswap-openswap-contract/contracts/amm/OSWAP_VotingExecutor1.ts", "@scom/oswap-openswap-contract/contracts/commons/OSWAP_FactoryBase.ts", "@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausableFactory.ts", "@scom/oswap-openswap-contract/contracts/commons/OSWAP_PausablePair.ts", "@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Administrator.ts", "@scom/oswap-openswap-contract/contracts/gov/OAXDEX_Governance.ts", "@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingContract.ts", "@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingExecutor.ts", "@scom/oswap-openswap-contract/contracts/gov/OAXDEX_VotingRegistry.ts", "@scom/oswap-openswap-contract/contracts/libraries/ERC20.ts", "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_CertiKSecurityOracle.ts", "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleFactory.ts", "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OracleLiquidityProvider.ts", "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePair.ts", "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_OraclePairCreator.ts", "@scom/oswap-openswap-contract/contracts/oracle/OSWAP_VotingExecutor2.ts", "@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeFactory.ts", "@scom/oswap-openswap-contract/contracts/range/OSWAP_RangeLiquidityProvider.ts", "@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePair.ts", "@scom/oswap-openswap-contract/contracts/range/OSWAP_RangePairCreator.ts", "@scom/oswap-openswap-contract/contracts/range/OSWAP_VotingExecutor3.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_ConfigStore.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedFactory.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider1.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider3.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedLiquidityProvider4.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairOracle.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_VotingExecutor4.ts", "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter.ts", "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouterRegistry.ts", "@scom/oswap-openswap-contract/contracts/router/OSWAP_OracleRouter.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPair.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair1.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair3.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPair4.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator1.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_RestrictedPairCreator4.ts", "@scom/oswap-openswap-contract/contracts/router/OSWAP_HybridRouter2.ts"], function (require, exports, OpenSwap_1, OSWAP_ERC20_1, OSWAP_Factory_1, OSWAP_Pair_1, OSWAP_PairCreator_1, OSWAP_Router_1, OSWAP_VotingExecutor1_1, OSWAP_FactoryBase_1, OSWAP_PausableFactory_1, OSWAP_PausablePair_1, OAXDEX_Administrator_1, OAXDEX_Governance_1, OAXDEX_VotingContract_1, OAXDEX_VotingExecutor_1, OAXDEX_VotingRegistry_1, ERC20_1, OSWAP_CertiKSecurityOracle_1, OSWAP_OracleFactory_1, OSWAP_OracleLiquidityProvider_1, OSWAP_OraclePair_1, OSWAP_OraclePairCreator_1, OSWAP_VotingExecutor2_1, OSWAP_RangeFactory_1, OSWAP_RangeLiquidityProvider_1, OSWAP_RangePair_1, OSWAP_RangePairCreator_1, OSWAP_VotingExecutor3_1, OSWAP_ConfigStore_1, OSWAP_OtcLiquidityProvider_1, OSWAP_OtcPairOracle_1, OSWAP_RestrictedFactory_1, OSWAP_RestrictedLiquidityProvider1_1, OSWAP_RestrictedLiquidityProvider3_1, OSWAP_RestrictedLiquidityProvider4_1, OSWAP_RestrictedPair_1, OSWAP_RestrictedPairOracle_1, OSWAP_VotingExecutor4_1, OSWAP_HybridRouter_1, OSWAP_HybridRouterRegistry_1, OSWAP_OracleRouter_1, OSWAP_OtcPair_1, OSWAP_OtcPairCreator_1, OSWAP_RestrictedPair1_1, OSWAP_RestrictedPair3_1, OSWAP_RestrictedPair4_1, OSWAP_RestrictedPairCreator1_1, OSWAP_RestrictedPairCreator4_1, OSWAP_HybridRouter2_1) {
     "use strict";
@@ -12570,7 +12570,7 @@ define("@scom/oswap-openswap-contract/OpenSwap.ts", ["require", "exports", "@sco
     }
     exports.OpenSwap = OpenSwap;
 });
-define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijstech/eth-contract", "@scom/oswap-openswap-contract/contracts/index.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.ts", "@scom/oswap-openswap-contract/OpenSwap.ts"], function (require, exports, eth_contract_49, index_2, OSWAP_OtcLiquidityProvider_2, OSWAP_OtcPairCreator_2, OSWAP_OtcPairOracle_2, OpenSwap_2) {
+define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijstech/eth-wallet", "@scom/oswap-openswap-contract/contracts/index.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcLiquidityProvider.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairCreator.ts", "@scom/oswap-openswap-contract/contracts/restricted/OSWAP_OtcPairOracle.ts", "@scom/oswap-openswap-contract/OpenSwap.ts"], function (require, exports, eth_wallet_1, index_2, OSWAP_OtcLiquidityProvider_2, OSWAP_OtcPairCreator_2, OSWAP_OtcPairOracle_2, OpenSwap_2) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.deploy = exports.deployHybridRouter = exports.initHybridRouterRegistry = exports.deployRestrictedPairOracle = exports.deployRestrictedContracts = exports.deployRangeContracts = exports.deployOracleContracts = exports.deployCoreContracts = exports.toDeploymentContracts = exports.DefaultGovTokenOptions = exports.DefaultGovOptions = void 0;
@@ -12664,7 +12664,7 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             governance: options.amm.governance || result.governance,
             pairCreator: result.pairCreator,
             protocolFee: 0,
-            protocolFeeTo: options.amm.protocolFeeTo || eth_contract_49.nullAddress,
+            protocolFeeTo: options.amm.protocolFeeTo || eth_wallet_1.Utils.nullAddress,
             tradeFee: 0
         });
         //Router
@@ -12697,7 +12697,7 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             governance: options.governance || coreContractsResult.governance,
             pairCreator: options.pairCreator || result.oraclePairCreator,
             protocolFee: options.protocolFee || 0,
-            protocolFeeTo: options.protocolFeeTo || eth_contract_49.nullAddress,
+            protocolFeeTo: options.protocolFeeTo || eth_wallet_1.Utils.nullAddress,
             tradeFee: options.tradeFee || 0
         });
         //OracleRouter
@@ -12737,7 +12737,7 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             tradeFee: options.tradeFee || 0,
             stakeAmount: options.stakeAmount || [],
             liquidityProviderShare: options.liquidityProviderShare || [],
-            protocolFeeTo: options.protocolFeeTo || eth_contract_49.nullAddress
+            protocolFeeTo: options.protocolFeeTo || eth_wallet_1.Utils.nullAddress
         });
         //RangeLiquidityProvider
         let rangeLiquidityProvider = new index_2.OSWAP_RangeLiquidityProvider(wallet);
@@ -12789,7 +12789,7 @@ define("@scom/oswap-openswap-contract/deploy.ts", ["require", "exports", "@ijste
             tradeFee: options.tradeFee || 0,
             configStore: result.configStore,
             protocolFee: options.protocolFee || 0,
-            protocolFeeTo: options.protocolFeeTo || eth_contract_49.nullAddress
+            protocolFeeTo: options.protocolFeeTo || eth_wallet_1.Utils.nullAddress
         });
         //RestrictedLiquidityProvider
         let restrictedLiquidityProvider;
